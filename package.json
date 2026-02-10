@@ -1,0 +1,23 @@
+{
+  "name": "visible-legal-marketing",
+  "version": "1.0.0",
+  "description": "FCA-regulated claims management company website",
+  "scripts": {
+    "check:mixed": "node scripts/check-no-http.mjs",
+    "test": "npm run check:mixed",
+    "security:mixed-content": "npm run check:mixed",
+    "lighthouse:audit": "bash scripts/lighthouse-audit.sh"
+  },
+  "keywords": [
+    "legal",
+    "claims",
+    "fca",
+    "regulated"
+  ],
+  "author": "Visible Legal Marketing Limited",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "sharp": "^0.34.4"
+  }
+}

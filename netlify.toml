@@ -1,0 +1,10 @@
+# Netlify Build Configuration
+
+[build]
+  command = "bash ./scripts/cleanup-reports.sh && bash ./scripts/generate-env.sh && PUBLISH_DIR=. node build-nonce.js"
+  publish = "."
+  environment = { NODE_VERSION = "18" }
+
+[functions]
+  node_bundler = "esbuild"
+

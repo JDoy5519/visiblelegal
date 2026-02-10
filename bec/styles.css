@@ -1,0 +1,801 @@
+/* =========================================================
+   Visible Legal Marketing — BEC Page (mobile-first, premium)
+   Scoped under .bec-page to avoid affecting homepage or IVA.
+   Emerald green theme for commercial energy claims.
+   ========================================================= */
+
+/* ---------- BEC-specific theme variables (scoped) ---------- */
+.bec-page {
+  --bec-700: #065F46;
+  --bec-600: #047857;
+  --bec-500: #059669;
+  --bec-400: #34D399;
+  --bec-100: #D1FAE5;
+  --bec-50: #ECFDF5;
+  --ink-900: #0F172A;
+  --ink-700: #334155;
+  --ink-600: #475569;
+  --panel: var(--surface, #FFFFFF);
+  --soft: #F0FDF4;
+  --vlm-bg: var(--surface, #ffffff);
+  --vlm-text: var(--ink, #1F2937);
+  --vlm-muted: var(--muted, #6B7280);
+}
+
+/* ---------- Base (scoped) ---------- */
+.bec-page img { max-width: 100%; height: auto; display: block; }
+.hidden { display: none !important; }
+
+
+/* =========================================================
+   Hero — BEC emerald theme
+   ========================================================= */
+.bec-page .bec-hero {
+  background:
+    radial-gradient(1200px 560px at 50% -12%, rgba(4,120,87,0.06), transparent 60%),
+    linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+  border-bottom: 1px solid rgba(2,6,23,0.06);
+}
+
+.bec-page .bec-hero-container {
+  max-width: var(--container, 1100px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 20px;
+  padding-block: 48px;
+  padding-inline: clamp(16px, 5.5vw, 28px);
+}
+
+.bec-page .bec-hero-text {
+  max-width: 780px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Unregulated badge */
+.bec-page .unregulated-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(5,150,105,0.10);
+  border: 1px solid rgba(5,150,105,0.30);
+  color: #065F46;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.bec-page .unregulated-badge i {
+  width: 16px;
+  height: 16px;
+}
+
+/* Headline */
+.bec-page .bec-hero-text h1 {
+  font-size: clamp(1.95rem, 5.4vw, 3.1rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 6px 0 14px;
+  color: var(--ink-900);
+}
+
+.bec-page .bec-highlight {
+  color: var(--bec-700);
+}
+
+.bec-page .bec-hero-sub {
+  color: var(--vlm-muted);
+  margin: 0 0 18px;
+  font-size: 1.04rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+/* Hero trust points */
+.bec-page .bec-hero-points {
+  display: grid;
+  justify-content: center;
+  gap: 12px;
+  margin: 10px 0 6px;
+  padding: 0;
+  list-style: none;
+}
+
+.bec-page .bec-hero-points li {
+  width: 100%;
+  max-width: 440px;
+  justify-self: center;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+  border: 1px solid rgba(4,120,87,0.12);
+  box-shadow:
+    0 1px 2px rgba(15,23,42,0.06),
+    0 8px 18px rgba(15,23,42,0.06);
+  color: var(--ink-900);
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .25s ease, border-color .2s ease, background .2s ease;
+}
+
+.bec-page .bec-hero-points li:hover {
+  background: linear-gradient(180deg, #FFFFFF 0%, #D1FAE5 100%);
+  border-color: rgba(4,120,87,0.28);
+  box-shadow: 0 12px 28px rgba(15,23,42,0.12);
+  transform: translateY(-2px);
+}
+
+.bec-page .bec-hero-points .icon-bullet {
+  width: 22px;
+  height: 22px;
+  color: var(--bec-600);
+}
+
+/* CTA row */
+.bec-page .bec-cta-row {
+  display: flex;
+  justify-content: center;
+  margin: 18px 0 20px;
+}
+
+.bec-page .bec-primary-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--bec-600), var(--bec-700));
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-decoration: none;
+  border: 1px solid rgba(2,6,23,0.08);
+  box-shadow:
+    0 1px 2px rgba(15,23,42,0.06),
+    0 12px 32px rgba(6,95,70,0.24);
+  transition: transform .08s ease, box-shadow .25s ease, background .18s ease;
+}
+
+.bec-page .bec-primary-cta:hover {
+  background: linear-gradient(180deg, var(--bec-500), var(--bec-600));
+  box-shadow: 0 16px 38px rgba(6,95,70,0.28);
+  transform: translateY(-1px);
+}
+
+.bec-page .bec-primary-cta:active {
+  transform: translateY(0);
+}
+
+/* Unregulated notice box */
+.bec-page .unregulated-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(5,150,105,0.05);
+  border: 1px solid rgba(5,150,105,0.18);
+  border-left: 4px solid var(--bec-500);
+  margin-top: 8px;
+  text-align: left;
+}
+
+.bec-page .unregulated-notice i {
+  width: 20px;
+  height: 20px;
+  color: var(--bec-600);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.bec-page .unregulated-notice p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-700);
+  overflow-wrap: break-word;
+}
+
+/* Hero responsive */
+@media (min-width: 700px) {
+  .bec-page .bec-hero-container { padding-block: 56px; gap: 22px; }
+  .bec-page .bec-hero-points li { max-width: 540px; padding: 14px 20px; }
+}
+
+@media (min-width: 1100px) {
+  .bec-page .bec-hero-container { padding-block: 64px; }
+  .bec-page .bec-hero-points { gap: 14px; }
+  .bec-page .bec-hero-points li {
+    max-width: 640px;
+    padding: 16px 22px;
+    box-shadow:
+      0 1px 3px rgba(15,23,42,0.06),
+      0 14px 34px rgba(15,23,42,0.10);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bec-page .bec-hero-points li,
+  .bec-page .bec-hero-points li:hover,
+  .bec-page .bec-primary-cta,
+  .bec-page .bec-primary-cta:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   Why Check Section — Issue cards
+   ========================================================= */
+.bec-page .bec-why-check {
+  background:
+    radial-gradient(900px 520px at 50% -12%, rgba(4,120,87,0.05), transparent 60%),
+    linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+  border-top: 1px solid rgba(15,23,42,0.06);
+  border-bottom: 1px solid rgba(15,23,42,0.06);
+  padding-block: clamp(28px, 5vw, 44px);
+}
+
+.bec-page .bec-why-check .container {
+  max-width: var(--container, 1100px);
+  margin: 0 auto;
+  padding-inline: clamp(16px, 4vw, 28px);
+}
+
+.bec-page .section-header {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.bec-page .section-eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--bec-700);
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.bec-page .section-title {
+  margin: 0;
+  font-size: clamp(1.3rem, 4.4vw, 1.7rem);
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+  position: relative;
+}
+
+.bec-page .section-title::after {
+  content: "";
+  display: block;
+  width: 88px;
+  height: 3px;
+  border-radius: 999px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, var(--bec-700), var(--bec-500));
+  box-shadow: 0 4px 14px rgba(5,150,105,0.25);
+}
+
+.bec-page .section-sub {
+  margin: 10px auto 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-700);
+  overflow-wrap: break-word;
+}
+
+/* Issues grid */
+.bec-page .bec-issues-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .bec-page .bec-issues-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Issue card */
+.bec-page .bec-issue-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(4,120,87,0.15);
+  background: #FFFFFF;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 10px 26px rgba(15,23,42,0.06);
+  transition: transform 0.12s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.bec-page .bec-issue-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(4,120,87,0.30);
+  box-shadow: 0 16px 40px rgba(15,23,42,0.12);
+}
+
+.bec-page .bec-issue-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 4px rgba(5,150,105,0.06);
+}
+
+.bec-page .bec-issue-icon i {
+  width: 18px;
+  height: 18px;
+  color: var(--bec-700);
+}
+
+.bec-page .bec-issue-card-body {
+  min-width: 0;
+}
+
+.bec-page .bec-issue-card h3 {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+}
+
+.bec-page .bec-issue-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-700);
+  overflow-wrap: break-word;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bec-page .bec-issue-card,
+  .bec-page .bec-issue-card:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   Form Section — BEC simple single-step
+   ========================================================= */
+.bec-page .bec-form-section {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+  border-top: 1px solid rgba(2,6,23,0.06);
+  border-bottom: 1px solid rgba(2,6,23,0.06);
+  padding-block: clamp(28px, 5vw, 44px);
+}
+
+.bec-page .bec-form-section .container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 5.5vw, 28px);
+}
+
+@media (max-width: 768px) {
+  .bec-page .bec-form-section .container {
+    max-width: none;
+  }
+}
+
+/* Form card */
+.bec-page .bec-form {
+  background: #FFFFFF;
+  border: 1px solid rgba(2,6,23,0.08);
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(15,23,42,0.06);
+  padding: clamp(16px, 4vw, 24px);
+}
+
+/* Form groups */
+.bec-page .form-group {
+  position: relative;
+  margin: 14px 0;
+}
+
+.bec-page .form-group label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+}
+
+/* Checkbox labels — inline */
+.bec-page .form-group label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink-700);
+  cursor: pointer;
+}
+
+.bec-page .form-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--bec-600);
+}
+
+/* Text inputs */
+.bec-page input[type="text"],
+.bec-page input[type="email"],
+.bec-page input[type="tel"],
+.bec-page select,
+.bec-page textarea {
+  width: 100%;
+  appearance: none;
+  background: #FFFFFF;
+  border: 1px solid rgba(2,6,23,0.16);
+  border-radius: 10px;
+  padding: 11px 12px;
+  font: inherit;
+  color: var(--vlm-text);
+  min-height: 48px;
+  font-size: 16px; /* prevents iOS zoom */
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.bec-page input::placeholder,
+.bec-page textarea::placeholder { color: #9CA3AF; }
+
+.bec-page input:focus,
+.bec-page select:focus,
+.bec-page textarea:focus {
+  outline: none;
+  border-color: var(--bec-600);
+  box-shadow: 0 0 0 3px rgba(4,120,87,0.16);
+}
+
+/* Select dropdown */
+.bec-page select {
+  padding-right: 40px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23047857' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px 18px;
+  -webkit-appearance: none;
+}
+
+/* Textarea */
+.bec-page textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Error state */
+.bec-page .input-error {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.16) !important;
+}
+
+.bec-page .error-message {
+  color: #EF4444;
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+.bec-page .error-message:empty { display: none; }
+
+/* Form error & success */
+.bec-page .form-error {
+  color: #EF4444;
+  font-size: 0.95rem;
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  background: rgba(239,68,68,0.06);
+  border: 1px solid rgba(239,68,68,0.20);
+  border-radius: 10px;
+}
+
+.bec-page .success-message {
+  color: #059669;
+  font-size: 0.95rem;
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  background: rgba(16,185,129,0.06);
+  border: 1px solid rgba(16,185,129,0.20);
+  border-radius: 10px;
+}
+
+/* Fee disclosure */
+.bec-page .bec-fee-disclosure {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(5,150,105,0.04);
+  border: 1px solid rgba(5,150,105,0.16);
+  border-left: 4px solid var(--bec-500);
+}
+
+.bec-page .bec-fee-disclosure p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-700);
+  overflow-wrap: break-word;
+}
+
+/* Consent link styling */
+.bec-page .form-group a {
+  color: var(--bec-700);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Form actions */
+.bec-page .form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.bec-page .bec-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(2,6,23,0.08);
+  background: linear-gradient(180deg, var(--bec-600), var(--bec-700));
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow:
+    0 1px 2px rgba(15,23,42,0.06),
+    0 12px 32px rgba(6,95,70,0.24);
+  transition: transform .08s ease, box-shadow .25s ease, background .18s ease;
+}
+
+.bec-page .bec-submit-btn:hover {
+  background: linear-gradient(180deg, var(--bec-500), var(--bec-600));
+  box-shadow: 0 16px 38px rgba(6,95,70,0.28);
+  transform: translateY(-1px);
+}
+
+.bec-page .bec-submit-btn:active {
+  transform: translateY(0);
+}
+
+.bec-page .bec-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Honeypot */
+.bec-page .hp-wrap {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Turnstile */
+.bec-page .cf-turnstile {
+  display: flex;
+  justify-content: center;
+}
+
+/* Mobile touch targets */
+@media (hover: none) and (pointer: coarse) {
+  .bec-page input[type="text"],
+  .bec-page input[type="email"],
+  .bec-page input[type="tel"],
+  .bec-page select,
+  .bec-page textarea {
+    min-height: 52px;
+    padding: 15px 14px;
+    -webkit-tap-highlight-color: rgba(4,120,87,0.1);
+  }
+
+  .bec-page select {
+    padding-right: 44px;
+  }
+}
+
+@media (min-width: 600px) {
+  .bec-page .bec-submit-btn {
+    width: auto;
+    min-width: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bec-page .bec-submit-btn,
+  .bec-page .bec-submit-btn:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   Footer — BEC-specific overrides (dark theme is global now)
+   ========================================================= */
+/* No additional colour overrides needed — the global footer
+   is now dark-themed in style.20251024.css. BEC footer just
+   inherits. We only need the legal link underline style. */
+.bec-page .footer-legal a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Submitting overlay (shared pattern with IVA) */
+.submitting-overlay {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: rgba(15,23,42,0.28);
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s ease;
+  z-index: 1000;
+}
+.submitting-overlay.show { opacity: 1; pointer-events: all; }
+
+.submitting-box {
+  background: #fff;
+  border: 1px solid rgba(2,6,23,0.10);
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 18px 44px rgba(15,23,42,0.22);
+  display: grid; grid-auto-flow: column; align-items: center; gap: 14px;
+}
+
+.submitting-spinner {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 3px solid #D1FAE5; border-top-color: var(--bec-700);
+  animation: bec-spin 0.8s linear infinite;
+}
+@keyframes bec-spin { to { transform: rotate(360deg); } }
+
+.submitting-text {
+  color: var(--vlm-text);
+  font-size: 0.98rem;
+}
+
+
+/* =========================================================
+   Mobile-first responsive fixes
+   ========================================================= */
+
+/* --- Small mobile (≤ 480px) --- */
+@media (max-width: 480px) {
+  /* Hero: tighter vertical padding, smaller sub-text */
+  .bec-page .bec-hero-container {
+    padding-block: 36px;
+    gap: 16px;
+  }
+
+  .bec-page .bec-hero-sub {
+    font-size: 0.95rem;
+  }
+
+  /* Trust point pills → rounded rects so wrapped text looks natural */
+  .bec-page .bec-hero-points {
+    gap: 10px;
+  }
+
+  .bec-page .bec-hero-points li {
+    border-radius: 14px;
+    padding: 12px 16px;
+    max-width: none;
+    font-size: 0.92rem;
+  }
+
+  /* CTA: full-width on small screens */
+  .bec-page .bec-primary-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+
+  /* Unregulated notice: tighter padding */
+  .bec-page .unregulated-notice {
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  /* Why-check section: less vertical padding */
+  .bec-page .bec-why-check {
+    padding-block: 28px;
+  }
+
+  .bec-page .section-header {
+    margin-bottom: 18px;
+  }
+
+  /* Issue cards: less padding, smaller icon */
+  .bec-page .bec-issue-card {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .bec-page .bec-issue-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .bec-page .bec-issue-icon i {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Form section */
+  .bec-page .bec-form-section {
+    padding-block: 28px;
+  }
+
+  .bec-page .bec-form {
+    border-radius: 16px;
+    padding: clamp(14px, 4vw, 20px);
+  }
+
+  /* Fee disclosure */
+  .bec-page .bec-fee-disclosure {
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+}
+
+/* --- Very small phones (≤ 380px) --- */
+@media (max-width: 380px) {
+  /* Hero: smaller headline floor */
+  .bec-page .bec-hero-text h1 {
+    font-size: clamp(1.6rem, 5.4vw, 3.1rem);
+  }
+
+  /* Badge: smaller text */
+  .bec-page .unregulated-badge {
+    font-size: 0.74rem;
+    padding: 5px 12px;
+  }
+
+  /* Issue cards: stack icon above text */
+  .bec-page .bec-issue-card {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+
+/* =========================================================
+   Anchor scroll offset for sticky header
+   ========================================================= */
+.bec-page [id] {
+  scroll-margin-top: 84px;
+}

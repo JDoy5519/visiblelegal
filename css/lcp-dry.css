@@ -1,0 +1,12 @@
+/* LCP & DRY helper — safe, no visual changes */
+
+html { text-rendering: optimizeLegibility; }
+
+.hero, [data-hero-container] { min-height: 48vh; }
+
+img.lazy, img[data-lazy] { loading: lazy; }
+
+/* Help the browser predict intrinsic size to avoid CLS */
+
+img[width]:not([height]), img[height]:not([width]) { aspect-ratio: auto; }
+
