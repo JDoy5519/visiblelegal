@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Design System — Variables
+   Visible Legal Marketing
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* ------------------------------------------------------------------
+     Colors
+     ------------------------------------------------------------------ */
+  --primary-blue: #0044a1;
+  --secondary-grey-blue: #e2e8f0;
+  --iva-accent: #0066cc;
+  --bec-accent: #1e5a8e;
+  --cta-orange: #ff6b35;
+  --success-green: #00a878;
+  --white: #ffffff;
+  --charcoal: #1a202c;
+  --medium-grey: #4a5568;
+  --light-grey: #cbd5e0;
+
+  /* Derived / state colours */
+  --primary-blue-hover: #003580;
+  --cta-orange-hover: #e55a2b;
+  --success-green-hover: #008f66;
+  --iva-accent-hover: #0055aa;
+  --bec-accent-hover: #174b78;
+  --error-red: #e53e3e;
+  --warning-amber: #dd6b20;
+  --info-blue: #3182ce;
+  --overlay-dark: rgba(26, 32, 44, 0.6);
+  --bg-subtle: #f7fafc;
+
+  /* ------------------------------------------------------------------
+     Typography
+     ------------------------------------------------------------------ */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  --text-base: 1rem;        /* 16px */
+  --text-sm: 0.875rem;      /* 14px */
+  --text-xs: 0.75rem;       /* 12px */
+  --text-h1: 3rem;          /* 48px */
+  --text-h2: 2.25rem;       /* 36px */
+  --text-h3: 1.75rem;       /* 28px */
+  --text-h4: 1.25rem;       /* 20px */
+  --text-lead: 1.125rem;    /* 18px */
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+
+  /* ------------------------------------------------------------------
+     Spacing  (base unit: 8px)
+     ------------------------------------------------------------------ */
+  --space-xs: 0.25rem;   /*  4px */
+  --space-sm: 0.5rem;    /*  8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 4rem;     /* 64px */
+
+  /* ------------------------------------------------------------------
+     Breakpoints (for reference — use in media queries)
+     --mobile:   320px
+     --tablet:   768px
+     --desktop: 1024px
+     --wide:    1440px
+     ------------------------------------------------------------------ */
+
+  /* ------------------------------------------------------------------
+     Layout
+     ------------------------------------------------------------------ */
+  --max-width: 1200px;
+  --max-width-narrow: 800px;
+  --max-width-wide: 1440px;
+
+  /* ------------------------------------------------------------------
+     Shadows
+     ------------------------------------------------------------------ */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* ------------------------------------------------------------------
+     Border Radius
+     ------------------------------------------------------------------ */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ------------------------------------------------------------------
+     Transitions
+     ------------------------------------------------------------------ */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}

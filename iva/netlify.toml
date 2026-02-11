@@ -1,0 +1,17 @@
+[build]
+  command = ""
+  publish = "."
+
+# (keep your existing [build] as-is for the main site)
+
+# Serve the IVA "not eligible" page directly at /iva/not-eligible
+[[redirects]]
+  from = "/iva/not-eligible"
+  to = "/iva/not-eligible.html"
+  status = 200
+
+# SPA rewrite for ONLY the IVA app
+[[redirects]]
+  from = "/iva/*"
+  to = "/iva/index.html"
+  status = 200

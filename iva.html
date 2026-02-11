@@ -1,0 +1,2644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVA Mis-Selling Claims | Visible Legal</title>
+  <meta name="description" content="Were you mis-sold an IVA? You could be entitled to compensation. FCA-regulated claims management. Free assessment, success-based fees.">
+
+  <link rel="canonical" href="https://visiblelegal.co.uk/iva.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="IVA Mis-Selling Claims | Visible Legal">
+  <meta property="og:description" content="Were you mis-sold an IVA? Free assessment, success-based fees. FCA-regulated claims management.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://visiblelegal.co.uk/iva.html">
+  <meta property="og:image" content="https://visiblelegal.co.uk/assets/og-iva.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Visible Legal">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IVA Mis-Selling Claims | Visible Legal">
+  <meta name="twitter:description" content="Were you mis-sold an IVA? Free assessment, success-based fees. FCA-regulated claims management.">
+  <meta name="twitter:image" content="https://visiblelegal.co.uk/assets/og-iva.png">
+
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/legal.css">
+
+  <style>
+    /* ================================================================
+       IVA Claims Page Styles
+       ================================================================ */
+
+    /* --- Header --- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--white);
+      border-bottom: 1px solid var(--secondary-grey-blue);
+      transition: box-shadow var(--transition-base);
+    }
+
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .site-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .site-logo__img { height: 40px; width: auto; }
+    .site-logo__img--footer { height: 36px; filter: brightness(0) invert(1); }
+
+    .nav__list {
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: var(--space-xl);
+    }
+
+    .nav__link {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--medium-grey);
+      text-decoration: none;
+      padding: var(--space-xs) 0;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--iva-accent);
+      transition: width var(--transition-base);
+    }
+
+    .nav__link:hover, .nav__link--active { color: var(--charcoal); text-decoration: none; }
+    .nav__link:hover::after, .nav__link--active::after { width: 100%; }
+
+    @media (min-width: 768px) {
+      .nav__list { display: flex; }
+      .nav__toggle { display: none; }
+    }
+
+    /* --- Hamburger --- */
+    .nav__toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav__toggle-bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--charcoal);
+      border-radius: 2px;
+      transition: transform var(--transition-base), opacity var(--transition-fast);
+    }
+
+    /* --- Mobile menu (premium) --- */
+    .nav__mobile {
+      position: fixed;
+      inset: 72px 0 0 0;
+      background-color: var(--white);
+      z-index: 99;
+      padding: var(--space-2xl) var(--space-lg);
+      border-top: 1px solid var(--secondary-grey-blue);
+      transform: translateY(-10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform var(--transition-base), opacity var(--transition-base);
+    }
+
+    .nav__mobile.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .nav__mobile-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .nav__mobile-list li { margin-bottom: 0; width: 100%; max-width: 320px; }
+
+    .nav__mobile-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding: var(--space-md) var(--space-lg);
+      font-size: var(--text-lead);
+      font-weight: var(--font-weight-medium);
+      color: var(--charcoal);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .nav__mobile-link:hover {
+      background-color: var(--bg-subtle);
+      color: var(--iva-accent);
+      text-decoration: none;
+    }
+
+    .nav__mobile-link svg { flex-shrink: 0; color: var(--medium-grey); }
+    .nav__mobile-link:hover svg { color: var(--iva-accent); }
+
+    .nav__toggle.is-open .nav__toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__toggle.is-open .nav__toggle-bar:nth-child(2) { opacity: 0; }
+    .nav__toggle.is-open .nav__toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* --- Hero --- */
+    .iva-hero {
+      position: relative;
+      background: linear-gradient(155deg, #001f5c 0%, #003380 25%, #0055aa 55%, #0077dd 100%);
+      text-align: center;
+      padding: 4.5rem var(--space-md) 4rem;
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .iva-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .iva-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 119, 221, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .iva-hero > .container { position: relative; z-index: 1; }
+
+    .iva-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-xs) var(--space-md);
+      margin-bottom: var(--space-xl);
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+      backdrop-filter: blur(4px);
+    }
+
+    .iva-hero__badge svg { flex-shrink: 0; }
+
+    .iva-hero__title {
+      max-width: 700px;
+      margin: 0 auto var(--space-lg) auto;
+      font-size: 2.5rem;
+      font-weight: var(--font-weight-extrabold);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .iva-hero__subtitle {
+      max-width: 540px;
+      margin: 0 auto var(--space-xl) auto;
+      font-size: var(--text-lead);
+      color: rgba(255, 255, 255, 0.85);
+      line-height: var(--line-height-relaxed);
+    }
+
+    .iva-hero__cta { margin-bottom: var(--space-xl); }
+
+    .iva-hero__trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-md) var(--space-lg);
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .iva-hero__trust-item { display: flex; align-items: center; gap: var(--space-xs); }
+    .iva-hero__trust-item svg { flex-shrink: 0; color: var(--success-green); }
+
+    @media (min-width: 768px) {
+      .iva-hero { padding: 5.5rem var(--space-lg) 5rem; }
+      .iva-hero__title { font-size: 3.25rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .iva-hero { padding: 6rem var(--space-xl) 5.5rem; }
+      .iva-hero__title { font-size: 3.75rem; }
+    }
+
+    /* --- Education Section --- */
+    .edu-section { padding: var(--space-3xl) var(--space-md); }
+
+    .edu-content {
+      max-width: var(--max-width-narrow);
+      margin: 0 auto;
+    }
+
+    .edu-content p { color: var(--medium-grey); line-height: var(--line-height-relaxed); }
+    .edu-content strong { color: var(--charcoal); }
+
+    /* --- Mis-selling cards grid --- */
+    .mis-cards {
+      display: grid;
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+
+    @media (min-width: 768px) {
+      .mis-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .mis-cards { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .mis-card {
+      padding: var(--space-lg);
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: var(--radius-lg);
+      transition: box-shadow var(--transition-base), transform var(--transition-base);
+    }
+
+    .mis-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .mis-card__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #fee2e2;
+      border-radius: var(--radius-md);
+      color: var(--error-red);
+      margin-bottom: var(--space-md);
+    }
+
+    .mis-card__body h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-bold);
+      color: var(--charcoal);
+      margin: 0 0 var(--space-xs) 0;
+      line-height: var(--line-height-tight);
+    }
+
+    .mis-card__body p {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    /* --- Eligibility --- */
+    .eligibility { background-color: var(--bg-subtle); padding: var(--space-3xl) var(--space-md); }
+
+    .elig-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    @media (min-width: 768px) {
+      .elig-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .elig-card {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition-base), transform var(--transition-base);
+    }
+
+    .elig-card:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .elig-card__icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: rgba(0, 102, 204, 0.1);
+      border-radius: var(--radius-full);
+      color: var(--iva-accent);
+    }
+
+    .elig-card p {
+      margin: 0;
+      font-weight: var(--font-weight-medium);
+      color: var(--charcoal);
+      line-height: var(--line-height-relaxed);
+    }
+
+    /* --- Form Section --- */
+    .form-section {
+      padding: var(--space-3xl) var(--space-md);
+      background-color: var(--bg-subtle);
+    }
+
+    .form-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      border-top: 4px solid var(--iva-accent);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transition: box-shadow var(--transition-base);
+    }
+
+    .form-card:hover { box-shadow: var(--shadow-xl); }
+
+    .form-card__header {
+      padding: var(--space-xl) var(--space-xl) var(--space-lg);
+      border-bottom: 1px solid var(--secondary-grey-blue);
+    }
+
+    .form-card__title {
+      font-size: var(--text-h3);
+      font-weight: var(--font-weight-bold);
+      color: var(--charcoal);
+      margin: 0 0 var(--space-xs) 0;
+    }
+
+    .form-card__subtitle {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      margin: 0;
+    }
+
+    /* Progress */
+    .progress { padding: 0 var(--space-xl); margin-top: var(--space-lg); }
+
+    .progress__steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: var(--space-sm);
+    }
+
+    .progress__step-dot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: var(--font-weight-bold);
+      border: 2px solid var(--light-grey);
+      color: var(--medium-grey);
+      background: var(--white);
+      transition: all var(--transition-base);
+    }
+
+    .progress__step-dot.active {
+      border-color: var(--iva-accent);
+      background: var(--iva-accent);
+      color: var(--white);
+    }
+
+    .progress__step-dot.done {
+      border-color: var(--success-green);
+      background: var(--success-green);
+      color: var(--white);
+    }
+
+    .progress__bar-track {
+      width: 100%;
+      height: 4px;
+      background-color: var(--secondary-grey-blue);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress__bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--iva-accent), #0077dd);
+      border-radius: var(--radius-full);
+      transition: width var(--transition-base);
+    }
+
+    .progress__label {
+      display: block;
+      margin-top: var(--space-xs);
+      font-size: var(--text-xs);
+      color: var(--medium-grey);
+      text-align: right;
+    }
+
+    /* Form body & steps */
+    .form-card__body { padding: var(--space-xl); }
+
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+
+    .form-step__title {
+      font-size: var(--text-h4);
+      font-weight: var(--font-weight-bold);
+      color: var(--charcoal);
+      margin: 0 0 var(--space-lg) 0;
+    }
+
+    .form-fields { display: flex; flex-direction: column; gap: var(--space-md); }
+
+    .form-row { display: grid; gap: var(--space-md); }
+    @media (min-width: 480px) { .form-row--2 { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 480px) { .form-row--3 { grid-template-columns: 1fr 1fr 1fr; } }
+
+    .form-field { display: flex; flex-direction: column; gap: var(--space-xs); }
+
+    .form-field label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--charcoal);
+    }
+
+    .form-field .required { color: var(--error-red); }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      padding: var(--space-sm) var(--space-md);
+      font-family: var(--font-family);
+      font-size: var(--text-base);
+      color: var(--charcoal);
+      background-color: var(--white);
+      border: 1.5px solid var(--light-grey);
+      border-radius: var(--radius-md);
+      transition: border-color var(--transition-base), box-shadow var(--transition-base);
+      appearance: none;
+      min-height: 48px;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: var(--medium-grey); opacity: 0.6; }
+
+    .form-field input:hover,
+    .form-field select:hover,
+    .form-field textarea:hover { border-color: var(--medium-grey); }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--iva-accent);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+    }
+
+    .form-field select {
+      padding-right: var(--space-xl);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a5568' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right var(--space-md) center;
+      cursor: pointer;
+    }
+
+    .form-field textarea { min-height: 100px; resize: vertical; }
+    .form-field .hint { font-size: var(--text-xs); color: var(--medium-grey); }
+
+    /* --- Custom radio cards --- */
+    .radio-cards { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+    .radio-card {
+      position: relative;
+    }
+
+    .radio-card input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .radio-card__label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md) var(--space-lg);
+      min-height: 52px;
+      border: 1.5px solid var(--light-grey);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: var(--font-weight-regular);
+      color: var(--charcoal);
+      transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .radio-card__label:hover {
+      border-color: var(--iva-accent);
+      background-color: rgba(0, 102, 204, 0.02);
+    }
+
+    .radio-card__check {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--light-grey);
+      border-radius: var(--radius-full);
+      transition: all var(--transition-fast);
+    }
+
+    .radio-card__check svg {
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all var(--transition-fast);
+      color: var(--white);
+    }
+
+    .radio-card input:checked ~ .radio-card__label {
+      border-color: var(--iva-accent);
+      background-color: rgba(0, 102, 204, 0.04);
+      box-shadow: 0 0 0 1px var(--iva-accent);
+    }
+
+    .radio-card input:checked ~ .radio-card__label .radio-card__check {
+      border-color: var(--iva-accent);
+      background-color: var(--iva-accent);
+    }
+
+    .radio-card input:checked ~ .radio-card__label .radio-card__check svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .radio-card input:focus-visible ~ .radio-card__label {
+      outline: 3px solid var(--iva-accent);
+      outline-offset: 2px;
+    }
+
+    /* --- Custom consent checkbox --- */
+    .consent-block {
+      padding: var(--space-lg);
+      background-color: var(--bg-subtle);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--secondary-grey-blue);
+    }
+
+    .consent-check {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      cursor: pointer;
+    }
+
+    .consent-check input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .consent-check__box {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-top: 2px;
+      border: 2px solid var(--light-grey);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+    }
+
+    .consent-check__box svg {
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all var(--transition-fast);
+      color: var(--white);
+    }
+
+    .consent-check input:checked ~ .consent-check__box {
+      border-color: var(--iva-accent);
+      background-color: var(--iva-accent);
+    }
+
+    .consent-check input:checked ~ .consent-check__box svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .consent-check input:focus-visible ~ .consent-check__box {
+      outline: 3px solid var(--iva-accent);
+      outline-offset: 2px;
+    }
+
+    .consent-check__text {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+    }
+
+    .consent-check__text a {
+      color: var(--iva-accent);
+      text-decoration: underline;
+    }
+
+    /* Form nav */
+    .form-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--secondary-grey-blue);
+    }
+
+    .form-nav .btn--back {
+      background: none;
+      border: none;
+      color: var(--medium-grey);
+      font-family: var(--font-family);
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-medium);
+      cursor: pointer;
+      padding: var(--space-sm) var(--space-md);
+      transition: color var(--transition-fast);
+    }
+
+    .form-nav .btn--back:hover { color: var(--charcoal); }
+    .form-nav .btn--next { margin-left: auto; }
+
+    /* Form trust signals */
+    .form-trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-md) var(--space-lg);
+      max-width: 640px;
+      margin: var(--space-lg) auto 0;
+      font-size: var(--text-xs);
+      color: var(--medium-grey);
+    }
+
+    .form-trust__item { display: flex; align-items: center; gap: var(--space-xs); }
+    .form-trust__item svg { flex-shrink: 0; color: var(--success-green); }
+
+    /* Form messages */
+    .form-error {
+      padding: var(--space-sm) var(--space-md);
+      background-color: rgba(229, 62, 62, 0.08);
+      border: 1px solid rgba(229, 62, 62, 0.2);
+      border-radius: var(--radius-md);
+      color: var(--error-red);
+      font-size: var(--text-sm);
+    }
+
+    .form-error.hidden, .success-message.hidden { display: none; }
+    .form-actions { margin-top: var(--space-lg); }
+
+    .turnstile-wrapper { display: flex; justify-content: center; margin: var(--space-md) 0; }
+
+    .ohnohoney {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
+
+    /* --- Thank-you modal --- */
+    .thank-you-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--overlay-dark);
+      padding: var(--space-md);
+    }
+
+    .thank-you-modal.hidden { display: none; }
+    .thank-you-modal.fade-in { animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .thank-you-modal__card {
+      max-width: 480px;
+      width: 100%;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .thank-you-modal__icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto var(--space-lg) auto;
+      padding: var(--space-md);
+      background: rgba(0, 168, 120, 0.1);
+      border-radius: var(--radius-full);
+      color: var(--success-green);
+    }
+
+    .thank-you-modal__title {
+      font-size: var(--text-h3);
+      font-weight: var(--font-weight-bold);
+      color: var(--charcoal);
+      margin: 0 0 var(--space-md) 0;
+    }
+
+    .thank-you-modal__text {
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+      margin: 0 0 var(--space-xl) 0;
+    }
+
+    /* --- Timeline (What Happens Next) --- */
+    .timeline-section { padding: var(--space-3xl) var(--space-md); }
+
+    .timeline {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Vertical connecting line between dots (not on last item) */
+    .timeline__item {
+      display: flex;
+      gap: var(--space-lg);
+      padding-bottom: var(--space-xl);
+      position: relative;
+    }
+
+    .timeline__item:last-child { padding-bottom: 0; }
+
+    .timeline__item::after {
+      content: '';
+      position: absolute;
+      top: 48px;
+      bottom: 0;
+      left: 23px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--iva-accent), var(--success-green));
+      opacity: 0.3;
+    }
+
+    .timeline__item:last-child::after { display: none; }
+
+    .timeline__dot {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--iva-accent), #0077dd);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+      z-index: 1;
+    }
+
+    .timeline__dot svg { width: 22px; height: 22px; }
+
+    .timeline__content {
+      flex: 1;
+      padding-top: var(--space-xs);
+    }
+
+    .timeline__content h3 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-bold);
+      color: var(--charcoal);
+      margin: 0 0 var(--space-xs) 0;
+    }
+
+    .timeline__content p {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    .timeline__time {
+      display: inline-block;
+      margin-top: var(--space-xs);
+      font-size: var(--text-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--iva-accent);
+      background: rgba(0, 102, 204, 0.08);
+      padding: 2px var(--space-sm);
+      border-radius: var(--radius-full);
+    }
+
+    /* --- FAQ --- */
+    .faq-section { background-color: var(--bg-subtle); padding: var(--space-3xl) var(--space-md); }
+
+    .faq-list { max-width: var(--max-width-narrow); margin: 0 auto; }
+
+    .faq-item {
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-sm);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .faq-item__question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      width: 100%;
+      padding: var(--space-md) var(--space-lg);
+      font-family: var(--font-family);
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--charcoal);
+      text-align: left;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+    }
+
+    .faq-item__question:hover { background-color: var(--bg-subtle); }
+    .faq-item__question svg { flex-shrink: 0; transition: transform var(--transition-base); color: var(--iva-accent); }
+    .faq-item.is-open .faq-item__question svg { transform: rotate(180deg); }
+
+    .faq-item__answer { display: none; padding: 0 var(--space-lg) var(--space-lg); }
+    .faq-item.is-open .faq-item__answer { display: block; }
+
+    .faq-item__answer p {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    /* --- Final CTA --- */
+    .final-cta {
+      position: relative;
+      background: linear-gradient(155deg, #001f5c 0%, #003380 30%, #0066cc 100%);
+      color: var(--white);
+      text-align: center;
+      padding: var(--space-3xl) var(--space-md);
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .final-cta > .container { position: relative; z-index: 1; }
+
+    .final-cta__title {
+      font-size: var(--text-h2);
+      font-weight: var(--font-weight-extrabold);
+      margin: 0 0 var(--space-md) 0;
+      line-height: var(--line-height-tight);
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .final-cta__subtitle {
+      max-width: 480px;
+      margin: 0 auto var(--space-xl) auto;
+      font-size: var(--text-lead);
+      color: rgba(255, 255, 255, 0.85);
+      line-height: var(--line-height-relaxed);
+    }
+
+    .final-cta__btn { margin-bottom: var(--space-xl); }
+
+    .final-cta__trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-lg) var(--space-xl);
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .final-cta__trust-item { display: flex; align-items: center; gap: var(--space-xs); }
+    .final-cta__trust-item svg { flex-shrink: 0; color: var(--success-green); }
+
+    @media (max-width: 767px) {
+      .final-cta__title { font-size: var(--text-h3); color: var(--white); }
+    }
+
+    /* --- Other provider conditional field --- */
+    .other-provider-field {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+      margin-top: 0;
+    }
+
+    .other-provider-field.is-visible {
+      max-height: 80px;
+      opacity: 1;
+      margin-top: var(--space-md);
+    }
+
+    /* --- Regulatory Information --- */
+    .regulatory-info {
+      background-color: var(--secondary-grey-blue);
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .regulatory-info__inner {
+      max-width: var(--max-width-narrow);
+      margin: 0 auto;
+    }
+
+    .regulatory-info__title {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-bold);
+      color: var(--charcoal);
+      margin: 0 0 var(--space-xs) 0;
+    }
+
+    .regulatory-info__ref {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--medium-grey);
+      margin: 0 0 var(--space-lg) 0;
+    }
+
+    .regulatory-info__section-title {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--charcoal);
+      margin: var(--space-lg) 0 var(--space-sm) 0;
+    }
+
+    .regulatory-info p {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+      margin: 0 0 var(--space-sm) 0;
+    }
+
+    .regulatory-info ul {
+      padding-left: var(--space-lg);
+      margin: var(--space-sm) 0;
+    }
+
+    .regulatory-info li {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--space-xs);
+    }
+
+    .regulatory-info li strong {
+      color: var(--charcoal);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    /* --- Footer --- */
+    .site-footer {
+      background-color: var(--charcoal);
+      color: var(--secondary-grey-blue);
+      padding: var(--space-3xl) var(--space-md) var(--space-xl);
+    }
+
+    .footer__grid { display: grid; gap: var(--space-xl); margin-bottom: var(--space-2xl); }
+    @media (min-width: 768px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+
+    .footer__brand-text {
+      font-size: var(--text-sm);
+      color: #94a3b8;
+      line-height: var(--line-height-relaxed);
+      margin: var(--space-md) 0 0 0;
+      max-width: 320px;
+    }
+
+    .footer__heading {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: var(--letter-spacing-wide);
+      margin-bottom: var(--space-md);
+    }
+
+    .footer__list { list-style: none; padding: 0; margin: 0; }
+    .footer__list li { margin-bottom: var(--space-sm); }
+
+    .footer__link {
+      font-size: var(--text-sm);
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .footer__link:hover { color: var(--white); text-decoration: none; }
+
+    .footer__divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 0 0 var(--space-lg) 0;
+    }
+
+    .footer__bottom {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      font-size: var(--text-sm);
+      color: #94a3b8;
+    }
+
+    @media (min-width: 768px) {
+      .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+
+    .footer__social { display: flex; gap: var(--space-md); }
+
+    .footer__social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .footer__social-link:hover { background-color: var(--iva-accent); color: var(--white); }
+
+    /* --- Toasts --- */
+    .vlm-toast-host {
+      position: fixed;
+      top: 88px;
+      right: var(--space-md);
+      z-index: 300;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .vlm-toast {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      font-size: var(--text-sm);
+      animation: slideIn 0.25s ease;
+    }
+
+    .vlm-toast--error { border-left: 3px solid var(--error-red); }
+    .vlm-toast--success { border-left: 3px solid var(--success-green); }
+    .vlm-toast--hide { opacity: 0; transition: opacity 0.2s ease; }
+
+    .vlm-toast__close {
+      background: none;
+      border: none;
+      font-size: var(--text-lead);
+      color: var(--medium-grey);
+      cursor: pointer;
+      padding: 0 var(--space-xs);
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* --- Hero compliance notice --- */
+    .iva-hero__compliance {
+      margin-top: var(--space-lg);
+      padding-top: var(--space-md);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: var(--text-xs);
+      color: rgba(255, 255, 255, 0.55);
+      line-height: var(--line-height-relaxed);
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- Step 4 cards --- */
+    .step4-card {
+      background: var(--white);
+      border: 1px solid var(--secondary-grey-blue);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-xl);
+      margin-bottom: var(--space-md);
+    }
+
+    .step4-card--info {
+      background: rgba(0, 102, 204, 0.03);
+      border-left: 3px solid var(--iva-accent);
+    }
+
+    .step4-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+
+    .step4-card__icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: rgba(0, 102, 204, 0.08);
+      color: var(--iva-accent);
+    }
+
+    .step4-card__title {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--charcoal);
+      margin: 0;
+    }
+
+    .step4-card__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .step4-card__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+      padding: var(--space-xs) 0;
+    }
+
+    .step4-card__list li svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--iva-accent);
+    }
+
+    .step4-card--consent {
+      background: var(--bg-subtle);
+    }
+
+    .step4-card--turnstile {
+      text-align: center;
+      padding: var(--space-md) var(--space-lg);
+    }
+
+    .step4-card--turnstile .step4-card__header {
+      justify-content: center;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Submit button */
+    .btn--submit-premium {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      width: 100%;
+      padding: var(--space-md) var(--space-xl);
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-bold);
+      background: var(--cta-orange);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      font-family: var(--font-family);
+      box-shadow: 0 2px 8px rgba(255, 107, 53, 0.25);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .btn--submit-premium:hover {
+      background-color: #e85d2a;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(255, 107, 53, 0.35);
+    }
+
+    .btn--submit-premium:active {
+      transform: translateY(0);
+    }
+
+    .btn--submit-premium svg {
+      transition: transform var(--transition-fast);
+    }
+
+    .btn--submit-premium:hover svg {
+      transform: translateX(3px);
+    }
+
+    @media (min-width: 480px) {
+      .btn--submit-premium {
+        max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+      }
+    }
+
+    .step4-reassurance {
+      text-align: center;
+      font-size: var(--text-xs);
+      color: var(--medium-grey);
+      margin-top: var(--space-md);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm) var(--space-lg);
+    }
+
+    .step4-reassurance span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .step4-reassurance svg {
+      color: var(--success-green);
+      flex-shrink: 0;
+    }
+
+    /* --- Regulatory section redesign --- */
+    .regulatory-section {
+      padding: var(--space-3xl) var(--space-md);
+      background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--white) 100%);
+    }
+
+    .regulatory-section .section__header {
+      margin-bottom: var(--space-2xl);
+    }
+
+    .reg-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: var(--space-xl);
+    }
+
+    @media (min-width: 768px) {
+      .reg-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .reg-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--secondary-grey-blue);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .reg-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--secondary-grey-blue);
+    }
+
+    .reg-card__icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      background: rgba(0, 102, 204, 0.08);
+      color: var(--iva-accent);
+    }
+
+    .reg-card__title {
+      font-size: var(--text-lead);
+      font-weight: var(--font-weight-bold);
+      color: var(--charcoal);
+      margin: 0;
+    }
+
+    .reg-card__subtitle {
+      font-size: var(--text-xs);
+      color: var(--medium-grey);
+      margin: var(--space-2xs) 0 0 0;
+    }
+
+    .reg-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm) 0;
+    }
+
+    .reg-item + .reg-item {
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .reg-item__icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      background: rgba(0, 102, 204, 0.06);
+      color: var(--iva-accent);
+      margin-top: 2px;
+    }
+
+    .reg-item__text {
+      flex: 1;
+    }
+
+    .reg-item__label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--charcoal);
+      margin: 0 0 2px 0;
+    }
+
+    .reg-item__desc {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    .reg-refs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-lg);
+      margin-top: var(--space-lg);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--secondary-grey-blue);
+      font-size: var(--text-xs);
+      color: var(--medium-grey);
+    }
+
+    .reg-refs span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .reg-refs svg { color: var(--iva-accent); flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="container site-header__inner">
+      <a href="/" class="site-logo" aria-label="Visible Legal — Home">
+        <img src="/assets/vlm-logo-160x60.png" alt="Visible Legal" class="site-logo__img" width="160" height="60">
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a href="/" class="nav__link">Home</a></li>
+          <li><a href="/iva.html" class="nav__link nav__link--active">IVA Claims</a></li>
+          <li><a href="/bec.html" class="nav__link">BEC Claims</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </div>
+
+    <nav class="nav__mobile" id="nav-mobile" aria-label="Mobile navigation">
+      <ul class="nav__mobile-list">
+        <li><a href="/" class="nav__mobile-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Home
+        </a></li>
+        <li><a href="/iva.html" class="nav__mobile-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          IVA Claims
+        </a></li>
+        <li><a href="/bec.html" class="nav__mobile-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          BEC Claims
+        </a></li>
+        <li><a href="#contact" class="nav__mobile-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contact
+        </a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="iva-hero">
+      <div class="container">
+        <div class="iva-hero__badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          FCA Regulated Service
+        </div>
+        <h1 class="iva-hero__title">Were You Mis-Sold an IVA?</h1>
+        <p class="iva-hero__subtitle">You could be entitled to compensation. Find out in minutes with our free assessment.</p>
+        <div class="iva-hero__cta">
+          <a href="#claim-form" class="btn btn--primary btn--lg">Check Your Eligibility Now</a>
+        </div>
+        <div class="iva-hero__trust-row">
+          <span class="iva-hero__trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Success-based fees
+          </span>
+          <span class="iva-hero__trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            No upfront costs
+          </span>
+          <span class="iva-hero__trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Free case assessment
+          </span>
+        </div>
+        <p class="iva-hero__compliance">
+          Visible Legal Marketing Ltd is authorised &amp; regulated by the FCA (No. 835293). You can complain for free directly to your provider or the Financial Ombudsman &mdash; a claims management company is not required.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         HOW WERE IVAs MIS-SOLD?
+         ============================================================ -->
+    <section class="edu-section" id="what-is-iva">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">How Were IVAs Mis-Sold?</h2>
+          <p class="section__subtitle">Thousands of people were given unsuitable advice about Individual Voluntary Arrangements</p>
+        </div>
+
+        <div class="edu-content">
+          <p>An Individual Voluntary Arrangement (IVA) is a formal debt solution that allows you to repay a portion of your debts over a fixed period. When set up correctly, an IVA can be helpful. However, <strong>many IVAs were mis-sold</strong> by providers who prioritised their own fees over your best interests.</p>
+
+          <div class="mis-cards">
+            <div class="mis-card">
+              <div class="mis-card__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="mis-card__body">
+                <h4>No Alternatives Explained</h4>
+                <p>You weren't told about other options such as Debt Relief Orders, bankruptcy, or informal arrangements that may have been more suitable.</p>
+              </div>
+            </div>
+
+            <div class="mis-card">
+              <div class="mis-card__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="mis-card__body">
+                <h4>Unaffordable Payments</h4>
+                <p>Your income and essential spending weren't properly reviewed, leading to monthly payments you couldn't realistically afford.</p>
+              </div>
+            </div>
+
+            <div class="mis-card">
+              <div class="mis-card__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="mis-card__body">
+                <h4>Hidden Fees &amp; Charges</h4>
+                <p>Nominee charges, management fees, or the true cost of the IVA were not made clear before you signed.</p>
+              </div>
+            </div>
+
+            <div class="mis-card">
+              <div class="mis-card__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="mis-card__body">
+                <h4>Unsuitable Advice</h4>
+                <p>Your personal circumstances (employment, dependants, health) were not properly considered when the IVA was recommended.</p>
+              </div>
+            </div>
+
+            <div class="mis-card">
+              <div class="mis-card__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="mis-card__body">
+                <h4>Pressure Selling</h4>
+                <p>You were rushed into signing or made to feel you had no other choice, without adequate time to consider your options.</p>
+              </div>
+            </div>
+
+            <div class="mis-card">
+              <div class="mis-card__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="mis-card__body">
+                <h4>Risks Not Explained</h4>
+                <p>The consequences of the IVA &mdash; such as impacts on your credit rating, home, or employment &mdash; were not made clear to you.</p>
+              </div>
+            </div>
+          </div>
+
+          <p>If any of the above sounds familiar, you may have been mis-sold your IVA and could be entitled to compensation. <strong>You don't need to have completed your IVA to make a claim</strong> &mdash; whether it's still active, completed, or even failed.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         ELIGIBILITY
+         ============================================================ -->
+    <section class="eligibility" id="eligibility">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">You May Have a Claim If&hellip;</h2>
+          <p class="section__subtitle">If any of the following apply to you, it's worth checking your eligibility</p>
+        </div>
+
+        <div class="elig-grid">
+          <div class="elig-card">
+            <div class="elig-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <p>You entered an IVA and feel the advice you received was unsuitable</p>
+          </div>
+
+          <div class="elig-card">
+            <div class="elig-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <p>You weren't told about alternative debt solutions available to you</p>
+          </div>
+
+          <div class="elig-card">
+            <div class="elig-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <p>Your financial circumstances weren't properly assessed before the IVA was set up</p>
+          </div>
+
+          <div class="elig-card">
+            <div class="elig-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <p>You weren't informed of all the fees and charges involved in the IVA</p>
+          </div>
+
+          <div class="elig-card">
+            <div class="elig-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <p>You experienced financial difficulty or hardship as a result of the IVA</p>
+          </div>
+
+          <div class="elig-card">
+            <div class="elig-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <p>Your IVA failed or was terminated, causing you further problems</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         THE FORM
+         ============================================================ -->
+    <section class="form-section" id="claim-form">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Start Your IVA Claim</h2>
+          <p class="section__subtitle">Complete the form below and we'll assess your case for free</p>
+        </div>
+
+        <div class="form-card">
+          <div class="form-card__header">
+            <h3 class="form-card__title">Free Case Assessment</h3>
+            <p class="form-card__subtitle">Takes around 2 minutes to complete</p>
+            <div class="progress">
+              <div class="progress__steps" id="progress-steps">
+                <span class="progress__step-dot active" data-dot="0">1</span>
+                <span class="progress__step-dot" data-dot="1">2</span>
+                <span class="progress__step-dot" data-dot="2">3</span>
+                <span class="progress__step-dot" data-dot="3">4</span>
+              </div>
+              <div class="progress__bar-track">
+                <div class="progress__bar-fill" id="progress-bar" style="width: 25%"></div>
+              </div>
+              <span class="progress__label" id="progress-label">Step 1 of 4</span>
+            </div>
+          </div>
+
+          <div class="form-card__body">
+            <form id="iva-claim-form" action="/.netlify/functions/submit-iva" method="POST" data-protect="true" novalidate>
+
+              <!-- Honeypot -->
+              <div class="ohnohoney" aria-hidden="true">
+                <label for="company_website">Company website</label>
+                <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+              </div>
+              <input type="hidden" name="form_started_at" id="form_started_at" value="">
+              <input type="hidden" name="uploads_opt_in" value="yes">
+
+
+              <!-- ===== STEP 1: Your Details ===== -->
+              <div class="form-step active" data-step="0">
+                <h4 class="form-step__title">Your Details</h4>
+                <div class="form-fields">
+                  <div class="form-field">
+                    <label for="fullName">Full name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required autocomplete="name" placeholder="e.g. John Smith">
+                  </div>
+
+                  <div class="form-row form-row--2">
+                    <div class="form-field">
+                      <label for="email">Email address <span class="required">*</span></label>
+                      <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                    </div>
+                    <div class="form-field">
+                      <label for="phone_local">Phone number <span class="required">*</span></label>
+                      <input type="tel" id="phone_local" name="phone_local" required autocomplete="tel" placeholder="07700 900000">
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="dob">Date of birth <span class="required">*</span></label>
+                    <input type="date" id="dob" name="dob" required>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="currentAddress">Address line 1 <span class="required">*</span></label>
+                    <input type="text" id="currentAddress" name="currentAddress" required autocomplete="address-line1" placeholder="e.g. 10 Downing Street">
+                  </div>
+
+                  <div class="form-row form-row--3">
+                    <div class="form-field">
+                      <label for="city">City <span class="required">*</span></label>
+                      <input type="text" id="city" name="city" required autocomplete="address-level2" placeholder="e.g. London">
+                    </div>
+                    <div class="form-field">
+                      <label for="postcode">Postcode <span class="required">*</span></label>
+                      <input type="text" id="postcode" name="postcode" required autocomplete="postal-code" placeholder="e.g. SW1A 1AA">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-nav">
+                  <span></span>
+                  <button type="button" class="btn btn--secondary btn--next" data-next="1">Next Step</button>
+                </div>
+              </div>
+
+
+              <!-- ===== STEP 2: Your IVA ===== -->
+              <div class="form-step" data-step="1">
+                <h4 class="form-step__title">About Your IVA</h4>
+                <div class="form-fields">
+                  <div class="form-field">
+                    <label for="ivaProvider">Who was your IVA provider? <span class="required">*</span></label>
+                    <select id="ivaProvider" name="ivaProvider" required>
+                      <option value="">Select a provider...</option>
+                      <option value="Aperture">Aperture</option>
+                      <option value="Creditfix">Creditfix</option>
+                      <option value="DebtMovement">Debt Movement</option>
+                      <option value="Ebenegate">Ebenegate</option>
+                      <option value="FinancialWellnessGroup">Financial Wellness Group</option>
+                      <option value="FreemanJones">Freeman Jones</option>
+                      <option value="GrantThornton">Grant Thornton</option>
+                      <option value="HanoverInsolvency">Hanover Insolvency</option>
+                      <option value="HarringtonBrooks">Harrington Brooks</option>
+                      <option value="JarvisInsolvency">Jarvis Insolvency</option>
+                      <option value="JohnsonGeddes">Johnson Geddes</option>
+                      <option value="Payplan">Payplan</option>
+                      <option value="TheAdviceCenter">The Advice Center</option>
+                      <option value="Other">Other (please specify)</option>
+                    </select>
+                    <div class="other-provider-field" id="otherProviderField">
+                      <input type="text" id="otherProvider" name="otherProvider" placeholder="Please specify your IVA provider" autocomplete="off">
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="ivaStatus">What is the current status of your IVA? <span class="required">*</span></label>
+                    <select id="ivaStatus" name="ivaStatus" required>
+                      <option value="" disabled selected>Select status</option>
+                      <option value="active">Still active (making payments)</option>
+                      <option value="completed">Completed</option>
+                      <option value="failed">Failed / Terminated</option>
+                      <option value="varied">Varied (terms changed)</option>
+                      <option value="unsure">Not sure</option>
+                    </select>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="ivaStartYear">Approximate year your IVA started <span class="required">*</span></label>
+                    <select id="ivaStartYear" name="ivaRef" required>
+                      <option value="" disabled selected>Select year</option>
+                      <option value="2024">2024</option>
+                      <option value="2023">2023</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                      <option value="2020">2020</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                      <option value="2015">2015</option>
+                      <option value="2014">2014 or earlier</option>
+                      <option value="unsure">Not sure</option>
+                    </select>
+                    <span class="hint">An approximate year is fine</span>
+                  </div>
+                </div>
+
+                <div class="form-nav">
+                  <button type="button" class="btn--back" data-prev="0">&larr; Back</button>
+                  <button type="button" class="btn btn--secondary btn--next" data-next="2">Next Step</button>
+                </div>
+              </div>
+
+
+              <!-- ===== STEP 3: Your Experience ===== -->
+              <div class="form-step" data-step="2">
+                <h4 class="form-step__title">Your Experience</h4>
+                <p class="form-card__subtitle" style="margin-bottom: var(--space-lg);">Help us understand how the IVA was sold to you.</p>
+                <div class="form-fields">
+
+                  <div class="form-field">
+                    <label>Were you told about alternatives to an IVA? <span class="required">*</span></label>
+                    <div class="radio-cards">
+                      <div class="radio-card">
+                        <input type="radio" id="warned-yes" name="warnedOfRisks" value="yes" required>
+                        <label class="radio-card__label" for="warned-yes">
+                          <span class="radio-card__check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                          <span>Yes, alternatives were explained</span>
+                        </label>
+                      </div>
+                      <div class="radio-card">
+                        <input type="radio" id="warned-no" name="warnedOfRisks" value="no">
+                        <label class="radio-card__label" for="warned-no">
+                          <span class="radio-card__check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                          <span>No, I was only told about an IVA</span>
+                        </label>
+                      </div>
+                      <div class="radio-card">
+                        <input type="radio" id="warned-unsure" name="warnedOfRisks" value="unsure">
+                        <label class="radio-card__label" for="warned-unsure">
+                          <span class="radio-card__check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                          <span>I can't remember</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label>Were your monthly payments affordable? <span class="required">*</span></label>
+                    <div class="radio-cards">
+                      <div class="radio-card">
+                        <input type="radio" id="afford-yes" name="paymentAffordable" value="yes" required>
+                        <label class="radio-card__label" for="afford-yes">
+                          <span class="radio-card__check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                          <span>Yes, they were manageable</span>
+                        </label>
+                      </div>
+                      <div class="radio-card">
+                        <input type="radio" id="afford-no" name="paymentAffordable" value="no">
+                        <label class="radio-card__label" for="afford-no">
+                          <span class="radio-card__check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                          <span>No, I struggled to make payments</span>
+                        </label>
+                      </div>
+                      <div class="radio-card">
+                        <input type="radio" id="afford-sometimes" name="paymentAffordable" value="sometimes">
+                        <label class="radio-card__label" for="afford-sometimes">
+                          <span class="radio-card__check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                          <span>Sometimes, it varied</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label>Did you feel pressured into the IVA? <span class="required">*</span></label>
+                    <div class="radio-cards">
+                      <div class="radio-card">
+                        <input type="radio" id="sales-pressured" name="salesApproach" value="pressured" required>
+                        <label class="radio-card__label" for="sales-pressured">
+                          <span class="radio-card__check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                          <span>Yes, I felt pressured</span>
+                        </label>
+                      </div>
+                      <div class="radio-card">
+                        <input type="radio" id="sales-no" name="salesApproach" value="no-pressure">
+                        <label class="radio-card__label" for="sales-no">
+                          <span class="radio-card__check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                          <span>No, I didn't feel pressured</span>
+                        </label>
+                      </div>
+                      <div class="radio-card">
+                        <input type="radio" id="sales-unsure" name="salesApproach" value="unsure">
+                        <label class="radio-card__label" for="sales-unsure">
+                          <span class="radio-card__check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                          <span>I'm not sure</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="notes">Anything else you'd like us to know? <span style="font-weight: 400; color: var(--medium-grey)">(optional)</span></label>
+                    <textarea id="notes" name="notes" placeholder="Any additional details about your experience or IVA provider..."></textarea>
+                  </div>
+                </div>
+
+                <div class="form-nav">
+                  <button type="button" class="btn--back" data-prev="1">&larr; Back</button>
+                  <button type="button" class="btn btn--secondary btn--next" data-next="3">Next Step</button>
+                </div>
+              </div>
+
+
+              <!-- ===== STEP 4: Consent & Submit ===== -->
+              <div class="form-step" data-step="3">
+                <h4 class="form-step__title">Review &amp; Submit</h4>
+                <p class="form-card__subtitle" style="margin-bottom: var(--space-xl);">Almost done. Please review the information below and confirm to submit your free assessment.</p>
+
+                <!-- Section 1: Important compliance information -->
+                <div class="step4-card step4-card--info">
+                  <div class="step4-card__header">
+                    <div class="step4-card__icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </div>
+                    <h5 class="step4-card__title">Important Information</h5>
+                  </div>
+                  <ul class="step4-card__list">
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                      <span>This is an <strong>FCA-regulated</strong> claims management service (FCA No. 835293)</span>
+                    </li>
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                      <span>You can complain for <strong>free</strong> directly to your provider or the Financial Ombudsman &mdash; a CMC is not required</span>
+                    </li>
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                      <span>Success-based fees of <strong>18&ndash;36%</strong> (incl. VAT) only apply if compensation is recovered</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Section 2: Privacy consent -->
+                <div class="step4-card step4-card--consent">
+                  <div class="step4-card__header">
+                    <div class="step4-card__icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    </div>
+                    <h5 class="step4-card__title">Privacy &amp; Consent</h5>
+                  </div>
+                  <label class="consent-check">
+                    <input type="checkbox" id="consentGiven" name="consentGiven" value="yes" required>
+                    <span class="consent-check__box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <span class="consent-check__text">I consent to Visible Legal Marketing Limited processing my personal data as described in the <a href="/privacy/iva-privacy.html" target="_blank" rel="noopener">IVA Privacy Policy</a>. I understand my data will be shared with a panel of FCA-regulated solicitors to assess and progress my claim. <span class="required">*</span></span>
+                  </label>
+                </div>
+
+                <!-- Section 3: Turnstile verification -->
+                <div class="step4-card step4-card--turnstile">
+                  <div class="step4-card__header">
+                    <div class="step4-card__icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h5 class="step4-card__title">Security Check</h5>
+                  </div>
+                  <div class="turnstile-wrapper">
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAB67dne5ZoFf4DVi" data-callback="onTurnstileSuccess"></div>
+                  </div>
+                </div>
+
+                <!-- Error/success messages -->
+                <p class="form-error hidden" role="alert"></p>
+                <p class="success-message hidden" role="status"></p>
+
+                <!-- Section 4: Submit button -->
+                <div style="text-align: center;">
+                  <button type="submit" class="btn--submit-premium" data-loading-text="Submitting&hellip;">
+                    Submit Your Free Assessment
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </button>
+                </div>
+
+                <!-- Final reassurance -->
+                <div class="step4-reassurance">
+                  <span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    256-bit encryption
+                  </span>
+                  <span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    FCA regulated
+                  </span>
+                  <span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    No upfront cost
+                  </span>
+                </div>
+
+                <div class="form-nav">
+                  <button type="button" class="btn--back" data-prev="2">&larr; Back</button>
+                  <span></span>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <div class="form-trust">
+          <span class="form-trust__item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Your data is secure
+          </span>
+          <span class="form-trust__item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            FCA Regulated Service
+          </span>
+          <span class="form-trust__item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Free case assessment
+          </span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Thank-you modal -->
+    <div class="thank-you-modal hidden" id="thank-you" aria-hidden="true" role="dialog" aria-labelledby="ty-title">
+      <div class="thank-you-modal__card">
+        <div class="thank-you-modal__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="thank-you-modal__title" id="ty-title">Thank You</h3>
+        <p class="thank-you-modal__text">We've received your details. A member of our team will be in touch shortly to discuss your claim. Check your email for a confirmation.</p>
+        <a href="/" class="btn btn--secondary">Return to Homepage</a>
+      </div>
+    </div>
+
+
+    <!-- ============================================================
+         WHAT HAPPENS NEXT (Timeline)
+         ============================================================ -->
+    <section class="timeline-section" id="process">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">What Happens Next?</h2>
+          <p class="section__subtitle">A clear, straightforward process from start to finish</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="timeline__content">
+              <h3>Submit Your Details</h3>
+              <p>Complete our free assessment form &mdash; takes just 2 minutes.</p>
+              <span class="timeline__time">2 minutes</span>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
+            <div class="timeline__content">
+              <h3>Letter of Authority (LOA)</h3>
+              <p>We'll send you a Letter of Authority to sign. This authorises us to request your IVA documents on your behalf.</p>
+              <span class="timeline__time">1&ndash;2 days</span>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="timeline__content">
+              <h3>Document Request (DSAR)</h3>
+              <p>Once signed, we submit a Data Subject Access Request to your IVA provider. They have up to 30 days to respond with your full IVA file.</p>
+              <span class="timeline__time">Up to 30 days</span>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            </div>
+            <div class="timeline__content">
+              <h3>Case Assessment</h3>
+              <p>Our panel of specialist solicitors reviews your documents and determines if you have a valid mis-selling claim.</p>
+              <span class="timeline__time">1&ndash;2 weeks</span>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot" style="background: linear-gradient(135deg, var(--success-green), #00c08b);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="timeline__content">
+              <h3>Pursue Compensation</h3>
+              <p>Our panel of specialist solicitors pursues compensation on your behalf with success-based fees &mdash; you only pay when they recover funds for you.</p>
+              <span class="timeline__time">Varies by case</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FAQ
+         ============================================================ -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              How long does a claim take?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Timescales vary depending on the complexity of your case and how responsive the IVA provider is. Some cases are resolved within a few months, while more complex claims can take longer. We'll keep you updated at every stage so you always know where things stand.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              What if my IVA is still active?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>You can still make a claim even if your IVA is ongoing. Having an active IVA does not prevent you from pursuing a mis-selling claim. In fact, acting sooner can sometimes help resolve issues while your IVA is still in progress.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              Will this affect my credit rating?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Making a mis-selling claim does not negatively impact your credit rating. The IVA itself will have been recorded on your credit file, but pursuing a claim about how it was sold to you is a separate matter and won't make your credit situation any worse.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              What evidence do I need?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>We gather most of the evidence needed through a Data Subject Access Request (DSAR) to your IVA provider. If you still have any IVA paperwork, proposal documents, or correspondence, that can be helpful but it's not essential. Don't worry if you don't have any documents &mdash; we can still investigate your claim.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              How much could I receive?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>The amount of compensation varies significantly depending on your individual circumstances, including the fees you paid, the financial impact of the IVA, and the nature of the mis-selling. Some clients have been entitled to &pound;1,000s in compensation, though amounts vary based on individual circumstances. We offer a free assessment to help you understand whether you have a claim and what it could be worth.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              What does &ldquo;success-based fees&rdquo; mean?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>It means you don't pay anything upfront. Our fees are only charged if we successfully recover compensation for you. If your claim is unsuccessful, you won't owe us anything. This ensures there's no financial risk to you.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__question" aria-expanded="false">
+              Is this service regulated?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Yes. Visible Legal Marketing Limited is authorised and regulated by the Financial Conduct Authority (FCA) for IVA claims management. This means we operate under strict rules designed to protect consumers, including clear communication, fair fees, and proper handling of your data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FINAL CTA
+         ============================================================ -->
+    <section class="final-cta">
+      <div class="container">
+        <h2 class="final-cta__title">Start Your Free IVA Claim Assessment</h2>
+        <p class="final-cta__subtitle">Takes 2 minutes. No upfront costs. FCA regulated.</p>
+        <div class="final-cta__btn">
+          <a href="#claim-form" class="btn btn--primary btn--lg">Check Your Eligibility</a>
+        </div>
+        <div class="final-cta__trust">
+          <span class="final-cta__trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Free Assessment
+          </span>
+          <span class="final-cta__trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Success-Based Fees
+          </span>
+          <span class="final-cta__trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            UK Solicitors
+          </span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       REGULATORY & TRANSPARENCY
+       ============================================================ -->
+  <section class="regulatory-section" id="regulatory">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Regulatory &amp; Transparency</h2>
+        <p class="section__subtitle">We're committed to clear, honest communication and full regulatory compliance</p>
+      </div>
+
+      <div class="reg-grid">
+        <!-- Left column: Regulatory details -->
+        <div class="reg-card">
+          <div class="reg-card__header">
+            <div class="reg-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h3 class="reg-card__title">How We Support You</h3>
+              <p class="reg-card__subtitle">Our service commitments</p>
+            </div>
+          </div>
+
+          <div class="reg-item">
+            <div class="reg-item__icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="reg-item__text">
+              <p class="reg-item__label">Regular Updates</p>
+              <p class="reg-item__desc">We keep you informed at key milestones by email and, where you agree, by SMS/WhatsApp.</p>
+            </div>
+          </div>
+
+          <div class="reg-item">
+            <div class="reg-item__icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="reg-item__text">
+              <p class="reg-item__label">Document Handling</p>
+              <p class="reg-item__desc">We coordinate information requests from your provider so you don't have to chase everything yourself.</p>
+            </div>
+          </div>
+
+          <div class="reg-item">
+            <div class="reg-item__icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="reg-item__text">
+              <p class="reg-item__label">Clear Approvals</p>
+              <p class="reg-item__desc">You'll see and approve important documents (such as Letters of Authority) before they are used.</p>
+            </div>
+          </div>
+
+          <div class="reg-item">
+            <div class="reg-item__icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <div class="reg-item__text">
+              <p class="reg-item__label">No Upfront Fees</p>
+              <p class="reg-item__desc">Success-based fees of 18&ndash;36% (incl. VAT) only apply if compensation is recovered for you.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column: Your rights -->
+        <div class="reg-card">
+          <div class="reg-card__header">
+            <div class="reg-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <h3 class="reg-card__title">Your Rights</h3>
+              <p class="reg-card__subtitle">Important information for consumers</p>
+            </div>
+          </div>
+
+          <div class="reg-item">
+            <div class="reg-item__icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </div>
+            <div class="reg-item__text">
+              <p class="reg-item__label">Free Alternatives</p>
+              <p class="reg-item__desc">You can complain for free directly to your IVA provider, lender, or bank. If unsatisfied, you can escalate to the Financial Ombudsman Service.</p>
+            </div>
+          </div>
+
+          <div class="reg-item">
+            <div class="reg-item__icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            </div>
+            <div class="reg-item__text">
+              <p class="reg-item__label">Why Clients Choose Us</p>
+              <p class="reg-item__desc">Many clients choose us because we manage the process, coordinate documents, and liaise with solicitors on their behalf &mdash; making it hassle-free.</p>
+            </div>
+          </div>
+
+          <div class="reg-item">
+            <div class="reg-item__icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <div class="reg-item__text">
+              <p class="reg-item__label">Data Protection</p>
+              <p class="reg-item__desc">Your data is handled in full compliance with UK GDPR and FCA requirements. Read our <a href="/privacy/iva-privacy.html" style="color: var(--iva-accent); text-decoration: underline;">IVA Privacy Policy</a>.</p>
+            </div>
+          </div>
+
+          <div class="reg-item">
+            <div class="reg-item__icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="reg-item__text">
+              <p class="reg-item__label">Prompt Communication</p>
+              <p class="reg-item__desc">To keep your claim moving smoothly, please respond promptly to any requests for information from us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reference numbers -->
+      <div class="reg-refs" style="max-width: var(--max-width); margin: var(--space-xl) auto 0;">
+        <span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          FCA Authorisation No. 835293
+        </span>
+        <span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Company No. 10263322
+        </span>
+        <span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          5 Eagle Fold, Hyde, England, SK14 4GU
+        </span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="/" class="site-logo" aria-label="Visible Legal — Home">
+            <img src="/assets/vlm-logo-160x60.png" alt="Visible Legal" class="site-logo__img site-logo__img--footer" width="160" height="60">
+          </a>
+          <p class="footer__brand-text">Specialist claims management for IVA mis-selling and business energy commission recovery. FCA regulated for your protection.</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Claims</h4>
+          <ul class="footer__list">
+            <li><a href="/iva.html" class="footer__link">IVA Claims</a></li>
+            <li><a href="/bec.html" class="footer__link">BEC Claims</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Legal</h4>
+          <ul class="footer__list">
+            <li><a href="/privacy/general-privacy.html" class="footer__link">Privacy Policy</a></li>
+            <li><a href="/privacy/iva-privacy.html" class="footer__link">IVA Privacy Policy</a></li>
+            <li><a href="/privacy/bec-privacy.html" class="footer__link">BEC Privacy Policy</a></li>
+            <li><a href="/terms.html" class="footer__link">Terms &amp; Conditions</a></li>
+            <li><a href="/cookies.html" class="footer__link">Cookie Policy</a></li>
+            <li><a href="/complaints.html" class="footer__link">Complaints</a></li>
+            <li><a href="/accessibility.html" class="footer__link">Accessibility</a></li>
+            <li><button type="button" class="footer__cookie-btn" data-cookie-settings>Cookie Settings</button></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Contact</h4>
+          <ul class="footer__list">
+            <li><a href="mailto:support@visiblelegal.co.uk" class="footer__link">support@visiblelegal.co.uk</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer__divider">
+
+      <div class="footer__bottom">
+        <p>&copy; 2025 Visible Legal Marketing Limited. All rights reserved.</p>
+        <p>Visible Legal Marketing Ltd is authorised and regulated by the Financial Conduct Authority.</p>
+        <div class="footer__social" aria-label="Social links">
+          <a href="https://www.facebook.com/profile.php?id=61578959987733" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://x.com/vislegal" class="footer__social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/visiblelegal/" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       Scripts
+       ============================================================ -->
+  <!-- Cloudflare Turnstile: script loads the widget rendered in Step 4.
+       The data-sitekey in the .cf-turnstile div above is currently a PLACEHOLDER.
+       Replace "0x4AAAAAAA_placeholder" with your real site key before going live. -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="/src/js/forms.js"></script>
+
+  <script>
+    (function() {
+      // ---- Time trap ----
+      var tsField = document.getElementById('form_started_at');
+      if (tsField) tsField.value = String(Date.now());
+
+      // ---- Hamburger toggle ----
+      var toggle = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-mobile');
+      if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+          var open = menu.classList.toggle('is-open');
+          toggle.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', open);
+          toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+      }
+
+      // ---- "Other" provider toggle ----
+      var providerSelect = document.getElementById('ivaProvider');
+      var otherField = document.getElementById('otherProviderField');
+      if (providerSelect && otherField) {
+        providerSelect.addEventListener('change', function() {
+          if (providerSelect.value === 'Other') {
+            otherField.classList.add('is-visible');
+          } else {
+            otherField.classList.remove('is-visible');
+            var otherInput = document.getElementById('otherProvider');
+            if (otherInput) otherInput.value = '';
+          }
+        });
+      }
+
+      // ---- Multi-step form ----
+      var form = document.getElementById('iva-claim-form');
+      if (!form) return;
+
+      var steps = form.querySelectorAll('.form-step');
+      var totalSteps = steps.length;
+      var bar = document.getElementById('progress-bar');
+      var label = document.getElementById('progress-label');
+      var dots = document.querySelectorAll('.progress__step-dot');
+
+      function showStep(index) {
+        steps.forEach(function(s) { s.classList.remove('active'); });
+        var target = form.querySelector('.form-step[data-step="' + index + '"]');
+        if (target) target.classList.add('active');
+
+        var pct = Math.round(((index + 1) / totalSteps) * 100);
+        if (bar) bar.style.width = pct + '%';
+        if (label) label.textContent = 'Step ' + (index + 1) + ' of ' + totalSteps;
+
+        // Update step dots
+        dots.forEach(function(dot, i) {
+          dot.classList.remove('active', 'done');
+          if (i < index) dot.classList.add('done');
+          else if (i === index) dot.classList.add('active');
+        });
+
+        var card = document.querySelector('.form-card');
+        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function validateStep(stepEl) {
+        var valid = true;
+
+        // Text/email/date/select inputs
+        var required = stepEl.querySelectorAll('input[required]:not([type="radio"]):not([type="checkbox"]), select[required]');
+        required.forEach(function(field) {
+          if (!field.value || !field.value.trim()) {
+            field.style.borderColor = 'var(--error-red)';
+            field.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.15)';
+            valid = false;
+            field.addEventListener('input', function handler() {
+              field.style.borderColor = '';
+              field.style.boxShadow = '';
+              field.removeEventListener('input', handler);
+            });
+            field.addEventListener('change', function handler() {
+              field.style.borderColor = '';
+              field.style.boxShadow = '';
+              field.removeEventListener('change', handler);
+            });
+          }
+        });
+
+        // Radio groups: check that at least one in each required group is selected
+        var radioGroups = {};
+        stepEl.querySelectorAll('input[type="radio"][required]').forEach(function(r) {
+          radioGroups[r.name] = true;
+        });
+        Object.keys(radioGroups).forEach(function(name) {
+          var checked = stepEl.querySelector('input[name="' + name + '"]:checked');
+          if (!checked) {
+            valid = false;
+            // Highlight the first radio card in this group
+            var firstCard = stepEl.querySelector('input[name="' + name + '"]');
+            if (firstCard) {
+              var lbl = firstCard.nextElementSibling;
+              if (lbl) {
+                lbl.style.borderColor = 'var(--error-red)';
+                stepEl.querySelectorAll('input[name="' + name + '"]').forEach(function(r) {
+                  r.addEventListener('change', function handler() {
+                    stepEl.querySelectorAll('input[name="' + name + '"] ~ .radio-card__label').forEach(function(l) {
+                      l.style.borderColor = '';
+                    });
+                    r.removeEventListener('change', handler);
+                  });
+                });
+              }
+            }
+          }
+        });
+
+        return valid;
+      }
+
+      form.addEventListener('click', function(e) {
+        var nextBtn = e.target.closest('[data-next]');
+        if (nextBtn) {
+          var currentStep = nextBtn.closest('.form-step');
+          if (!validateStep(currentStep)) return;
+          showStep(parseInt(nextBtn.getAttribute('data-next'), 10));
+        }
+        var prevBtn = e.target.closest('[data-prev]');
+        if (prevBtn) {
+          showStep(parseInt(prevBtn.getAttribute('data-prev'), 10));
+        }
+      });
+
+      // ---- FAQ accordion ----
+      document.querySelectorAll('.faq-item__question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = btn.closest('.faq-item');
+          var isOpen = item.classList.contains('is-open');
+          document.querySelectorAll('.faq-item.is-open').forEach(function(openItem) {
+            openItem.classList.remove('is-open');
+            openItem.querySelector('.faq-item__question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // ---- Smooth scroll ----
+      document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          var target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner" style="display:none" role="dialog" aria-label="Cookie consent" aria-describedby="cookie-banner-text">
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__content">
+        <p class="cookie-banner__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1010 10 4 4 0 01-4-4 4 4 0 01-4-4 4 4 0 01-4-4"/><circle cx="8" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="14" cy="16" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="10" r="1" fill="currentColor" stroke="none"/></svg>
+          Cookie Preferences
+        </p>
+        <p class="cookie-banner__text" id="cookie-banner-text">We use essential cookies to keep this site working and, with your permission, analytics cookies to understand how you use it. <a href="/cookies.html">Learn&nbsp;more</a></p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button type="button" id="cookie-reject" class="cookie-banner__btn cookie-banner__btn--reject">Essential only</button>
+        <button type="button" id="cookie-accept" class="cookie-banner__btn cookie-banner__btn--accept">Accept analytics</button>
+      </div>
+    </div>
+  </div>
+  <script src="/js/cookies.js"></script>
+
+</body>
+</html>

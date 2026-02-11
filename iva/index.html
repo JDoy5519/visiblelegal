@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visible Legal Marketing | IVA Claim Checker</title>
+  <meta name="description" content="Visible Legal Marketing helps clients reclaim money from mis-sold IVAs and other financial products, working with FCA-regulated solicitors across the UK." />
+
+  <!-- Resource hints for external domains -->
+  <link rel="preconnect" href="https://challenges.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://www.clarity.ms" crossorigin>
+  <link rel="dns-prefetch" href="https://challenges.cloudflare.com">
+  <link rel="dns-prefetch" href="https://www.clarity.ms">
+
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="../assets/fonts/open-sans-v44-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/poppins-v30-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Inline critical CSS for above-the-fold content -->
+  <style>
+    /* Critical CSS - prevents layout shift and enables fast initial render */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font: 16px/1.55 "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1F2937;
+      background: #F5F7FA;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .site-header {
+      position: relative;
+      z-index: 30;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F7FAFF 100%);
+      border-bottom: 1px solid rgba(15,23,42,0.06);
+    }
+    .container {
+      max-width: 1100px;
+      margin-inline: auto;
+      padding-inline: clamp(16px, 5vw, 28px);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      column-gap: 16px;
+      padding-block: 10px;
+    }
+    .header-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .header-brand .logo {
+      width: 160px;
+      height: 60px;
+      display: block;
+      object-fit: contain;
+    }
+    .header-regline {
+      margin: 0;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6B7280;
+      white-space: nowrap;
+    }
+    .iva-page .hero {
+      background: radial-gradient(1200px 560px at 50% -12%, rgba(35,95,163,0.06), transparent 60%),
+                   linear-gradient(180deg, #FFFFFF 0%, #F7FAFF 100%);
+      border-bottom: 1px solid rgba(2,6,23,.06);
+      min-height: 400px; /* Prevent layout shift */
+    }
+    .iva-page .hero-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 20px;
+      padding-block: 48px;
+      padding-inline: clamp(16px, 5.5vw, 28px);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .iva-page .hero-text h1 {
+      font-size: clamp(1.95rem, 5.4vw, 3.1rem);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin: 6px 0 14px;
+      font-weight: 700;
+      color: #1F2937;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+  </style>
+
+  <!-- Fonts (self-hosted, CSP-friendly) - load synchronously for font-display:swap -->
+  <link rel="stylesheet" href="/assets/css/fonts.css" />
+
+  <!-- Global theme stylesheet (SOURCE OF TRUTH) - load synchronously for reliability -->
+  <link rel="stylesheet" href="/style.20251024.css">
+
+  <!-- IVA-specific styles (scoped) - load synchronously for reliability -->
+  <link rel="stylesheet" href="/iva/styles.css">
+
+  <!-- Lucide -->
+  <link rel="icon" type="image/png" href="images/favicon.ico">
+
+  <!-- Turnstile loader -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+
+  <!-- Open Graph Meta Tags (IVA Page) -->
+  <meta property="og:title" content="Check if Your IVA Was Mis-Sold | Visible Legal Marketing" />
+  <meta property="og:description" content="Free FCA-regulated IVA check. Takes 60 seconds to see if you’re owed money for a mis-sold IVA." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://visiblelegal.co.uk/iva/" />
+  <meta property="og:image" content="https://visiblelegal.co.uk/assets/og-home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Visible Legal Marketing" />
+  <meta property="og:locale" content="en_GB" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Check if Your IVA Was Mis-Sold | Visible Legal Marketing" />
+  <meta name="twitter:description" content="Free FCA-regulated IVA check. Takes 60 seconds to see if you’re owed money for a mis-sold IVA." />
+  <meta name="twitter:image" content="https://visiblelegal.co.uk/assets/og-iva.jpg" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://visiblelegal.co.uk/iva/" />
+
+  <!-- Icons - lazy loaded after initial render -->
+  <script src="../assets/js/lucide.min.js" defer></script>
+  <script src="../assets/js/icons-init.js" defer></script>
+
+
+</head>
+
+
+<body class="iva-page">
+
+<!-- Header (IVA PAGE) -->
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+
+    <!-- Logo + regulatory line on one row -->
+    <a href="/" class="header-brand" aria-label="Visible Legal Marketing home">
+      <div class="brand-mark">
+        <img
+          src="../assets/vlm-logo-160x60.png"
+          srcset="../assets/vlm-logo-160x60.png 1x, ../assets/vlm-logo-320x120.png 2x"
+          alt="Visible Legal Marketing"
+          class="logo"
+          width="160"
+          height="60"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+      <p class="header-regline">
+        FCA Authorisation No. 835293 · Company No. 10263322
+      </p>
+    </a>
+
+    <!-- Menu + CTA dropdown (IVA-specific) -->
+    <details class="header-menu">
+      <summary class="header-menu-toggle">
+        <span class="header-menu-label">Menu</span>
+        <span class="header-menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </summary>
+
+      <div class="header-menu-panel">
+        <nav class="header-nav" aria-label="IVA navigation">
+          <a href="#iva-hero">
+            <span>Overview</span>
+            <small>What this IVA check does</small>
+          </a>
+          <a href="#form-section">
+            <span>Start your free IVA check</span>
+            <small>Open the form and begin</small>
+          </a>
+          <a href="#why-mis-sold">
+            <span>Why check your IVA?</span>
+            <small>When IVAs can be worth reviewing</small>
+          </a>
+          <a href="#mis-sell-explainer">
+            <span>Problems with some IVAs</span>
+            <small>Common issues we see in cases</small>
+          </a>
+          <a href="#how-it-works">
+            <span>How the process works</span>
+            <small>What happens after you submit</small>
+          </a>
+          <a href="#why-vlm">
+            <span>Why choose us</span>
+            <small>How we support your claim</small>
+          </a>
+        </nav>
+
+        <div class="menu-divider" aria-hidden="true"></div>
+
+        <a href="#form-section" class="header-menu-cta">
+          Start your IVA claim check
+        </a>
+      </div>
+    </details>
+
+  </div>
+</header>
+
+
+  <!--Hero-->
+<section class="hero" id="iva-hero">
+  <div class="hero-container">
+    <div class="hero-text">
+      <h1 id="dim-text"><span id="highlight">Mis-Sold IVA?</span> You could be owed compensation.</h1>
+      <p class="hero-sub">
+        Start your free check in under 5 minutes. No win, no fee. 
+        <strong>Visible Legal Marketing is an FCA-regulated claims management company</strong> working with trusted UK solicitors.
+      </p>
+      <ul class="hero-points">
+        <li><i data-lucide="shield-check" class="icon-bullet"></i>Regulated & experienced partners</li>
+        <li><i data-lucide="pound-sterling" class="icon-bullet"></i>No upfront fees - success-based only</li>
+        <li><i data-lucide="clock" class="icon-bullet"></i>Fast process - start in 5 minutes</li>
+      </ul>
+
+      <!-- CTA + trust block now inside -->
+      <div class="cta-row">
+        <a id="open-iva" class="cta-btn" href="#form-section">
+          <span class="cta-btn-content">
+            <strong>Start your free check now</strong>
+          </span>
+          <i data-lucide="arrow-right" class="cta-icon" aria-hidden="true"></i>
+        </a>
+        <p class="hero-note">
+          You do not need to use a claims management company to make a complaint — you can contact your IVA provider directly or refer it to the
+          <a href="https://www.financial-ombudsman.org.uk/make-complaint" target="_blank" rel="noopener">
+            Financial Ombudsman Service
+          </a> for free.
+        </p>
+        <a class="cta-secondary" href="#how-it-works">How it works</a>
+      </div>
+
+      <div class="trust-row" role="note" aria-label="Trust and compliance">
+        <span class="trust-badge"><i data-lucide="shield-check"></i>FCA-regulated CMC (FRN 835293)</span>
+        <span class="dot">•</span>
+        <span class="trust-badge"><i data-lucide="scale"></i>UK solicitor panel</span>
+        <span class="dot">•</span>
+        <span class="trust-badge"><i data-lucide="lock"></i>Your data is secure</span>
+      </div>
+    </div><!-- /.hero-text -->
+  </div><!-- /.hero-container -->
+</section>
+
+
+
+
+  <main>
+    <!-- IVA Context / Why review section -->
+<section class="cta-strip iva-context" id="why-mis-sold">
+  <div class="iva-context-inner">
+
+    <header class="iva-context-header">
+      <p class="eyebrow">Why it can be worth checking</p>
+      <h2>Could your IVA have been set up unfairly?</h2>
+      <p class="intro">
+        Some people were placed into IVAs when a different option may have been more suitable.
+        In other cases, key risks weren’t explained properly, or the arrangement was never realistically affordable.
+      </p>
+    </header>
+
+    <div class="iva-context-body">
+      <!-- Left: concise reasons -->
+      <div>
+        <ul class="info-points iva-context-points">
+          <li>
+            <i class="icon-bullet" data-lucide="hand-coins" aria-hidden="true"></i>
+            <div>
+              <p class="info-title">Incentives and fees.</p>
+              <p class="info-copy">
+                Some firms were rewarded more for putting people into IVAs than recommending other debt solutions.
+              </p>
+            </div>
+          </li>
+          <li>
+            <i class="icon-bullet" data-lucide="git-compare" aria-hidden="true"></i>
+            <div>
+              <p class="info-title">Alternatives not fully explained.</p>
+              <p class="info-copy">
+                DROs, bankruptcy and informal plans weren’t always laid out side-by-side so people could compare properly.
+              </p>
+            </div>
+          </li>
+          <li>
+            <i class="icon-bullet" data-lucide="file-warning" aria-hidden="true"></i>
+            <div>
+              <p class="info-title">Unrealistic budgets.</p>
+              <p class="info-copy">
+                Some IVAs relied on stretched income figures that were hard to maintain once everyday costs and changes
+                in circumstances were taken into account.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: FCA context in compact card -->
+      <aside class="reg-note iva-context-note" role="note" aria-label="Regulatory context">
+        <i class="icon-bullet" data-lucide="shield-check" aria-hidden="true"></i>
+        <div class="reg-note-body">
+          <h3>FCA concerns about some IVAs</h3>
+          <p>
+            In June 2023, the Financial Conduct Authority (FCA) banned referral fees between some debt firms
+            and IVA providers after finding that consumers were being steered towards IVAs that weren’t always suitable.
+          </p>
+          <p>
+            If your IVA started before these changes, it may be sensible to have it reviewed to check whether it was
+            set up fairly.
+          </p>
+          <small>Checking your IVA is free and won’t affect your credit file.</small>
+        </div>
+      </aside>
+    </div>
+
+    <div class="iva-context-actions">
+      <button id="start-check" class="cta-btn" type="button">
+        Start my free IVA check
+      </button>
+      <a
+  class="link-plain"
+  href="#how-it-works"
+>
+  Or see what happens after you submit
+</a>
+
+
+    </div>
+
+  </div>
+</section>
+
+    
+    <section id="form-section" class="form-section hidden">
+      <div class="form-inner">
+        <div class="progress-wrapper">
+          <span class="progress-label" id="progress-label">Step 1 of 4</span>
+          <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+        </div>
+    
+        <!-- 4-step form starts here -->
+    
+        <form
+          id="iva-check-form"
+          action="/api/submit"
+          method="POST"
+          data-protect="true"
+        >
+          <!-- Hidden meta / tracking (unchanged) -->
+          <input type="hidden" name="form_started_at" id="form_started_at_iva">
+          <input type="hidden" name="form_origin" value="IVA Landing Page" />
+          <input type="hidden" name="leadId" id="leadId">
+          <input type="hidden" name="consent_choice" value="">
+          <input type="hidden" id="company_website" name="company_website" autocomplete="off" tabindex="-1">
+    
+          <!-- Step 1 — Contact & Address -->
+          <div class="form-step active" data-step="0">
+            <div class="step-indicator">Step 1 of 4</div>
+            <h2>Your details & address</h2>
+    
+            <div class="form-group">
+              <label for="fullName">Full Name*</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                required
+                autocomplete="name"
+                aria-required="true"
+                aria-describedby="fullName-error"
+              >
+              <p id="fullName-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label for="email">Email Address*</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                inputmode="email"
+                aria-required="true"
+                aria-describedby="email-error"
+              >
+              <p id="email-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label for="phone_local">Mobile Number*</label>
+              <div class="phone-field" data-phone>
+                <span class="phone-prefix" aria-hidden="true">+44</span>
+                <input
+                  type="tel"
+                  id="phone_local"
+                  name="phone_local"
+                  required
+                  inputmode="numeric"
+                  autocomplete="tel-national"
+                  placeholder="7xxx xxxxxx"
+                  aria-describedby="phone-error"
+                />
+              </div>
+              <input type="hidden" id="phone_e164" name="phone_e164" />
+              <p id="phone_local-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label for="dob">Date of Birth*</label>
+              <input
+                type="text"
+                id="dob"
+                name="dob-display"
+                required
+                autocomplete="bday"
+                inputmode="numeric"
+                placeholder="DD/MM/YYYY"
+                pattern="\d{2}/\d{2}/\d{4}"
+                maxlength="10"
+                aria-required="true"
+                aria-describedby="dob-error"
+                data-dob-input="true"
+              />
+              <input type="hidden" id="dob-formatted" name="dob" />
+              <p id="dob-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label for="currentAddress">Current Street Address*</label>
+              <input
+                type="text"
+                id="currentAddress"
+                name="currentAddress"
+                autocomplete="street-address"
+                required
+              />
+              <p id="currentAddress-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label for="city">City*</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                autocomplete="address-level2"
+                required
+              />
+              <p id="city-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label for="postcode">Postcode*</label>
+              <input
+                type="text"
+                id="postcode"
+                name="postcode"
+                autocomplete="postal-code"
+                required
+              />
+              <p id="postcode-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label class="section-label">Were you living at this address when the IVA started?*</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="livedAtAddress" value="Yes" required />
+                  <span class="checkmark"></span>
+                  Yes
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="livedAtAddress" value="No" />
+                  <span class="checkmark"></span>
+                  No
+                </label>
+              </div>
+              <p id="livedAtAddress-error" class="error-message"></p>
+            </div>
+    
+            <div id="previous-address" class="form-group hidden">
+              <label for="previousAddress">Address you were living at when your IVA began*</label>
+              <input
+                type="text"
+                id="previousAddress"
+                name="previousAddress"
+                placeholder="Street address"
+                autocomplete="street-address"
+              />
+              <p id="previousAddress-error" class="error-message"></p>
+    
+              <label for="previousCity">City*</label>
+              <input
+                type="text"
+                id="previousCity"
+                name="previousCity"
+                placeholder="City or town"
+                autocomplete="address-level2"
+              />
+              <p id="previousCity-error" class="error-message"></p>
+    
+              <label for="previousPostcode">Postcode*</label>
+              <input
+                type="text"
+                id="previousPostcode"
+                name="previousPostcode"
+                placeholder="Postcode"
+                autocomplete="postal-code"
+              />
+              <p id="previousPostcode-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-nav">
+              <button type="button" class="next-btn">Next</button>
+            </div>
+          </div>
+    
+          <!-- Step 2 — IVA Details -->
+          <div class="form-step" data-step="1">
+            <div class="step-indicator">Step 2 of 4</div>
+            <h2>IVA details</h2>
+    
+            <div class="form-group">
+              <label for="iva-provider">IVA Provider*</label>
+              <select
+                id="iva-provider"
+                name="ivaProvider"
+                required
+                class="iva-provider-select"
+              >
+                <option value="">Select a provider...</option>
+            
+                <option value="Aperture">Aperture</option>
+                <option value="Creditfix">Creditfix</option>
+                <option value="DebtMovement">Debt Movement</option>
+                <option value="Ebenegate">Ebenegate</option>
+                <option value="FinancialWellnessGroup">Financial Wellness Group</option>
+                <option value="FreemanJones">Freeman Jones</option>
+                <option value="GrantThornton">Grant Thornton</option>
+                <option value="HanoverInsolvency">Hanover Insolvency</option>
+                <option value="HarringtonBrooks">Harrington Brooks</option>
+                <option value="JarvisInsolvency">Jarvis Insolvency</option>
+                <option value="JohnsonGeddes">Johnson Geddes</option>
+                <option value="Payplan">Payplan</option>
+                <option value="TheAdviceCenter">The Advice Center</option>
+            
+                <option value="Other">Other</option>
+              </select>
+            
+              <input type="hidden" id="iva-provider-display" name="ivaProviderDisplay">
+              <input type="hidden" id="iva-provider-original" name="ivaProviderOriginal">
+              <input type="hidden" id="iva-provider-canonical" name="ivaProviderCanonical">
+              <p id="iva-provider-error" class="error-message"></p>
+
+            </div>
+            
+    
+            <div id="other-provider-container" class="form-group hidden">
+              <label for="other-provider">Please enter your provider</label>
+              <input
+                type="text"
+                id="other-provider"
+                name="otherProvider"
+                placeholder="Enter your IVA provider"
+                class="input"
+              />
+              <p id="other-provider-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label for="ivaReference">
+                IVA Reference Number <span class="muted">(optional)</span>
+              </label>
+              <input
+                type="text"
+                id="ivaReference"
+                name="ivaReference"
+                placeholder="e.g. CF-123456 or 12345678"
+              />
+              <p class="helper-note">
+                If you have it, enter it here. If not, leave it blank — we will find it for you.
+              </p>
+              <p id="ivaReference-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label class="section-label">Is your IVA a single or joint arrangement?*</label>
+              <p id="ivaType-error" class="error-message"></p>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="ivaType" value="Single" required />
+                  <span class="checkmark"></span>
+                  Single
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="ivaType" value="Joint" />
+                  <span class="checkmark"></span>
+                  Joint
+                </label>
+              </div>
+            </div>
+    
+            <div class="form-group hidden" id="partnerNameGroup">
+              <label for="partnerName">Partner Name*</label>
+              <input
+                type="text"
+                id="partnerName"
+                name="partnerName"
+                placeholder="e.g. Jane Doe"
+                required
+              />
+              <p id="partnerName-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group">
+              <label class="section-label">IVA outcome*</label>
+              <p class="status-note status-note-small">
+                Only <strong>Completed</strong> or <strong>Failed</strong> cases are eligible.
+              </p>
+              <p id="ivaOutcome-error" class="error-message"></p>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="ivaOutcome" value="Completed" required />
+                  <span class="checkmark"></span>
+                  Completed
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="ivaOutcome" value="Failed" />
+                  <span class="checkmark"></span>
+                  Failed
+                </label>
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="residentialStatus">Residential Status at IVA Start*</label>
+              <select
+                id="residentialStatus"
+                name="residentialStatus"
+                autocomplete="address-line1"
+                required
+              >
+                <option value="">Select one...</option>
+                <option value="Homeowner">Homeowner</option>
+                <option value="Tenant">Tenant</option>
+                <option value="LivingWithParents">Living with Parents</option>
+                <option value="Other">Other</option>
+              </select>
+              <p id="residentialStatus-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-group hidden" id="residentialOtherContainer">
+              <label for="otherResidentialDetails" class="section-label">
+                Please describe your living situation*
+              </label>
+              <textarea
+                id="otherResidentialDetails"
+                name="otherResidentialDetails"
+                rows="3"
+                placeholder="e.g. Temporary accommodation, staying with friends, etc."
+              ></textarea>
+              <p id="otherResidentialDetails-error" class="error-message"></p>
+            </div>
+    
+            <div class="form-nav">
+              <button type="button" class="prev-btn">Back</button>
+              <button type="button" class="next-btn">Next</button>
+            </div>
+          </div>
+    
+          <!-- Step 3 — Financial Circumstances & Route -->
+          <div class="form-step" data-step="2">
+            <div class="step-indicator">Step 3 of 4</div>
+            <h2>Your situation & how you’d like to proceed</h2>
+    
+            <div class="form-group">
+              <label class="section-label">Did the IVA Provider explain other debt solutions?*</label>
+              <p id="salesApproach-error" class="error-message"></p>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="salesApproach" value="Yes" required />
+                  <span class="checkmark"></span>
+                  Yes
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="salesApproach" value="No" />
+                  <span class="checkmark"></span>
+                  No
+                </label>
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label class="section-label">Did you struggle to maintain the payments?*</label>
+              <p id="struggledPayments-error" class="error-message"></p>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="struggledPayments" value="Yes" required />
+                  <span class="checkmark"></span>
+                  Yes
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="struggledPayments" value="No" />
+                  <span class="checkmark"></span>
+                  No
+                </label>
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label class="section-label">How would you like to move forward?*</label>
+              <p id="uploads_opt_in-error" class="error-message"></p>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    id="uploads_opt_in"
+                    name="uploads_opt_in"
+                    value="yes"
+                  />
+                  <span class="checkmark"></span>
+                  Fast-track — I'm happy to upload my documents after I submit
+                </label>
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    id="uploads_opt_in_no"
+                    name="uploads_opt_in"
+                    value="no"
+                  />
+                  <span class="checkmark"></span>
+                  Hands-off — request my records via DSAR (no upload now)
+                </label>
+              </div>
+              <p class="helper-note">
+                Fast-track usually means a quicker initial review once we have your documents.
+                The hands-off DSAR route can take up to 30 days for providers to respond.
+              </p>
+    
+              <!-- Preserve channel hint for backend -->
+              <input type="hidden" name="uploads-channel" value="email">
+            </div>
+    
+            <div class="form-nav">
+              <button type="button" class="prev-btn">Back</button>
+              <button type="button" class="next-btn">Next</button>
+            </div>
+          </div>
+    
+          <!-- Step 4 — Consent & Submit -->
+<div class="form-step" data-step="3">
+  <div class="step-indicator">Step 4 of 4</div>
+  <h2>Consent & submit</h2>
+
+  <!-- Consent & service info -->
+  <section class="consent-card" aria-labelledby="consent-title">
+    <div class="consent-card__head">
+      <div class="consent-card__icon" aria-hidden="true">✔</div>
+      <h3 id="consent-title" class="consent-card__title">
+        Consent (required to move forward)
+      </h3>
+    </div>
+
+    <p class="consent-card__intro">
+      To move forward with your claim, we need your permission to review your details and contact you. 
+      After you submit, you’ll receive a secure <strong>Letter of Authority (LOA)</strong> to e-sign. 
+      This LOA allows us to request a <strong>Data Subject Access Request (DSAR)</strong> from your lender, 
+      which is necessary to obtain the documents required to properly assess and progress your claim.
+      Uploading documents is optional and separate from e-signing the LOA. We still need the LOA to request your DSAR if required.
+    </p>
+
+    <!-- Consent capture -->
+    <input type="hidden" name="consent_wording" id="consent_wording"
+      value="I consent to Visible Legal Marketing processing my personal data to assess my IVA claim and to contact me via phone, SMS or email about my case. I understand my information may be shared with a panel solicitor for the purposes of reviewing my case, obtaining my Data Subject Access Request (DSAR), and progressing my claim if I choose to instruct them. I understand that I can withdraw my consent at any time and that my data will be processed in accordance with the Privacy Policy." />
+
+    <input type="hidden" name="consent_version" id="consent_version" value="2025-12-05" />
+    <input type="hidden" name="consent_timestamp_utc" id="consent_timestamp_utc" />
+    <input type="hidden" name="consent_given" id="consent_given" />
+
+    <!-- UTM + click IDs -->
+    <input type="hidden" name="utm_source" id="utm_source" />
+    <input type="hidden" name="utm_medium" id="utm_medium" />
+    <input type="hidden" name="utm_campaign" id="utm_campaign" />
+    <input type="hidden" name="utm_term" id="utm_term" />
+    <input type="hidden" name="utm_content" id="utm_content" />
+    <input type="hidden" name="gclid" id="gclid" />
+    <input type="hidden" name="fbclid" id="fbclid" />
+    <input type="hidden" name="msclkid" id="msclkid" />
+
+    <!-- First-touch context -->
+    <input type="hidden" name="utm_landing_page" id="utm_landing_page" />
+    <input type="hidden" name="utm_referrer" id="utm_referrer" />
+    <input type="hidden" name="utm_timestamp_utc" id="utm_timestamp_utc" />
+
+    <ul class="consent-points modern-list">
+      <li>
+        <span class="list-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>Your case may be reviewed for potential mis-selling.</span>
+      </li>
+      <li>
+        <span class="list-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M6.6 10.8a12.1 12.1 0 006.6 6.6l2.2-2.2a1.5 1.5 0 011.5-.37c1.64.49 3.41.75 5.2.75v2.5c0 .83-.67 1.5-1.5 1.5C11.07 19.88 4.12 12.93 3.42 3.5 3.35 2.67 4.02 2 4.85 2h2.5c0 1.79.26 3.56.75 5.2.14.5-.02 1.03-.37 1.4l-2.23 2.2z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span>We may contact you about your responses.</span>
+      </li>
+      <li>
+        <span class="list-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M12 3v18M5 7h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7.5 7L4 13a3 3 0 006 0l-3.5-6zm9 0L19 13a3 3 0 01-6 0l3.5-6z" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M6 21h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span>Your information may be shared with our panel solicitor so they can review your case and, if instructed, progress your claim.</span>
+      </li>
+      <li>
+        <span class="list-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M14 3v5h5" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M7.5 16.5c1-.5 1.5 0 2.5 0s1.5-1 2.5-1 1 .5 2 .5 1.5-.5 2-.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>You will receive a secure LOA to e-sign so your DSAR can be obtained and your claim progressed.</span>
+      </li>
+    </ul>
+
+    <p class="consent-card__fees">
+      <strong>About our service:</strong> Visible Legal Marketing is an FCA-regulated claims management company. 
+      We work with a panel of UK solicitors to review potential IVA mis-selling. 
+      There are <strong>no upfront fees</strong> — if your claim is successful and compensation is secured, a 
+      <strong>success fee between 18% and 36% (including VAT)</strong> will apply, depending on the level of redress achieved. 
+      You can cancel within <strong>14 days</strong> at no cost. After this period, a reasonable cancellation fee may apply for work already completed. 
+      You do not need to use a claims management company to make a complaint; you can contact your IVA provider directly or refer it to the 
+      <a href="https://www.financial-ombudsman.org.uk/make-complaint" target="_blank" rel="noopener">Financial Ombudsman Service</a> for free.
+    </p>
+
+    <div class="form-group">
+      <label class="section-label" for="consentGiven">Consent to assessment*</label>
+      <p id="consentGiven-error" class="error-message"></p>
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" name="consentGiven" value="Yes" required />
+          <span class="checkmark"></span>
+          Yes, I give my consent for my data to be processed, for you to contact me, and for a solicitor to obtain my DSAR and progress my claim.
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="consentGiven" value="No" />
+          <span class="checkmark"></span>
+          No, I do not give my consent
+        </label>
+      </div>
+    </div>
+
+    <p class="consent-note">
+      By continuing you confirm you’ve read our
+      <a href="../partials/privacy-policy.html" class="link-button" data-open-privacy>Privacy Policy</a>
+    </p>
+  </section>
+
+  <!-- Cloudflare Turnstile widget -->
+  <div id="cf-container" class="cf-turnstile"
+       data-sitekey="0x4AAAAAAB67dne5ZoFf4DVi"
+       data-callback="onTurnstileSuccess"
+       data-size="compact"></div>
+  <input type="hidden" name="cf_turnstile_token" id="cf_token" />
+  <p id="cf-turnstile-error" class="error-message"></p>
+
+  <div class="form-nav">
+    <button type="button" class="prev-btn">Back</button>
+    <button type="submit" class="submit-btn" data-loading-text="Submitting…">
+      Submit My Claim
+    </button>
+  </div>
+</div>
+</form> <!-- END #iva-check-form -->
+</section> <!-- END #form-section -->
+
+    
+
+<!-- Thank-you modal (overlay system) -->
+<div id="thank-you" class="modal-overlay" aria-hidden="true">
+  <button class="modal-backdrop" type="button" aria-label="Close thank you"></button>
+
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="ty-title" tabindex="-1">
+    <button class="close-btn" id="close-thank-you" aria-label="Close">×</button>
+
+    <div class="step-indicator">✓ Submission received</div>
+    <h2 id="ty-title">Thank you — your IVA claim has been submitted</h2>
+    <p>We've received your details. Please follow the steps below.</p>
+
+    <ul class="modern-list" aria-label="Next steps checklist">
+      <li>
+        <span class="list-icon">✓</span>
+        <span><strong>Letter of Authority (LOA):</strong> We’ve emailed you a secure e-signature link now. Please sign it so we (and our panel solicitors) can request information from your lender.</span>
+      </li>
+      <li>
+        <span class="list-icon">✓</span>
+        <span><strong>Optional document upload:</strong> If you opted in, we’ve also sent a secure Dropbox link. Can’t see it within a few minutes? Check your spam/junk folder.</span>
+      </li>
+      <li>
+        <span class="list-icon">⧗</span>
+        <span><strong>Initial review (1–2 business days):</strong> Once we have your LOA (and any documents), we’ll review your case and confirm the most appropriate next step.</span>
+      </li>
+      <li>
+        <span class="list-icon">✉</span>
+        <span><strong>Updates:</strong> We’ll keep you informed by email and, where provided, SMS/WhatsApp.</span>
+      </li>
+    </ul>
+
+    <p class="muted">Questions or didn’t receive the emails? Contact us at <a href="mailto:support@visiblelegal.co.uk">support@visiblelegal.co.uk</a>.</p>
+  </div>
+</div>
+
+
+
+    <!-- Mis-selling Info Section -->
+    <section class="mis-sell-section iva-page" id="mis-sell-explainer">
+  <div class="inner">
+    <div class="mis-sell-head">
+      <p class="mis-sell-eyebrow">Why you might be owed money</p>
+      <h2>How some IVAs were mis-sold</h2>
+      <p class="mis-sell-lead">
+        Many people were steered into IVAs that weren’t the best option for them. 
+        If any of the examples below sound familiar, your IVA may have been mis-sold.
+      </p>
+    </div>
+
+    <ul class="mis-sell-grid">
+      <li class="info-card">
+        <div class="info-icon">
+          <i data-lucide="alert-triangle"></i>
+        </div>
+        <div class="info-content">
+          <h3>Sold as a “government scheme”</h3>
+          <p>
+            You were told it was an official government-backed solution rather than a commercial product 
+            run by a private firm.
+          </p>
+        </div>
+      </li>
+
+      <li class="info-card">
+        <div class="info-icon">
+          <i data-lucide="file-minus"></i>
+        </div>
+        <div class="info-content">
+          <h3>High fees buried in the small print</h3>
+          <p>
+            Fees of £3,000–£5,000 (or more) were not clearly explained upfront, or only became obvious 
+            once you were already tied in.
+          </p>
+        </div>
+      </li>
+
+      <li class="info-card">
+        <div class="info-icon">
+          <i data-lucide="slash"></i>
+        </div>
+        <div class="info-content">
+          <h3>No clear explanation of alternatives</h3>
+          <p>
+            Other options such as Debt Relief Orders, bankruptcy, payment plans or informal arrangements 
+            were not properly discussed.
+          </p>
+        </div>
+      </li>
+
+      <li class="info-card">
+        <div class="info-icon">
+          <i data-lucide="clock"></i>
+        </div>
+        <div class="info-content">
+          <h3>Term quietly extended</h3>
+          <p>
+            Your IVA ran on longer than expected, or extra payments were added, due to clauses you weren’t 
+            clearly told about.
+          </p>
+        </div>
+      </li>
+
+      <li class="info-card">
+        <div class="info-icon">
+          <i data-lucide="bar-chart-2"></i>
+        </div>
+        <div class="info-content">
+          <h3>Budget figures manipulated</h3>
+          <p>
+            Income or expenditure numbers were “padded” or cut so the IVA looked affordable when in reality 
+            it was a struggle.
+          </p>
+        </div>
+      </li>
+
+      <li class="info-card">
+        <div class="info-icon">
+          <i data-lucide="heart-crack"></i>
+        </div>
+        <div class="info-content">
+          <h3>Vulnerability not taken into account</h3>
+          <p>
+            You had health issues, caring responsibilities or other vulnerabilities that weren’t properly 
+            considered in the advice you were given.
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    <p class="mis-sell-footnote">
+      We normally look at <strong>completed or failed IVAs</strong>. If you’re unsure what applies to you, 
+      share what you can in the form and we’ll confirm this as part of the check.
+    </p>
+  </div>
+</section>
+
+<!-- Why Us Section -->
+<section class="why-vlm-section iva-page" id="why-vlm">
+  <div class="inner why-vlm-inner">
+    <div class="why-vlm-copy">
+      <p class="why-eyebrow">Why clients use us</p>
+      <h2>Why choose Visible Legal Marketing?</h2>
+      <p class="why-lead">
+        We sit between you and our panel solicitors, helping you understand the process, 
+        keeping you updated and making sure everything is handled properly.
+      </p>
+
+      <ul class="why-vlm-list">
+        <li class="why-item">
+          <div class="why-icon">
+            <i data-lucide="shield-check"></i>
+          </div>
+          <div class="why-text">
+            <h3>Authorised and data-secure</h3>
+            <p>
+              FCA-regulated, ICO-registered and UK-based. Your information is handled in line with 
+              UK data protection rules.
+            </p>
+          </div>
+        </li>
+
+        <li class="why-item">
+          <div class="why-icon">
+            <i data-lucide="users"></i>
+          </div>
+          <div class="why-text">
+            <h3>Specialists in IVA mis-selling</h3>
+            <p>
+              We focus on financial mis-selling cases, including IVAs, so we know what to look for 
+              in your paperwork and story.
+            </p>
+          </div>
+        </li>
+
+        <li class="why-item">
+          <div class="why-icon">
+            <i data-lucide="briefcase"></i>
+          </div>
+          <div class="why-text">
+            <h3>Vetted solicitor partners</h3>
+            <p>
+              We only work with UK solicitors who are experienced in this area and who agree to clear, 
+              transparent terms.
+            </p>
+          </div>
+        </li>
+
+        <li class="why-item">
+          <div class="why-icon">
+            <i data-lucide="thumbs-up"></i>
+          </div>
+          <div class="why-text">
+            <h3>No upfront fees, clear success fee</h3>
+            <p>
+              You don’t pay anything to start a claim. If your case succeeds, a success fee 
+              (typically 18%–36% including VAT) will apply.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <aside class="why-vlm-panel" aria-label="What to expect from the process">
+      <h3>What you can expect</h3>
+      <ul>
+        <li>
+          <i data-lucide="check-circle-2"></i>
+          <span>Simple online form to register your case.</span>
+        </li>
+        <li>
+          <i data-lucide="message-square"></i>
+          <span>Updates by email and, where provided, SMS/WhatsApp.</span>
+        </li>
+        <li>
+          <i data-lucide="file-text"></i>
+          <span>Clear explanation of any documents we send you to sign.</span>
+        </li>
+        <li>
+          <i data-lucide="scale"></i>
+          <span>You can complain directly to your IVA firm or the Financial Ombudsman Service for free if you prefer.</span>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+
+
+
+<!-- How It Works -->
+<section class="how-it-works iva-page" id="how-it-works">
+  <div class="how-inner">
+    <h2>How the IVA claim check works</h2>
+    <p class="how-lead">
+      A simple 3-step process — no jargon, no upfront fees, and you’re kept informed at each stage.
+    </p>
+
+    <ol class="steps-list" aria-label="How the IVA claim check works">
+      <li>
+        <strong>1</strong>
+        <div class="step-text">
+          <h3>Complete your free claim check</h3>
+          <p>
+            Answer a few quick questions about your IVA, who set it up, and how it was explained to you.
+            Most people finish in under 5 minutes.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <strong>2</strong>
+        <div class="step-text">
+          <h3>We review your IVA for mis-selling</h3>
+          <p>
+            Visible Legal Marketing checks your answers for signs your IVA may have been mis-sold, and whether
+            it meets the basic eligibility rules (completed or failed cases only).
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <strong>3</strong>
+        <div class="step-text">
+          <h3>Specialist solicitor investigates</h3>
+          <p>
+            If your case looks promising, a UK solicitor reviews it in detail, requests records where needed and
+            keeps you updated. If compensation is secured, their success fee is deducted from the redress —
+            there are no upfront fees.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+
+
+
+<!-- Footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-wrap">
+
+    <div class="footer-top">
+      <!-- Brand / blurb -->
+      <div class="footer-brand">
+        <div class="brand-mark">
+          <span class="brand-name">Visible Legal Marketing</span>
+        </div>
+        <p class="brand-tag">Trusted support for financial mis-selling claims.</p>
+
+        <div class="reg-badges" aria-label="Regulatory badges">
+          <span class="badge">FCA Regulated</span>
+          <span class="badge badge-outline">UK Solicitor Panel</span>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <nav class="footer-links" aria-label="Footer links">
+        <h3 class="footer-heading">Links</h3>
+        <ul>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="/privacy-policy/" id="open-privacy" aria-controls="privacy-policy-modal">Privacy Policy</a></li>
+          <li><a href="/terms/" id="open-terms" aria-controls="terms-modal">Terms of Service</a></li>
+          <li><a href="#form-section" id="scroll-to-form">Start your free check</a></li>
+          <li><a href="/cookies/" id="open-cookie-policy" aria-controls="cookie-policy-modal">Cookie Policy</a></li>
+        </ul>
+      </nav>
+
+      <!-- Contact -->
+      <div class="footer-contact">
+        <h3 class="footer-heading">Contact</h3>
+        <ul>
+          <li><a href="mailto:support@visiblelegal.co.uk">support@visiblelegal.co.uk</a></li>
+          <li>5 Eagle Fold, Hyde, England, SK14 4GU</li>
+        </ul>
+      </div>
+
+      <!-- Compliance / legal -->
+      <div class="footer-compliance">
+        <h3 class="footer-heading">Compliance</h3>
+
+        <div class="footer-legal-stack">
+          <p class="footer-legal">
+            Visible Legal Marketing Limited is a claims management company regulated by the Financial Conduct Authority
+            (<a href="https://register.fca.org.uk" target="_blank" rel="noopener">Authorisation no. 835293</a>) which generates enquiries and referrals for a panel of solicitors.
+            We work with a panel of solicitors. All of our panel firms are solicitors of England and Wales, authorised and regulated by the Solicitors Regulation Authority
+            (<a href="https://www.sra.org.uk" target="_blank" rel="noopener">www.sra.org.uk</a>).
+            Any solicitor we refer you to is an independent professional from whom you will receive impartial and confidential advice. You are free to choose another solicitor.
+            Visible Legal Marketing Limited is a limited company registered in England and Wales (Company No. 10263322).
+          </p>
+
+          <p class="footer-legal">
+            <strong>Important:</strong> You do not need to use a claims management company to make a complaint.
+            You can complain directly to your lender or service provider, and—if you're not satisfied with their response—refer your complaint to the
+            <a href="https://www.financial-ombudsman.org.uk/make-complaint" target="_blank" rel="noopener">Financial Ombudsman Service</a>
+            <strong>for free</strong>.
+          </p>
+
+          <p class="footer-legal">
+            For complaints about our service, please contact
+            <a href="mailto:support@visiblelegal.co.uk">support@visiblelegal.co.uk</a>.
+            If we cannot resolve your complaint, you may refer it to the
+            <a href="https://cmc.financial-ombudsman.org.uk/consumers/complain" target="_blank" rel="noopener">Claims Management Ombudsman (part of the Financial Ombudsman Service)</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider" aria-hidden="true"></div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Visible Legal Marketing Ltd. All rights reserved.</p>
+      <div class="foot-meta">
+        <a href="/privacy-policy/" id="open-privacy" aria-controls="privacy-policy-modal">Privacy Policy</a>
+        <a href="/terms/" id="open-terms" aria-controls="terms-modal">Terms</a>
+        <a href="/cookies/" id="open-cookie-policy" aria-controls="cookie-policy-modal">Cookie Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Privacy Policy Modal -->
+<div
+  id="privacy-policy-modal"
+  class="modal policy-modal"
+  aria-hidden="true"
+  role="dialog"
+  aria-labelledby="privacy-title"
+  data-src="/partials/privacy-policy-iva.html"
+>
+  <div class="modal-content" role="document">
+    <button
+      type="button"
+      class="modal-close"
+      data-close-modal
+      aria-label="Close Privacy Policy"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+
+    <header class="modal-header">
+      <div class="modal-icon" aria-hidden="true">🔒</div>
+      <h2 id="privacy-title">Privacy Policy</h2>
+      <p>
+        How we collect, use and protect your personal information when you use
+        our services.
+      </p>
+    </header>
+
+    <div class="modal-body">
+      <!-- Content loaded dynamically from /partials/privacy-policy.html -->
+    </div>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <div class="cta-row">
+      <button
+        id="close-privacy"
+        class="btn-secondary"
+        type="button"
+        data-close-modal
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Terms of Service Modal -->
+<div
+  id="terms-modal"
+  class="modal policy-modal"
+  aria-hidden="true"
+  role="dialog"
+  aria-labelledby="terms-title"
+  data-src="/partials/terms.html"
+>
+  <div class="modal-content" role="document">
+    <button
+      type="button"
+      class="modal-close"
+      data-close-modal
+      aria-label="Close Terms"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+
+    <header class="modal-header">
+      <div class="modal-icon" aria-hidden="true">📄</div>
+      <h2 id="terms-title">Terms of Service</h2>
+      <p>
+        The basis on which we provide our claims management services and work
+        with our panel of solicitors.
+      </p>
+    </header>
+
+    <div class="modal-body">
+      <!-- Content loaded dynamically from /partials/terms.html -->
+    </div>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <div class="cta-row">
+      <button
+        id="close-terms"
+        class="btn-secondary"
+        type="button"
+        data-close-modal
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Cookie Policy Modal -->
+<div
+  id="cookie-policy-modal"
+  class="modal policy-modal"
+  aria-hidden="true"
+  role="dialog"
+  aria-labelledby="cookie-title"
+  data-src="/partials/cookies.html"
+>
+  <div class="modal-content" role="document">
+    <button
+      type="button"
+      class="modal-close"
+      data-close-modal
+      aria-label="Close Cookie Policy"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+
+    <header class="modal-header">
+      <div class="modal-icon" aria-hidden="true">🍪</div>
+      <h2 id="cookie-title">Cookie Policy</h2>
+      <p>
+        Details of the cookies and similar technologies we use and how you can
+        control them.
+      </p>
+    </header>
+
+    <div class="modal-body">
+      <!-- Content loaded dynamically from /partials/cookies.html -->
+    </div>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <div class="cta-row">
+      <button
+        id="close-cookie-policy"
+        class="btn-secondary"
+        type="button"
+        data-close-modal
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <!-- Exclusion Modal -->
+<div id="exclusion-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="exclusion-title" aria-hidden="true">
+  <div class="modal-backdrop" data-close-modal></div>
+
+  <div class="modal-box" role="document" tabindex="-1">
+    <div class="modal-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" fill="#FEE2E2" stroke="#DC2626" stroke-width="2" />
+        <line x1="12" y1="7" x2="12" y2="13" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="12" cy="16" r="1.2" fill="#DC2626"/>
+      </svg>
+    </div>
+
+    <h2 id="exclusion-title">Unfortunately, you're not eligible</h2>
+    <p class="modal-copy">
+      Based on your responses, you don't currently meet the criteria for our IVA checker service.
+      You'll be redirected shortly.
+    </p>
+
+    <div class="redirecting-text" aria-live="polite">
+      Redirecting<span class="dot one">.</span><span class="dot two">.</span><span class="dot three">.</span>
+    </div>
+  </div>
+</div>
+
+  <!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="cookie-banner__inner">
+    <p class="cookie-banner__text">
+      We use essential cookies to keep this site secure and working properly. With your permission, we'd also like to use
+      analytics cookies to understand how the site is used and improve it over time.
+      <button type="button" id="open-cookie-policy" class="cookie-banner__link">Learn more</button>
+    </p>
+    <div class="cookie-banner__actions">
+      <button id="cookie-reject" class="cookie-btn cookie-btn--ghost">Reject analytics</button>
+      <button id="cookie-manage" class="cookie-btn cookie-btn--outline">Manage settings</button>
+      <button id="cookie-accept" class="cookie-btn cookie-btn--primary">Accept analytics</button>
+    </div>
+  </div>
+</div>
+
+  <script defer src="/js/modal-runtime.js" data-app="core"></script>
+  <script src="script.js" defer></script>
+  <script src="../js/legal.js" defer></script>
+  <script type="module" src="/src/js/forms.js"></script>
+  
+</body>
+</html>

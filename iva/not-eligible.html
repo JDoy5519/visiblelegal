@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Not Eligible - IVA Checker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #F5F7FA;
+      color: #1F2937;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .card {
+      background: #FFFFFF;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 440px;
+      width: 100%;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .card svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      color: #DC2626;
+    }
+
+    h1 {
+      color: #DC2626;
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      color: #6B7280;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    a.email-link {
+      display: inline-block;
+      color: #3B82F6;
+      background-color: #EFF6FF;
+      text-decoration: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+    }
+
+    a.email-link:hover {
+      background-color: #DBEAFE;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <circle cx="12" cy="12" r="10" fill="#FEE2E2" stroke="#DC2626" stroke-width="2" />
+      <line x1="12" y1="7" x2="12" y2="13" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="12" cy="16" r="1.2" fill="#DC2626"/>
+    </svg>
+
+    <h1>Unfortunately, You're Not Eligible</h1>
+    <p>
+      Based on the information you provided, you don't currently meet the criteria for our IVA checker service.
+    </p>
+
+    <a class="email-link" href="mailto:support@visiblelegal.co.uk">
+      Email <strong>support@visiblelegal.co.uk</strong>
+    </a>
+  </div>
+</body>
+</html>
+
+
