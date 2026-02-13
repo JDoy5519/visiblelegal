@@ -103,11 +103,51 @@ exports.handler = async (event, context) => {
       };
     }
 
+    // Determine clean display name for IVA provider
+    const ivaProviderDisplay = data.ivaProvider === 'Other' 
+      ? (data.otherProvider || 'Unknown Provider')
+      : (data.ivaProvider || null);
+
+    // Format phone number to E.164 format (+44)
+    let phoneE164 = null;
+    if (data.phone_local || data.phone_e164) {
+      const phone = (data.phone_local || data.phone_e164).replace(/\s/g, '');
+      if (phone.startsWith('07')) {
+        // UK mobile starting with 07 -> +447
+        phoneE164 = '+44' + phone.substring(1);
+      } else if (phone.startsWith('01') || phone.startsWith('02')) {
+        // UK landline -> +44
+        phoneE164 = '+44' + phone.substring(1);
+      } else if (phone.startsWith('+44')) {
+        // Already in E.164 format
+        phoneE164 = phone;
+      } else if (phone.startsWith('44')) {
+        // Missing the +
+        phoneE164 = '+' + phone;
+      } else {
+        // Unknown format, keep as is
+        phoneE164 = phone;
+      }
+    }
+
+    // Format DOB to DD/MM/YYYY (European format)
+    let dobFormatted = null;
+    if (data.dob) {
+      const dobDate = new Date(data.dob);
+      if (!isNaN(dobDate)) {
+        const day = String(dobDate.getDate()).padStart(2, '0');
+        const month = String(dobDate.getMonth() + 1).padStart(2, '0');
+        const year = dobDate.getFullYear();
+        dobFormatted = `${day}/${month}/${year}`;
+      }
+    }
+
     // Build sanitized payload
     const payload = {
       name: sanitizeString(data.fullName),
       email: data.email.toLowerCase().trim(),
-      phone: data.phone_local || data.phone_e164 || null,
+      phone: phoneE164,
+      phone_local: data.phone_local || data.phone_e164 || null,
       postcode: data.postcode || null,
       message: data.notes || null,
       source_url: data.source_url || event.headers.referer || null,
@@ -116,8 +156,11 @@ exports.handler = async (event, context) => {
       submitted_at: new Date().toISOString(),
       // IVA specific fields
       iva_provider: data.ivaProvider || null,
+      other_provider: data.otherProvider || null,
+      iva_provider_display: ivaProviderDisplay,
       iva_ref: data.ivaRef || null,
-      dob: data.dob || null,
+      dob: dobFormatted,
+      dob_raw: data.dob || null,
       iva_status: data.ivaStatus || null,
       monthly_payment: data.monthlyPayment || null,
       debt_level: data.debtLevel || null,
