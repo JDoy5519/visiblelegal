@@ -215,7 +215,7 @@ exports.handler = async (event, context) => {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ success: true, message: 'Form submitted successfully' })
+      body: JSON.stringify({ ok: true, success: true, message: 'Form submitted successfully' })
     };
 
   } catch (error) {

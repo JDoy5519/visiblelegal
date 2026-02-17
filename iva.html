@@ -1336,6 +1336,34 @@
       transform: translateX(3px);
     }
 
+    /* Submit button disabled state (Turnstile pending) */
+    .btn--submit-premium:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .btn--submit-premium .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ffffff;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .btn--submit-premium:not(:disabled) .spinner {
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     @media (min-width: 480px) {
       .btn--submit-premium {
         max-width: 380px;
@@ -2087,7 +2115,11 @@
                     <h5 class="step4-card__title">Security Check</h5>
                   </div>
                   <div class="turnstile-wrapper">
-                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAB67dne5ZoFf4DVi" data-callback="onTurnstileSuccess"></div>
+                    <div class="cf-turnstile"
+                         data-sitekey="0x4AAAAAAB67dne5ZoFf4DVi"
+                         data-callback="onTurnstileVerified"
+                         data-error-callback="onTurnstileError"
+                         data-expired-callback="onTurnstileExpired"></div>
                   </div>
                 </div>
 
@@ -2097,9 +2129,10 @@
 
                 <!-- Section 4: Submit button -->
                 <div style="text-align: center;">
-                  <button type="submit" class="btn--submit-premium" data-loading-text="Submitting&hellip;">
-                    Submit Your Free Assessment
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  <button type="submit" class="btn--submit-premium" id="submit-button" data-loading-text="Submitting&hellip;" disabled>
+                    <span id="submit-text">Verifying security...</span>
+                    <span class="spinner"></span>
+                    <svg class="submit-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                   </button>
                 </div>
 
@@ -2545,6 +2578,58 @@
   <!-- ============================================================
        Scripts
        ============================================================ -->
+  <!-- Turnstile callback functions (must be defined before Turnstile loads) -->
+  <script>
+    var turnstileVerified = false;
+    var turnstileLoadTime = Date.now();
+
+    function enableSubmitButton() {
+      turnstileVerified = true;
+      var btn = document.getElementById('submit-button');
+      var txt = document.getElementById('submit-text');
+      var arrow = btn && btn.querySelector('.submit-arrow');
+
+      if (btn) {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+      if (txt) txt.textContent = 'Submit Your Free Assessment';
+      if (arrow) arrow.style.display = '';
+    }
+
+    function onTurnstileVerified(token) {
+      console.log('[Turnstile] Verification successful');
+      var elapsed = Date.now() - turnstileLoadTime;
+      var minDelay = 2000;
+
+      if (elapsed < minDelay) {
+        setTimeout(enableSubmitButton, minDelay - elapsed);
+      } else {
+        enableSubmitButton();
+      }
+    }
+
+    function onTurnstileError() {
+      console.error('[Turnstile] Verification failed');
+      turnstileVerified = false;
+      var btn = document.getElementById('submit-button');
+      var txt = document.getElementById('submit-text');
+      if (btn) btn.disabled = true;
+      if (txt) txt.textContent = 'Security check failed \u2013 Please refresh';
+    }
+
+    function onTurnstileExpired() {
+      console.warn('[Turnstile] Token expired');
+      turnstileVerified = false;
+      var btn = document.getElementById('submit-button');
+      var txt = document.getElementById('submit-text');
+      var arrow = btn && btn.querySelector('.submit-arrow');
+      if (btn) btn.disabled = true;
+      if (txt) txt.textContent = 'Security expired \u2013 Please refresh';
+      if (arrow) arrow.style.display = 'none';
+    }
+  </script>
+
   <!-- Cloudflare Turnstile: loads the widget rendered in Step 4 -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="/src/js/forms.js"></script>
