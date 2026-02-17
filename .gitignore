@@ -1,16 +1,26 @@
-# Lighthouse reports (contain sensitive data - never commit these)
-lighthouse-security-report.json
-*.lighthouse-report.json
-
 # Build artifacts
 node_modules/
 dist/
 build/
+_headers
+
+# Generated at build time
+assets/js/env.js
 
 # Environment files
 .env
 .env.local
 .env.production
+
+# Credentials / secrets — never commit these
+uuid/
+ssh/
+*.pem
+*.key
+
+# Lighthouse reports
+lighthouse-security-report.json
+*.lighthouse-report.json
 
 # Logs
 *.log
@@ -34,5 +44,3 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
-
-lighthouse-security-report.json

@@ -8,3 +8,55 @@
 [functions]
   node_bundler = "esbuild"
 
+# Redirects: old subdirectory URLs → new root-level pages
+[[redirects]]
+  from = "/iva/"
+  to = "/iva.html"
+  status = 301
+
+[[redirects]]
+  from = "/iva/index.html"
+  to = "/iva.html"
+  status = 301
+
+[[redirects]]
+  from = "/bec/"
+  to = "/bec.html"
+  status = 301
+
+[[redirects]]
+  from = "/bec/index.html"
+  to = "/bec.html"
+  status = 301
+
+# Old legal page redirects
+[[redirects]]
+  from = "/privacy-policy/"
+  to = "/privacy/general-privacy.html"
+  status = 301
+
+[[redirects]]
+  from = "/privacy-policy/index.html"
+  to = "/privacy/general-privacy.html"
+  status = 301
+
+[[redirects]]
+  from = "/terms/"
+  to = "/terms.html"
+  status = 301
+
+[[redirects]]
+  from = "/terms/index.html"
+  to = "/terms.html"
+  status = 301
+
+[[redirects]]
+  from = "/cookies/"
+  to = "/cookies.html"
+  status = 301
+
+[[redirects]]
+  from = "/cookies/index.html"
+  to = "/cookies.html"
+  status = 301
+
