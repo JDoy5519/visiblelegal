@@ -24,6 +24,12 @@ exports.handler = async (event, context) => {
       data = Object.fromEntries(params);
     }
 
+    // Check if data is nested in a fields object
+    if (data.fields) {
+      console.log('[INFO] Data is nested in fields object, extracting...');
+      data = data.fields;
+    }
+
     // Honeypot check
     if (data.company_website && data.company_website.trim() !== '') {
       return {
@@ -207,7 +213,7 @@ exports.handler = async (event, context) => {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ error: 'Failed to process submission' })
+        body: JSON.stringify({ error: 'Failed to process submission', details: webhookResult.data, statusCode: webhookResult.statusCode })
       };
     }
 
@@ -228,7 +234,7 @@ exports.handler = async (event, context) => {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ error: 'Internal server error' })
+      body: JSON.stringify({ error: 'Internal server error', details: error.message, stack: error.stack })
     };
   }
 };
