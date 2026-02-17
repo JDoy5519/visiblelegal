@@ -810,13 +810,15 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     .thank-you-modal__card {
-      max-width: 480px;
+      max-width: 520px;
       width: 100%;
       background: var(--white);
       border-radius: var(--radius-lg);
       padding: var(--space-2xl);
       text-align: center;
       box-shadow: var(--shadow-xl);
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .thank-you-modal__icon {
@@ -840,6 +842,106 @@
       color: var(--medium-grey);
       line-height: var(--line-height-relaxed);
       margin: 0 0 var(--space-xl) 0;
+    }
+
+    .thank-you-modal__steps {
+      text-align: left;
+      background-color: #f9fafb;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      border-left: 3px solid var(--primary-blue, #0044a1);
+    }
+
+    .thank-you-modal__steps h4 {
+      color: var(--primary-blue, #0044a1);
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+    }
+
+    .thank-you-modal__step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .thank-you-modal__step + .thank-you-modal__step {
+      margin-top: 16px;
+    }
+
+    .thank-you-modal__step-num {
+      background-color: var(--primary-blue, #0044a1);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .thank-you-modal__step-title {
+      margin: 0;
+      font-weight: 600;
+      color: var(--charcoal, #1f2937);
+    }
+
+    .thank-you-modal__step-desc {
+      margin: 4px 0 0 0;
+      font-size: 14px;
+      color: var(--medium-grey, #6b7280);
+      line-height: 1.5;
+    }
+
+    .thank-you-modal__note {
+      font-size: 14px;
+      color: var(--medium-grey, #6b7280);
+      margin-bottom: 24px;
+    }
+
+    .thank-you-modal__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .thank-you-modal__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--radius-md, 8px);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s, box-shadow 0.2s;
+    }
+
+    .thank-you-modal__btn--primary {
+      background-color: var(--primary-blue, #0044a1);
+      color: white;
+      border: none;
+    }
+
+    .thank-you-modal__btn--primary:hover {
+      background-color: #003580;
+      box-shadow: 0 2px 8px rgba(0, 68, 161, 0.25);
+    }
+
+    .thank-you-modal__btn--outline {
+      background: transparent;
+      color: var(--primary-blue, #0044a1);
+      border: 2px solid var(--primary-blue, #0044a1);
+    }
+
+    .thank-you-modal__btn--outline:hover {
+      background-color: rgba(0, 68, 161, 0.05);
     }
 
     /* --- Timeline (What Happens Next) --- */
@@ -2186,9 +2288,41 @@
         <div class="thank-you-modal__icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
-        <h3 class="thank-you-modal__title" id="ty-title">Thank You</h3>
-        <p class="thank-you-modal__text">We've received your details. A member of our team will be in touch shortly to discuss your claim. Check your email for a confirmation.</p>
-        <a href="/" class="btn btn--secondary">Return to Homepage</a>
+
+        <h3 class="thank-you-modal__title" id="ty-title">Claim Submitted Successfully</h3>
+
+        <p class="thank-you-modal__text">
+          Thank you for submitting your IVA mis-selling claim. We've received your details and your case is now being processed.
+        </p>
+
+        <div class="thank-you-modal__steps">
+          <h4>What happens next:</h4>
+
+          <div class="thank-you-modal__step">
+            <div class="thank-you-modal__step-num">1</div>
+            <div>
+              <p class="thank-you-modal__step-title">Check Your Email</p>
+              <p class="thank-you-modal__step-desc">You'll receive a confirmation email within the next few minutes with your reference number.</p>
+            </div>
+          </div>
+
+          <div class="thank-you-modal__step">
+            <div class="thank-you-modal__step-num">2</div>
+            <div>
+              <p class="thank-you-modal__step-title">Sign Your Letter of Authority</p>
+              <p class="thank-you-modal__step-desc">You'll receive a separate email from eSignatures.io to electronically sign your Letter of Authority. This allows us to request your IVA file on your behalf.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="thank-you-modal__note">
+          <strong>Important:</strong> Please check your spam/junk folder if you don't see our emails within 10 minutes.
+        </p>
+
+        <div class="thank-you-modal__actions">
+          <a href="/" class="thank-you-modal__btn thank-you-modal__btn--primary">Return to Homepage</a>
+          <button onclick="window.location.reload()" class="thank-you-modal__btn thank-you-modal__btn--outline">Submit Another Claim</button>
+        </div>
       </div>
     </div>
 
