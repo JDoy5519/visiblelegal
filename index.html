@@ -3,6 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <!-- TODO: Replace G-QCBEHKT1TP with actual Google Analytics 4 ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCBEHKT1TP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QCBEHKT1TP');
+  </script>
+
+  <!-- Meta Pixel -->
+  <!-- TODO: Replace 1540687500679034 with actual Meta Pixel ID -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1540687500679034');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1540687500679034&ev=PageView&noscript=1"
+  /></noscript>
+
   <title>Visible Legal | Claims Management Company</title>
   <meta name="description" content="Specialist claims for IVA mis-selling and business energy commission recovery. FCA-regulated, no win no fee. Recover what you're owed.">
 
@@ -30,6 +59,7 @@
   <!-- Fonts: preconnect for speed -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/legal.css">
@@ -859,6 +889,35 @@
       color: var(--white);
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Visible Legal Marketing",
+    "image": "https://visiblelegal.co.uk/assets/vlm-logo.png",
+    "description": "FCA regulated financial claims specialists for IVA mis-selling and business energy claims",
+    "@id": "https://visiblelegal.co.uk",
+    "url": "https://visiblelegal.co.uk",
+    "telephone": "",
+    "email": "support@visiblelegal.co.uk",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "GB"
+    },
+    "sameAs": [],
+    "serviceType": "Financial Claims Management",
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Kingdom"
+    },
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "FCA Registration",
+      "value": "835293"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -923,6 +982,20 @@
         </div>
         <h1 class="hero__title">Expert Claims Management <span class="hero__title-accent">Recover What You're Owed</span></h1>
         <p class="hero__subtitle">We help individuals and businesses recover money lost to financial mis-selling. Specialist IVA and business energy commission claims with no upfront costs.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2rem;margin-bottom:2rem;">
+          <a href="/iva.html" style="display:inline-flex;align-items:center;justify-content:center;padding:1rem 2rem;font-size:1.125rem;font-weight:600;color:#fff;background-color:#2563eb;border-radius:0.5rem;text-decoration:none;transition:background-color 0.2s;box-shadow:0 4px 14px rgba(37,99,235,0.4);" onmouseover="this.style.backgroundColor='#1d4ed8'" onmouseout="this.style.backgroundColor='#2563eb'">
+            Check IVA Eligibility
+            <svg style="width:1.25rem;height:1.25rem;margin-left:0.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+          <a href="/bec.html" style="display:inline-flex;align-items:center;justify-content:center;padding:1rem 2rem;font-size:1.125rem;font-weight:600;color:#2563eb;background-color:#fff;border:2px solid #2563eb;border-radius:0.5rem;text-decoration:none;transition:background-color 0.2s;box-shadow:0 4px 14px rgba(37,99,235,0.15);" onmouseover="this.style.backgroundColor='#eff6ff'" onmouseout="this.style.backgroundColor='#fff'">
+            Business Energy Claims
+            <svg style="width:1.25rem;height:1.25rem;margin-left:0.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
         <div class="hero__trust">
           <span class="hero__trust-item">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1308,7 +1381,7 @@
       <hr class="footer__divider">
 
       <div class="footer__bottom">
-        <p>&copy; 2025 Visible Legal Marketing Limited. All rights reserved.</p>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Visible Legal Marketing Limited. All rights reserved.</p>
         <p>Visible Legal Marketing Ltd is authorised and regulated by the Financial Conduct Authority.</p>
         <div class="footer__social" aria-label="Social links">
           <a href="https://www.facebook.com/profile.php?id=61578959987733" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
