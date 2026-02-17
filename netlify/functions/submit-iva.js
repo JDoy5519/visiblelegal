@@ -129,9 +129,18 @@ exports.handler = async (event, context) => {
     }
 
     // Determine clean display name for IVA provider
-    const ivaProviderDisplay = data.ivaProvider === 'Other' 
-      ? (data.otherProvider || 'Unknown Provider')
-      : (data.ivaProvider || null);
+    let ivaProviderDisplay;
+    if (data.ivaProvider === 'Other') {
+      // User selected "Other" - use their custom input
+      ivaProviderDisplay = data.otherProvider
+        ? formatProviderName(data.otherProvider.trim())
+        : 'Unknown Provider';
+    } else if (data.ivaProvider) {
+      // Known provider - format the camelCase name
+      ivaProviderDisplay = formatProviderName(data.ivaProvider);
+    } else {
+      ivaProviderDisplay = null;
+    }
 
     // Format phone number to E.164 format (+44)
     let phoneE164 = null;
@@ -223,6 +232,27 @@ exports.handler = async (event, context) => {
 };
 
 // Helper functions
+function formatProviderName(name) {
+  if (!name) return null;
+
+  // Split camelCase into separate words
+  // e.g., "DebtMovement" -> "Debt Movement"
+  // "HarringtonBrooks" -> "Harrington Brooks"
+  const withSpaces = name
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z])([A-Z][a-z])/g, '$1 $2');
+
+  // Capitalize each word and trim
+  const formatted = withSpaces
+    .split(' ')
+    .map(word => word.trim())
+    .filter(word => word.length > 0)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+
+  return formatted;
+}
+
 function validateFormData(data) {
   const errors = [];
   
