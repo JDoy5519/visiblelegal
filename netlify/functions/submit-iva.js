@@ -326,7 +326,7 @@ async function verifyTurnstile(token, ip) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Length': Buffer.byteLength(formData)
+        'Content-Length': Buffer.byteLength(formData.toString())
       }
     };
 
@@ -349,7 +349,7 @@ async function verifyTurnstile(token, ip) {
       reject(error);
     });
 
-    req.write(formData);
+    req.write(formData.toString());
     req.end();
   });
 }
