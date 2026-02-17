@@ -135,22 +135,17 @@ exports.handler = async (event, context) => {
 
     // Format phone number to E.164 format (+44)
     let phoneE164 = null;
-    if (data.phone_local || data.phone_e164) {
-      const phone = (data.phone_local || data.phone_e164).replace(/\s/g, '');
+    if (data.phone_local) {
+      const phone = data.phone_local.replace(/\s/g, '');
       if (phone.startsWith('07')) {
-        // UK mobile starting with 07 -> +447
         phoneE164 = '+44' + phone.substring(1);
       } else if (phone.startsWith('01') || phone.startsWith('02')) {
-        // UK landline -> +44
         phoneE164 = '+44' + phone.substring(1);
       } else if (phone.startsWith('+44')) {
-        // Already in E.164 format
         phoneE164 = phone;
       } else if (phone.startsWith('44')) {
-        // Missing the +
         phoneE164 = '+' + phone;
       } else {
-        // Unknown format, keep as is
         phoneE164 = phone;
       }
     }
@@ -172,54 +167,23 @@ exports.handler = async (event, context) => {
       name: sanitizeString(data.fullName),
       email: data.email.toLowerCase().trim(),
       phone: phoneE164,
-      phone_local: data.phone_local || data.phone_e164 || null,
       postcode: data.postcode || null,
-      message: data.notes || null,
-      source_url: data.source_url || event.headers.referer || null,
-      user_agent: event.headers['user-agent'] || null,
-      ip: event.headers['x-forwarded-for'] || event.headers['x-real-ip'] || null,
-      submitted_at: new Date().toISOString(),
-      // IVA specific fields
+      city: data.city || null,
+      current_address: data.currentAddress || null,
+      dob: dobFormatted,
       iva_provider: data.ivaProvider || null,
       other_provider: data.otherProvider || null,
       iva_provider_display: ivaProviderDisplay,
       iva_ref: data.ivaRef || null,
-      dob: dobFormatted,
-      dob_raw: data.dob || null,
       iva_status: data.ivaStatus || null,
-      monthly_payment: data.monthlyPayment || null,
-      debt_level: data.debtLevel || null,
-      iva_type: data.ivaType || null,
-      partner_name: data.partnerName || null,
-      setup_by: data.setupBy || null,
-      current_address: data.currentAddress || null,
-      city: data.city || null,
-      lived_at_address: data.livedAtAddress || null,
-      previous_address: data.previousAddress || null,
-      previous_city: data.previousCity || null,
-      previous_postcode: data.previousPostcode || null,
-      residential_status: data.residentialStatus || null,
-      other_residential_details: data.otherResidentialDetails || null,
-      had_dependants: data.hadDependants || null,
-      dependant_details: data.dependantDetails || null,
-      employment_status: data.employmentStatus || null,
-      job_title: data.jobTitle || null,
-      salary: data.salary || null,
-      marketing_source: data.marketingSource || null,
-      other_marketing: data.otherMarketing || null,
-      was_in_dmp: data.wasInDMP || null,
-      sales_approach: data.salesApproach || null,
-      signed_electronically: data.signedElectronically || null,
-      signed_on_phone: data.signedOnPhone || null,
-      vehicle_finance: data.vehicleFinance || null,
-      change_bank: data.changeBank || null,
       payment_affordable: data.paymentAffordable || null,
-      struggled_payments: data.struggledPayments || null,
-      reduce_spending: data.reduceSpending || null,
-      believed_affordable: data.believedAffordable || null,
       warned_of_risks: data.warnedOfRisks || null,
+      sales_approach: data.salesApproach || null,
+      consent_given: data.consentGiven || null,
+      notes: data.notes || null,
       uploads_opt_in: data.uploads_opt_in || null,
-      consent_given: data.consentGiven || null
+      source_url: data.source_url || null,
+      submitted_at: new Date().toISOString()
     };
 
     // Send to webhook
