@@ -27,7 +27,23 @@ exports.handler = async (event, context) => {
     // Check if data is nested in a fields object
     if (data.fields) {
       console.log('[INFO] Data is nested in fields object, extracting...');
+
+      // Preserve top-level fields before extracting
+      const turnstileToken = data.turnstileToken || data['cf-turnstile-response'];
+      const formId = data.formId;
+      const sourceUrl = data.sourceUrl;
+      const userAgent = data.userAgent;
+      const eventId = data.eventId;
+
+      // Extract nested fields
       data = data.fields;
+
+      // Restore top-level fields
+      if (turnstileToken) data['cf-turnstile-response'] = turnstileToken;
+      if (formId) data.formId = formId;
+      if (sourceUrl) data.source_url = sourceUrl;
+      if (userAgent) data.user_agent = userAgent;
+      if (eventId) data.eventId = eventId;
     }
 
     // Honeypot check
@@ -57,9 +73,12 @@ exports.handler = async (event, context) => {
     }
 
     // Turnstile verification (if secret key is available)
-    if (process.env.TURNSTILE_SECRET_KEY && data['cf-turnstile-response']) {
+    const turnstileToken = data['cf-turnstile-response'] || data.turnstileToken;
+    console.log('[DEBUG] Turnstile token present:', !!turnstileToken);
+
+    if (process.env.TURNSTILE_SECRET_KEY && turnstileToken) {
       try {
-        const turnstileResponse = await verifyTurnstile(data['cf-turnstile-response'], event.headers['x-forwarded-for'] || event.headers['x-real-ip']);
+        const turnstileResponse = await verifyTurnstile(turnstileToken, event.headers['x-forwarded-for'] || event.headers['x-real-ip']);
         if (!turnstileResponse.success) {
           return {
             statusCode: 400,
