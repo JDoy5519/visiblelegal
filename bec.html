@@ -70,6 +70,7 @@
     :root {
       --bec-accent: #ff6b35;
       --bec-accent-hover: #e55a28;
+      --warning-amber: #dd6b20;
     }
 
     /* --- Header --- */
@@ -1220,6 +1221,30 @@
       border-left: 3px solid var(--bec-accent);
     }
 
+    .step4-card--warning {
+      background: rgba(221, 107, 32, 0.05);
+      border-left: 3px solid var(--warning-amber);
+      color: var(--charcoal);
+    }
+
+    .step4-card--warning .step4-card__icon {
+      color: var(--warning-amber);
+    }
+
+    .broker-warning {
+      display: none;
+      overflow: hidden;
+      transition: opacity 0.3s ease, max-height 0.4s ease;
+      opacity: 0;
+      max-height: 0;
+    }
+
+    .broker-warning.is-visible {
+      display: block;
+      opacity: 1;
+      max-height: 300px;
+    }
+
     .step4-card__header {
       display: flex;
       align-items: center;
@@ -1937,6 +1962,21 @@
                           <span>I'm not sure</span>
                         </label>
                       </div>
+                    </div>
+                  </div>
+
+                  <!-- Broker ineligibility warning -->
+                  <div id="brokerWarning" class="broker-warning" role="alert" aria-live="polite">
+                    <div class="step4-card step4-card--info step4-card--warning">
+                      <div class="step4-card__header">
+                        <div class="step4-card__icon">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        </div>
+                        <h5 class="step4-card__title">Eligibility Notice</h5>
+                      </div>
+                      <p style="margin: 0; line-height: var(--line-height-relaxed); color: var(--medium-grey); font-size: var(--text-sm);">
+                        Business energy commission claims typically only apply when a broker was involved. If you purchased directly from a supplier, there&rsquo;s usually no hidden commission to recover. However, you can still submit this form and we&rsquo;ll review your case &mdash; in some situations, direct contracts may still have recoverable fees.
+                      </p>
                     </div>
                   </div>
 
@@ -2697,6 +2737,26 @@
           showStep(parseInt(prevBtn.getAttribute('data-prev'), 10));
         }
       });
+
+      // ---- Broker warning notice ----
+      (function() {
+        var brokerRadios = document.querySelectorAll('input[name="usedBroker"]');
+        var warning = document.getElementById('brokerWarning');
+        if (!warning || !brokerRadios.length) return;
+
+        brokerRadios.forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            if (this.value === 'no') {
+              warning.classList.add('is-visible');
+              setTimeout(function() {
+                warning.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }, 100);
+            } else {
+              warning.classList.remove('is-visible');
+            }
+          });
+        });
+      })();
 
       // ---- FAQ accordion ----
       document.querySelectorAll('.faq-item__question').forEach(function(btn) {
