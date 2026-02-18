@@ -86,7 +86,7 @@ exports.handler = async (event, context) => {
               'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ error: 'Captcha verification failed' })
+            body: JSON.stringify({ ok: false, error: 'Security check failed. Please retry the security check and submit again.' })
           };
         }
       } catch (error) {
@@ -97,7 +97,7 @@ exports.handler = async (event, context) => {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ error: 'Captcha verification failed' })
+          body: JSON.stringify({ ok: false, error: 'Security check failed. Please retry the security check and submit again.' })
         };
       }
     }
@@ -160,14 +160,23 @@ exports.handler = async (event, context) => {
     }
 
     // Format DOB to DD/MM/YYYY (European format)
+    // Accepts both DD/MM/YYYY (from text input) and YYYY-MM-DD (ISO from conversion)
     let dobFormatted = null;
     if (data.dob) {
-      const dobDate = new Date(data.dob);
-      if (!isNaN(dobDate)) {
-        const day = String(dobDate.getDate()).padStart(2, '0');
-        const month = String(dobDate.getMonth() + 1).padStart(2, '0');
-        const year = dobDate.getFullYear();
-        dobFormatted = `${day}/${month}/${year}`;
+      const ddmmMatch = data.dob.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      const isoMatch = data.dob.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (ddmmMatch) {
+        dobFormatted = data.dob; // Already in DD/MM/YYYY
+      } else if (isoMatch) {
+        dobFormatted = `${isoMatch[3]}/${isoMatch[2]}/${isoMatch[1]}`; // Convert ISO to DD/MM/YYYY
+      } else {
+        const dobDate = new Date(data.dob);
+        if (!isNaN(dobDate)) {
+          const day = String(dobDate.getDate()).padStart(2, '0');
+          const month = String(dobDate.getMonth() + 1).padStart(2, '0');
+          const year = dobDate.getFullYear();
+          dobFormatted = `${day}/${month}/${year}`;
+        }
       }
     }
 

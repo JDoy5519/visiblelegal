@@ -1466,6 +1466,63 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Restored-data banner */
+    .restored-data-banner {
+      display: none;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      margin-bottom: var(--space-md);
+      background: rgba(49, 130, 206, 0.08);
+      border: 1px solid rgba(49, 130, 206, 0.25);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      color: #2b6cb0;
+    }
+    .restored-data-banner.is-visible { display: flex; }
+    .restored-data-banner svg { flex-shrink: 0; }
+    .restored-data-banner__dismiss {
+      margin-left: auto;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #2b6cb0;
+      font-size: var(--text-base);
+      padding: 0 var(--space-xs);
+      line-height: 1;
+    }
+
+    /* Turnstile status text */
+    .turnstile-status {
+      text-align: center;
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      margin-top: var(--space-xs);
+      min-height: 1.4em;
+    }
+    .turnstile-status--error { color: var(--error-red); }
+    .turnstile-status--success { color: var(--success-green); }
+
+    /* Turnstile retry button */
+    .turnstile-retry-btn {
+      display: none;
+      margin: var(--space-sm) auto 0;
+      padding: var(--space-xs) var(--space-md);
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--cta-orange);
+      background: rgba(255, 107, 53, 0.08);
+      border: 1px solid rgba(255, 107, 53, 0.3);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-family: var(--font-family);
+      transition: background var(--transition-fast);
+    }
+    .turnstile-retry-btn:hover { background: rgba(255, 107, 53, 0.15); }
+
+    /* DOB text input styling */
+    #dob { letter-spacing: 0.5px; }
+
     @media (min-width: 480px) {
       .btn--submit-premium {
         max-width: 380px;
@@ -1946,6 +2003,12 @@
               <input type="hidden" name="form_started_at" id="form_started_at" value="">
               <input type="hidden" name="uploads_opt_in" value="yes">
 
+              <!-- Restored data banner -->
+              <div class="restored-data-banner" id="restored-data-banner" role="status">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>We've restored your previous form data.</span>
+                <button type="button" class="restored-data-banner__dismiss" id="dismiss-restored-banner" aria-label="Dismiss">&times;</button>
+              </div>
 
               <!-- ===== STEP 1: Your Details ===== -->
               <div class="form-step active" data-step="0">
@@ -1969,7 +2032,7 @@
 
                   <div class="form-field">
                     <label for="dob">Date of birth <span class="required">*</span></label>
-                    <input type="date" id="dob" name="dob" required>
+                    <input type="text" id="dob" name="dob" required placeholder="DD/MM/YYYY" inputmode="numeric" maxlength="10" autocomplete="bday">
                   </div>
 
                   <div class="form-field">
@@ -2068,6 +2131,22 @@
               <div class="form-step" data-step="2">
                 <h4 class="form-step__title">Your Experience</h4>
                 <p class="form-card__subtitle" style="margin-bottom: var(--space-lg);">Help us understand how the IVA was sold to you.</p>
+
+                <!-- Turnstile (loads early so it verifies while user fills this step) -->
+                <div class="step4-card step4-card--turnstile" style="margin-bottom: var(--space-lg);">
+                  <div class="step4-card__header">
+                    <div class="step4-card__icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h5 class="step4-card__title">Security Check</h5>
+                  </div>
+                  <div class="turnstile-wrapper">
+                    <div id="turnstile-container"></div>
+                  </div>
+                  <p class="turnstile-status" id="turnstile-status">Waiting to verify&hellip;</p>
+                  <button type="button" class="turnstile-retry-btn" id="turnstile-retry">Retry security check</button>
+                </div>
+
                 <div class="form-fields">
 
                   <div class="form-field">
@@ -2206,23 +2285,6 @@
                     <span class="consent-check__box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
                     <span class="consent-check__text">I consent to Visible Legal Marketing Limited processing my personal data as described in the <a href="/privacy/iva-privacy.html" target="_blank" rel="noopener">IVA Privacy Policy</a>. I understand my data will be shared with a panel of FCA-regulated solicitors to assess and progress my claim. <span class="required">*</span></span>
                   </label>
-                </div>
-
-                <!-- Section 3: Turnstile verification -->
-                <div class="step4-card step4-card--turnstile">
-                  <div class="step4-card__header">
-                    <div class="step4-card__icon">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h5 class="step4-card__title">Security Check</h5>
-                  </div>
-                  <div class="turnstile-wrapper">
-                    <div class="cf-turnstile"
-                         data-sitekey="0x4AAAAAAB67dne5ZoFf4DVi"
-                         data-callback="onTurnstileVerified"
-                         data-error-callback="onTurnstileError"
-                         data-expired-callback="onTurnstileExpired"></div>
-                  </div>
                 </div>
 
                 <!-- Error/success messages -->
@@ -2715,57 +2777,149 @@
   <!-- Turnstile callback functions (must be defined before Turnstile loads) -->
   <script>
     var turnstileVerified = false;
-    var turnstileLoadTime = Date.now();
+    var turnstileLoadTime = null;
+    var turnstileWidgetId = null;
+    var turnstileApiReady = false;
 
-    function enableSubmitButton() {
-      turnstileVerified = true;
+    function log(level, msg, data) {
+      var prefix = '[Turnstile] ';
+      if (data) {
+        console[level](prefix + msg, data);
+      } else {
+        console[level](prefix + msg);
+      }
+    }
+
+    function setTurnstileStatus(text, type) {
+      var el = document.getElementById('turnstile-status');
+      if (!el) return;
+      el.textContent = text;
+      el.className = 'turnstile-status';
+      if (type) el.classList.add('turnstile-status--' + type);
+    }
+
+    function setRetryVisible(visible) {
+      var btn = document.getElementById('turnstile-retry');
+      if (btn) btn.style.display = visible ? 'block' : 'none';
+    }
+
+    function setSubmitState(enabled, text) {
       var btn = document.getElementById('submit-button');
       var txt = document.getElementById('submit-text');
       var arrow = btn && btn.querySelector('.submit-arrow');
-
       if (btn) {
-        btn.disabled = false;
-        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        btn.disabled = !enabled;
+        if (enabled) btn.classList.remove('opacity-50', 'cursor-not-allowed');
       }
-      if (txt) txt.textContent = 'Submit Your Free Assessment';
-      if (arrow) arrow.style.display = '';
+      if (txt && text) txt.textContent = text;
+      if (arrow) arrow.style.display = enabled ? '' : 'none';
+    }
+
+    // Render Turnstile into the container (called when user reaches step 3)
+    function initTurnstile() {
+      if (turnstileWidgetId != null) {
+        log('info', 'Already initialised, skipping');
+        return;
+      }
+      if (!turnstileApiReady) {
+        log('warn', 'API not ready yet, will init when loaded');
+        window.__turnstilePendingInit = true;
+        return;
+      }
+      var container = document.getElementById('turnstile-container');
+      if (!container || typeof turnstile === 'undefined') return;
+
+      log('info', 'Rendering widget (early load on step 3)');
+      turnstileLoadTime = Date.now();
+      setTurnstileStatus('Verifying you\u2019re human\u2026');
+
+      container.innerHTML = '';
+      turnstileWidgetId = turnstile.render(container, {
+        sitekey: '0x4AAAAAAB67dne5ZoFf4DVi',
+        callback: onTurnstileVerified,
+        'error-callback': onTurnstileError,
+        'expired-callback': onTurnstileExpired
+      });
+      log('info', 'Widget rendered, id=' + turnstileWidgetId);
+    }
+
+    function resetTurnstileWidget() {
+      log('info', 'Resetting widget...');
+      setTurnstileStatus('Retrying security check\u2026');
+      setRetryVisible(false);
+      setSubmitState(false, 'Verifying security...');
+      turnstileVerified = false;
+      turnstileLoadTime = Date.now();
+
+      if (typeof turnstile !== 'undefined') {
+        try {
+          var container = document.getElementById('turnstile-container');
+          if (container) {
+            if (turnstileWidgetId != null) {
+              turnstile.remove(turnstileWidgetId);
+            }
+            container.innerHTML = '';
+            turnstileWidgetId = turnstile.render(container, {
+              sitekey: '0x4AAAAAAB67dne5ZoFf4DVi',
+              callback: onTurnstileVerified,
+              'error-callback': onTurnstileError,
+              'expired-callback': onTurnstileExpired
+            });
+            log('info', 'Widget re-rendered, id=' + turnstileWidgetId);
+          }
+        } catch (err) {
+          log('error', 'Reset failed', err);
+          setTurnstileStatus('Security check unavailable. Please refresh the page.', 'error');
+        }
+      }
+    }
+
+    // Called by Turnstile API script onload
+    function onTurnstileApiReady() {
+      log('info', 'API script loaded');
+      turnstileApiReady = true;
+      // If initTurnstile was called before API was ready, run it now
+      if (window.__turnstilePendingInit) {
+        window.__turnstilePendingInit = false;
+        initTurnstile();
+      }
     }
 
     function onTurnstileVerified(token) {
-      console.log('[Turnstile] Verification successful');
-      var elapsed = Date.now() - turnstileLoadTime;
-      var minDelay = 2000;
-
-      if (elapsed < minDelay) {
-        setTimeout(enableSubmitButton, minDelay - elapsed);
-      } else {
-        enableSubmitButton();
-      }
+      log('info', 'Verification successful (token length: ' + (token || '').length + ')');
+      setTurnstileStatus('Verified \u2713', 'success');
+      setRetryVisible(false);
+      turnstileVerified = true;
+      setSubmitState(true, 'Submit Your Free Assessment');
     }
 
-    function onTurnstileError() {
-      console.error('[Turnstile] Verification failed');
+    function onTurnstileError(errorCode) {
+      log('error', 'Verification failed', { errorCode: errorCode });
       turnstileVerified = false;
-      var btn = document.getElementById('submit-button');
-      var txt = document.getElementById('submit-text');
-      if (btn) btn.disabled = true;
-      if (txt) txt.textContent = 'Security check failed \u2013 Please refresh';
+      setSubmitState(false, 'Security check failed');
+      setTurnstileStatus('Security check failed \u2013 click retry below', 'error');
+      setRetryVisible(true);
     }
 
     function onTurnstileExpired() {
-      console.warn('[Turnstile] Token expired');
+      log('warn', 'Token expired');
       turnstileVerified = false;
-      var btn = document.getElementById('submit-button');
-      var txt = document.getElementById('submit-text');
-      var arrow = btn && btn.querySelector('.submit-arrow');
-      if (btn) btn.disabled = true;
-      if (txt) txt.textContent = 'Security expired \u2013 Please refresh';
-      if (arrow) arrow.style.display = 'none';
+      setSubmitState(false, 'Security expired');
+      setTurnstileStatus('Security check expired \u2013 click retry below', 'error');
+      setRetryVisible(true);
     }
+
+    // Bind retry button
+    document.addEventListener('DOMContentLoaded', function() {
+      var retryBtn = document.getElementById('turnstile-retry');
+      if (retryBtn) {
+        retryBtn.addEventListener('click', resetTurnstileWidget);
+      }
+    });
   </script>
 
-  <!-- Cloudflare Turnstile: loads the widget rendered in Step 4 -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <!-- Cloudflare Turnstile: loaded with explicit rendering (triggered on step 3) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileApiReady" async defer></script>
   <script src="/src/js/forms.js"></script>
 
   <script>
@@ -2773,6 +2927,182 @@
       // ---- Time trap ----
       var tsField = document.getElementById('form_started_at');
       if (tsField) tsField.value = String(Date.now());
+
+      // ---- localStorage form persistence ----
+      var IVA_STORAGE_KEY = 'iva_form_draft';
+      var ivaForm = document.getElementById('iva-claim-form');
+
+      var fieldsToSave = [
+        'fullName', 'email', 'phone_local', 'dob',
+        'currentAddress', 'city', 'postcode',
+        'ivaProvider', 'otherProvider', 'ivaStatus', 'ivaRef',
+        'warnedOfRisks', 'paymentAffordable', 'salesApproach', 'notes',
+        'consentGiven'
+      ];
+
+      function saveIvaFormData() {
+        if (!ivaForm) return;
+        try {
+          var data = {};
+          fieldsToSave.forEach(function(name) {
+            var el = ivaForm.querySelector('[name="' + name + '"]');
+            if (!el) return;
+            if (el.type === 'radio') {
+              var checked = ivaForm.querySelector('[name="' + name + '"]:checked');
+              if (checked) data[name] = checked.value;
+            } else if (el.type === 'checkbox') {
+              data[name] = el.checked ? el.value : '';
+            } else {
+              data[name] = el.value || '';
+            }
+          });
+          localStorage.setItem(IVA_STORAGE_KEY, JSON.stringify(data));
+        } catch (e) {}
+      }
+
+      function restoreIvaFormData() {
+        if (!ivaForm) return false;
+        try {
+          var raw = localStorage.getItem(IVA_STORAGE_KEY);
+          if (!raw) return false;
+          var data = JSON.parse(raw);
+          if (!data || typeof data !== 'object') return false;
+
+          var restored = false;
+          fieldsToSave.forEach(function(name) {
+            if (!data[name]) return;
+            var el = ivaForm.querySelector('[name="' + name + '"]');
+            if (!el) return;
+            if (el.type === 'radio') {
+              var target = ivaForm.querySelector('[name="' + name + '"][value="' + data[name] + '"]');
+              if (target) {
+                target.checked = true;
+                restored = true;
+                target.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+            } else if (el.type === 'checkbox') {
+              el.checked = !!data[name];
+              if (data[name]) restored = true;
+            } else {
+              if (data[name]) {
+                el.value = data[name];
+                restored = true;
+              }
+            }
+          });
+
+          // If ivaProvider was restored to "Other", show the other field
+          if (data.ivaProvider === 'Other') {
+            var otherField = document.getElementById('otherProviderField');
+            if (otherField) otherField.classList.add('is-visible');
+          }
+
+          return restored;
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function clearIvaFormData() {
+        try { localStorage.removeItem(IVA_STORAGE_KEY); } catch (e) {}
+      }
+
+      // Expose for forms.js
+      window.__becFormPersistence = {
+        clear: clearIvaFormData,
+        save: saveIvaFormData
+      };
+
+      // Restore saved data on load
+      if (ivaForm) {
+        var wasRestored = restoreIvaFormData();
+        if (wasRestored) {
+          var banner = document.getElementById('restored-data-banner');
+          if (banner) banner.classList.add('is-visible');
+          console.log('[IVA Form] Restored saved form data from localStorage');
+        }
+
+        var dismissBtn = document.getElementById('dismiss-restored-banner');
+        if (dismissBtn) {
+          dismissBtn.addEventListener('click', function() {
+            var banner = document.getElementById('restored-data-banner');
+            if (banner) banner.classList.remove('is-visible');
+          });
+        }
+
+        // Auto-save on input/change (debounced)
+        var saveTimeout;
+        ivaForm.addEventListener('input', function() {
+          clearTimeout(saveTimeout);
+          saveTimeout = setTimeout(saveIvaFormData, 500);
+        });
+        ivaForm.addEventListener('change', function() {
+          clearTimeout(saveTimeout);
+          saveIvaFormData();
+        });
+      }
+
+      // ---- DOB auto-formatting (DD/MM/YYYY) ----
+      var dobInput = document.getElementById('dob');
+      if (dobInput) {
+        dobInput.addEventListener('input', function(e) {
+          var val = e.target.value.replace(/\D/g, '');
+          if (val.length >= 2) {
+            val = val.slice(0, 2) + '/' + val.slice(2);
+          }
+          if (val.length >= 5) {
+            val = val.slice(0, 5) + '/' + val.slice(5, 9);
+          }
+          e.target.value = val;
+        });
+
+        dobInput.addEventListener('blur', function(e) {
+          var value = e.target.value;
+          if (!value) return;
+          var match = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+          if (!match) {
+            e.target.style.borderColor = 'var(--error-red)';
+            e.target.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.15)';
+            return;
+          }
+          var day = parseInt(match[1], 10);
+          var month = parseInt(match[2], 10);
+          var year = parseInt(match[3], 10);
+          var date = new Date(year, month - 1, day);
+
+          if (date.getDate() !== day || date.getMonth() !== month - 1 || date.getFullYear() !== year) {
+            e.target.style.borderColor = 'var(--error-red)';
+            e.target.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.15)';
+            return;
+          }
+
+          // Age check: must be 18+
+          var today = new Date();
+          var age = today.getFullYear() - year;
+          var monthDiff = today.getMonth() - (month - 1);
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < day)) age--;
+          if (age < 18 || age > 120) {
+            e.target.style.borderColor = 'var(--error-red)';
+            e.target.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.15)';
+            return;
+          }
+
+          // Valid - clear error styling
+          e.target.style.borderColor = '';
+          e.target.style.boxShadow = '';
+        });
+
+        // Convert DD/MM/YYYY to YYYY-MM-DD before submission for backend
+        if (ivaForm) {
+          ivaForm.addEventListener('submit', function() {
+            var val = dobInput.value;
+            var match = val.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+            if (match) {
+              dobInput.value = match[3] + '-' + match[2] + '-' + match[1];
+            }
+          });
+        }
+      }
 
       // ---- Hamburger toggle ----
       var toggle = document.getElementById('nav-toggle');
@@ -2827,6 +3157,16 @@
           else if (i === index) dot.classList.add('active');
         });
 
+        // Early Turnstile loading: render when user reaches step 3 (index 2)
+        if (index === 2) {
+          initTurnstile();
+        }
+
+        // If user reaches submit step and Turnstile expired, auto-refresh it
+        if (index === 3 && !turnstileVerified && turnstileWidgetId != null) {
+          resetTurnstileWidget();
+        }
+
         var card = document.querySelector('.form-card');
         if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
@@ -2834,7 +3174,7 @@
       function validateStep(stepEl) {
         var valid = true;
 
-        // Text/email/date/select inputs
+        // Text/email/select inputs (DOB is now type=text, so it's caught here too)
         var required = stepEl.querySelectorAll('input[required]:not([type="radio"]):not([type="checkbox"]), select[required]');
         required.forEach(function(field) {
           if (!field.value || !field.value.trim()) {
@@ -2851,6 +3191,34 @@
               field.style.boxShadow = '';
               field.removeEventListener('change', handler);
             });
+          }
+
+          // Extra DOB validation: must be valid DD/MM/YYYY and 18+
+          if (field.id === 'dob' && field.value) {
+            var match = field.value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+            if (!match) {
+              field.style.borderColor = 'var(--error-red)';
+              field.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.15)';
+              valid = false;
+            } else {
+              var d = parseInt(match[1], 10), m = parseInt(match[2], 10), y = parseInt(match[3], 10);
+              var dt = new Date(y, m - 1, d);
+              if (dt.getDate() !== d || dt.getMonth() !== m - 1 || dt.getFullYear() !== y) {
+                field.style.borderColor = 'var(--error-red)';
+                field.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.15)';
+                valid = false;
+              } else {
+                var today = new Date();
+                var age = today.getFullYear() - y;
+                var mDiff = today.getMonth() - (m - 1);
+                if (mDiff < 0 || (mDiff === 0 && today.getDate() < d)) age--;
+                if (age < 18) {
+                  field.style.borderColor = 'var(--error-red)';
+                  field.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.15)';
+                  valid = false;
+                }
+              }
+            }
           }
         });
 

@@ -1363,6 +1363,60 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Restored-data banner */
+    .restored-data-banner {
+      display: none;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      margin-bottom: var(--space-md);
+      background: rgba(49, 130, 206, 0.08);
+      border: 1px solid rgba(49, 130, 206, 0.25);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      color: #2b6cb0;
+    }
+    .restored-data-banner.is-visible { display: flex; }
+    .restored-data-banner svg { flex-shrink: 0; }
+    .restored-data-banner__dismiss {
+      margin-left: auto;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #2b6cb0;
+      font-size: var(--text-base);
+      padding: 0 var(--space-xs);
+      line-height: 1;
+    }
+
+    /* Turnstile status text */
+    .turnstile-status {
+      text-align: center;
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      margin-top: var(--space-xs);
+      min-height: 1.4em;
+    }
+    .turnstile-status--error { color: var(--error-red); }
+    .turnstile-status--success { color: var(--success-green); }
+
+    /* Turnstile retry button */
+    .turnstile-retry-btn {
+      display: none;
+      margin: var(--space-sm) auto 0;
+      padding: var(--space-xs) var(--space-md);
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--bec-accent);
+      background: rgba(255, 107, 53, 0.08);
+      border: 1px solid rgba(255, 107, 53, 0.3);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-family: var(--font-family);
+      transition: background var(--transition-fast);
+    }
+    .turnstile-retry-btn:hover { background: rgba(255, 107, 53, 0.15); }
+
     @media (min-width: 480px) {
       .btn--submit-premium {
         max-width: 380px;
@@ -1853,6 +1907,12 @@
               </div>
               <input type="hidden" name="form_started_at" id="form_started_at" value="">
 
+              <!-- Restored data banner -->
+              <div class="restored-data-banner" id="restored-data-banner" role="status">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>We've restored your previous form data.</span>
+                <button type="button" class="restored-data-banner__dismiss" id="dismiss-restored-banner" aria-label="Dismiss">&times;</button>
+              </div>
 
               <!-- STEP 1: Company Details -->
               <div class="form-step active" data-step="0">
@@ -2121,12 +2181,16 @@
                     <h5 class="step4-card__title">Security Check</h5>
                   </div>
                   <div class="turnstile-wrapper">
-                    <div class="cf-turnstile"
-                         data-sitekey="0x4AAAAAAB67dne5ZoFf4DVi"
-                         data-callback="onTurnstileVerified"
-                         data-error-callback="onTurnstileError"
-                         data-expired-callback="onTurnstileExpired"></div>
+                    <div id="turnstile-container">
+                      <div class="cf-turnstile"
+                           data-sitekey="0x4AAAAAAB67dne5ZoFf4DVi"
+                           data-callback="onTurnstileVerified"
+                           data-error-callback="onTurnstileError"
+                           data-expired-callback="onTurnstileExpired"></div>
+                    </div>
                   </div>
+                  <p class="turnstile-status" id="turnstile-status">Loading security check&hellip;</p>
+                  <button type="button" class="turnstile-retry-btn" id="turnstile-retry">Retry security check</button>
                 </div>
 
                 <!-- Error/success messages -->
@@ -2572,52 +2636,138 @@
   <script>
     var turnstileVerified = false;
     var turnstileLoadTime = Date.now();
+    var turnstileWidgetId = null;
 
-    function enableSubmitButton() {
-      turnstileVerified = true;
+    function log(level, msg, data) {
+      var prefix = '[Turnstile] ';
+      if (data) {
+        console[level](prefix + msg, data);
+      } else {
+        console[level](prefix + msg);
+      }
+    }
+
+    function setTurnstileStatus(text, type) {
+      var el = document.getElementById('turnstile-status');
+      if (!el) return;
+      el.textContent = text;
+      el.className = 'turnstile-status';
+      if (type) el.classList.add('turnstile-status--' + type);
+    }
+
+    function setRetryVisible(visible) {
+      var btn = document.getElementById('turnstile-retry');
+      if (btn) btn.style.display = visible ? 'block' : 'none';
+    }
+
+    function setSubmitState(enabled, text) {
       var btn = document.getElementById('submit-button');
       var txt = document.getElementById('submit-text');
       var arrow = btn && btn.querySelector('.submit-arrow');
-
       if (btn) {
-        btn.disabled = false;
-        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        btn.disabled = !enabled;
+        if (enabled) {
+          btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
       }
-      if (txt) txt.textContent = 'Submit Your Free Assessment';
-      if (arrow) arrow.style.display = '';
+      if (txt && text) txt.textContent = text;
+      if (arrow) arrow.style.display = enabled ? '' : 'none';
+    }
+
+    function resetTurnstileWidget() {
+      log('info', 'Resetting widget...');
+      setTurnstileStatus('Retrying security check\u2026');
+      setRetryVisible(false);
+      setSubmitState(false, 'Verifying security...');
+      turnstileVerified = false;
+      turnstileLoadTime = Date.now();
+
+      if (typeof turnstile !== 'undefined') {
+        try {
+          // Remove and re-render for a clean state
+          var container = document.getElementById('turnstile-container');
+          if (container) {
+            if (turnstileWidgetId != null) {
+              turnstile.remove(turnstileWidgetId);
+            }
+            container.innerHTML = '';
+            turnstileWidgetId = turnstile.render(container, {
+              sitekey: '0x4AAAAAAB67dne5ZoFf4DVi',
+              callback: onTurnstileVerified,
+              'error-callback': onTurnstileError,
+              'expired-callback': onTurnstileExpired
+            });
+            log('info', 'Widget re-rendered, id=' + turnstileWidgetId);
+          }
+        } catch (err) {
+          log('error', 'Reset failed', err);
+          setTurnstileStatus('Security check unavailable. Please refresh the page.', 'error');
+        }
+      } else {
+        log('warn', 'Turnstile API not loaded, reloading script...');
+        var script = document.createElement('script');
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad';
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    }
+
+    function onTurnstileLoad() {
+      log('info', 'API script loaded');
+      var container = document.getElementById('turnstile-container');
+      if (container && typeof turnstile !== 'undefined') {
+        container.innerHTML = '';
+        turnstileWidgetId = turnstile.render(container, {
+          sitekey: '0x4AAAAAAB67dne5ZoFf4DVi',
+          callback: onTurnstileVerified,
+          'error-callback': onTurnstileError,
+          'expired-callback': onTurnstileExpired
+        });
+      }
     }
 
     function onTurnstileVerified(token) {
-      console.log('[Turnstile] Verification successful');
+      log('info', 'Verification successful (token length: ' + (token || '').length + ')');
       var elapsed = Date.now() - turnstileLoadTime;
       var minDelay = 2000;
 
+      setTurnstileStatus('Security verified', 'success');
+      setRetryVisible(false);
+
       if (elapsed < minDelay) {
-        setTimeout(enableSubmitButton, minDelay - elapsed);
+        setTimeout(function() {
+          turnstileVerified = true;
+          setSubmitState(true, 'Submit Your Free Assessment');
+        }, minDelay - elapsed);
       } else {
-        enableSubmitButton();
+        turnstileVerified = true;
+        setSubmitState(true, 'Submit Your Free Assessment');
       }
     }
 
-    function onTurnstileError() {
-      console.error('[Turnstile] Verification failed');
+    function onTurnstileError(errorCode) {
+      log('error', 'Verification failed', { errorCode: errorCode });
       turnstileVerified = false;
-      var btn = document.getElementById('submit-button');
-      var txt = document.getElementById('submit-text');
-      if (btn) btn.disabled = true;
-      if (txt) txt.textContent = 'Security check failed \u2013 Please refresh';
+      setSubmitState(false, 'Security check failed');
+      setTurnstileStatus('Security check failed \u2013 click retry below', 'error');
+      setRetryVisible(true);
     }
 
     function onTurnstileExpired() {
-      console.warn('[Turnstile] Token expired');
+      log('warn', 'Token expired');
       turnstileVerified = false;
-      var btn = document.getElementById('submit-button');
-      var txt = document.getElementById('submit-text');
-      var arrow = btn && btn.querySelector('.submit-arrow');
-      if (btn) btn.disabled = true;
-      if (txt) txt.textContent = 'Security expired \u2013 Please refresh';
-      if (arrow) arrow.style.display = 'none';
+      setSubmitState(false, 'Security expired');
+      setTurnstileStatus('Security check expired \u2013 click retry below', 'error');
+      setRetryVisible(true);
     }
+
+    // Bind retry button
+    document.addEventListener('DOMContentLoaded', function() {
+      var retryBtn = document.getElementById('turnstile-retry');
+      if (retryBtn) {
+        retryBtn.addEventListener('click', resetTurnstileWidget);
+      }
+    });
   </script>
 
   <!-- Scripts -->
@@ -2629,6 +2779,118 @@
       // ---- Time trap ----
       var tsField = document.getElementById('form_started_at');
       if (tsField) tsField.value = String(Date.now());
+
+      // ---- localStorage form persistence ----
+      var BEC_STORAGE_KEY = 'bec_form_draft';
+      var becForm = document.getElementById('bec-claim-form');
+
+      // Fields to save (by name attribute)
+      var fieldsToSave = [
+        'companyName', 'companyNumber', 'industrySector', 'employeeCount',
+        'addressLine1', 'addressLine2', 'city', 'county', 'postcode',
+        'usedBroker', 'brokerName', 'annualEnergySpend', 'commissionDisclosed',
+        'contactName', 'contactPosition', 'email', 'phone_local', 'preferredContact',
+        'privacyConsent'
+      ];
+
+      function saveBecFormData() {
+        if (!becForm) return;
+        try {
+          var data = {};
+          fieldsToSave.forEach(function(name) {
+            var el = becForm.querySelector('[name="' + name + '"]');
+            if (!el) return;
+            if (el.type === 'radio') {
+              var checked = becForm.querySelector('[name="' + name + '"]:checked');
+              if (checked) data[name] = checked.value;
+            } else if (el.type === 'checkbox') {
+              data[name] = el.checked ? el.value : '';
+            } else {
+              data[name] = el.value || '';
+            }
+          });
+          localStorage.setItem(BEC_STORAGE_KEY, JSON.stringify(data));
+        } catch (e) {
+          // localStorage may be unavailable (private browsing, full, etc.)
+        }
+      }
+
+      function restoreBecFormData() {
+        if (!becForm) return false;
+        try {
+          var raw = localStorage.getItem(BEC_STORAGE_KEY);
+          if (!raw) return false;
+          var data = JSON.parse(raw);
+          if (!data || typeof data !== 'object') return false;
+
+          var restored = false;
+          fieldsToSave.forEach(function(name) {
+            if (!data[name]) return;
+            var el = becForm.querySelector('[name="' + name + '"]');
+            if (!el) return;
+            if (el.type === 'radio') {
+              var target = becForm.querySelector('[name="' + name + '"][value="' + data[name] + '"]');
+              if (target) {
+                target.checked = true;
+                restored = true;
+                // Trigger change for any listeners (e.g. broker warning)
+                target.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+            } else if (el.type === 'checkbox') {
+              el.checked = !!data[name];
+              if (data[name]) restored = true;
+            } else {
+              if (data[name]) {
+                el.value = data[name];
+                restored = true;
+              }
+            }
+          });
+          return restored;
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function clearBecFormData() {
+        try { localStorage.removeItem(BEC_STORAGE_KEY); } catch (e) {}
+      }
+
+      // Expose for forms.js to call on successful submission
+      window.__becFormPersistence = {
+        clear: clearBecFormData,
+        save: saveBecFormData
+      };
+
+      // Restore saved data on load
+      if (becForm) {
+        var wasRestored = restoreBecFormData();
+        if (wasRestored) {
+          var banner = document.getElementById('restored-data-banner');
+          if (banner) banner.classList.add('is-visible');
+          console.log('[BEC Form] Restored saved form data from localStorage');
+        }
+
+        // Dismiss banner
+        var dismissBtn = document.getElementById('dismiss-restored-banner');
+        if (dismissBtn) {
+          dismissBtn.addEventListener('click', function() {
+            var banner = document.getElementById('restored-data-banner');
+            if (banner) banner.classList.remove('is-visible');
+          });
+        }
+
+        // Auto-save on input/change events (debounced)
+        var saveTimeout;
+        becForm.addEventListener('input', function() {
+          clearTimeout(saveTimeout);
+          saveTimeout = setTimeout(saveBecFormData, 500);
+        });
+        becForm.addEventListener('change', function() {
+          clearTimeout(saveTimeout);
+          saveBecFormData();
+        });
+      }
 
       // ---- Hamburger toggle ----
       var toggle = document.getElementById('nav-toggle');

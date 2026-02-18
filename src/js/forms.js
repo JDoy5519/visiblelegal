@@ -67,7 +67,11 @@
         try { turnstileToken = turnstile.getResponse(); } catch {}
       }
       if (!turnstileToken) {
-        showError(form, 'Please complete the bot check and try again.');
+        showError(form, 'Security check not complete. Please click "Retry security check" below the security widget.');
+        // Save form data before user potentially refreshes
+        if (window.__becFormPersistence && typeof window.__becFormPersistence.save === 'function') {
+          window.__becFormPersistence.save();
+        }
         setSubmitting(form, false);
         return;
       }
@@ -95,13 +99,24 @@
 
       if (!res.ok || !data?.ok) {
         console.error('[Submit] Server error', res.status, data);
-        const msg = data?.message || 'Sorry, we couldn\'t submit your form. Please try again.';
+        const msg = data?.message || data?.error || 'Sorry, we couldn\'t submit your form. Please try again.';
         showError(form, msg);
+        // If security check failed server-side, reset Turnstile so user can retry
+        if (msg.toLowerCase().includes('security check')) {
+          if (typeof resetTurnstileWidget === 'function') resetTurnstileWidget();
+        }
+        // Save form data in case user needs to refresh
+        if (window.__becFormPersistence && typeof window.__becFormPersistence.save === 'function') {
+          window.__becFormPersistence.save();
+        }
         setSubmitting(form, false);
         return; // IMPORTANT: stop here on failure
       }
 
-      // Success
+      // Success — clear saved form data before resetting
+      if (window.__becFormPersistence && typeof window.__becFormPersistence.clear === 'function') {
+        window.__becFormPersistence.clear();
+      }
       form.reset();
       form.classList.add('submitted');
 
@@ -140,6 +155,10 @@
     } catch (err) {
       console.error('[Submit] Network error', err);
       showError(form, 'Network error — please try again.');
+      // Save form data in case of network issues
+      if (window.__becFormPersistence && typeof window.__becFormPersistence.save === 'function') {
+        window.__becFormPersistence.save();
+      }
       setSubmitting(form, false);
     }
   }

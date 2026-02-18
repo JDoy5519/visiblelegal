@@ -61,7 +61,7 @@ exports.handler = async (event, context) => {
           return {
             statusCode: 400,
             headers: HEADERS,
-            body: JSON.stringify({ ok: false, message: 'Security check failed. Please refresh and try again.' })
+            body: JSON.stringify({ ok: false, message: 'Security check failed. Please retry the security check and submit again.' })
           };
         }
       } catch (err) {
@@ -69,7 +69,7 @@ exports.handler = async (event, context) => {
         return {
           statusCode: 400,
           headers: HEADERS,
-          body: JSON.stringify({ ok: false, message: 'Security check failed. Please refresh and try again.' })
+          body: JSON.stringify({ ok: false, message: 'Security check failed. Please retry the security check and submit again.' })
         };
       }
     } else if (!turnstileToken) {
