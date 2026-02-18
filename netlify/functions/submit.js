@@ -1,8 +1,6 @@
 // netlify/functions/submit.js
 export const config = { path: "/api/submit" };
 
-const TURNSTILE_VERIFY = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-
 const getIp = (headers) => {
   const raw =
     headers.get("x-nf-client-connection-ip") ||
@@ -68,6 +66,48 @@ const isDevRequest = (req) => {
   }
 };
 
+// Behavioral validation
+const BEHAVIOR_THRESHOLDS = {
+  minInteractions: 4,
+  minKeystrokes: 6,
+  minFieldFocuses: 2,
+  minTimeOnPage: 8,
+  maxPasteRatio: 0.85,
+  minFormChanges: 2
+};
+
+function validateBehavior(score) {
+  if (!score) return { pass: false, reason: "No behavioral data" };
+
+  const fails = [];
+  if (score.interactions < BEHAVIOR_THRESHOLDS.minInteractions) fails.push("interactions");
+  if (score.keystrokes < BEHAVIOR_THRESHOLDS.minKeystrokes) fails.push("keystrokes");
+  if (score.fieldFocuses < BEHAVIOR_THRESHOLDS.minFieldFocuses) fails.push("fieldFocuses");
+  if (score.timeOnPage < BEHAVIOR_THRESHOLDS.minTimeOnPage) fails.push("timeOnPage");
+  if (score.pasteRatio > BEHAVIOR_THRESHOLDS.maxPasteRatio) fails.push("pasteRatio");
+  if (score.formChanges < BEHAVIOR_THRESHOLDS.minFormChanges) fails.push("formChanges");
+
+  const pass = fails.length <= 1;
+  return { pass, fails, score };
+}
+
+// In-memory rate limiting
+const rateLimit = new Map();
+const RATE_WINDOW = 60 * 60 * 1000;
+const RATE_MAX = 5;
+
+function isRateLimited(key) {
+  if (!key) return false;
+  const now = Date.now();
+  const entry = rateLimit.get(key);
+  if (!entry || now - entry.start > RATE_WINDOW) {
+    rateLimit.set(key, { start: now, count: 1 });
+    return false;
+  }
+  entry.count++;
+  return entry.count > RATE_MAX;
+}
+
 async function sendMetaCapiLead({
   pixelId,
   accessToken,
@@ -79,7 +119,6 @@ async function sendMetaCapiLead({
   fields,
   cookieHeader
 }) {
-  // Your payload keys (these exist in your shown payload)
   const emailRaw = pickFirst(fields, ["email", "emailAddress", "userEmail"]);
   const phoneRaw = pickFirst(fields, ["phone_e164", "phone", "mobile", "phoneNumber", "phone_local"]);
 
@@ -124,7 +163,6 @@ async function sendMetaCapiLead({
     ]
   };
 
-  // ✅ KEY CHANGE: send test_event_code whenever env var exists (even without dev=1)
   if (testEventCode) body.test_event_code = testEventCode;
 
   const url = `https://graph.facebook.com/v24.0/${pixelId}/events?access_token=${accessToken}`;
@@ -153,7 +191,6 @@ export default async (req) => {
   }
 
   const {
-    TURNSTILE_SECRET_KEY,
     MAKE_WEBHOOK_IVA_URL,
     MAKE_WEBHOOK_QUERY_URL,
     MAKE_WEBHOOK_BEC_URL,
@@ -163,7 +200,7 @@ export default async (req) => {
     META_TEST_EVENT_CODE
   } = process.env;
 
-  if (!TURNSTILE_SECRET_KEY || !MAKE_WEBHOOK_IVA_URL || !MAKE_WEBHOOK_QUERY_URL) {
+  if (!MAKE_WEBHOOK_IVA_URL || !MAKE_WEBHOOK_QUERY_URL) {
     return new Response(JSON.stringify({ ok: false, message: "Server misconfigured" }), { status: 500 });
   }
 
@@ -209,7 +246,7 @@ export default async (req) => {
     return new Response(JSON.stringify({ ok: false, message: "Invalid JSON body" }), { status: 400 });
   }
 
-  const { formId, fields, turnstileToken, userAgent, sourceUrl, eventId: providedEventId } = body || {};
+  const { formId, fields, behaviorScore, userAgent, sourceUrl, eventId: providedEventId } = body || {};
   const eventId = providedEventId || crypto.randomUUID();
 
   // Validate payload structure
@@ -220,7 +257,7 @@ export default async (req) => {
           ok: false,
           code: "BAD_PAYLOAD",
           message: "Missing formId or fields",
-          expectedShape: "{formId, fields, turnstileToken, userAgent, sourceUrl, eventId}",
+          expectedShape: "{formId, fields, behaviorScore, userAgent, sourceUrl, eventId}",
           gotKeys: Object.keys(body || {}),
           eventId
         }),
@@ -230,6 +267,8 @@ export default async (req) => {
     return new Response(JSON.stringify({ ok: false, message: "Missing formId or fields" }), { status: 400 });
   }
 
+  const clientIp = getIp(req.headers);
+
   const payload = {
     formId,
     fields,
@@ -237,10 +276,10 @@ export default async (req) => {
     sourceUrl: sourceUrl || "",
     userAgent: userAgent || req.headers.get("user-agent") || "",
     received_at: new Date().toISOString(),
-    client_ip: getIp(req.headers)
+    client_ip: clientIp
   };
 
-  // Bypass mode: skip Turnstile and Make, return success
+  // Bypass mode: skip validation and Make, return success
   if (isBypass) {
     return new Response(
       JSON.stringify({
@@ -254,59 +293,37 @@ export default async (req) => {
     );
   }
 
-  // Validate Turnstile token
-  if (!turnstileToken) {
+  // ---- Behavioral validation ----
+  const behaviorResult = validateBehavior(behaviorScore);
+  if (!behaviorResult.pass) {
     if (isDev) {
       return new Response(
         JSON.stringify({
           ok: false,
-          code: "MISSING_TURNSTILE",
-          message: "Missing Turnstile token",
+          code: "BEHAVIOR_FAILED",
+          message: "Behavioral check failed",
+          behaviorResult,
           eventId
         }),
         { status: 400 }
       );
     }
-    return new Response(JSON.stringify({ ok: false, message: "Missing Turnstile token" }), { status: 400 });
+    return new Response(JSON.stringify({ ok: false, message: "Please complete the form naturally before submitting." }), { status: 400 });
   }
 
-  // Verify Turnstile
-  const verifyRes = await fetch(TURNSTILE_VERIFY, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      secret: TURNSTILE_SECRET_KEY,
-      response: turnstileToken,
-      remoteip: getIp(req.headers) || ""
-    })
-  });
-
-  const verifyJson = await verifyRes.json();
-  if (!verifyJson.success) {
-    if (isDev) {
-      return new Response(
-        JSON.stringify({
-          ok: false,
-          code: "TURNSTILE_FAILED",
-          message: "Bot check failed",
-          turnstile: {
-            success: verifyJson.success,
-            error_codes: verifyJson["error-codes"] || []
-          },
-          eventId
-        }),
-        { status: 403 }
-      );
-    }
-    return new Response(JSON.stringify({ ok: false, message: "Bot check failed" }), { status: 403 });
+  // ---- Rate limiting ----
+  const rateLimitKey = clientIp ? `submit:${clientIp}` : null;
+  if (isRateLimited(rateLimitKey)) {
+    return new Response(JSON.stringify({ ok: false, message: "Too many submissions. Please try again later." }), { status: 429 });
   }
 
+  // Map form IDs to webhook URLs
   const webhookUrl =
-    formId === "iva-check-form"
+    formId === "iva-claim-form"
       ? MAKE_WEBHOOK_IVA_URL
       : formId === "claimForm"
       ? MAKE_WEBHOOK_QUERY_URL
-      : formId === "bec-check-form"
+      : formId === "bec-claim-form"
       ? (MAKE_WEBHOOK_BEC_URL || MAKE_WEBHOOK_QUERY_URL)
       : null;
 
@@ -365,7 +382,7 @@ export default async (req) => {
         capi = await sendMetaCapiLead({
           pixelId: META_PIXEL_ID,
           accessToken: META_ACCESS_TOKEN,
-          testEventCode: META_TEST_EVENT_CODE || null, // ✅ always included if set
+          testEventCode: META_TEST_EVENT_CODE || null,
           eventId: payload.eventId,
           sourceUrl: payload.sourceUrl,
           clientIp: payload.client_ip,

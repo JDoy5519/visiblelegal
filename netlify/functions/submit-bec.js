@@ -1,5 +1,49 @@
 const https = require('https');
 
+// =============================================
+// In-memory rate limiting (per serverless instance)
+// =============================================
+const rateLimit = new Map();
+const RATE_WINDOW = 60 * 60 * 1000; // 1 hour
+const RATE_MAX = 5; // max submissions per key per window
+
+function isRateLimited(key) {
+  if (!key) return false;
+  const now = Date.now();
+  const entry = rateLimit.get(key);
+  if (!entry || now - entry.start > RATE_WINDOW) {
+    rateLimit.set(key, { start: now, count: 1 });
+    return false;
+  }
+  entry.count++;
+  return entry.count > RATE_MAX;
+}
+
+// Behavioral score thresholds for BEC form
+const BEHAVIOR_THRESHOLDS = {
+  minInteractions: 5,
+  minKeystrokes: 8,
+  minFieldFocuses: 2,
+  minTimeOnPage: 12,
+  maxPasteRatio: 0.8,
+  minFormChanges: 3
+};
+
+function validateBehavior(score) {
+  if (!score) return { pass: false, reason: 'No behavioral data' };
+
+  const fails = [];
+  if (score.interactions < BEHAVIOR_THRESHOLDS.minInteractions) fails.push('interactions');
+  if (score.keystrokes < BEHAVIOR_THRESHOLDS.minKeystrokes) fails.push('keystrokes');
+  if (score.fieldFocuses < BEHAVIOR_THRESHOLDS.minFieldFocuses) fails.push('fieldFocuses');
+  if (score.timeOnPage < BEHAVIOR_THRESHOLDS.minTimeOnPage) fails.push('timeOnPage');
+  if (score.pasteRatio > BEHAVIOR_THRESHOLDS.maxPasteRatio) fails.push('pasteRatio');
+  if (score.formChanges < BEHAVIOR_THRESHOLDS.minFormChanges) fails.push('formChanges');
+
+  const pass = fails.length <= 1; // Allow 1 marginal fail
+  return { pass, fails, score };
+}
+
 exports.handler = async (event, context) => {
   const HEADERS = {
     'Access-Control-Allow-Origin': '*',
@@ -25,9 +69,9 @@ exports.handler = async (event, context) => {
   try {
     const raw = JSON.parse(event.body);
 
-    // forms.js sends { formId, fields, turnstileToken, sourceUrl, userAgent, eventId }
+    // forms.js sends { formId, fields, behaviorScore, sourceUrl, userAgent, eventId }
     const fields = raw.fields || raw;
-    const turnstileToken = raw.turnstileToken || fields['cf-turnstile-response'] || '';
+    const behaviorScore = raw.behaviorScore || null;
     const sourceUrl = raw.sourceUrl || fields.source_url || event.headers.referer || null;
     const userAgent = raw.userAgent || event.headers['user-agent'] || null;
     const ip = event.headers['x-forwarded-for'] || event.headers['x-nf-client-connection-ip'] || event.headers['x-real-ip'] || null;
@@ -52,31 +96,26 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // ---- Turnstile verification ----
-    if (process.env.TURNSTILE_SECRET_KEY && turnstileToken) {
-      try {
-        const turnstileResult = await verifyTurnstile(turnstileToken, ip);
-        if (!turnstileResult.success) {
-          console.error('Turnstile verification failed:', turnstileResult);
-          return {
-            statusCode: 400,
-            headers: HEADERS,
-            body: JSON.stringify({ ok: false, message: 'Security check failed. Please retry the security check and submit again.' })
-          };
-        }
-      } catch (err) {
-        console.error('Turnstile verification error:', err);
-        return {
-          statusCode: 400,
-          headers: HEADERS,
-          body: JSON.stringify({ ok: false, message: 'Security check failed. Please retry the security check and submit again.' })
-        };
-      }
-    } else if (!turnstileToken) {
+    // ---- Behavioral validation ----
+    const behaviorResult = validateBehavior(behaviorScore);
+    console.log('[BEC] Behavioral validation:', JSON.stringify(behaviorResult));
+    if (!behaviorResult.pass) {
       return {
         statusCode: 400,
         headers: HEADERS,
-        body: JSON.stringify({ ok: false, message: 'Please complete the security check.' })
+        body: JSON.stringify({ ok: false, message: 'Please complete the form naturally before submitting.' })
+      };
+    }
+
+    // ---- Rate limiting ----
+    const email = (fields.email || '').toLowerCase().trim();
+    const rateLimitKey = `bec:${ip || email}`;
+    if (isRateLimited(rateLimitKey)) {
+      console.warn('[BEC] Rate limited:', rateLimitKey);
+      return {
+        statusCode: 429,
+        headers: HEADERS,
+        body: JSON.stringify({ ok: false, message: 'Too many submissions. Please try again later.' })
       };
     }
 
@@ -105,7 +144,7 @@ exports.handler = async (event, context) => {
       // Contact
       contact_name: sanitize(fields.contactName),
       contact_position: sanitize(fields.contactPosition),
-      email: (fields.email || '').toLowerCase().trim(),
+      email: email,
       phone: fields.phone_local || fields.phone_e164 || null,
       preferred_contact: fields.preferredContact || null,
       // Company
@@ -221,37 +260,6 @@ function sanitize(str) {
 
 function containsUrl(text) {
   return /(https?:\/\/|www\.)[^\s]+/i.test(text || '');
-}
-
-async function verifyTurnstile(token, ip) {
-  const formData = new URLSearchParams();
-  formData.append('secret', process.env.TURNSTILE_SECRET_KEY);
-  formData.append('response', token);
-  if (ip) formData.append('remoteip', ip);
-
-  return new Promise((resolve, reject) => {
-    const body = formData.toString();
-    const req = https.request({
-      hostname: 'challenges.cloudflare.com',
-      port: 443,
-      path: '/turnstile/v0/siteverify',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Length': Buffer.byteLength(body)
-      }
-    }, (res) => {
-      let data = '';
-      res.on('data', (chunk) => { data += chunk; });
-      res.on('end', () => {
-        try { resolve(JSON.parse(data)); }
-        catch (e) { reject(e); }
-      });
-    });
-    req.on('error', reject);
-    req.write(body);
-    req.end();
-  });
 }
 
 async function sendToWebhook(url, payload) {

@@ -1,138 +1,192 @@
-// src/js/forms.js — unified forms controller
+// src/js/forms.js — Visible Legal Marketing forms controller v2.0
+// Invisible spam protection with behavioral analysis
 (() => {
-  // Boot once
   if (window.__FORMS_BOOTED__) return;
   window.__FORMS_BOOTED__ = true;
 
   const API_ENDPOINT = "/api/submit";
-  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-  function formToObject(form) {
-    const fd = new FormData(form);
-    const obj = {};
-    for (const [k, v] of fd.entries()) {
-      obj[k] = obj[k] ? [].concat(obj[k], v) : v;
-    }
-    return obj;
-  }
-
-  async function postWithRetry(url, options, retries = 1) {
-    try {
-      const controller = new AbortController();
-      const t = setTimeout(() => controller.abort(), 8000);
-      const resp = await fetch(url, { ...options, signal: controller.signal });
-      clearTimeout(t);
-      return resp;
-    } catch (err) {
-      if (retries > 0) {
-        await sleep(300);
-        return postWithRetry(url, options, retries - 1);
+  // ═══════════════════════════════════════════════════════════════
+  // FORM-SPECIFIC CONFIGURATION — mobile-optimized thresholds
+  // ═══════════════════════════════════════════════════════════════
+  const FORM_CONFIG = {
+    'bec-claim-form': {
+      name: 'BEC',
+      thresholds: {
+        minInteractions: 8,
+        minKeystrokes: 15,
+        minFieldFocuses: 3,
+        minTimeOnPage: 20,
+        maxPasteRatio: 0.7,
+        minFormChanges: 5
       }
-      throw err;
+    },
+    'iva-claim-form': {
+      name: 'IVA',
+      thresholds: {
+        minInteractions: 10,
+        minKeystrokes: 25,
+        minFieldFocuses: 5,
+        minTimeOnPage: 35,
+        maxPasteRatio: 0.6,
+        minFormChanges: 7
+      }
+    },
+    'claimForm': {
+      name: 'Query',
+      thresholds: {
+        minInteractions: 5,
+        minKeystrokes: 10,
+        minFieldFocuses: 2,
+        minTimeOnPage: 10,
+        maxPasteRatio: 0.8,
+        minFormChanges: 3
+      }
     }
-  }
+  };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    bindFormsOnce();
-  });
+  // ═══════════════════════════════════════════════════════════════
+  // BEHAVIORAL TRACKING
+  // ═══════════════════════════════════════════════════════════════
+  const formBehavior = new Map();
 
-  function bindFormsOnce() {
-    const forms = document.querySelectorAll('form[data-protect="true"], form[data-form]');
-    forms.forEach((form) => {
-      if (form.dataset.bound === '1') return;
-      form.addEventListener('submit', handleSubmit, { passive: false });
-      form.dataset.bound = '1';
+  function initBehaviorTracking(form, formId) {
+    const behavior = {
+      interactions: 0,
+      keystrokes: 0,
+      fieldFocuses: 0,
+      pasteEvents: 0,
+      formChanges: 0,
+      startTime: Date.now(),
+      fieldsPasted: new Set(),
+      fieldsChanged: new Set()
+    };
+
+    formBehavior.set(formId, behavior);
+
+    // Track interactions (touch + click for mobile)
+    const trackInteraction = () => behavior.interactions++;
+    document.addEventListener('click', trackInteraction, { passive: true });
+    document.addEventListener('touchstart', trackInteraction, { passive: true });
+
+    // Track keystrokes
+    form.addEventListener('keydown', () => behavior.keystrokes++, { passive: true });
+
+    // Track field interactions
+    form.querySelectorAll('input, select, textarea').forEach(field => {
+      if (field.type === 'hidden' || field.closest('.ohnohoney')) return;
+
+      field.addEventListener('focus', () => {
+        behavior.fieldFocuses++;
+      }, { passive: true });
+
+      field.addEventListener('paste', () => {
+        behavior.pasteEvents++;
+        behavior.fieldsPasted.add(field.name);
+      }, { passive: true });
+
+      field.addEventListener('change', () => {
+        behavior.fieldsChanged.add(field.name);
+        behavior.formChanges = behavior.fieldsChanged.size;
+      }, { passive: true });
+
+      if (['text', 'email', 'tel'].includes(field.type) || field.tagName === 'TEXTAREA') {
+        field.addEventListener('input', () => {
+          behavior.fieldsChanged.add(field.name);
+          behavior.formChanges = behavior.fieldsChanged.size;
+        }, { passive: true });
+      }
     });
+
+    console.log(`[Behavior] Tracking initialized for ${formId}`);
   }
 
+  function getBehaviorScore(formId) {
+    const behavior = formBehavior.get(formId);
+    if (!behavior) return null;
+
+    const timeOnPage = Math.floor((Date.now() - behavior.startTime) / 1000);
+    const totalFields = behavior.fieldsChanged.size + behavior.fieldsPasted.size;
+    const pasteRatio = totalFields > 0 ? behavior.fieldsPasted.size / totalFields : 0;
+
+    return {
+      interactions: behavior.interactions,
+      keystrokes: behavior.keystrokes,
+      fieldFocuses: behavior.fieldFocuses,
+      pasteEvents: behavior.pasteEvents,
+      formChanges: behavior.formChanges,
+      timeOnPage,
+      pasteRatio: Math.round(pasteRatio * 100) / 100
+    };
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // FORM SUBMISSION
+  // ═══════════════════════════════════════════════════════════════
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
+    const formId = form.id || 'unknown-form';
 
-    // Prevent double-submits
     if (form.dataset.submitting === '1') return;
 
-    // Clear messages
-    hideInlineMsg(form, '.form-error');
-    hideInlineMsg(form, '.success-message');
+    clearMessages(form);
 
     try {
       setSubmitting(form, true);
 
-      // Turnstile token
-      let turnstileToken = '';
-      const hidden = form.querySelector('input[name="cf-turnstile-response"]');
-      if (hidden?.value) turnstileToken = hidden.value;
-      if (!turnstileToken && typeof turnstile !== 'undefined' && typeof turnstile.getResponse === 'function') {
-        try { turnstileToken = turnstile.getResponse(); } catch {}
-      }
-      if (!turnstileToken) {
-        showError(form, 'Security check not complete. Please click "Retry security check" below the security widget.');
-        // Save form data before user potentially refreshes
-        if (window.__becFormPersistence && typeof window.__becFormPersistence.save === 'function') {
-          window.__becFormPersistence.save();
-        }
-        setSubmitting(form, false);
-        return;
-      }
+      const behaviorScore = getBehaviorScore(formId);
+      console.log(`[Submit] ${formId}`, behaviorScore);
 
-      // Build payload
-      const fields  = formToObject(form);
-      const formId  = form.id || 'unknown-form';
-      const eventId = (crypto?.randomUUID && crypto.randomUUID()) || String(Date.now());
+      const fields = formToObject(form);
+      const eventId = crypto?.randomUUID?.() || String(Date.now());
 
-      const res = await postWithRetry(window.API_ENDPOINT || form.action || API_ENDPOINT, {
+      const payload = {
+        formId,
+        fields,
+        behaviorScore,
+        sourceUrl: location.href,
+        userAgent: navigator.userAgent,
+        eventId
+      };
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+
+      const res = await fetch(form.action || API_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          formId,
-          fields,
-          turnstileToken,
-          sourceUrl: location.href,
-          userAgent: navigator.userAgent,
-          eventId
-        })
+        body: JSON.stringify(payload),
+        signal: controller.signal
       });
+      clearTimeout(timeout);
 
       let data = null;
       try { data = await res.json(); } catch {}
 
       if (!res.ok || !data?.ok) {
-        console.error('[Submit] Server error', res.status, data);
         const msg = data?.message || data?.error || 'Sorry, we couldn\'t submit your form. Please try again.';
+        console.error('[Submit] Error', res.status, data);
         showError(form, msg);
-        // If security check failed server-side, reset Turnstile so user can retry
-        if (msg.toLowerCase().includes('security check')) {
-          if (typeof resetTurnstileWidget === 'function') resetTurnstileWidget();
-        }
-        // Save form data in case user needs to refresh
-        if (window.__becFormPersistence && typeof window.__becFormPersistence.save === 'function') {
-          window.__becFormPersistence.save();
-        }
         setSubmitting(form, false);
-        return; // IMPORTANT: stop here on failure
+        return;
       }
 
-      // Success — clear saved form data before resetting
-      if (window.__becFormPersistence && typeof window.__becFormPersistence.clear === 'function') {
-        window.__becFormPersistence.clear();
-      }
+      // Success
+      console.log('[Submit] Success', eventId);
       form.reset();
       form.classList.add('submitted');
 
-      // Prefer showing the on-brand thank you modal if it exists
-      const successModal = document.getElementById('thank-you');
-      if (successModal) {
-        // Reveal modal, update ARIA, and reset the multi-step UI to step 1
-        successModal.classList.remove('hidden');
-        successModal.classList.add('show', 'fade-in');
-        successModal.setAttribute('aria-hidden', 'false');
+      const modal = document.getElementById('thank-you');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('show', 'fade-in');
+        modal.setAttribute('aria-hidden', 'false');
 
         try {
-          // If your multi-step flow needs a visual reset, do it gently:
-          const steps = document.querySelectorAll('.form-step');
+          const steps = form.querySelectorAll('.form-step');
           steps.forEach(s => s.classList.remove('active'));
-          const first = document.querySelector('.form-step[data-step="0"]');
+          const first = form.querySelector('.form-step[data-step="0"]');
           if (first) first.classList.add('active');
 
           const bar = document.getElementById('progress-bar');
@@ -141,30 +195,38 @@
           if (lab) lab.textContent = `Step 1 of ${steps.length || 4}`;
         } catch {}
 
-        // Optional: announce success to pixels/analytics without duplicating old logic
+        // Analytics event
         try {
-          window.dispatchEvent(new CustomEvent('vlm:iva-submitted', { detail: { ok: true } }));
+          window.dispatchEvent(new CustomEvent('vlm:form-submitted', { detail: { ok: true, formId, eventId } }));
         } catch {}
-
-        setSubmitting(form, false);
       } else {
-        // Fallback (no modal in DOM): show inline success
-        showSuccess(form, 'Thanks — we\'ve got your details!');
-        setSubmitting(form, false);
+        showSuccess(form, 'Thank you! We\'ve received your submission.');
       }
+
+      setSubmitting(form, false);
+
     } catch (err) {
       console.error('[Submit] Network error', err);
-      showError(form, 'Network error — please try again.');
-      // Save form data in case of network issues
-      if (window.__becFormPersistence && typeof window.__becFormPersistence.save === 'function') {
-        window.__becFormPersistence.save();
-      }
+      showError(form, 'Network error. Please check your connection and try again.');
       setSubmitting(form, false);
     }
   }
 
+  // ═══════════════════════════════════════════════════════════════
+  // HELPERS
+  // ═══════════════════════════════════════════════════════════════
+  function formToObject(form) {
+    const fd = new FormData(form);
+    const obj = {};
+    for (const [k, v] of fd.entries()) {
+      if (k === 'company_website') continue; // Skip honeypot
+      obj[k] = obj[k] ? [].concat(obj[k], v) : v;
+    }
+    return obj;
+  }
+
   function setSubmitting(form, isSubmitting) {
-    const btn = form.querySelector('button[type="submit"], [type="submit"]');
+    const btn = form.querySelector('button[type="submit"]');
     if (!btn) {
       form.dataset.submitting = isSubmitting ? '1' : '';
       return;
@@ -172,76 +234,70 @@
     if (!btn.dataset.originalText) {
       btn.dataset.originalText = (btn.textContent || '').trim();
     }
-    const loadingText = btn.getAttribute('data-loading-text') || 'Submitting…';
+    const loadingText = btn.getAttribute('data-loading-text') || 'Submitting\u2026';
     btn.disabled = !!isSubmitting;
     btn.setAttribute('aria-busy', String(!!isSubmitting));
     form.dataset.submitting = isSubmitting ? '1' : '';
     btn.textContent = isSubmitting ? loadingText : btn.dataset.originalText;
   }
 
-  // ---------- Inline + Toast UI ----------
-  function hideInlineMsg(form, sel) {
-    const el = form.querySelector(sel);
-    if (el) {
-      el.textContent = '';
-      el.classList.add('hidden');
-      el.style.display = '';
-    }
+  function clearMessages(form) {
+    const err = form.querySelector('.form-error');
+    const suc = form.querySelector('.success-message');
+    if (err) { err.classList.add('hidden'); err.textContent = ''; err.style.display = ''; }
+    if (suc) { suc.classList.add('hidden'); suc.textContent = ''; suc.style.display = ''; }
   }
+
   function showError(form, msg) {
-    const el = form.querySelector('.form-error') || ensureInlineBox(form, 'error');
-    el.textContent = msg;
-    el.classList.remove('hidden');
-    el.style.display = 'block';
-    showToast('error', msg);
-  }
-  function showSuccess(form, msg) {
-    const el = form.querySelector('.success-message') || ensureInlineBox(form, 'success');
+    let el = form.querySelector('.form-error');
+    if (!el) {
+      el = document.createElement('p');
+      el.className = 'form-error';
+      el.setAttribute('role', 'alert');
+      const actions = form.querySelector('.form-actions') || form;
+      actions.appendChild(el);
+    }
     el.textContent = msg;
     el.classList.remove('hidden');
     el.style.display = 'block';
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    showToast('success', msg);
-  }
-  function ensureInlineBox(form, kind) {
-    const p = document.createElement('p');
-    p.className = kind === 'error' ? 'form-error vlm-alert vlm-alert--error' : 'success-message vlm-alert vlm-alert--success';
-    p.setAttribute('role', kind === 'error' ? 'alert' : 'status');
-    // append near submit button
-    const actions = form.querySelector('.form-actions') || form;
-    actions.appendChild(p);
-    return p;
   }
 
-  // Toast container injected once
-  function getToastHost() {
-    let host = document.querySelector('.vlm-toast-host');
-    if (!host) {
-      host = document.createElement('div');
-      host.className = 'vlm-toast-host';
-      document.body.appendChild(host);
+  function showSuccess(form, msg) {
+    let el = form.querySelector('.success-message');
+    if (!el) {
+      el = document.createElement('p');
+      el.className = 'success-message';
+      el.setAttribute('role', 'status');
+      const actions = form.querySelector('.form-actions') || form;
+      actions.appendChild(el);
     }
-    return host;
+    el.textContent = msg;
+    el.classList.remove('hidden');
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
-  function showToast(type, message, timeoutMs = 4000) {
-    const host = getToastHost();
-    const el = document.createElement('div');
-    el.className = `vlm-toast ${type === 'error' ? 'vlm-toast--error' : 'vlm-toast--success'}`;
-    el.setAttribute('role', 'status');
-    el.innerHTML = `
-      <div class="vlm-toast__icon" aria-hidden="true"></div>
-      <div class="vlm-toast__text">${escapeHtml(message)}</div>
-      <button class="vlm-toast__close" aria-label="Close">×</button>
-    `;
-    host.appendChild(el);
-    const close = () => {
-      el.classList.add('vlm-toast--hide');
-      setTimeout(() => el.remove(), 200);
-    };
-    el.querySelector('.vlm-toast__close').addEventListener('click', close);
-    setTimeout(close, timeoutMs);
+
+  // ═══════════════════════════════════════════════════════════════
+  // INITIALIZATION
+  // ═══════════════════════════════════════════════════════════════
+  function init() {
+    const forms = document.querySelectorAll('form[data-protect="true"], form[data-form]');
+    forms.forEach(form => {
+      const formId = form.id || 'unknown-form';
+      if (form.dataset.bound === '1') return;
+
+      initBehaviorTracking(form, formId);
+      form.addEventListener('submit', handleSubmit, { passive: false });
+      form.dataset.bound = '1';
+
+      console.log(`[Forms] Initialized ${formId}`);
+    });
   }
-  function escapeHtml(s='') {
-    return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();
