@@ -861,28 +861,37 @@
       justify-content: center;
       background: var(--overlay-dark);
       padding: var(--space-md);
+      overflow-y: auto;
     }
 
     .thank-you-modal.hidden { display: none; }
-    .thank-you-modal.fade-in { animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .thank-you-modal.fade-in { animation: tyFadeIn 0.35s ease; }
+    @keyframes tyFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
     .thank-you-modal__card {
-      max-width: 480px;
+      max-width: 600px;
       width: 100%;
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: var(--space-2xl);
-      text-align: center;
       box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      position: relative;
+      margin: auto;
+    }
+
+    .thank-you-modal__header {
+      background: linear-gradient(135deg, var(--charcoal) 0%, #2d3748 100%);
+      padding: var(--space-xl) var(--space-2xl);
+      text-align: center;
+      color: var(--white);
     }
 
     .thank-you-modal__icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto var(--space-lg) auto;
-      padding: var(--space-md);
-      background: rgba(0, 168, 120, 0.1);
+      width: 56px;
+      height: 56px;
+      margin: 0 auto var(--space-md) auto;
+      padding: 14px;
+      background: rgba(0, 168, 120, 0.2);
       border-radius: var(--radius-full);
       color: var(--success-green);
     }
@@ -890,14 +899,194 @@
     .thank-you-modal__title {
       font-size: var(--text-h3);
       font-weight: var(--font-weight-bold);
-      color: var(--charcoal);
-      margin: 0 0 var(--space-md) 0;
+      color: var(--white);
+      margin: 0 0 var(--space-xs) 0;
     }
 
-    .thank-you-modal__text {
+    .thank-you-modal__subtitle {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: var(--text-base);
+      line-height: var(--line-height-normal);
+      margin: 0;
+    }
+
+    .thank-you-modal__body {
+      padding: var(--space-xl) var(--space-2xl) var(--space-lg);
+    }
+
+    .thank-you-modal__steps-heading {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--medium-grey);
+      margin: 0 0 var(--space-lg) 0;
+    }
+
+    .thank-you-modal__steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      margin: 0 0 var(--space-xl) 0;
+    }
+
+    .ty-step {
+      display: flex;
+      gap: var(--space-md);
+      align-items: flex-start;
+    }
+
+    .ty-step__badge {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--white);
+      background: var(--bec-accent);
+      position: relative;
+    }
+
+    .ty-step:not(:last-child) .ty-step__badge::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: var(--space-lg);
+      background: var(--secondary-grey-blue);
+    }
+
+    .ty-step--active .ty-step__badge {
+      box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);
+    }
+
+    .ty-step__content {
+      padding-top: 2px;
+      min-width: 0;
+    }
+
+    .ty-step__title {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--charcoal);
+      margin: 0 0 2px 0;
+    }
+
+    .ty-step__desc {
+      font-size: var(--text-sm);
       color: var(--medium-grey);
       line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    .ty-step__tag {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: var(--text-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--bec-accent);
+      background: rgba(255, 107, 53, 0.08);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .thank-you-modal__info {
+      display: flex;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--bec-accent);
       margin: 0 0 var(--space-xl) 0;
+    }
+
+    .thank-you-modal__info-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--bec-accent);
+      margin-top: 1px;
+    }
+
+    .thank-you-modal__info p {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      line-height: var(--line-height-relaxed);
+      margin: 0;
+    }
+
+    .thank-you-modal__info strong {
+      color: var(--charcoal);
+    }
+
+    .thank-you-modal__actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    .thank-you-modal__actions .btn {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .thank-you-modal__link {
+      font-size: var(--text-sm);
+      color: var(--medium-grey);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .thank-you-modal__link:hover {
+      color: var(--bec-accent);
+    }
+
+    .thank-you-modal__close {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: var(--radius-full);
+      color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .thank-you-modal__close:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--white);
+    }
+
+    @media (max-width: 640px) {
+      .thank-you-modal {
+        padding: 0;
+        align-items: flex-end;
+      }
+      .thank-you-modal__card {
+        max-width: 100%;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        max-height: 95vh;
+        overflow-y: auto;
+      }
+      .thank-you-modal__header {
+        padding: var(--space-lg) var(--space-lg);
+      }
+      .thank-you-modal__body {
+        padding: var(--space-lg) var(--space-lg) var(--space-lg);
+      }
     }
 
     /* --- Timeline --- */
@@ -2135,14 +2324,71 @@
 
 
     <!-- Thank-you modal -->
-    <div class="thank-you-modal hidden" id="thank-you" aria-hidden="true" role="dialog" aria-labelledby="ty-title">
-      <div class="thank-you-modal__card">
-        <div class="thank-you-modal__icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <div class="thank-you-modal hidden" id="thank-you" aria-hidden="true" role="dialog" aria-labelledby="ty-title" aria-describedby="ty-subtitle">
+      <div class="thank-you-modal__card" role="document">
+
+        <button class="thank-you-modal__close" id="ty-close" aria-label="Close" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+        <div class="thank-you-modal__header">
+          <div class="thank-you-modal__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3 class="thank-you-modal__title" id="ty-title">Claim Submitted Successfully</h3>
+          <p class="thank-you-modal__subtitle" id="ty-subtitle">Your details are with our team. Here's what happens next.</p>
         </div>
-        <h3 class="thank-you-modal__title" id="ty-title">Thank You</h3>
-        <p class="thank-you-modal__text">We've received your details. A member of our team will be in touch shortly to discuss your business energy claim. Check your email for a confirmation.</p>
-        <a href="/" class="btn btn--secondary">Return to Homepage</a>
+
+        <div class="thank-you-modal__body" aria-live="polite">
+          <p class="thank-you-modal__steps-heading">What happens next</p>
+
+          <div class="thank-you-modal__steps">
+            <div class="ty-step ty-step--active">
+              <div class="ty-step__badge" aria-hidden="true">1</div>
+              <div class="ty-step__content">
+                <p class="ty-step__title">Check your email</p>
+                <p class="ty-step__desc">We've sent you a secure Dropbox link to upload your energy contracts and broker agreements.</p>
+                <span class="ty-step__tag">Action needed</span>
+              </div>
+            </div>
+
+            <div class="ty-step">
+              <div class="ty-step__badge" aria-hidden="true">2</div>
+              <div class="ty-step__content">
+                <p class="ty-step__title">Upload your documents</p>
+                <p class="ty-step__desc">Use the Dropbox link to securely upload your contracts. Aim to do this within 7 days to keep things moving.</p>
+              </div>
+            </div>
+
+            <div class="ty-step">
+              <div class="ty-step__badge" aria-hidden="true">3</div>
+              <div class="ty-step__content">
+                <p class="ty-step__title">We review your case</p>
+                <p class="ty-step__desc">Our team analyses your documents and calculates your potential recovery.</p>
+                <span class="ty-step__tag">2&ndash;4 weeks</span>
+              </div>
+            </div>
+
+            <div class="ty-step">
+              <div class="ty-step__badge" aria-hidden="true">4</div>
+              <div class="ty-step__content">
+                <p class="ty-step__title">Assessment call</p>
+                <p class="ty-step__desc">We contact you with our findings and discuss next steps for your claim.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="thank-you-modal__info">
+            <svg class="thank-you-modal__info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <p><strong>Upload within 7 days</strong> to avoid delays. We need your energy contracts, broker agreements, and recent energy bills.</p>
+          </div>
+
+          <div class="thank-you-modal__actions">
+            <button type="button" class="btn btn--primary" id="ty-dismiss">Got it, thanks</button>
+            <a href="#faq" class="thank-you-modal__link" id="ty-docs-link">What documents do I need?</a>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -2518,6 +2764,42 @@
 
   <!-- Scripts -->
   <script src="/src/js/forms.js"></script>
+
+  <script>
+    // Thank-you modal: close, ESC, backdrop
+    (function() {
+      var modal = document.getElementById('thank-you');
+      if (!modal) return;
+
+      function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('show', 'fade-in');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      // Close button
+      var closeBtn = document.getElementById('ty-close');
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+      // "Got it, thanks" button
+      var dismissBtn = document.getElementById('ty-dismiss');
+      if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
+
+      // "What documents" link closes modal then scrolls
+      var docsLink = document.getElementById('ty-docs-link');
+      if (docsLink) docsLink.addEventListener('click', function() { closeModal(); });
+
+      // Backdrop click
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+
+      // ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+      });
+    })();
+  </script>
 
   <script>
     (function() {
