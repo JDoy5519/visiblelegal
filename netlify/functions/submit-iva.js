@@ -44,6 +44,24 @@ function validateBehavior(score) {
   return { pass, fails, score };
 }
 
+const PROVIDER_MAP = {
+  Aperture:               { display: 'Debt Movement',           formerly: 'Aperture Debt Solutions',    dsarEmail: 'complaints@debtmovement.co.uk' },
+  Creditfix:              { display: 'Creditfix',                formerly: null,                          dsarEmail: 'complaints@creditfix.co.uk' },
+  DebtMovement:           { display: 'Debt Movement',           formerly: null,                          dsarEmail: 'complaints@debtmovementuk.co.uk' },
+  Ebenegate:              { display: 'Ebenegate',                formerly: null,                          dsarEmail: 'client@ebenegate.co.uk' },
+  FinancialWellnessGroup: { display: 'Financial Wellness Group', formerly: null,                          dsarEmail: 'contactus@financialwellnessgroup.co.uk' },
+  FreemanJones:           { display: 'Freeman Jones',            formerly: null,                          dsarEmail: 'contactus@freemanjones.co.uk' },
+  GrantThornton:          { display: 'Debt Movement',           formerly: 'Grant Thornton',              dsarEmail: 'complaints@debtmovement.co.uk' },
+  HanoverInsolvency:      { display: 'Ebenegate',                formerly: 'Hanover Insolvency',          dsarEmail: 'client@ebenegate.co.uk' },
+  HarringtonBrooks:       { display: 'Freeman Jones',            formerly: 'Harrington Brooks',           dsarEmail: 'contactus@freemanjones.co.uk' },
+  JarvisInsolvency:       { display: 'Debt Movement',           formerly: 'Jarvis Insolvency',           dsarEmail: 'complaints@debtmovementuk.co.uk' },
+  JohnsonGeddes:          { display: 'Johnson Geddes',           formerly: null,                          dsarEmail: 'enquiries@johnsongeddes.co.uk' },
+  KingsgateInsolvency:    { display: 'MoneyPlus Group',          formerly: 'Kingsgate Insolvency',        dsarEmail: 'info@moneyplus.com' },
+  Payplan:                { display: 'Payplan',                  formerly: null,                          dsarEmail: 'ed.leavers@payplan.com' },
+  TheAdviceCenter:        { display: 'The Advice Centre',        formerly: null,                          dsarEmail: 'Enquiries@advicecentregroup.co.uk' },
+  TotalDebtRelief:        { display: 'Total Debt Relief',        formerly: null,                          dsarEmail: 'totaldebtrelief@griffins.net' },
+};
+
 exports.handler = async (event, context) => {
   const HEADERS = {
     'Access-Control-Allow-Origin': '*',
@@ -154,16 +172,27 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // ---- Determine clean display name for IVA provider ----
+    // ---- Determine provider display name, LOA string, and DSAR email ----
     let ivaProviderDisplay;
+    let ivaProviderLoa;
+    let dsarEmail;
+
     if (data.ivaProvider === 'Other') {
-      ivaProviderDisplay = data.otherProvider
-        ? formatProviderName(data.otherProvider.trim())
-        : 'Unknown Provider';
-    } else if (data.ivaProvider) {
-      ivaProviderDisplay = formatProviderName(data.ivaProvider);
+      const customName = data.otherProvider ? formatProviderName(data.otherProvider.trim()) : 'Unknown Provider';
+      ivaProviderDisplay = customName;
+      ivaProviderLoa = customName;
+      dsarEmail = null;
+    } else if (data.ivaProvider && PROVIDER_MAP[data.ivaProvider]) {
+      const meta = PROVIDER_MAP[data.ivaProvider];
+      ivaProviderDisplay = meta.display;
+      ivaProviderLoa = meta.formerly
+        ? `${meta.display} (formerly ${meta.formerly})`
+        : meta.display;
+      dsarEmail = meta.dsarEmail;
     } else {
-      ivaProviderDisplay = null;
+      ivaProviderDisplay = data.ivaProvider ? formatProviderName(data.ivaProvider) : null;
+      ivaProviderLoa = ivaProviderDisplay;
+      dsarEmail = null;
     }
 
     // ---- Format phone number to E.164 format (+44) ----
@@ -214,6 +243,8 @@ exports.handler = async (event, context) => {
       iva_provider: data.ivaProvider || null,
       other_provider: data.otherProvider || null,
       iva_provider_display: ivaProviderDisplay,
+      iva_provider_loa: ivaProviderLoa,
+      dsar_email: dsarEmail,
       iva_ref: data.ivaRef || null,
       iva_status: data.ivaStatus || null,
       payment_affordable: data.paymentAffordable || null,
@@ -223,6 +254,8 @@ exports.handler = async (event, context) => {
       notes: data.notes || null,
       uploads_opt_in: data.uploads_opt_in || null,
       source_url: sourceUrl,
+      user_agent: userAgent,
+      ip_address: ip,
       submitted_at: new Date().toISOString()
     };
 
