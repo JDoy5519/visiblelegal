@@ -156,7 +156,8 @@
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 15000);
 
-      const res = await fetch(form.action || API_ENDPOINT, {
+      const endpoint = form.dataset.protect === 'true' ? API_ENDPOINT : (form.action || API_ENDPOINT);
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload),
