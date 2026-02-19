@@ -1,4 +1,6 @@
 // netlify/functions/submit.js
+const { createHash } = require('crypto');
+
 const getIp = (headers) => {
   const raw =
     headers["x-nf-client-connection-ip"] ||
@@ -28,11 +30,7 @@ const normalize = (v) => String(v || "").trim().toLowerCase();
 const digitsOnly = (v) => String(v || "").replace(/[^\d]/g, "").trim();
 
 const sha256hex = async (input) => {
-  const data = new TextEncoder().encode(input);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  return Array.from(new Uint8Array(hashBuffer))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
+  return createHash('sha256').update(input).digest('hex');
 };
 
 const pickFirst = (obj, keys) => {
