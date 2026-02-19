@@ -60,3 +60,9 @@
   to = "/cookies.html"
   status = 301
 
+# Route /api/submit to the serverless function
+[[redirects]]
+  from = "/api/submit"
+  to = "/.netlify/functions/submit"
+  status = 200
+

@@ -1,11 +1,9 @@
 // netlify/functions/submit.js
-export const config = { path: "/api/submit" };
-
 const getIp = (headers) => {
   const raw =
-    headers.get("x-nf-client-connection-ip") ||
-    headers.get("x-forwarded-for") ||
-    headers.get("client-ip") ||
+    headers["x-nf-client-connection-ip"] ||
+    headers["x-forwarded-for"] ||
+    headers["client-ip"] ||
     "";
 
   // x-forwarded-for can be "ip, proxy1, proxy2"
@@ -56,11 +54,10 @@ const buildFbcFromFbclid = (fbclid) => {
 };
 
 // Dev mode detection helper
-const isDevRequest = (req) => {
+const isDevRequest = (event) => {
   try {
-    const url = new URL(req.url);
-    const sp = url.searchParams;
-    return sp.get("dev") === "1" || req.headers.get("x-vlm-dev") === "1";
+    const sp = event.queryStringParameters || {};
+    return sp.dev === "1" || (event.headers["x-vlm-dev"] === "1");
   } catch {
     return false;
   }
@@ -185,63 +182,63 @@ async function sendMetaCapiLead({
   }
 }
 
-export default async (req) => {
-  if (req.method !== "POST") {
-    return new Response(JSON.stringify({ ok: false, message: "Method not allowed" }), { status: 405 });
+const HEADERS = { "Content-Type": "application/json" };
+
+const respond = (statusCode, data) => ({
+  statusCode,
+  headers: HEADERS,
+  body: JSON.stringify(data)
+});
+
+exports.handler = async (event, context) => {
+  if (event.httpMethod !== "POST") {
+    return respond(405, { ok: false, message: "Method not allowed" });
   }
 
-  const MAKE_WEBHOOK_IVA_URL = Netlify.env.get("MAKE_WEBHOOK_IVA_URL");
-  const MAKE_WEBHOOK_QUERY_URL = Netlify.env.get("MAKE_WEBHOOK_QUERY_URL");
-  const MAKE_WEBHOOK_BEC_URL = Netlify.env.get("MAKE_WEBHOOK_BEC_URL");
-  const DEBUG_BYPASS_KEY = Netlify.env.get("DEBUG_BYPASS_KEY");
-  const META_PIXEL_ID = Netlify.env.get("META_PIXEL_ID");
-  const META_ACCESS_TOKEN = Netlify.env.get("META_ACCESS_TOKEN");
-  const META_TEST_EVENT_CODE = Netlify.env.get("META_TEST_EVENT_CODE");
+  const {
+    MAKE_WEBHOOK_IVA_URL,
+    MAKE_WEBHOOK_QUERY_URL,
+    MAKE_WEBHOOK_BEC_URL,
+    DEBUG_BYPASS_KEY,
+    META_PIXEL_ID,
+    META_ACCESS_TOKEN,
+    META_TEST_EVENT_CODE
+  } = process.env;
 
   if (!MAKE_WEBHOOK_IVA_URL || !MAKE_WEBHOOK_QUERY_URL) {
-    return new Response(JSON.stringify({ ok: false, message: "Server misconfigured" }), { status: 500 });
+    return respond(500, { ok: false, message: "Server misconfigured" });
   }
 
-  const url = new URL(req.url);
-  const sp = url.searchParams;
-  const isDev = isDevRequest(req);
-  const isBypass = isDev && sp.get("bypass") === "1";
+  const sp = event.queryStringParameters || {};
+  const isDev = isDevRequest(event);
+  const isBypass = isDev && sp.bypass === "1";
 
   // Bypass mode: requires debug key header
   if (isBypass) {
-    const debugKey = req.headers.get("x-debug-key");
+    const debugKey = event.headers["x-debug-key"];
     if (!DEBUG_BYPASS_KEY) {
-      return new Response(
-        JSON.stringify({ ok: false, code: "BYPASS_NOT_CONFIGURED", message: "Bypass mode requires DEBUG_BYPASS_KEY env var" }),
-        { status: 500 }
-      );
+      return respond(500, { ok: false, code: "BYPASS_NOT_CONFIGURED", message: "Bypass mode requires DEBUG_BYPASS_KEY env var" });
     }
     if (debugKey !== DEBUG_BYPASS_KEY) {
-      return new Response(
-        JSON.stringify({ ok: false, code: "BYPASS_UNAUTHORIZED", message: "Invalid debug key" }),
-        { status: 403 }
-      );
+      return respond(403, { ok: false, code: "BYPASS_UNAUTHORIZED", message: "Invalid debug key" });
     }
   }
 
   let body;
   try {
-    body = await req.json();
+    body = JSON.parse(event.body || "{}");
   } catch (e) {
     const eventId = crypto.randomUUID();
     if (isDev) {
-      return new Response(
-        JSON.stringify({
-          ok: false,
-          code: "BAD_JSON",
-          message: "Invalid JSON body",
-          error: String(e?.message || e),
-          eventId
-        }),
-        { status: 400 }
-      );
+      return respond(400, {
+        ok: false,
+        code: "BAD_JSON",
+        message: "Invalid JSON body",
+        error: String(e?.message || e),
+        eventId
+      });
     }
-    return new Response(JSON.stringify({ ok: false, message: "Invalid JSON body" }), { status: 400 });
+    return respond(400, { ok: false, message: "Invalid JSON body" });
   }
 
   const { formId, fields, behaviorScore, userAgent, sourceUrl, eventId: providedEventId } = body || {};
@@ -250,69 +247,60 @@ export default async (req) => {
   // Validate payload structure
   if (!formId || typeof fields !== "object") {
     if (isDev) {
-      return new Response(
-        JSON.stringify({
-          ok: false,
-          code: "BAD_PAYLOAD",
-          message: "Missing formId or fields",
-          expectedShape: "{formId, fields, behaviorScore, userAgent, sourceUrl, eventId}",
-          gotKeys: Object.keys(body || {}),
-          eventId
-        }),
-        { status: 400 }
-      );
+      return respond(400, {
+        ok: false,
+        code: "BAD_PAYLOAD",
+        message: "Missing formId or fields",
+        expectedShape: "{formId, fields, behaviorScore, userAgent, sourceUrl, eventId}",
+        gotKeys: Object.keys(body || {}),
+        eventId
+      });
     }
-    return new Response(JSON.stringify({ ok: false, message: "Missing formId or fields" }), { status: 400 });
+    return respond(400, { ok: false, message: "Missing formId or fields" });
   }
 
-  const clientIp = getIp(req.headers);
+  const clientIp = getIp(event.headers);
 
   const payload = {
     formId,
     fields,
     eventId,
     sourceUrl: sourceUrl || "",
-    userAgent: userAgent || req.headers.get("user-agent") || "",
+    userAgent: userAgent || event.headers["user-agent"] || "",
     received_at: new Date().toISOString(),
     client_ip: clientIp
   };
 
   // Bypass mode: skip validation and Make, return success
   if (isBypass) {
-    return new Response(
-      JSON.stringify({
-        ok: true,
-        bypass: true,
-        eventId,
-        received_fields_keys: Object.keys(fields || {}),
-        formId
-      }),
-      { status: 200 }
-    );
+    return respond(200, {
+      ok: true,
+      bypass: true,
+      eventId,
+      received_fields_keys: Object.keys(fields || {}),
+      formId
+    });
   }
 
   // ---- Behavioral validation ----
   const behaviorResult = validateBehavior(behaviorScore);
   if (!behaviorResult.pass) {
     if (isDev) {
-      return new Response(
-        JSON.stringify({
-          ok: false,
-          code: "BEHAVIOR_FAILED",
-          message: "Behavioral check failed",
-          behaviorResult,
-          eventId
-        }),
-        { status: 400 }
-      );
+      return respond(400, {
+        ok: false,
+        code: "BEHAVIOR_FAILED",
+        message: "Behavioral check failed",
+        behaviorResult,
+        eventId
+      });
     }
-    return new Response(JSON.stringify({ ok: false, message: "Please complete the form naturally before submitting." }), { status: 400 });
+    return respond(400, { ok: false, message: "Please complete the form naturally before submitting." });
   }
 
   // ---- Rate limiting ----
   const rateLimitKey = clientIp ? `submit:${clientIp}` : null;
   if (isRateLimited(rateLimitKey)) {
-    return new Response(JSON.stringify({ ok: false, message: "Too many submissions. Please try again later." }), { status: 429 });
+    return respond(429, { ok: false, message: "Too many submissions. Please try again later." });
   }
 
   // Map form IDs to webhook URLs
@@ -327,17 +315,14 @@ export default async (req) => {
 
   if (!webhookUrl) {
     if (isDev) {
-      return new Response(
-        JSON.stringify({
-          ok: false,
-          code: "UNKNOWN_FORM_ID",
-          message: `Unknown form ID: ${formId}`,
-          eventId
-        }),
-        { status: 400 }
-      );
+      return respond(400, {
+        ok: false,
+        code: "UNKNOWN_FORM_ID",
+        message: `Unknown form ID: ${formId}`,
+        eventId
+      });
     }
-    return new Response(JSON.stringify({ ok: false, message: `Unknown form ID: ${formId}` }), { status: 400 });
+    return respond(400, { ok: false, message: `Unknown form ID: ${formId}` });
   }
 
   const controller = new AbortController();
@@ -357,19 +342,16 @@ export default async (req) => {
       const text = await resp.text().catch(() => "");
       const textSnippet = text.length > 200 ? text.slice(0, 200) + "..." : text;
       if (isDev) {
-        return new Response(
-          JSON.stringify({
-            ok: false,
-            code: "MAKE_UPSTREAM",
-            message: "Upstream error",
-            status: resp.status,
-            textSnippet,
-            eventId
-          }),
-          { status: 502 }
-        );
+        return respond(502, {
+          ok: false,
+          code: "MAKE_UPSTREAM",
+          message: "Upstream error",
+          status: resp.status,
+          textSnippet,
+          eventId
+        });
       }
-      return new Response(JSON.stringify({ ok: false, message: "Upstream error" }), { status: 502 });
+      return respond(502, { ok: false, message: "Upstream error" });
     }
 
     // 2) Then Meta CAPI (best-effort)
@@ -386,7 +368,7 @@ export default async (req) => {
           clientIp: payload.client_ip,
           userAgent: payload.userAgent,
           fields: payload.fields,
-          cookieHeader: req.headers.get("cookie") || ""
+          cookieHeader: event.headers["cookie"] || ""
         });
       } catch (e) {
         capi = { ok: false, status: 0, text: String(e?.message || e) };
@@ -403,22 +385,19 @@ export default async (req) => {
     if (isDev) {
       responseData.capi = capi;
     }
-    return new Response(JSON.stringify(responseData), { status: 200 });
+    return respond(200, responseData);
   } catch (err) {
     clearTimeout(timer);
     const message = err?.name === "AbortError" ? "Upstream timeout" : err?.message || "Network error";
     if (isDev) {
-      return new Response(
-        JSON.stringify({
-          ok: false,
-          code: "NETWORK_ERROR",
-          message,
-          error: String(err?.message || err),
-          eventId: payload.eventId
-        }),
-        { status: 504 }
-      );
+      return respond(504, {
+        ok: false,
+        code: "NETWORK_ERROR",
+        message,
+        error: String(err?.message || err),
+        eventId: payload.eventId
+      });
     }
-    return new Response(JSON.stringify({ ok: false, message }), { status: 504 });
+    return respond(504, { ok: false, message });
   }
 };
