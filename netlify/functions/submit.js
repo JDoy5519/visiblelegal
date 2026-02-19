@@ -27,7 +27,7 @@ const getCookieValue = (cookieHeader, name) => {
 };
 
 const normalize = (v) => String(v || "").trim().toLowerCase();
-const digitsOnly = (v) => String(v || "").replace(/[^\d+]/g, "").trim();
+const digitsOnly = (v) => String(v || "").replace(/[^\d]/g, "").trim();
 
 const sha256hex = async (input) => {
   const data = new TextEncoder().encode(input);
