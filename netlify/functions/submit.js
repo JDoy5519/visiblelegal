@@ -190,15 +190,13 @@ export default async (req) => {
     return new Response(JSON.stringify({ ok: false, message: "Method not allowed" }), { status: 405 });
   }
 
-  const {
-    MAKE_WEBHOOK_IVA_URL,
-    MAKE_WEBHOOK_QUERY_URL,
-    MAKE_WEBHOOK_BEC_URL,
-    DEBUG_BYPASS_KEY,
-    META_PIXEL_ID,
-    META_ACCESS_TOKEN,
-    META_TEST_EVENT_CODE
-  } = process.env;
+  const MAKE_WEBHOOK_IVA_URL = Netlify.env.get("MAKE_WEBHOOK_IVA_URL");
+  const MAKE_WEBHOOK_QUERY_URL = Netlify.env.get("MAKE_WEBHOOK_QUERY_URL");
+  const MAKE_WEBHOOK_BEC_URL = Netlify.env.get("MAKE_WEBHOOK_BEC_URL");
+  const DEBUG_BYPASS_KEY = Netlify.env.get("DEBUG_BYPASS_KEY");
+  const META_PIXEL_ID = Netlify.env.get("META_PIXEL_ID");
+  const META_ACCESS_TOKEN = Netlify.env.get("META_ACCESS_TOKEN");
+  const META_TEST_EVENT_CODE = Netlify.env.get("META_TEST_EVENT_CODE");
 
   if (!MAKE_WEBHOOK_IVA_URL || !MAKE_WEBHOOK_QUERY_URL) {
     return new Response(JSON.stringify({ ok: false, message: "Server misconfigured" }), { status: 500 });
