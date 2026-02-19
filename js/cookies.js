@@ -109,6 +109,11 @@
     setConsent('accepted');
     hideBanner();
     loadAnalytics();
+
+    // Notify Meta pixel module that consent was just granted
+    if (window.VLMPixel && typeof window.VLMPixel.onConsentGranted === 'function') {
+      window.VLMPixel.onConsentGranted();
+    }
   }
 
   function onReject() {
