@@ -86,6 +86,25 @@ function validateBehavior(score) {
   return { pass, fails, score };
 }
 
+// IVA provider lookup
+const PROVIDER_MAP = {
+  Aperture:               { display: 'Debt Movement',            formerly: 'Aperture Debt Solutions',    dsarEmail: 'complaints@debtmovement.co.uk' },
+  Creditfix:              { display: 'Creditfix',                 formerly: null,                          dsarEmail: 'complaints@creditfix.co.uk' },
+  DebtMovement:           { display: 'Debt Movement',            formerly: null,                          dsarEmail: 'complaints@debtmovementuk.co.uk' },
+  Ebenegate:              { display: 'Ebenegate',                 formerly: null,                          dsarEmail: 'client@ebenegate.co.uk' },
+  FinancialWellnessGroup: { display: 'Financial Wellness Group',  formerly: null,                          dsarEmail: 'contactus@financialwellnessgroup.co.uk' },
+  FreemanJones:           { display: 'Freeman Jones',             formerly: null,                          dsarEmail: 'contactus@freemanjones.co.uk' },
+  GrantThornton:          { display: 'Debt Movement',            formerly: 'Grant Thornton',              dsarEmail: 'complaints@debtmovement.co.uk' },
+  HanoverInsolvency:      { display: 'Ebenegate',                 formerly: 'Hanover Insolvency',          dsarEmail: 'client@ebenegate.co.uk' },
+  HarringtonBrooks:       { display: 'Freeman Jones',             formerly: 'Harrington Brooks',           dsarEmail: 'contactus@freemanjones.co.uk' },
+  JarvisInsolvency:       { display: 'Debt Movement',            formerly: 'Jarvis Insolvency',           dsarEmail: 'complaints@debtmovementuk.co.uk' },
+  JohnsonGeddes:          { display: 'Johnson Geddes',            formerly: null,                          dsarEmail: 'enquiries@johnsongeddes.co.uk' },
+  KingsgateInsolvency:    { display: 'MoneyPlus Group',           formerly: 'Kingsgate Insolvency',        dsarEmail: 'info@moneyplus.com' },
+  Payplan:                { display: 'Payplan',                   formerly: null,                          dsarEmail: 'ed.leavers@payplan.com' },
+  TheAdviceCenter:        { display: 'The Advice Centre',         formerly: null,                          dsarEmail: 'Enquiries@advicecentregroup.co.uk' },
+  TotalDebtRelief:        { display: 'Total Debt Relief',         formerly: null,                          dsarEmail: 'totaldebtrelief@griffins.net' },
+};
+
 // In-memory rate limiting
 const rateLimit = new Map();
 const RATE_WINDOW = 60 * 60 * 1000;
@@ -258,14 +277,107 @@ exports.handler = async (event, context) => {
   }
 
   const clientIp = getIp(event.headers);
+  const resolvedUserAgent = userAgent || event.headers["user-agent"] || "";
 
+  // ---- Build Make payload ----
+  // IVA forms get a flat structure matching submit-iva.js; others keep the nested format
+  let makePayload;
+
+  if (formId === "iva-claim-form") {
+    const f = fields;
+    const email = (f.email || "").toLowerCase().trim();
+
+    // Phone E.164
+    let phoneE164 = null;
+    if (f.phone_local) {
+      const ph = f.phone_local.replace(/\s/g, "");
+      if (ph.startsWith("07") || ph.startsWith("01") || ph.startsWith("02")) {
+        phoneE164 = "+44" + ph.substring(1);
+      } else if (ph.startsWith("+44")) {
+        phoneE164 = ph;
+      } else if (ph.startsWith("44")) {
+        phoneE164 = "+" + ph;
+      } else {
+        phoneE164 = ph;
+      }
+    }
+
+    // DOB formatting
+    let dobFormatted = null;
+    if (f.dob) {
+      const ddmmMatch = f.dob.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+      const isoMatch = f.dob.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (ddmmMatch) {
+        dobFormatted = f.dob;
+      } else if (isoMatch) {
+        dobFormatted = `${isoMatch[3]}/${isoMatch[2]}/${isoMatch[1]}`;
+      }
+    }
+
+    // Provider lookup
+    let ivaProviderDisplay, ivaProviderLoa, dsarEmail;
+    if (f.ivaProvider === "Other") {
+      const customName = f.otherProvider ? f.otherProvider.trim() : "Unknown Provider";
+      ivaProviderDisplay = customName;
+      ivaProviderLoa = customName;
+      dsarEmail = null;
+    } else if (f.ivaProvider && PROVIDER_MAP[f.ivaProvider]) {
+      const meta = PROVIDER_MAP[f.ivaProvider];
+      ivaProviderDisplay = meta.display;
+      ivaProviderLoa = meta.formerly
+        ? `${meta.display} (formerly ${meta.formerly})`
+        : meta.display;
+      dsarEmail = meta.dsarEmail;
+    } else {
+      ivaProviderDisplay = f.ivaProvider || null;
+      ivaProviderLoa = ivaProviderDisplay;
+      dsarEmail = null;
+    }
+
+    makePayload = {
+      name: (f.fullName || "").trim().replace(/[<>"'&]/g, ""),
+      email,
+      phone: phoneE164,
+      postcode: f.postcode || null,
+      city: f.city || null,
+      current_address: f.currentAddress || null,
+      dob: dobFormatted,
+      iva_provider: f.ivaProvider || null,
+      other_provider: f.otherProvider || null,
+      iva_provider_display: ivaProviderDisplay,
+      iva_provider_loa: ivaProviderLoa,
+      dsar_email: dsarEmail,
+      iva_ref: f.ivaRef || null,
+      iva_status: f.ivaStatus || null,
+      payment_affordable: f.paymentAffordable || null,
+      warned_of_risks: f.warnedOfRisks || null,
+      sales_approach: f.salesApproach || null,
+      consent_given: f.consentGiven || null,
+      notes: f.notes || null,
+      uploads_opt_in: f.uploads_opt_in || null,
+      source_url: sourceUrl || null,
+      user_agent: resolvedUserAgent || null,
+      ip_address: clientIp,
+      submitted_at: new Date().toISOString()
+    };
+  } else {
+    makePayload = {
+      formId,
+      fields,
+      sourceUrl: sourceUrl || "",
+      userAgent: resolvedUserAgent,
+      received_at: new Date().toISOString(),
+      client_ip: clientIp
+    };
+  }
+
+  // payload keeps eventId + fields for CAPI lookups
   const payload = {
-    formId,
-    fields,
+    ...makePayload,
     eventId,
+    fields,
     sourceUrl: sourceUrl || "",
-    userAgent: userAgent || event.headers["user-agent"] || "",
-    received_at: new Date().toISOString(),
+    userAgent: resolvedUserAgent,
     client_ip: clientIp
   };
 
@@ -327,11 +439,11 @@ exports.handler = async (event, context) => {
   const timer = setTimeout(() => controller.abort(), 10000);
 
   try {
-    // 1) Send to Make first
+    // 1) Send to Make first (flat payload for IVA, nested for others)
     const resp = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(makePayload),
       signal: controller.signal
     });
     clearTimeout(timer);
