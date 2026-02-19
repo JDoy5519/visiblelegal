@@ -139,7 +139,10 @@
       console.log(`[Submit] ${formId}`, behaviorScore);
 
       const fields = formToObject(form);
-      const eventId = crypto?.randomUUID?.() || String(Date.now());
+      // Use VLMPixel's session-stable eventId so browser pixel and CAPI share the same ID
+      const eventId = (window.VLMPixel ? window.VLMPixel.getEventId() : null)
+                      || crypto?.randomUUID?.()
+                      || String(Date.now());
 
       const payload = {
         formId,
@@ -172,36 +175,47 @@
         return;
       }
 
-      // Success
+      // ── Success ──────────────────────────────────────────────────────────
       console.log('[Submit] Success', eventId);
       form.reset();
       form.classList.add('submitted');
 
-      const modal = document.getElementById('thank-you');
+      // Fire browser-side Meta Lead pixel (CAPI already fired server-side in submit.js)
+      // Both use the same eventId so Meta deduplicates correctly
+      try {
+        if (window.VLMPixel) {
+          var firedEventId = window.VLMPixel.trackLead();
+          console.debug('[Forms] Meta Lead tracked, eventId:', firedEventId);
+        }
+      } catch(pixelErr) {
+        console.warn('[Forms] Pixel fire failed (non-fatal):', pixelErr);
+      }
+
+      var modal = document.getElementById('thank-you');
       if (modal) {
         modal.classList.remove('hidden');
         modal.classList.add('show', 'fade-in');
         modal.setAttribute('aria-hidden', 'false');
 
         try {
-          const steps = form.querySelectorAll('.form-step');
-          steps.forEach(s => s.classList.remove('active'));
-          const first = form.querySelector('.form-step[data-step="0"]');
+          var steps = form.querySelectorAll('.form-step');
+          steps.forEach(function(s) { s.classList.remove('active'); });
+          var first = form.querySelector('.form-step[data-step="0"]');
           if (first) first.classList.add('active');
 
-          const bar = document.getElementById('progress-bar');
-          const lab = document.getElementById('progress-label');
-          if (bar) bar.style.width = `${100 / (steps.length || 4)}%`;
-          if (lab) lab.textContent = `Step 1 of ${steps.length || 4}`;
-        } catch {}
-
-        // Analytics event
-        try {
-          window.dispatchEvent(new CustomEvent('vlm:form-submitted', { detail: { ok: true, formId, eventId } }));
-        } catch {}
+          var bar = document.getElementById('progress-bar');
+          var lab = document.getElementById('progress-label');
+          if (bar) bar.style.width = (100 / (steps.length || 4)) + '%';
+          if (lab) lab.textContent = 'Step 1 of ' + (steps.length || 4);
+        } catch(e) {}
       } else {
         showSuccess(form, 'Thank you! We\'ve received your submission.');
       }
+
+      // Dispatch event for any other listeners
+      try {
+        window.dispatchEvent(new CustomEvent('vlm:form-submitted', { detail: { ok: true, formId: formId, eventId: eventId } }));
+      } catch(e) {}
 
       setSubmitting(form, false);
 
