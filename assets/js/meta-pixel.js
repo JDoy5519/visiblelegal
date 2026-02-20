@@ -6,13 +6,14 @@
 (function () {
   'use strict';
 
-  var PIXEL_ID = '1540687500679034';
+  var PIXEL_ID = (window.ENV && window.ENV.META_PIXEL_ID) || '';
   var CONSENT_KEY = 'vlm_cookie_consent';
   var SESSION_EVENT_ID_KEY = 'vlm_lead_eid';
   var SESSION_FIRED_KEY = 'vlm_lead_fired';
 
   // ── Pixel bootstrap ───────────────────────────────────────────────────────
   function initPixel() {
+    if (!PIXEL_ID) return;
     if (window.fbq) return;
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?
