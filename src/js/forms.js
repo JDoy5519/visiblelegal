@@ -139,10 +139,7 @@
       console.log(`[Submit] ${formId}`, behaviorScore);
 
       const fields = formToObject(form);
-      // Use VLMPixel's session-stable eventId so browser pixel and CAPI share the same ID
-      const eventId = (window.VLMPixel ? window.VLMPixel.getEventId() : null)
-                      || crypto?.randomUUID?.()
-                      || String(Date.now());
+      const eventId = crypto?.randomUUID?.() || String(Date.now());
 
       const payload = {
         formId,
@@ -181,17 +178,6 @@
       form.reset();
       form.classList.add('submitted');
 
-      // Fire browser-side Meta Lead pixel (CAPI already fired server-side in submit.js)
-      // Both use the same eventId so Meta deduplicates correctly
-      try {
-        if (window.VLMPixel) {
-          var firedEventId = window.VLMPixel.trackLead();
-          console.debug('[Forms] Meta Lead tracked, eventId:', firedEventId);
-        }
-      } catch(pixelErr) {
-        console.warn('[Forms] Pixel fire failed (non-fatal):', pixelErr);
-      }
-
       var modal = document.getElementById('thank-you');
       if (modal) {
         modal.classList.remove('hidden');
@@ -212,6 +198,12 @@
       } else {
         showSuccess(form, 'Thank you! We\'ve received your submission.');
       }
+
+      try {
+        if (window.VLM && window.VLM.trackLead) {
+          window.VLM.trackLead(eventId);
+        }
+      } catch(e) {}
 
       // Dispatch event for any other listeners
       try {

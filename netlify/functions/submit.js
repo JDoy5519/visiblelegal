@@ -1,4 +1,6 @@
-// netlify/functions/submit.js
+// netlify/functions/submit.js — Visible Legal Marketing
+// Handles form submissions: behavioral validation, rate limiting,
+// Make.com webhook dispatch, and Meta Conversions API (CAPI) lead events.
 const { createHash } = require('crypto');
 
 const getIp = (headers) => {
@@ -28,6 +30,11 @@ const getCookieValue = (cookieHeader, name) => {
 
 const normalize = (v) => String(v || "").trim().toLowerCase();
 const digitsOnly = (v) => String(v || "").replace(/[^\d]/g, "").trim();
+const toE164Digits = (digits) => {
+  if (!digits) return digits;
+  if (digits.startsWith("0")) return "44" + digits.substring(1);
+  return digits;
+};
 
 const sha256hex = async (input) => {
   return createHash('sha256').update(input).digest('hex');
@@ -137,7 +144,7 @@ async function sendMetaCapiLead({
   const phoneRaw = pickFirst(fields, ["phone_e164", "phone", "mobile", "phoneNumber", "phone_local"]);
 
   const email = emailRaw ? normalize(emailRaw) : null;
-  const phone = phoneRaw ? digitsOnly(phoneRaw) : null;
+  const phone = phoneRaw ? toE164Digits(digitsOnly(phoneRaw)) : null;
 
   const fbp = getCookieValue(cookieHeader, "_fbp");
   const fbcCookie = getCookieValue(cookieHeader, "_fbc");
