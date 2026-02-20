@@ -174,7 +174,7 @@ async function sendMetaCapiLead({
   const body = {
     data: [
       {
-        event_name: "Lead",
+        event_name: "CheckEligibility",
         event_time: Math.floor(Date.now() / 1000),
         action_source: "website",
         event_id: eventId,

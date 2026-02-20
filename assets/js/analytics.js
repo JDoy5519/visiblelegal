@@ -48,7 +48,7 @@
 
   window.VLM.trackLead = function (eventId) {
     if (window.fbq && pixelId) {
-      fbq('track', 'Lead', {}, { eventID: eventId });
+      fbq('trackCustom', 'CheckEligibility', {}, { eventID: eventId });
     }
     if (window.gtag) {
       gtag('event', 'generate_lead', { event_id: eventId });
