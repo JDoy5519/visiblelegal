@@ -49,6 +49,7 @@ const PROVIDER_MAP = {
   Creditfix:              { display: 'Creditfix',                formerly: null,                          dsarEmail: 'complaints@creditfix.co.uk' },
   DebtMovement:           { display: 'Debt Movement',           formerly: null,                          dsarEmail: 'complaints@debtmovementuk.co.uk' },
   Ebenegate:              { display: 'Ebenegate',                formerly: null,                          dsarEmail: 'client@ebenegate.co.uk' },
+  FinancialSupportSystems:{ display: 'Financial Support Systems', formerly: null,                          dsarEmail: 'cs@financialsupportsystems.co.uk' },
   FinancialWellnessGroup: { display: 'Financial Wellness Group', formerly: null,                          dsarEmail: 'contactus@financialwellnessgroup.co.uk' },
   FreemanJones:           { display: 'Freeman Jones',            formerly: null,                          dsarEmail: 'contactus@freemanjones.co.uk' },
   GrantThornton:          { display: 'Debt Movement',           formerly: 'Grant Thornton',              dsarEmail: 'complaints@debtmovement.co.uk' },
