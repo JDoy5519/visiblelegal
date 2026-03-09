@@ -141,6 +141,11 @@
       const fields = formToObject(form);
       const eventId = crypto?.randomUUID?.() || String(Date.now());
 
+      // Capture SBW Law consent metadata at point of submission
+      if (fields.sbwLawConsent) {
+        fields.sbwConsentTimestamp = new Date().toISOString();
+      }
+
       const payload = {
         formId,
         fields,
