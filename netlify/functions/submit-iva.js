@@ -61,6 +61,11 @@ const PROVIDER_MAP = {
   Payplan:                { display: 'Payplan',                  formerly: null,                          dsarEmail: 'ed.leavers@payplan.com' },
   TheAdviceCenter:        { display: 'The Advice Centre',        formerly: null,                          dsarEmail: 'Enquiries@advicecentregroup.co.uk' },
   TotalDebtRelief:        { display: 'Total Debt Relief',        formerly: null,                          dsarEmail: 'totaldebtrelief@griffins.net' },
+  ParkerPhilips:          { display: 'Parker Philips',           formerly: null,                          dsarEmail: 'customerservice@parkerphilips.co.uk' },
+  TheInsolvencyGroup:     { display: 'The Insolvency Group',     formerly: null,                          dsarEmail: 'info@theinsolvencygroup.co.uk' },
+  HarperMcDermott:        { display: 'Harper McDermott',         formerly: null,                          dsarEmail: 'enquiries@harpermcdermott.com' },
+  BennettJones:           { display: 'Bennett Jones',            formerly: null,                          dsarEmail: 'info@bennett-jones.co.uk' },
+  ArkleInsolvency:        { display: 'Arkle Insolvency',         formerly: null,                          dsarEmail: 'info@arkleinsolvency.co.uk' },
 };
 
 exports.handler = async (event, context) => {
