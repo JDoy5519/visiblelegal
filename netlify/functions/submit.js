@@ -284,6 +284,15 @@ exports.handler = async (event, context) => {
     return respond(400, { ok: false, message: "Missing formId or fields" });
   }
 
+  // Validate full name (must contain at least first and last name)
+  if (formId === "iva-claim-form") {
+    const nameVal = (fields.fullName || "").trim();
+    const nameParts = nameVal.split(/\s+/).filter(p => p.length >= 2);
+    if (nameParts.length < 2) {
+      return respond(400, { ok: false, message: "Please provide your first and last name." });
+    }
+  }
+
   const clientIp = getIp(event.headers);
   const resolvedUserAgent = userAgent || event.headers["user-agent"] || "";
 
@@ -361,6 +370,9 @@ exports.handler = async (event, context) => {
       warned_of_risks: f.warnedOfRisks || null,
       sales_approach: f.salesApproach || null,
       consent_given: f.consentGiven || null,
+      sbw_law_consent: f.sbwLawConsent === 'yes',
+      sbw_consent_timestamp: f.sbwConsentTimestamp || null,
+      sbw_consent_ip: clientIp,
       notes: f.notes || null,
       uploads_opt_in: f.uploads_opt_in || null,
       source_url: sourceUrl || null,

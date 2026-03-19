@@ -2827,6 +2827,30 @@
             });
           }
 
+          // Full name validation: must contain at least first and last name
+          if (field.id === 'fullName' && field.value) {
+            var nameParts = field.value.trim().split(/\s+/);
+            if (nameParts.length < 2 || nameParts.some(function(p) { return p.length < 2; })) {
+              field.style.borderColor = 'var(--error-red)';
+              field.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.15)';
+              valid = false;
+              // Show inline hint
+              var hint = field.parentNode.querySelector('.field-error');
+              if (!hint) {
+                hint = document.createElement('span');
+                hint.className = 'field-error';
+                hint.style.cssText = 'color:var(--error-red);font-size:0.85rem;margin-top:4px;display:block;';
+                hint.textContent = 'Please enter your first and last name.';
+                field.parentNode.appendChild(hint);
+              }
+              field.addEventListener('input', function handler() {
+                var h = field.parentNode.querySelector('.field-error');
+                if (h) h.remove();
+                field.removeEventListener('input', handler);
+              });
+            }
+          }
+
           // Extra DOB validation: must be valid DD/MM/YYYY and 18+
           if (field.id === 'dob' && field.value) {
             var match = field.value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
@@ -2884,6 +2908,22 @@
           }
         });
 
+        // Required checkboxes: must be ticked
+        stepEl.querySelectorAll('input[type="checkbox"][required]').forEach(function(cb) {
+          if (!cb.checked) {
+            valid = false;
+            var label = cb.closest('.consent-check');
+            if (label) {
+              label.style.outline = '2px solid var(--error-red)';
+              label.style.borderRadius = '6px';
+              cb.addEventListener('change', function handler() {
+                label.style.outline = '';
+                cb.removeEventListener('change', handler);
+              });
+            }
+          }
+        });
+
         return valid;
       }
 
@@ -2897,6 +2937,14 @@
         var prevBtn = e.target.closest('[data-prev]');
         if (prevBtn) {
           showStep(parseInt(prevBtn.getAttribute('data-prev'), 10));
+        }
+        // Validate the active step before the submit button triggers form submission
+        var submitBtn = e.target.closest('[type="submit"]');
+        if (submitBtn) {
+          var activeStep = form.querySelector('.form-step.active');
+          if (activeStep && !validateStep(activeStep)) {
+            e.preventDefault();
+          }
         }
       });
 
