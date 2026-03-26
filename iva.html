@@ -190,7 +190,7 @@
     /* --- Hero --- */
     .iva-hero {
       position: relative;
-      background: linear-gradient(155deg, #001f5c 0%, #003380 25%, #0055aa 55%, #0077dd 100%);
+      background-color: #0044a1;
       text-align: center;
       padding: 4.5rem var(--space-md) 4rem;
       overflow: hidden;
@@ -200,76 +200,76 @@
     .iva-hero::before {
       content: '';
       position: absolute;
-      top: -30%;
-      right: -20%;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, transparent 60%);
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .iva-hero::after {
       content: '';
       position: absolute;
-      bottom: -40%;
-      left: -15%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(0, 119, 221, 0.2) 0%, transparent 60%);
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
       pointer-events: none;
     }
 
     .iva-hero > .container { position: relative; z-index: 1; }
 
-    .iva-hero__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-      padding: var(--space-xs) var(--space-md);
-      margin-bottom: var(--space-xl);
-      font-size: var(--text-sm);
-      font-weight: var(--font-weight-semibold);
-      color: var(--white);
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: var(--radius-full);
-      backdrop-filter: blur(4px);
-    }
-
-    .iva-hero__badge svg { flex-shrink: 0; }
-
     .iva-hero__title {
       max-width: 700px;
       margin: 0 auto var(--space-lg) auto;
       font-size: 2.5rem;
-      font-weight: var(--font-weight-extrabold);
+      font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--white);
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .iva-hero__subtitle {
-      max-width: 540px;
+      max-width: 560px;
       margin: 0 auto var(--space-xl) auto;
       font-size: var(--text-lead);
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.8);
       line-height: var(--line-height-relaxed);
     }
 
     .iva-hero__cta { margin-bottom: var(--space-xl); }
 
-    .iva-hero__trust-row {
+    .iva-hero__notice {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--space-md) var(--space-lg);
-      font-size: var(--text-sm);
-      color: rgba(255, 255, 255, 0.8);
+      align-items: flex-start;
+      gap: 0.625rem;
+      max-width: 620px;
+      margin: 2rem auto 0;
+      padding: 0.875rem 1.125rem;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 8px;
     }
 
-    .iva-hero__trust-item { display: flex; align-items: center; gap: var(--space-xs); }
-    .iva-hero__trust-item svg { flex-shrink: 0; color: var(--success-green); }
+    .iva-hero__notice svg {
+      flex-shrink: 0;
+      color: rgba(255,255,255,0.75);
+      margin-top: 1px;
+    }
+
+    .iva-hero__notice p {
+      margin: 0;
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .iva-hero__reg-line {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin-top: 1rem;
+    }
 
     @media (min-width: 768px) {
       .iva-hero { padding: 5.5rem var(--space-lg) 5rem; }
@@ -347,8 +347,72 @@
       margin: 0;
     }
 
+    /* --- How We Help section --- */
+    .how-we-help {
+      background-color: var(--white);
+      padding: var(--space-3xl) var(--space-md);
+    }
+
+    .how-we-help__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .how-we-help__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .help-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #0044a1;
+      border-radius: 10px;
+      padding: 1.75rem;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .help-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .help-card__icon-wrap {
+      width: 48px;
+      height: 48px;
+      background: rgba(0,68,161,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .help-card__icon {
+      width: 24px;
+      height: 24px;
+      color: #0044a1;
+    }
+
+    .help-card__title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a202c;
+      margin: 0 0 0.5rem;
+    }
+
+    .help-card__text {
+      font-size: 0.875rem;
+      color: #4a5568;
+      line-height: 1.7;
+      margin: 0;
+    }
+
     /* --- Eligibility --- */
-    .eligibility { background-color: var(--bg-subtle); padding: var(--space-3xl) var(--space-md); }
+    .eligibility { background-color: var(--white); padding: var(--space-3xl) var(--space-md); }
 
     .elig-grid {
       max-width: var(--max-width);
@@ -396,10 +460,35 @@
       line-height: var(--line-height-relaxed);
     }
 
+    /* --- Fees Section --- */
+    .fees-section {
+      background-color: #f8fafc;
+      padding: var(--space-3xl) var(--space-md);
+    }
+
+    .fees-section__prose {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #0044a1;
+      border-radius: 10px;
+      padding: 2rem 2.25rem;
+    }
+
+    .fees-section__prose p {
+      font-size: 0.9375rem;
+      color: #4a5568;
+      line-height: 1.8;
+      margin: 0 0 1.25rem;
+    }
+
+    .fees-section__prose p:last-child { margin-bottom: 0; }
+
     /* --- Form Section --- */
     .form-section {
       padding: var(--space-3xl) var(--space-md);
-      background-color: var(--bg-subtle);
+      background-color: var(--white);
     }
 
     .form-card {
@@ -1041,65 +1130,6 @@
       margin: 0;
     }
 
-    /* --- Final CTA --- */
-    .final-cta {
-      position: relative;
-      background: linear-gradient(155deg, #001f5c 0%, #003380 30%, #0066cc 100%);
-      color: var(--white);
-      text-align: center;
-      padding: var(--space-3xl) var(--space-md);
-      overflow: hidden;
-    }
-
-    .final-cta::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .final-cta > .container { position: relative; z-index: 1; }
-
-    .final-cta__title {
-      font-size: var(--text-h2);
-      font-weight: var(--font-weight-extrabold);
-      margin: 0 0 var(--space-md) 0;
-      line-height: var(--line-height-tight);
-      letter-spacing: -0.02em;
-      color: var(--white);
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .final-cta__subtitle {
-      max-width: 480px;
-      margin: 0 auto var(--space-xl) auto;
-      font-size: var(--text-lead);
-      color: rgba(255, 255, 255, 0.85);
-      line-height: var(--line-height-relaxed);
-    }
-
-    .final-cta__btn { margin-bottom: var(--space-xl); }
-
-    .final-cta__trust {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--space-lg) var(--space-xl);
-      font-size: var(--text-sm);
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .final-cta__trust-item { display: flex; align-items: center; gap: var(--space-xs); }
-    .final-cta__trust-item svg { flex-shrink: 0; color: var(--success-green); }
-
-    @media (max-width: 767px) {
-      .final-cta__title { font-size: var(--text-h3); color: var(--white); }
-    }
-
     /* --- Other provider conditional field --- */
     .other-provider-field {
       max-height: 0;
@@ -1304,40 +1334,6 @@
     @keyframes slideIn {
       from { transform: translateX(100%); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
-    }
-
-    /* --- Hero regulatory notice --- */
-    .iva-hero__notice {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-top: 3px solid rgba(255, 255, 255, 0.65);
-      border-radius: var(--radius-md);
-      padding: 1.25rem 2rem;
-      margin: 0 auto var(--space-xl);
-      max-width: 640px;
-      text-align: center;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    }
-
-    .iva-hero__notice-text {
-      margin: 0;
-      font-size: var(--text-lead);
-      line-height: var(--line-height-relaxed);
-      color: rgba(255, 255, 255, 0.95);
-      font-weight: var(--font-weight-medium);
-    }
-
-    /* --- Hero FCA line --- */
-    .iva-hero__compliance {
-      margin-top: var(--space-lg);
-      padding-top: var(--space-md);
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: var(--text-xs);
-      color: rgba(255, 255, 255, 0.55);
-      line-height: var(--line-height-relaxed);
-      max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     /* --- Step 4 cards --- */
@@ -1725,37 +1721,58 @@
     <!-- ============================================================
          HERO
          ============================================================ -->
+    <!-- HERO -->
     <section class="iva-hero">
       <div class="container">
-        <div class="iva-hero__badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          FCA Regulated Service
-        </div>
         <h1 class="iva-hero__title">Were You Mis-Sold an IVA?</h1>
-        <p class="iva-hero__subtitle">You could be entitled to compensation. Find out in minutes with our free assessment.</p>
-        <div class="iva-hero__notice" role="note">
-          <p class="iva-hero__notice-text">You do not need to use a claims management company to make your complaint. You can complain for free directly to your provider or the Financial Ombudsman Service.</p>
-        </div>
+        <p class="iva-hero__subtitle">If you were placed into an Individual Voluntary Arrangement without being properly advised about alternatives, you may be entitled to compensation. Find out in minutes with our free assessment.</p>
         <div class="iva-hero__cta">
-          <a href="#claim-form" class="btn btn--primary btn--lg">Check Your Eligibility Now</a>
+          <a href="#claim-form" class="btn btn--white-blue btn--lg smooth-scroll">Check Your Eligibility Now</a>
         </div>
-        <div class="iva-hero__trust-row">
-          <span class="iva-hero__trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Success-based fees
-          </span>
-          <span class="iva-hero__trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            No upfront costs
-          </span>
-          <span class="iva-hero__trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Free case assessment
-          </span>
+        <div class="iva-hero__notice" role="note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <p>You do not need to use a claims management company to make your complaint. You can complain for free directly to your provider or the Financial Ombudsman Service.</p>
         </div>
-        <p class="iva-hero__compliance">
-          Visible Legal Marketing Ltd is authorised &amp; regulated by the FCA (No. 835293).
-        </p>
+        <p class="iva-hero__reg-line">Visible Legal Marketing Ltd is a claims management company, authorised and regulated by the FCA (No. 835293).</p>
+      </div>
+    </section>
+
+
+    <!-- HOW WE HELP -->
+    <section class="section how-we-help" id="how-we-help">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">How We Help With IVA Claims</h2>
+          <div class="section__heading-line" aria-hidden="true"></div>
+        </div>
+        <p style="text-align:center;color:#4a5568;font-size:0.9375rem;max-width:580px;margin:0 auto 2.5rem;">Visible Legal Marketing is a claims management company that specialises in IVA mis-selling.</p>
+        <div class="how-we-help__grid">
+
+          <div class="help-card">
+            <div class="help-card__icon-wrap">
+              <svg class="help-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+            </div>
+            <h3 class="help-card__title">We obtain your IVA file</h3>
+            <p class="help-card__text">We submit a Data Subject Access Request to your IVA provider to obtain your full case file. You sign a Letter of Authority and we handle all communication with the provider.</p>
+          </div>
+
+          <div class="help-card">
+            <div class="help-card__icon-wrap">
+              <svg class="help-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 class="help-card__title">We assess your case</h3>
+            <p class="help-card__text">We review your IVA file and assess whether the advice you received was suitable. We look at the alternatives available, the affordability of payments, and whether fees were properly disclosed.</p>
+          </div>
+
+          <div class="help-card">
+            <div class="help-card__icon-wrap">
+              <svg class="help-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3 class="help-card__title">We refer you to a solicitor</h3>
+            <p class="help-card__text">If we identify potential mis-selling, we prepare your case and refer it to a specialist solicitor from our panel who pursues the legal claim on your behalf.</p>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -1830,12 +1847,12 @@
               </div>
               <div class="mis-card__body">
                 <h4>Risks Not Explained</h4>
-                <p>The consequences of the IVA &mdash; such as impacts on your credit rating, home, or employment &mdash; were not made clear to you.</p>
+                <p>The consequences of the IVA, such as impacts on your credit rating, home, or employment, were not made clear to you.</p>
               </div>
             </div>
           </div>
 
-          <p>If any of the above sounds familiar, you may have been mis-sold your IVA and could be entitled to compensation. <strong>You don't need to have completed your IVA to make a claim</strong> &mdash; whether it's still active, completed, or even failed.</p>
+          <p>If any of the above sounds familiar, you may have been mis-sold your IVA and could be entitled to compensation. <strong>You don't need to have completed your IVA to make a claim</strong>; whether it's still active, completed, or even failed.</p>
         </div>
       </div>
     </section>
@@ -1893,6 +1910,23 @@
             </div>
             <p>Your IVA failed or was terminated, causing you further problems</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FEES AND COSTS -->
+    <section class="section fees-section" id="fees">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Fees and Costs</h2>
+          <div class="section__heading-line" aria-hidden="true"></div>
+        </div>
+        <p style="text-align:center;color:#4a5568;font-size:0.9375rem;max-width:580px;margin:0 auto 2rem;">Complete transparency about how our service works</p>
+        <div class="fees-section__prose">
+          <p>There are no upfront costs to you at any stage. We carry out initial work on your behalf at no charge, including obtaining your IVA file and assessing whether you have a viable claim.</p>
+          <p>If your case is referred to a panel solicitor, the solicitor handles the legal claim. Their fees are set out in their own client care letter, regulated by the Solicitors Regulation Authority. Solicitor fees are typically between 18 and 36 percent (including VAT) of any compensation recovered, and are charged only if the claim is successful.</p>
+          <p>Visible Legal Marketing Ltd receives a fixed referral fee from the solicitor for the assessment and referral work we carry out. This fee is paid by the solicitor and does not reduce or affect any compensation you receive.</p>
         </div>
       </div>
     </section>
@@ -2178,16 +2212,16 @@
                   </div>
                   <ul class="step4-card__list">
                     <li>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                      <span>This is an <strong>FCA-regulated</strong> claims management service (FCA No. 835293)</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                      VLM is a claims management company, authorised and regulated by the FCA (No. 835293)
                     </li>
                     <li>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                      <span>You can complain for <strong>free</strong> directly to your provider or the Financial Ombudsman &mdash; a CMC is not required</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                      You can complain for free directly to your provider or the Financial Ombudsman. A CMC is not required
                     </li>
                     <li>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                      <span>Success-based fees of <strong>18&ndash;36%</strong> (incl. VAT) only apply if compensation is recovered</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                      Solicitor fees of 18 to 36 percent (incl. VAT) apply only if compensation is recovered. These fees are set out in the solicitor's client care letter
                     </li>
                   </ul>
                 </div>
@@ -2257,7 +2291,7 @@
           </span>
           <span class="form-trust__item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            FCA Regulated Service
+            FCA-authorised claims management
           </span>
           <span class="form-trust__item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -2330,7 +2364,7 @@
             </div>
             <div class="timeline__content">
               <h3>Submit Your Details</h3>
-              <p>Complete our free assessment form &mdash; takes just 2 minutes.</p>
+              <p>Complete our free assessment form. Takes just 2 minutes.</p>
               <span class="timeline__time">2 minutes</span>
             </div>
           </div>
@@ -2342,7 +2376,7 @@
             <div class="timeline__content">
               <h3>Letter of Authority (LOA)</h3>
               <p>We'll send you a Letter of Authority to sign. This authorises us to request your IVA documents on your behalf.</p>
-              <span class="timeline__time">1&ndash;2 days</span>
+              <span class="timeline__time">1 to 2 days</span>
             </div>
           </div>
 
@@ -2362,9 +2396,9 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
             </div>
             <div class="timeline__content">
-              <h3>Case Assessment</h3>
-              <p>Our panel of specialist solicitors reviews your documents and determines if you have a valid mis-selling claim.</p>
-              <span class="timeline__time">1&ndash;2 weeks</span>
+              <h3>We Assess Your Case</h3>
+              <p>We review your documents and assess whether you have a valid mis-selling claim. If viable, we prepare your case for referral to a solicitor.</p>
+              <span class="timeline__time">1 to 2 weeks</span>
             </div>
           </div>
 
@@ -2373,8 +2407,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
             <div class="timeline__content">
-              <h3>Pursue Compensation</h3>
-              <p>Our panel of specialist solicitors pursues compensation on your behalf with success-based fees &mdash; you only pay when they recover funds for you.</p>
+              <h3>Solicitor Pursues Your Claim</h3>
+              <p>If your case is viable, a specialist solicitor from our panel pursues compensation on your behalf. Solicitor fees are only charged if they recover funds for you.</p>
               <span class="timeline__time">Varies by case</span>
             </div>
           </div>
@@ -2429,7 +2463,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>We gather most of the evidence needed through a Data Subject Access Request (DSAR) to your IVA provider. If you still have any IVA paperwork, proposal documents, or correspondence, that can be helpful but it's not essential. Don't worry if you don't have any documents &mdash; we can still investigate your claim.</p>
+              <p>We gather most of the evidence needed through a Data Subject Access Request (DSAR) to your IVA provider. If you still have any IVA paperwork, proposal documents, or correspondence, that can be helpful but it's not essential. Don't worry if you don't have any documents. We can still investigate your claim.</p>
             </div>
           </div>
 
@@ -2439,7 +2473,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>The amount of compensation varies significantly depending on your individual circumstances, including the fees you paid, the financial impact of the IVA, and the nature of the mis-selling. Some clients have been entitled to &pound;1,000s in compensation, though amounts vary based on individual circumstances. We offer a free assessment to help you understand whether you have a claim and what it could be worth.</p>
+              <p>The amount of compensation depends on your individual circumstances, including the fees charged, the financial impact of the IVA, and how it was sold to you. We offer a free assessment to help you understand whether you have a claim.</p>
             </div>
           </div>
 
@@ -2449,7 +2483,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>It means you don't pay anything upfront. Our fees are only charged if we successfully recover compensation for you. If your claim is unsuccessful, you won't owe us anything. This ensures there's no financial risk to you.</p>
+              <p>There are no upfront costs to you at any stage. Visible Legal Marketing Ltd carries out initial work at no charge, including obtaining your IVA file and assessing your case. If a viable claim is identified, we refer your case to a panel solicitor. The solicitor's fees (typically 18 to 36 percent including VAT, charged only on successful recovery) are set out in their own client care letter and are regulated by the Solicitors Regulation Authority. VLM receives a fixed referral fee from the solicitor for our assessment and referral work. This fee does not reduce or affect any compensation you receive.</p>
             </div>
           </div>
 
@@ -2459,40 +2493,13 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>Yes. Visible Legal Marketing Limited is authorised and regulated by the Financial Conduct Authority (FCA) for IVA claims management. This means we operate under strict rules designed to protect consumers, including clear communication, fair fees, and proper handling of your data.</p>
+              <p>Visible Legal Marketing Ltd is a claims management company, authorised and regulated by the Financial Conduct Authority (No. 835293). This means we operate under FCA rules covering how we communicate with you, handle your data, and manage your case. When your case is referred to a solicitor, the solicitor is separately regulated by the Solicitors Regulation Authority.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-
-    <!-- ============================================================
-         FINAL CTA
-         ============================================================ -->
-    <section class="final-cta">
-      <div class="container">
-        <h2 class="final-cta__title">Start Your Free IVA Claim Assessment</h2>
-        <p class="final-cta__subtitle">Takes 2 minutes. No upfront costs. FCA regulated.</p>
-        <div class="final-cta__btn">
-          <a href="#claim-form" class="btn btn--primary btn--lg">Check Your Eligibility</a>
-        </div>
-        <div class="final-cta__trust">
-          <span class="final-cta__trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Free Assessment
-          </span>
-          <span class="final-cta__trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Success-Based Fees
-          </span>
-          <span class="final-cta__trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            UK Solicitors
-          </span>
-        </div>
-      </div>
-    </section>
 
   </main>
 
@@ -2512,7 +2519,7 @@
         <div class="reg-card">
           <div class="reg-card__header">
             <div class="reg-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             </div>
             <div>
               <h3 class="reg-card__title">How We Support You</h3>
@@ -2556,7 +2563,7 @@
             </div>
             <div class="reg-item__text">
               <p class="reg-item__label">No Upfront Fees</p>
-              <p class="reg-item__desc">Success-based fees of 18&ndash;36% (incl. VAT) only apply if compensation is recovered for you.</p>
+              <p class="reg-item__desc">There are no upfront costs at any stage. If your case is referred to a solicitor, their fees (18 to 36% incl. VAT, on success only) are set out in their client care letter. VLM receives a fixed referral fee from the solicitor.</p>
             </div>
           </div>
         </div>
@@ -2589,7 +2596,7 @@
             </div>
             <div class="reg-item__text">
               <p class="reg-item__label">Why Clients Choose Us</p>
-              <p class="reg-item__desc">Many clients choose us because we manage the process, coordinate documents, and liaise with solicitors on their behalf &mdash; making it hassle-free.</p>
+              <p class="reg-item__desc">Many clients choose us because we manage the process, coordinate documents, and liaise with solicitors on their behalf, making it straightforward.</p>
             </div>
           </div>
 
@@ -2618,7 +2625,7 @@
       <!-- Reference numbers -->
       <div class="reg-refs" style="max-width: var(--max-width); margin: var(--space-xl) auto 0;">
         <span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           FCA Authorisation No. 835293
         </span>
         <span>
@@ -2673,7 +2680,7 @@
         </div>
       </div>
 
-      <p class="footer__disclaimer">You do not need to use a claims management company to make a claim. You can complain directly to the firm or, if your complaint is not resolved, to the Financial Ombudsman Service free of charge. You pay nothing unless your claim is successful. A success fee between 18% and 36% including VAT applies on successful claims, dependent on the level of redress secured. A cancellation fee may apply outside the 14 day cooling-off period. Visible Legal Marketing Ltd may receive a fee for introducing you to a panel solicitor &mdash; this does not affect any compensation you may receive. Any solicitor we refer you to is independent and SRA-regulated; you are free to choose your own solicitor. Visible Legal Marketing Ltd is a claims management company authorised and regulated by the Financial Conduct Authority (FCA No. 835293).</p>
+      <p class="footer__disclaimer">You do not need to use a claims management company to make a claim. You can complain directly to the firm or, if your complaint is not resolved, to the Financial Ombudsman Service free of charge. You pay nothing unless your claim is successful. A success fee between 18% and 36% including VAT applies on successful claims, dependent on the level of redress secured. A cancellation fee may apply outside the 14 day cooling-off period. Visible Legal Marketing Ltd may receive a fee for introducing you to a panel solicitor; this does not affect any compensation you may receive. Any solicitor we refer you to is independent and SRA-regulated; you are free to choose your own solicitor. Visible Legal Marketing Ltd is a claims management company authorised and regulated by the Financial Conduct Authority (FCA No. 835293).</p>
 
       <hr class="footer__divider">
 
