@@ -237,7 +237,47 @@
       line-height: var(--line-height-relaxed);
     }
 
-    .iva-hero__cta { margin-bottom: var(--space-xl); }
+    .iva-hero__cta {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .iva-hero__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0044a1;
+      background: #ffffff;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .iva-hero__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.14);
+      background: #f0f4ff;
+      color: #0044a1;
+      text-decoration: none;
+    }
+
+    .iva-hero__btn svg {
+      transition: transform 0.2s ease;
+    }
+
+    .iva-hero__btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    .iva-hero__btn-sub {
+      margin: 0.75rem 0 0;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.5);
+    }
 
     .iva-hero__notice {
       display: flex;
@@ -271,51 +311,6 @@
       margin-top: 1rem;
     }
 
-    .iva-hero__cta-card {
-      display: block;
-      max-width: 420px;
-      margin: 0 auto 2rem;
-      padding: 1.375rem 1.75rem;
-      background: #ffffff;
-      border-radius: 12px;
-      text-decoration: none;
-      text-align: left;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .iva-hero__cta-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.12);
-      text-decoration: none;
-      color: #1a202c;
-    }
-
-    .iva-hero__cta-title {
-      display: block;
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: #0044a1;
-      margin-bottom: 0.375rem;
-    }
-
-    .iva-hero__cta-desc {
-      display: block;
-      font-size: 0.8125rem;
-      color: #4a5568;
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-    }
-
-    .iva-hero__cta-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.375rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #ff6b35;
-    }
-
     @media (min-width: 768px) {
       .iva-hero { padding: 5.5rem var(--space-lg) 5rem; }
       .iva-hero__title { font-size: 3.25rem; }
@@ -327,7 +322,7 @@
     }
 
     /* --- Education Section --- */
-    .edu-section { padding: var(--space-3xl) var(--space-md); }
+    .edu-section { padding: var(--space-3xl) var(--space-md); background: #f8fafc; }
 
     .edu-content {
       max-width: var(--max-width-narrow);
@@ -497,19 +492,8 @@
     }
 
     .fees-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      max-width: 920px;
+      max-width: 720px;
       margin: 0 auto;
-    }
-
-    @media (min-width: 768px) {
-      .fees-layout {
-        grid-template-columns: 1fr 240px;
-        gap: 2.5rem;
-        align-items: start;
-      }
     }
 
     .fees-card {
@@ -555,54 +539,57 @@
       margin: 0;
     }
 
-    .fees-callout {
+    .fees-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1.5rem;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 1.75rem 1.5rem;
-      text-align: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border-radius: 10px;
+      overflow: hidden;
     }
 
-    .fees-callout__label {
+    @media (min-width: 640px) {
+      .fees-summary {
+        flex-direction: row;
+      }
+    }
+
+    .fees-summary__item {
+      flex: 1;
+      padding: 1.125rem 1.25rem;
+      text-align: center;
+    }
+
+    .fees-summary__label {
       display: block;
       font-size: 0.6875rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #4a5568;
-      margin-bottom: 0.75rem;
-    }
-
-    .fees-callout__figure {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #0044a1;
-      line-height: 1;
-      letter-spacing: -0.03em;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
       margin-bottom: 0.375rem;
     }
 
-    .fees-callout__sub {
-      font-size: 0.8125rem;
-      color: #4a5568;
-      line-height: 1.4;
-      margin: 0;
+    .fees-summary__value {
+      display: block;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0044a1;
     }
 
-    .fees-callout__divider {
-      width: 28px;
-      height: 2px;
+    .fees-summary__divider {
+      width: 1px;
       background: #e2e8f0;
-      margin: 1rem auto;
-      border-radius: 2px;
+      align-self: stretch;
     }
 
-    .fees-callout__note {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      line-height: 1.5;
-      margin: 0;
+    @media (max-width: 639px) {
+      .fees-summary__divider {
+        width: 100%;
+        height: 1px;
+      }
     }
 
     /* --- Form Section --- */
@@ -1706,24 +1693,44 @@
       margin: 0;
     }
 
-    .reg-refs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm) var(--space-lg);
-      margin-top: var(--space-lg);
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--secondary-grey-blue);
-      font-size: var(--text-xs);
-      color: var(--medium-grey);
+    /* --- Reg Contact --- */
+    .reg-contact {
+      text-align: center;
+      max-width: 500px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
     }
 
-    .reg-refs span {
-      display: flex;
+    .reg-contact__line {
+      display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: #4a5568;
+      margin: 0 0 0.5rem;
     }
 
-    .reg-refs svg { color: var(--iva-accent); flex-shrink: 0; }
+    .reg-contact__line a {
+      color: #0044a1;
+      text-decoration: none;
+    }
+
+    .reg-contact__line a:hover {
+      text-decoration: underline;
+    }
+
+    .reg-contact__line svg {
+      color: #94a3b8;
+      flex-shrink: 0;
+    }
+
+    .reg-contact__disclosure {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 1rem 0 0;
+    }
 
     /* --- Your Choice Section --- */
     .choice-section {
@@ -1742,13 +1749,23 @@
       .choice-layout {
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
+        align-items: stretch;
       }
     }
 
     .choice-card {
-      padding: 1.75rem;
-      border-radius: 12px;
+      padding: 2rem;
+      border-radius: 14px;
       border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .choice-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
     }
 
     .choice-card--direct {
@@ -1760,24 +1777,52 @@
       border-left: 3px solid #0044a1;
     }
 
+    .choice-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      margin-bottom: 1.125rem;
+    }
+
+    .choice-card__icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.04);
+      color: #4a5568;
+    }
+
+    .choice-card__icon--blue {
+      background: rgba(0,68,161,0.08);
+      color: #0044a1;
+    }
+
     .choice-card__title {
       font-size: 1.0625rem;
       font-weight: 700;
       color: #1a202c;
-      margin: 0 0 0.75rem;
+      margin: 0;
     }
 
     .choice-card__text {
       font-size: 0.875rem;
       color: #4a5568;
       line-height: 1.7;
-      margin: 0;
+      margin: 0 0 0.625rem;
+    }
+
+    .choice-card__text:last-child {
+      margin-bottom: 0;
     }
 
     .choice-reasons {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.875rem;
     }
 
     .choice-reason {
@@ -1786,10 +1831,13 @@
       align-items: flex-start;
     }
 
-    .choice-reason svg {
+    .choice-reason__marker {
       flex-shrink: 0;
-      color: #0044a1;
-      margin-top: 2px;
+      width: 6px;
+      height: 6px;
+      background: #0044a1;
+      border-radius: 50%;
+      margin-top: 0.5rem;
     }
 
     .choice-reason p {
@@ -1799,13 +1847,29 @@
       margin: 0;
     }
 
-    .choice-footer {
-      text-align: center;
-      font-size: 0.875rem;
-      color: #94a3b8;
+    .choice-footer-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      max-width: 680px;
       margin: 1.5rem auto 0;
-      max-width: 600px;
-      line-height: 1.6;
+      padding: 1rem 1.25rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+    }
+
+    .choice-footer-card svg {
+      flex-shrink: 0;
+      color: #0044a1;
+      margin-top: 2px;
+    }
+
+    .choice-footer-card p {
+      font-size: 0.8125rem;
+      color: #4a5568;
+      line-height: 1.65;
+      margin: 0;
     }
   </style>
 
@@ -1929,14 +1993,13 @@
       <div class="container">
         <h1 class="iva-hero__title">Were You Mis-Sold an IVA?</h1>
         <p class="iva-hero__subtitle">If you were placed into an Individual Voluntary Arrangement without being properly advised about alternatives, you may be entitled to compensation. Find out in minutes with our free assessment.</p>
-        <a href="#claim-form" class="iva-hero__cta-card smooth-scroll">
-          <span class="iva-hero__cta-title">Check Your Eligibility</span>
-          <span class="iva-hero__cta-desc">Free assessment, takes around 2 minutes. No upfront costs at any stage.</span>
-          <span class="iva-hero__cta-action">
-            Start now
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
-        </a>
+        <div class="iva-hero__cta">
+          <a href="#claim-form" class="iva-hero__btn smooth-scroll">
+            Check your eligibility
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </a>
+          <p class="iva-hero__btn-sub">Free assessment, takes 2 minutes</p>
+        </div>
         <div class="iva-hero__notice" role="note">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           <p>You do not need to use a claims management company to make your complaint. You can complain for free directly to your provider or the Financial Ombudsman Service.</p>
@@ -2127,11 +2190,11 @@
 
             <div class="reg-item">
               <div class="reg-item__icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
               </div>
               <div class="reg-item__text">
-                <p class="reg-item__label">No Upfront Fees</p>
-                <p class="reg-item__desc">There are no upfront costs at any stage. If your case is referred to a solicitor, their fees (18 to 36% incl. VAT, on success only) are set out in their client care letter. VLM receives a fixed referral fee from the solicitor.</p>
+                <p class="reg-item__label">Clear Fee Structure</p>
+                <p class="reg-item__desc">There are no upfront costs at any stage. If your case is referred to a solicitor, their fees are set out separately in their client care letter.</p>
               </div>
             </div>
           </div>
@@ -2190,20 +2253,17 @@
           </div>
         </div>
 
-        <!-- Reference numbers -->
-        <div class="reg-refs" style="max-width: var(--max-width); margin: var(--space-xl) auto 0;">
-          <span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            FCA Authorisation No. 835293
-          </span>
-          <span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Company No. 10263322
-          </span>
-          <span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <!-- Contact info -->
+        <div class="reg-contact">
+          <p class="reg-contact__line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:support@visiblelegal.co.uk">support@visiblelegal.co.uk</a>
+          </p>
+          <p class="reg-contact__line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             5 Eagle Fold, Hyde, England, SK14 4GU
-          </span>
+          </p>
+          <p class="reg-contact__disclosure">Visible Legal Marketing Ltd is a claims management company, authorised and regulated by the FCA (No. 835293). Company No. 10263322.</p>
         </div>
       </div>
     </section>
@@ -2247,14 +2307,22 @@
               </div>
             </div>
           </div>
-          <aside class="fees-callout">
-            <span class="fees-callout__label">Solicitor success fee</span>
-            <div class="fees-callout__figure">18&ndash;36%</div>
-            <p class="fees-callout__sub">including VAT</p>
-            <p class="fees-callout__sub">charged only on success</p>
-            <div class="fees-callout__divider" aria-hidden="true"></div>
-            <p class="fees-callout__note">If no compensation is recovered, you owe nothing.</p>
-          </aside>
+          <div class="fees-summary">
+            <div class="fees-summary__item">
+              <span class="fees-summary__label">Your cost to us</span>
+              <span class="fees-summary__value">Nothing</span>
+            </div>
+            <div class="fees-summary__divider" aria-hidden="true"></div>
+            <div class="fees-summary__item">
+              <span class="fees-summary__label">Solicitor fees (on success)</span>
+              <span class="fees-summary__value">18 to 36% inc. VAT</span>
+            </div>
+            <div class="fees-summary__divider" aria-hidden="true"></div>
+            <div class="fees-summary__item">
+              <span class="fees-summary__label">If claim unsuccessful</span>
+              <span class="fees-summary__value">You owe nothing</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2270,28 +2338,42 @@
         </div>
         <div class="choice-layout">
           <div class="choice-card choice-card--direct">
-            <h3 class="choice-card__title">Complain directly</h3>
-            <p class="choice-card__text">You can complain for free directly to your IVA provider. If you are not satisfied with their response, you can escalate your complaint to the Financial Ombudsman Service free of charge. There is no cost to you for either route.</p>
+            <div class="choice-card__header">
+              <div class="choice-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <h3 class="choice-card__title">Complain directly, for free</h3>
+            </div>
+            <p class="choice-card__text">You can complain for free directly to your IVA provider. If you are not satisfied with their response, you can escalate your complaint to the Financial Ombudsman Service free of charge.</p>
+            <p class="choice-card__text">There is no cost to you for either route and you do not need any professional assistance to do so.</p>
           </div>
           <div class="choice-card choice-card--cmc">
-            <h3 class="choice-card__title">Why some people choose us</h3>
+            <div class="choice-card__header">
+              <div class="choice-card__icon choice-card__icon--blue">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <h3 class="choice-card__title">Why some people choose us</h3>
+            </div>
             <div class="choice-reasons">
               <div class="choice-reason">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                <p>We handle the paperwork, including obtaining your full IVA file from your provider through a formal data request.</p>
+                <div class="choice-reason__marker"></div>
+                <p>We handle obtaining your full IVA file from your provider through a formal data request, so you do not have to.</p>
               </div>
               <div class="choice-reason">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <p>We assess your case against the advice standards that applied at the time and identify potential issues.</p>
+                <div class="choice-reason__marker"></div>
+                <p>We assess your case against the advice standards that applied at the time and identify the specific issues.</p>
               </div>
               <div class="choice-reason">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                <p>We connect you with specialist solicitors who have experience pursuing IVA mis-selling claims.</p>
+                <div class="choice-reason__marker"></div>
+                <p>We connect you with specialist solicitors who have experience pursuing IVA mis-selling claims on behalf of individuals.</p>
               </div>
             </div>
           </div>
         </div>
-        <p class="choice-footer">The decision is yours. Whether you complain directly or use our service, the important thing is that you are aware of your options.</p>
+        <div class="choice-footer-card">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <p>The decision is entirely yours. Whether you complain directly or choose to use our service, the important thing is that you are aware of your options.</p>
+        </div>
       </div>
     </section>
 
@@ -2749,8 +2831,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </div>
             <div class="timeline__content">
-              <h3>Document Request (DSAR)</h3>
-              <p>Once signed, we submit a Data Subject Access Request to your IVA provider. They have up to 30 days to respond with your full IVA file.</p>
+              <h3>We Request Your IVA File</h3>
+              <p>We submit a Data Subject Access Request to your IVA provider. They are required to respond within 30 days. We handle all communication with the provider on your behalf.</p>
               <span class="timeline__time">Up to 30 days</span>
             </div>
           </div>
@@ -2761,7 +2843,18 @@
             </div>
             <div class="timeline__content">
               <h3>We Assess Your Case</h3>
-              <p>We review your documents and assess whether you have a valid mis-selling claim. If viable, we prepare your case for referral to a solicitor.</p>
+              <p>We review your IVA file against the advice standards that applied at the time. We look at the alternatives that were available, whether payments were affordable, and whether fees and risks were properly disclosed.</p>
+              <span class="timeline__time">1 to 2 weeks</span>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <div class="timeline__dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="timeline__content">
+              <h3>Referral to Solicitor</h3>
+              <p>If we identify a viable claim, we prepare your case and refer it to a specialist solicitor from our panel. The solicitor reviews our assessment and contacts you directly to confirm the arrangements and their fee structure.</p>
               <span class="timeline__time">1 to 2 weeks</span>
             </div>
           </div>
@@ -2772,7 +2865,7 @@
             </div>
             <div class="timeline__content">
               <h3>Solicitor Pursues Your Claim</h3>
-              <p>If your case is viable, a specialist solicitor from our panel pursues compensation on your behalf. Solicitor fees are only charged if they recover funds for you.</p>
+              <p>The solicitor handles the legal claim on your behalf, including all correspondence with the IVA provider. Their fees are set out in their client care letter and are only charged if compensation is recovered.</p>
               <span class="timeline__time">Varies by case</span>
             </div>
           </div>
