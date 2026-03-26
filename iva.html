@@ -3109,6 +3109,29 @@
             }
           }
 
+          // Email format validation: must contain a valid email address
+          if (field.type === 'email' && field.value.trim()) {
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(field.value.trim())) {
+              field.style.borderColor = 'var(--error-red)';
+              field.style.boxShadow = '0 0 0 3px rgba(229, 62, 62, 0.15)';
+              valid = false;
+              var emailHint = field.parentNode.querySelector('.field-error');
+              if (!emailHint) {
+                emailHint = document.createElement('span');
+                emailHint.className = 'field-error';
+                emailHint.style.cssText = 'color:var(--error-red);font-size:0.85rem;margin-top:4px;display:block;';
+                emailHint.textContent = 'Please enter a valid email address.';
+                field.parentNode.appendChild(emailHint);
+              }
+              field.addEventListener('input', function handler() {
+                var h = field.parentNode.querySelector('.field-error');
+                if (h) h.remove();
+                field.removeEventListener('input', handler);
+              });
+            }
+          }
+
           // Extra DOB validation: must be valid DD/MM/YYYY and 18+
           if (field.id === 'dob' && field.value) {
             var match = field.value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
