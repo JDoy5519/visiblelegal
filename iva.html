@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>IVA Mis-Selling Claims | Visible Legal</title>
-  <meta name="description" content="Were you mis-sold an IVA? You could be entitled to compensation. FCA-regulated claims management. Free assessment, success-based fees.">
+  <meta name="description" content="Were you mis-sold an IVA? You could be entitled to compensation. Free assessment. Authorised and regulated by the FCA (No. 835293).">
 
   <link rel="canonical" href="https://visiblelegal.co.uk/iva.html">
 
   <!-- Open Graph -->
   <meta property="og:title" content="IVA Mis-Selling Claims | Visible Legal">
-  <meta property="og:description" content="Were you mis-sold an IVA? Free assessment, success-based fees. FCA-regulated claims management.">
+  <meta property="og:description" content="Were you mis-sold an IVA? Free assessment. Authorised and regulated by the FCA (No. 835293).">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://visiblelegal.co.uk/iva.html">
   <meta property="og:image" content="https://visiblelegal.co.uk/assets/og-iva.png">
@@ -23,7 +23,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="IVA Mis-Selling Claims | Visible Legal">
-  <meta name="twitter:description" content="Were you mis-sold an IVA? Free assessment, success-based fees. FCA-regulated claims management.">
+  <meta name="twitter:description" content="Were you mis-sold an IVA? Free assessment. Authorised and regulated by the FCA (No. 835293).">
   <meta name="twitter:image" content="https://visiblelegal.co.uk/assets/og-iva.png">
 
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
@@ -271,6 +271,51 @@
       margin-top: 1rem;
     }
 
+    .iva-hero__cta-card {
+      display: block;
+      max-width: 420px;
+      margin: 0 auto 2rem;
+      padding: 1.375rem 1.75rem;
+      background: #ffffff;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: left;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .iva-hero__cta-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.12);
+      text-decoration: none;
+      color: #1a202c;
+    }
+
+    .iva-hero__cta-title {
+      display: block;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #0044a1;
+      margin-bottom: 0.375rem;
+    }
+
+    .iva-hero__cta-desc {
+      display: block;
+      font-size: 0.8125rem;
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .iva-hero__cta-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #ff6b35;
+    }
+
     @media (min-width: 768px) {
       .iva-hero { padding: 5.5rem var(--space-lg) 5rem; }
       .iva-hero__title { font-size: 3.25rem; }
@@ -347,6 +392,39 @@
       margin: 0;
     }
 
+    /* --- Edu CTA block --- */
+    .edu-cta-block {
+      margin-top: 2rem;
+      padding: 1.5rem 1.75rem;
+      background: #f0f7ff;
+      border: 1px solid #d0e2f7;
+      border-left: 3px solid #0044a1;
+      border-radius: 8px;
+    }
+
+    .edu-cta-block p {
+      font-size: 0.9375rem;
+      color: #1a202c;
+      line-height: 1.75;
+      margin: 0 0 0.875rem;
+      font-weight: 500;
+    }
+
+    .edu-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: #0044a1;
+      text-decoration: none;
+    }
+
+    .edu-cta-link:hover {
+      text-decoration: underline;
+      color: #003580;
+    }
+
     /* --- How We Help section --- */
     .how-we-help {
       background-color: var(--white);
@@ -411,84 +489,126 @@
       margin: 0;
     }
 
-    /* --- Eligibility --- */
-    .eligibility { background-color: var(--white); padding: var(--space-3xl) var(--space-md); }
+    /* --- Fees Section --- */
+    .fees-section {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
 
-    .elig-grid {
-      max-width: var(--max-width);
-      margin: 0 auto;
+    .fees-layout {
       display: grid;
-      gap: var(--space-md);
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 920px;
+      margin: 0 auto;
     }
 
     @media (min-width: 768px) {
-      .elig-grid { grid-template-columns: repeat(2, 1fr); }
+      .fees-layout {
+        grid-template-columns: 1fr 240px;
+        gap: 2.5rem;
+        align-items: start;
+      }
     }
 
-    .elig-card {
+    .fees-card {
       display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-      padding: var(--space-lg);
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow var(--transition-base), transform var(--transition-base);
+      flex-direction: column;
+      gap: 0;
     }
 
-    .elig-card:hover {
-      box-shadow: var(--shadow-card-hover);
-      transform: translateY(-2px);
+    .fees-card__item {
+      display: flex;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid #e2e8f0;
     }
 
-    .elig-card__icon {
+    .fees-card__item:last-child {
+      border-bottom: none;
+    }
+
+    .fees-card__icon {
       flex-shrink: 0;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 44px;
-      height: 44px;
-      background: rgba(0, 102, 204, 0.1);
-      border-radius: var(--radius-full);
-      color: var(--iva-accent);
-    }
-
-    .elig-card p {
-      margin: 0;
-      font-weight: var(--font-weight-medium);
-      color: var(--charcoal);
-      line-height: var(--line-height-relaxed);
-    }
-
-    /* --- Fees Section --- */
-    .fees-section {
-      background-color: #f8fafc;
-      padding: var(--space-3xl) var(--space-md);
-    }
-
-    .fees-section__prose {
-      max-width: 760px;
-      margin: 0 auto;
-      background: var(--white);
-      border: 1px solid #e2e8f0;
-      border-left: 3px solid #0044a1;
+      background: rgba(0,68,161,0.08);
       border-radius: 10px;
-      padding: 2rem 2.25rem;
+      color: #0044a1;
     }
 
-    .fees-section__prose p {
+    .fees-card__label {
       font-size: 0.9375rem;
-      color: #4a5568;
-      line-height: 1.8;
-      margin: 0 0 1.25rem;
+      font-weight: 600;
+      color: #1a202c;
+      margin: 0 0 0.25rem;
     }
 
-    .fees-section__prose p:last-child { margin-bottom: 0; }
+    .fees-card__text {
+      font-size: 0.8125rem;
+      color: #4a5568;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .fees-callout {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .fees-callout__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #4a5568;
+      margin-bottom: 0.75rem;
+    }
+
+    .fees-callout__figure {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0044a1;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.375rem;
+    }
+
+    .fees-callout__sub {
+      font-size: 0.8125rem;
+      color: #4a5568;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .fees-callout__divider {
+      width: 28px;
+      height: 2px;
+      background: #e2e8f0;
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    .fees-callout__note {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin: 0;
+    }
 
     /* --- Form Section --- */
     .form-section {
       padding: var(--space-3xl) var(--space-md);
-      background-color: var(--white);
+      background-color: #f8fafc;
     }
 
     .form-card {
@@ -1008,7 +1128,7 @@
     }
 
     /* --- Timeline (What Happens Next) --- */
-    .timeline-section { padding: var(--space-3xl) var(--space-md); }
+    .timeline-section { padding: var(--space-3xl) var(--space-md); background: #ffffff; }
 
     .timeline {
       max-width: 640px;
@@ -1086,7 +1206,7 @@
     }
 
     /* --- FAQ --- */
-    .faq-section { background-color: var(--bg-subtle); padding: var(--space-3xl) var(--space-md); }
+    .faq-section { background-color: #f8fafc; padding: var(--space-3xl) var(--space-md); }
 
     .faq-list { max-width: var(--max-width-narrow); margin: 0 auto; }
 
@@ -1484,7 +1604,7 @@
     /* --- Regulatory section redesign --- */
     .regulatory-section {
       padding: var(--space-3xl) var(--space-md);
-      background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--white) 100%);
+      background: #ffffff;
     }
 
     .regulatory-section .section__header {
@@ -1604,6 +1724,89 @@
     }
 
     .reg-refs svg { color: var(--iva-accent); flex-shrink: 0; }
+
+    /* --- Your Choice Section --- */
+    .choice-section {
+      background: #ffffff;
+    }
+
+    .choice-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .choice-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .choice-card {
+      padding: 1.75rem;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .choice-card--direct {
+      background: #f8fafc;
+    }
+
+    .choice-card--cmc {
+      background: #ffffff;
+      border-left: 3px solid #0044a1;
+    }
+
+    .choice-card__title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin: 0 0 0.75rem;
+    }
+
+    .choice-card__text {
+      font-size: 0.875rem;
+      color: #4a5568;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .choice-reasons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .choice-reason {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .choice-reason svg {
+      flex-shrink: 0;
+      color: #0044a1;
+      margin-top: 2px;
+    }
+
+    .choice-reason p {
+      font-size: 0.875rem;
+      color: #4a5568;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .choice-footer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: #94a3b8;
+      margin: 1.5rem auto 0;
+      max-width: 600px;
+      line-height: 1.6;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -1726,9 +1929,14 @@
       <div class="container">
         <h1 class="iva-hero__title">Were You Mis-Sold an IVA?</h1>
         <p class="iva-hero__subtitle">If you were placed into an Individual Voluntary Arrangement without being properly advised about alternatives, you may be entitled to compensation. Find out in minutes with our free assessment.</p>
-        <div class="iva-hero__cta">
-          <a href="#claim-form" class="btn btn--white-blue btn--lg smooth-scroll">Check Your Eligibility Now</a>
-        </div>
+        <a href="#claim-form" class="iva-hero__cta-card smooth-scroll">
+          <span class="iva-hero__cta-title">Check Your Eligibility</span>
+          <span class="iva-hero__cta-desc">Free assessment, takes around 2 minutes. No upfront costs at any stage.</span>
+          <span class="iva-hero__cta-action">
+            Start now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
         <div class="iva-hero__notice" role="note">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           <p>You do not need to use a claims management company to make your complaint. You can complain for free directly to your provider or the Financial Ombudsman Service.</p>
@@ -1852,64 +2060,150 @@
             </div>
           </div>
 
-          <p>If any of the above sounds familiar, you may have been mis-sold your IVA and could be entitled to compensation. <strong>You don't need to have completed your IVA to make a claim</strong>; whether it's still active, completed, or even failed.</p>
+          <div class="edu-cta-block">
+            <p>If any of the above sounds familiar, you may have been mis-sold your IVA and could be entitled to compensation. You can make a claim whether your IVA is still active, completed, or failed.</p>
+            <a href="#claim-form" class="edu-cta-link smooth-scroll">
+              Check your eligibility now
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
 
     <!-- ============================================================
-         ELIGIBILITY
+         REGULATORY & TRANSPARENCY
          ============================================================ -->
-    <section class="eligibility" id="eligibility">
+    <section class="regulatory-section" id="regulatory">
       <div class="container">
         <div class="section__header">
-          <h2 class="section__title">You May Have a Claim If&hellip;</h2>
-          <p class="section__subtitle">If any of the following apply to you, it's worth checking your eligibility</p>
+          <h2 class="section__title">Regulatory &amp; Transparency</h2>
+          <p class="section__subtitle">We're committed to clear, honest communication and full regulatory compliance</p>
         </div>
 
-        <div class="elig-grid">
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="reg-grid">
+          <!-- Left column: Regulatory details -->
+          <div class="reg-card">
+            <div class="reg-card__header">
+              <div class="reg-card__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </div>
+              <div>
+                <h3 class="reg-card__title">How We Support You</h3>
+                <p class="reg-card__subtitle">Our service commitments</p>
+              </div>
             </div>
-            <p>You entered an IVA and feel the advice you received was unsuitable</p>
+
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Regular Updates</p>
+                <p class="reg-item__desc">We keep you informed at key milestones by email throughout the process.</p>
+              </div>
+            </div>
+
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Document Handling</p>
+                <p class="reg-item__desc">We coordinate information requests from your provider so you don't have to chase everything yourself.</p>
+              </div>
+            </div>
+
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Clear Approvals</p>
+                <p class="reg-item__desc">You'll see and approve important documents (such as Letters of Authority) before they are used.</p>
+              </div>
+            </div>
+
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">No Upfront Fees</p>
+                <p class="reg-item__desc">There are no upfront costs at any stage. If your case is referred to a solicitor, their fees (18 to 36% incl. VAT, on success only) are set out in their client care letter. VLM receives a fixed referral fee from the solicitor.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <!-- Right column: Your rights -->
+          <div class="reg-card">
+            <div class="reg-card__header">
+              <div class="reg-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div>
+                <h3 class="reg-card__title">Your Rights</h3>
+                <p class="reg-card__subtitle">Important information for consumers</p>
+              </div>
             </div>
-            <p>You weren't told about alternative debt solutions available to you</p>
-          </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Free Alternatives</p>
+                <p class="reg-item__desc">You can complain for free directly to your IVA provider, lender, or bank. If unsatisfied, you can escalate to the Financial Ombudsman Service.</p>
+              </div>
             </div>
-            <p>Your financial circumstances weren't properly assessed before the IVA was set up</p>
-          </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Why Clients Choose Us</p>
+                <p class="reg-item__desc">Many clients choose us because we manage the process, coordinate documents, and liaise with solicitors on their behalf, making it straightforward.</p>
+              </div>
             </div>
-            <p>You weren't informed of all the fees and charges involved in the IVA</p>
-          </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Data Protection</p>
+                <p class="reg-item__desc">Your data is handled in full compliance with UK GDPR and FCA requirements. Read our <a href="/privacy/iva-privacy.html" style="color: var(--iva-accent); text-decoration: underline;">IVA Privacy Policy</a>.</p>
+              </div>
             </div>
-            <p>You experienced financial difficulty or hardship as a result of the IVA</p>
-          </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Prompt Communication</p>
+                <p class="reg-item__desc">To keep your claim moving smoothly, please respond promptly to any requests for information from us.</p>
+              </div>
             </div>
-            <p>Your IVA failed or was terminated, causing you further problems</p>
           </div>
+        </div>
+
+        <!-- Reference numbers -->
+        <div class="reg-refs" style="max-width: var(--max-width); margin: var(--space-xl) auto 0;">
+          <span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            FCA Authorisation No. 835293
+          </span>
+          <span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Company No. 10263322
+          </span>
+          <span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            5 Eagle Fold, Hyde, England, SK14 4GU
+          </span>
         </div>
       </div>
     </section>
@@ -1921,13 +2215,83 @@
         <div class="section__header">
           <h2 class="section__title">Fees and Costs</h2>
           <div class="section__heading-line" aria-hidden="true"></div>
+          <p class="section__subtitle">Complete transparency about how our service works</p>
         </div>
-        <p style="text-align:center;color:#4a5568;font-size:0.9375rem;max-width:580px;margin:0 auto 2rem;">Complete transparency about how our service works</p>
-        <div class="fees-section__prose">
-          <p>There are no upfront costs to you at any stage. We carry out initial work on your behalf at no charge, including obtaining your IVA file and assessing whether you have a viable claim.</p>
-          <p>If your case is referred to a panel solicitor, the solicitor handles the legal claim. Their fees are set out in their own client care letter, regulated by the Solicitors Regulation Authority. Solicitor fees are typically between 18 and 36 percent (including VAT) of any compensation recovered, and are charged only if the claim is successful.</p>
-          <p>Visible Legal Marketing Ltd receives a fixed referral fee from the solicitor for the assessment and referral work we carry out. This fee is paid by the solicitor and does not reduce or affect any compensation you receive.</p>
+        <div class="fees-layout">
+          <div class="fees-card">
+            <div class="fees-card__item">
+              <div class="fees-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div>
+                <h3 class="fees-card__label">No upfront costs</h3>
+                <p class="fees-card__text">We carry out initial work on your behalf at no charge, including obtaining your IVA file and assessing whether you have a viable claim.</p>
+              </div>
+            </div>
+            <div class="fees-card__item">
+              <div class="fees-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div>
+                <h3 class="fees-card__label">Solicitor fees on success only</h3>
+                <p class="fees-card__text">If your case is referred to a panel solicitor, their fees are set out in their own client care letter, regulated by the Solicitors Regulation Authority. Fees are typically 18 to 36 percent (including VAT) and are charged only if compensation is recovered.</p>
+              </div>
+            </div>
+            <div class="fees-card__item">
+              <div class="fees-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5C12 4 8 5 8 9v10"/><line x1="7" y1="13" x2="14" y2="13"/><line x1="7" y1="19" x2="17" y2="19"/></svg>
+              </div>
+              <div>
+                <h3 class="fees-card__label">Our referral fee</h3>
+                <p class="fees-card__text">Visible Legal Marketing Ltd receives a fixed referral fee from the solicitor for the assessment and referral work we carry out. This fee is paid by the solicitor and does not reduce or affect any compensation you receive.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="fees-callout">
+            <span class="fees-callout__label">Solicitor success fee</span>
+            <div class="fees-callout__figure">18&ndash;36%</div>
+            <p class="fees-callout__sub">including VAT</p>
+            <p class="fees-callout__sub">charged only on success</p>
+            <div class="fees-callout__divider" aria-hidden="true"></div>
+            <p class="fees-callout__note">If no compensation is recovered, you owe nothing.</p>
+          </aside>
         </div>
+      </div>
+    </section>
+
+
+    <!-- YOUR CHOICE -->
+    <section class="section choice-section" id="your-choice">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">You Have a Choice</h2>
+          <div class="section__heading-line" aria-hidden="true"></div>
+          <p class="section__subtitle">A claims management company is not required to make a complaint</p>
+        </div>
+        <div class="choice-layout">
+          <div class="choice-card choice-card--direct">
+            <h3 class="choice-card__title">Complain directly</h3>
+            <p class="choice-card__text">You can complain for free directly to your IVA provider. If you are not satisfied with their response, you can escalate your complaint to the Financial Ombudsman Service free of charge. There is no cost to you for either route.</p>
+          </div>
+          <div class="choice-card choice-card--cmc">
+            <h3 class="choice-card__title">Why some people choose us</h3>
+            <div class="choice-reasons">
+              <div class="choice-reason">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <p>We handle the paperwork, including obtaining your full IVA file from your provider through a formal data request.</p>
+              </div>
+              <div class="choice-reason">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <p>We assess your case against the advice standards that applied at the time and identify potential issues.</p>
+              </div>
+              <div class="choice-reason">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                <p>We connect you with specialist solicitors who have experience pursuing IVA mis-selling claims.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="choice-footer">The decision is yours. Whether you complain directly or use our service, the important thing is that you are aware of your options.</p>
       </div>
     </section>
 
@@ -2479,11 +2843,11 @@
 
           <div class="faq-item">
             <button class="faq-item__question" aria-expanded="false">
-              What does &ldquo;success-based fees&rdquo; mean?
+              How are fees structured?
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>There are no upfront costs to you at any stage. Visible Legal Marketing Ltd carries out initial work at no charge, including obtaining your IVA file and assessing your case. If a viable claim is identified, we refer your case to a panel solicitor. The solicitor's fees (typically 18 to 36 percent including VAT, charged only on successful recovery) are set out in their own client care letter and are regulated by the Solicitors Regulation Authority. VLM receives a fixed referral fee from the solicitor for our assessment and referral work. This fee does not reduce or affect any compensation you receive.</p>
+              <p>There are no upfront costs to you at any stage. We carry out initial work at no charge, including obtaining your IVA file and assessing your case. If we identify a viable claim, we refer your case to a panel solicitor. The solicitor's fees (typically 18 to 36 percent including VAT) are set out in their own client care letter and are only charged if compensation is recovered. VLM receives a fixed referral fee from the solicitor for our work. This fee does not come from you and does not affect your compensation.</p>
             </div>
           </div>
 
@@ -2502,143 +2866,6 @@
 
 
   </main>
-
-
-  <!-- ============================================================
-       REGULATORY & TRANSPARENCY
-       ============================================================ -->
-  <section class="regulatory-section" id="regulatory">
-    <div class="container">
-      <div class="section__header">
-        <h2 class="section__title">Regulatory &amp; Transparency</h2>
-        <p class="section__subtitle">We're committed to clear, honest communication and full regulatory compliance</p>
-      </div>
-
-      <div class="reg-grid">
-        <!-- Left column: Regulatory details -->
-        <div class="reg-card">
-          <div class="reg-card__header">
-            <div class="reg-card__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            </div>
-            <div>
-              <h3 class="reg-card__title">How We Support You</h3>
-              <p class="reg-card__subtitle">Our service commitments</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Regular Updates</p>
-              <p class="reg-item__desc">We keep you informed at key milestones by email and, where you agree, by SMS/WhatsApp.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Document Handling</p>
-              <p class="reg-item__desc">We coordinate information requests from your provider so you don't have to chase everything yourself.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Clear Approvals</p>
-              <p class="reg-item__desc">You'll see and approve important documents (such as Letters of Authority) before they are used.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">No Upfront Fees</p>
-              <p class="reg-item__desc">There are no upfront costs at any stage. If your case is referred to a solicitor, their fees (18 to 36% incl. VAT, on success only) are set out in their client care letter. VLM receives a fixed referral fee from the solicitor.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right column: Your rights -->
-        <div class="reg-card">
-          <div class="reg-card__header">
-            <div class="reg-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-            </div>
-            <div>
-              <h3 class="reg-card__title">Your Rights</h3>
-              <p class="reg-card__subtitle">Important information for consumers</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Free Alternatives</p>
-              <p class="reg-item__desc">You can complain for free directly to your IVA provider, lender, or bank. If unsatisfied, you can escalate to the Financial Ombudsman Service.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Why Clients Choose Us</p>
-              <p class="reg-item__desc">Many clients choose us because we manage the process, coordinate documents, and liaise with solicitors on their behalf, making it straightforward.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Data Protection</p>
-              <p class="reg-item__desc">Your data is handled in full compliance with UK GDPR and FCA requirements. Read our <a href="/privacy/iva-privacy.html" style="color: var(--iva-accent); text-decoration: underline;">IVA Privacy Policy</a>.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Prompt Communication</p>
-              <p class="reg-item__desc">To keep your claim moving smoothly, please respond promptly to any requests for information from us.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Reference numbers -->
-      <div class="reg-refs" style="max-width: var(--max-width); margin: var(--space-xl) auto 0;">
-        <span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          FCA Authorisation No. 835293
-        </span>
-        <span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Company No. 10263322
-        </span>
-        <span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          5 Eagle Fold, Hyde, England, SK14 4GU
-        </span>
-      </div>
-    </div>
-  </section>
 
 
   <!-- ============================================================
