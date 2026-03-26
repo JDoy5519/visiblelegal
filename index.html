@@ -110,84 +110,126 @@
     .hero__buttons {
       display: flex;
       flex-direction: column;
+      gap: 1rem;
       align-items: center;
-      gap: 0.875rem;
+      max-width: 680px;
+      margin: 0 auto;
     }
 
-    @media (min-width: 480px) {
+    @media (min-width: 640px) {
       .hero__buttons {
         flex-direction: row;
-        justify-content: center;
         align-items: stretch;
       }
     }
 
-    .hero__btn-group {
+    .hero__cta {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      padding: 1rem 2.25rem;
-      border-radius: 10px;
+      flex: 1;
+      padding: 1.5rem 1.75rem;
+      border-radius: 12px;
       text-decoration: none;
-      transition: all 0.2s ease;
-      min-width: 240px;
-      position: relative;
-      width: 100%;
-      max-width: 300px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: left;
+      min-width: 0;
     }
 
-    @media (min-width: 480px) {
-      .hero__btn-group {
-        width: auto;
-        max-width: none;
-      }
+    .hero__cta:hover {
+      transform: translateY(-3px);
+      text-decoration: none;
     }
 
-    .hero__btn-group--iva {
+    .hero__cta--iva {
       background: #ffffff;
-      color: #0044a1;
+      color: #1a202c;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.08);
     }
 
-    .hero__btn-group--iva:hover {
-      background: #f0f4ff;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      color: #0044a1;
-      text-decoration: none;
+    .hero__cta--iva:hover {
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.12);
+      color: #1a202c;
     }
 
-    .hero__btn-group--bec {
-      background: #ff6b35;
+    .hero__cta--bec {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
       color: #ffffff;
     }
 
-    .hero__btn-group--bec:hover {
-      background: #e55a28;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(255,107,53,0.3);
+    .hero__cta--bec:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.3);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
       color: #ffffff;
-      text-decoration: none;
     }
 
-    .hero__btn-label {
-      font-size: 0.9375rem;
+    .hero__cta-badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 0.25rem 0.625rem;
+      font-size: 0.6875rem;
       font-weight: 600;
-      line-height: 1.3;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      background: rgba(0,68,161,0.1);
+      color: #0044a1;
     }
 
-    .hero__btn-desc {
-      font-size: 0.75rem;
-      font-weight: 400;
-      margin-top: 0.25rem;
-      line-height: 1.3;
+    .hero__cta-badge--bec {
+      background: rgba(255,107,53,0.15);
+      color: #ff6b35;
     }
 
-    .hero__btn-group--iva .hero__btn-desc {
+    .hero__cta-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero__cta--iva .hero__cta-title {
+      color: #0044a1;
+    }
+
+    .hero__cta-desc {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+
+    .hero__cta--iva .hero__cta-desc {
       color: #4a5568;
     }
 
-    .hero__btn-group--bec .hero__btn-desc {
-      color: rgba(255,255,255,0.8);
+    .hero__cta--bec .hero__cta-desc {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hero__cta-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .hero__cta--iva .hero__cta-action {
+      color: #0044a1;
+    }
+
+    .hero__cta--bec .hero__cta-action {
+      color: #ff6b35;
+    }
+
+    @media (max-width: 639px) {
+      .hero__cta {
+        width: 100%;
+        max-width: 360px;
+      }
     }
 
 
@@ -196,30 +238,54 @@
        ================================================================ */
 
     .reg-notice {
-      background-color: var(--white);
-      border-bottom: 1px solid var(--secondary-grey-blue);
+      background: #ffffff;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #e2e8f0;
     }
 
-    .reg-notice__inner {
+    .reg-notice__card {
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
-      max-width: 860px;
+      gap: 1rem;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 1.125rem 0;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #0044a1;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
     }
 
-    .reg-notice__icon {
+    .reg-notice__icon-wrap {
       flex-shrink: 0;
-      color: #94a3b8;
-      margin-top: 2px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,68,161,0.08);
+      border-radius: 50%;
+      color: #0044a1;
+      margin-top: 0.125rem;
+    }
+
+    .reg-notice__content {
+      flex: 1;
+    }
+
+    .reg-notice__heading {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1a202c;
+      margin: 0 0 0.375rem;
+      line-height: 1.4;
     }
 
     .reg-notice__text {
+      font-size: 0.8125rem;
+      color: #4a5568;
+      line-height: 1.65;
       margin: 0;
-      font-size: 0.875rem;
-      color: var(--medium-grey);
-      line-height: 1.7;
     }
 
 
@@ -336,106 +402,120 @@
       .choose-claim__grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    .claim-card {
-      background-color: var(--white);
-      border: 1px solid var(--secondary-grey-blue);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: box-shadow 0.25s ease, transform 0.25s ease;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    .service-card {
       display: flex;
       flex-direction: column;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.03);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-
-    .claim-card:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      transform: translateY(-3px);
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 20px 48px rgba(0,0,0,0.08);
     }
 
-    .claim-card__stripe {
-      height: 5px;
+    .service-card__header {
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    .claim-card--iva .claim-card__stripe {
-      background-color: var(--primary-blue);
+    .service-card__header--iva {
+      background: linear-gradient(135deg, #003580 0%, #0044a1 100%);
     }
 
-    .claim-card--iva {
-      border-left: 3px solid var(--primary-blue);
+    .service-card__header--bec {
+      background: linear-gradient(135deg, #e55a28 0%, #ff6b35 100%);
     }
 
-    .claim-card--bec .claim-card__stripe {
-      background-color: var(--cta-orange);
+    .service-card__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.3;
     }
 
-    .claim-card--bec {
-      border-left: 3px solid var(--cta-orange);
+    .service-card__tag {
+      flex-shrink: 0;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: rgba(255,255,255,0.2);
+      border-radius: 4px;
+      white-space: nowrap;
     }
 
-    .claim-card__body {
-      padding: 2rem;
+    .service-card__body-wrap {
+      padding: 1.75rem 2rem 2rem;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
 
-    .claim-card__title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--charcoal);
-      margin: 0 0 0.875rem;
-    }
-
-    .claim-card__text {
+    .service-card__body {
       font-size: 0.9375rem;
-      color: var(--medium-grey);
+      color: #4a5568;
       line-height: 1.75;
       flex-grow: 1;
-      margin: 0;
+      margin: 0 0 1.25rem;
     }
 
-    .claim-card__disclosure {
+    .service-card__disclosure {
       font-size: 0.75rem;
       color: #94a3b8;
-      border-top: 1px solid var(--secondary-grey-blue);
+      line-height: 1.6;
+      margin: 0 0 1.5rem;
       padding-top: 1rem;
-      margin-top: auto;
-      margin-bottom: 1.5rem;
+      border-top: 1px solid #e2e8f0;
     }
 
-    .claim-card__cta {
+    .service-card__cta {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.8125rem;
+      padding: 0.875rem 1.5rem;
       font-size: 0.9375rem;
       font-weight: 600;
       border-radius: 8px;
       text-decoration: none;
+      width: 100%;
+      transition: all 0.2s ease;
+      margin-top: auto;
+    }
+
+    .service-card__cta--iva {
+      background: #0044a1;
       color: #ffffff;
-      transition: background-color 0.2s ease;
     }
 
-    .claim-card--iva .claim-card__cta {
-      background-color: var(--primary-blue);
-    }
-
-    .claim-card--iva .claim-card__cta:hover {
-      background-color: #003580;
+    .service-card__cta--iva:hover {
+      background: #003580;
+      color: #ffffff;
       text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,68,161,0.25);
+    }
+
+    .service-card__cta--bec {
+      background: #ff6b35;
       color: #ffffff;
     }
 
-    .claim-card--bec .claim-card__cta {
-      background-color: var(--cta-orange);
-    }
-
-    .claim-card--bec .claim-card__cta:hover {
-      background-color: #e55a28;
+    .service-card__cta--bec:hover {
+      background: #e55a28;
+      color: #ffffff;
       text-decoration: none;
-      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(255,107,53,0.25);
     }
 
 
@@ -451,54 +531,68 @@
       .trust-section .section__title { font-size: 2rem; }
     }
 
-    .trust-section__grid {
+    .trust-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.25rem;
-      max-width: 860px;
+      gap: 1rem;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     @media (min-width: 768px) {
-      .trust-section__grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
     }
 
     .trust-item {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.5rem 1.75rem;
       background: #f8fafc;
-      border: 1px solid var(--secondary-grey-blue);
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
 
-    .trust-item__icon-wrap {
-      width: 40px;
-      height: 40px;
-      background: rgba(0,68,161,0.08);
-      border-radius: 50%;
+    .trust-item:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .trust-item__number {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 0.75rem;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: #0044a1;
+      background: rgba(0,68,161,0.08);
+      border-radius: 10px;
+      letter-spacing: -0.02em;
     }
 
-    .trust-item__icon {
-      width: 20px;
-      height: 20px;
-      color: var(--primary-blue);
-      flex-shrink: 0;
+    .trust-item__content {
+      flex: 1;
+      min-width: 0;
     }
 
     .trust-item__title {
       font-size: 0.9375rem;
       font-weight: 600;
-      color: var(--charcoal);
-      margin: 0 0 0.5rem;
+      color: #1a202c;
+      margin: 0 0 0.375rem;
+      line-height: 1.4;
     }
 
     .trust-item__text {
-      font-size: 0.875rem;
-      color: var(--medium-grey);
+      font-size: 0.8125rem;
+      color: #4a5568;
       line-height: 1.7;
       margin: 0;
     }
@@ -573,13 +667,21 @@
         <h1 class="hero__title">Claims Management You Can Trust</h1>
         <p class="hero__subtitle">We help individuals and businesses recover compensation through specialist legal claims. Transparent process, no upfront costs, and you are always in control.</p>
         <div class="hero__buttons">
-          <a href="/iva" class="hero__btn-group hero__btn-group--iva">
-            <span class="hero__btn-label">IVA Mis-Selling Claims</span>
-            <span class="hero__btn-desc">FCA-regulated service for individuals</span>
+          <a href="/iva" class="hero__cta hero__cta--iva">
+            <span class="hero__cta-badge">FCA Regulated</span>
+            <span class="hero__cta-title">IVA Mis-Selling Claims</span>
+            <span class="hero__cta-desc">For individuals who may have been given unsuitable IVA advice. This is an FCA-regulated claims management service (No. 835293).</span>
+            <span class="hero__cta-action">Check your eligibility
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </span>
           </a>
-          <a href="/bec" class="hero__btn-group hero__btn-group--bec">
-            <span class="hero__btn-label">Business Energy Claims</span>
-            <span class="hero__btn-desc">B2B commercial recovery service</span>
+          <a href="/bec" class="hero__cta hero__cta--bec">
+            <span class="hero__cta-badge hero__cta-badge--bec">B2B Service</span>
+            <span class="hero__cta-title">Business Energy Claims</span>
+            <span class="hero__cta-desc">For UK businesses overcharged by energy broker commissions. This is a commercial B2B service outside the scope of FCA regulation.</span>
+            <span class="hero__cta-action">Check your eligibility
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </span>
           </a>
         </div>
       </div>
@@ -589,9 +691,14 @@
     <!-- SECTION 2: REGULATORY NOTICE -->
     <section class="reg-notice" role="note" aria-label="Regulatory notice">
       <div class="container">
-        <div class="reg-notice__inner">
-          <svg class="reg-notice__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <p class="reg-notice__text">You do not need to use a claims management company to make your complaint. You can complain for free directly to the firm, or if your complaint is not resolved, to the Financial Ombudsman Service free of charge.</p>
+        <div class="reg-notice__card">
+          <div class="reg-notice__icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </div>
+          <div class="reg-notice__content">
+            <p class="reg-notice__heading">Your right to complain independently</p>
+            <p class="reg-notice__text">You do not need to use a claims management company to make your complaint. You can complain for free directly to the firm, or if your complaint is not resolved, to the Financial Ombudsman Service free of charge.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -645,26 +752,30 @@
         </div>
         <div class="choose-claim__grid">
 
-          <article class="claim-card claim-card--iva">
-            <div class="claim-card__stripe" aria-hidden="true"></div>
-            <div class="claim-card__body">
-              <h3 class="claim-card__title">IVA Mis-Selling Claims</h3>
-              <p class="claim-card__text">If you were placed into an Individual Voluntary Arrangement without being properly advised about alternatives, you may have a valid claim. We assess your case at no cost.</p>
-              <p class="claim-card__disclosure">VLM is authorised and regulated by the FCA (No. 835293) for claims management activity.</p>
-              <a href="/iva" class="claim-card__cta">
+          <article class="service-card service-card--iva">
+            <div class="service-card__header service-card__header--iva">
+              <h3 class="service-card__title">IVA Mis-Selling Claims</h3>
+              <span class="service-card__tag">FCA Regulated</span>
+            </div>
+            <div class="service-card__body-wrap">
+              <p class="service-card__body">If you were placed into an Individual Voluntary Arrangement without being properly advised about alternatives, you may have a valid claim. We assess your case at no cost.</p>
+              <p class="service-card__disclosure">VLM is authorised and regulated by the FCA (No. 835293) for claims management activity.</p>
+              <a href="/iva" class="service-card__cta service-card__cta--iva">
                 Check your eligibility
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
               </a>
             </div>
           </article>
 
-          <article class="claim-card claim-card--bec">
-            <div class="claim-card__stripe" aria-hidden="true"></div>
-            <div class="claim-card__body">
-              <h3 class="claim-card__title">Business Energy Claims</h3>
-              <p class="claim-card__text">UK businesses may have paid inflated energy prices due to undisclosed broker commissions. We review your contracts and connect you with specialist solicitors.</p>
-              <p class="claim-card__disclosure">This is a B2B commercial service for businesses. It falls outside the scope of FCA-regulated claims management activity.</p>
-              <a href="/bec" class="claim-card__cta">
+          <article class="service-card service-card--bec">
+            <div class="service-card__header service-card__header--bec">
+              <h3 class="service-card__title">Business Energy Claims</h3>
+              <span class="service-card__tag">B2B Service</span>
+            </div>
+            <div class="service-card__body-wrap">
+              <p class="service-card__body">UK businesses may have paid inflated energy prices due to undisclosed broker commissions. We review your contracts and connect you with specialist solicitors.</p>
+              <p class="service-card__disclosure">This is a B2B commercial service for businesses. It falls outside the scope of FCA-regulated claims management activity.</p>
+              <a href="/bec" class="service-card__cta service-card__cta--bec">
                 Check your eligibility
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
               </a>
@@ -683,38 +794,38 @@
           <h2 class="section__title">How We Work With You</h2>
           <div class="section__heading-line" aria-hidden="true"></div>
         </div>
-        <div class="trust-section__grid">
+        <div class="trust-grid">
 
           <div class="trust-item">
-            <div class="trust-item__icon-wrap">
-              <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1.5"/><path d="M13 5h4a2 2 0 012 2v4"/><rect x="9" y="9" width="6" height="4"/></svg>
+            <div class="trust-item__number">01</div>
+            <div class="trust-item__content">
+              <h3 class="trust-item__title">No upfront costs</h3>
+              <p class="trust-item__text">We carry out initial work on your behalf at no charge. If your case is referred to a solicitor, their fees are set out in their own client care letter.</p>
             </div>
-            <h3 class="trust-item__title">No upfront costs</h3>
-            <p class="trust-item__text">We carry out initial work on your behalf at no charge. If your case is referred to a solicitor, their fees are set out in their own client care letter.</p>
           </div>
 
           <div class="trust-item">
-            <div class="trust-item__icon-wrap">
-              <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            <div class="trust-item__number">02</div>
+            <div class="trust-item__content">
+              <h3 class="trust-item__title">You approve everything</h3>
+              <p class="trust-item__text">You see and approve important documents before they are used. Nothing happens without your knowledge and consent.</p>
             </div>
-            <h3 class="trust-item__title">You approve everything</h3>
-            <p class="trust-item__text">You see and approve important documents before they are used. Nothing happens without your knowledge and consent.</p>
           </div>
 
           <div class="trust-item">
-            <div class="trust-item__icon-wrap">
-              <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <div class="trust-item__number">03</div>
+            <div class="trust-item__content">
+              <h3 class="trust-item__title">We explain our fees clearly</h3>
+              <p class="trust-item__text">Solicitor fees (typically 18 to 36 percent including VAT) are only charged on successful claims. We receive a fixed referral fee from the solicitor, not from you.</p>
             </div>
-            <h3 class="trust-item__title">We explain our fees clearly</h3>
-            <p class="trust-item__text">Solicitor fees (typically 18 to 36 percent including VAT) are only charged on successful claims. We receive a fixed referral fee from the solicitor, not from you.</p>
           </div>
 
           <div class="trust-item">
-            <div class="trust-item__icon-wrap">
-              <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div class="trust-item__number">04</div>
+            <div class="trust-item__content">
+              <h3 class="trust-item__title">You can complain without us</h3>
+              <p class="trust-item__text">You are free to complain directly to your provider or the Financial Ombudsman Service at any time, free of charge. A claims management company is not required.</p>
             </div>
-            <h3 class="trust-item__title">You can complain without us</h3>
-            <p class="trust-item__text">You are free to complain directly to your provider or the Financial Ombudsman Service at any time, free of charge. A claims management company is not required.</p>
           </div>
 
         </div>
