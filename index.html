@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Visible Legal Marketing | IVA Mis-Selling & Business Energy Claims</title>
-  <meta name="description" content="FCA-regulated specialists in IVA mis-selling claims. We also recover hidden commissions on business energy contracts. Expert support for financial recovery.">
+  <title>Visible Legal Marketing | IVA Mis-Selling &amp; Business Energy Claims</title>
+  <meta name="description" content="Claims management for IVA mis-selling and business energy recovery. Transparent process, no upfront costs. Visible Legal Marketing Ltd.">
 
   <link rel="canonical" href="https://visiblelegal.co.uk/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Visible Legal Marketing | IVA Mis-Selling & Business Energy Claims">
-  <meta property="og:description" content="FCA-regulated specialists in IVA mis-selling claims. We also recover hidden commissions on business energy contracts. Expert support for financial recovery.">
+  <meta property="og:title" content="Visible Legal Marketing | IVA Mis-Selling &amp; Business Energy Claims">
+  <meta property="og:description" content="Claims management for IVA mis-selling and business energy recovery. Transparent process, no upfront costs. Visible Legal Marketing Ltd.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://visiblelegal.co.uk/">
   <meta property="og:image" content="https://visiblelegal.co.uk/assets/og-home.png">
@@ -22,304 +22,89 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Visible Legal Marketing | IVA Mis-Selling & Business Energy Claims">
-  <meta name="twitter:description" content="FCA-regulated specialists in IVA mis-selling claims. We also recover hidden commissions on business energy contracts. Expert support for financial recovery.">
+  <meta name="twitter:title" content="Visible Legal Marketing | IVA Mis-Selling &amp; Business Energy Claims">
+  <meta name="twitter:description" content="Claims management for IVA mis-selling and business energy recovery. Transparent process, no upfront costs. Visible Legal Marketing Ltd.">
   <meta name="twitter:image" content="https://visiblelegal.co.uk/assets/og-home.png">
 
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 
-  <!-- Fonts: preconnect for speed -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/legal.css">
 
   <style>
     /* ================================================================
-       Homepage Styles — Visible Legal
-       Premium gateway design, neutral between IVA (blue) & BEC (orange)
+       SECTION 1: HERO
        ================================================================ */
 
-    /* --- Header — frosted glass --- */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(16px) saturate(1.8);
-      -webkit-backdrop-filter: blur(16px) saturate(1.8);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.45);
-      transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
-    }
-
-    .site-header--scrolled {
-      background-color: rgba(255, 255, 255, 0.92);
-      border-bottom-color: rgba(226, 232, 240, 0.7);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.03);
-    }
-
-    .site-header__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 80px;
-    }
-
-    .site-logo {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .site-logo__img {
-      height: 52px;
-      width: auto;
-    }
-
-    .site-logo__img--footer {
-      height: 44px;
-      filter: brightness(0) invert(1);
-    }
-
-    /* --- Desktop nav --- */
-    .nav__list {
-      display: none;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 6px;
-    }
-
-    .nav__link {
-      font-size: var(--text-sm);
-      font-weight: var(--font-weight-medium);
-      color: var(--medium-grey);
-      text-decoration: none;
-      padding: 7px 16px;
-      border-radius: var(--radius-full);
-      position: relative;
-      transition: color var(--transition-fast), background-color var(--transition-fast);
-    }
-
-    .nav__link::after { display: none; }
-
-    .nav__link:hover {
-      color: var(--charcoal);
-      background-color: var(--bg-subtle);
-      text-decoration: none;
-    }
-
-    .nav__link--active {
-      color: var(--primary-blue);
-      background-color: rgba(0, 68, 161, 0.07);
-      font-weight: var(--font-weight-semibold);
-      text-decoration: none;
-    }
-
-    @media (min-width: 768px) {
-      .nav__list {
-        display: flex;
-      }
-      .nav__toggle {
-        display: none;
-      }
-    }
-
-    /* --- Hamburger (mobile) --- */
-    .nav__toggle {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 44px;
-      height: 44px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    .nav__toggle-bar {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background-color: var(--charcoal);
-      border-radius: 2px;
-      transition: transform var(--transition-base), opacity var(--transition-fast);
-    }
-
-    /* Mobile menu */
-    .nav__mobile {
-      position: fixed;
-      inset: 80px 0 0 0;
-      background-color: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      z-index: 99;
-      padding: var(--space-2xl) var(--space-lg);
-      border-top: 1px solid rgba(226, 232, 240, 0.5);
-      transform: translateY(-10px);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform var(--transition-base), opacity var(--transition-base);
-    }
-
-    .nav__mobile.is-open {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .nav__mobile-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-xs);
-    }
-
-    .nav__mobile-list li { margin-bottom: 0; width: 100%; max-width: 320px; }
-
-    .nav__mobile-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-sm);
-      padding: var(--space-md) var(--space-lg);
-      font-size: var(--text-lead);
-      font-weight: var(--font-weight-medium);
-      color: var(--charcoal);
-      text-decoration: none;
-      border-radius: var(--radius-md);
-      transition: background-color var(--transition-fast), color var(--transition-fast);
-    }
-
-    .nav__mobile-link:hover {
-      background-color: var(--bg-subtle);
-      color: var(--primary-blue);
-      text-decoration: none;
-    }
-
-    .nav__mobile-link svg { flex-shrink: 0; color: var(--medium-grey); }
-    .nav__mobile-link:hover svg { color: var(--primary-blue); }
-
-    /* Hamburger open state */
-    .nav__toggle.is-open .nav__toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav__toggle.is-open .nav__toggle-bar:nth-child(2) { opacity: 0; }
-    .nav__toggle.is-open .nav__toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-
-    /* ====================================================================
-       DESIGN SYSTEM — Visible Legal
-       Deep navy, unified cool palette, DM Serif Display
-       ==================================================================== */
-
-    /* ---- Tokens ---- */
-    :root {
-      --ink:            #060f1e;
-      --ink-mid:        #1a3254;
-      --primary:        #0044a1;
-      --primary-bright: #2563eb;
-      --primary-dark:   #002d6e;
-      --accent:         #ff6b35;
-      --accent-dark:    #e55a25;
-      --surface:        #f4f7fc;   /* cool blue-grey — all alt sections */
-      --surface-mid:    #edf2f9;   /* slightly deeper for fees */
-      --border:         #dde4ef;   /* unified border colour */
-      --slate-400:      #94a3b8;
-      --slate-500:      #64748b;
-      --body-text:      #374151;
-      --body-light:     #6b7280;
-      --serif:          'DM Serif Display', Georgia, serif;
-      --sans:           'Inter', system-ui, sans-serif;
-    }
-
-
-    /* ====================================================================
-       HERO
-       ==================================================================== */
-
     .hero {
-      position: relative;
-      background: linear-gradient(160deg, #040b18 0%, #081630 45%, #0d2248 100%);
-      padding: 6rem 1.5rem 5.5rem;
-      overflow: hidden;
-      color: #ffffff;
+      background-color: var(--primary-blue);
+      padding: 4.5rem 1.5rem;
       text-align: center;
+      color: #ffffff;
+      position: relative;
     }
 
-    /* Single blue ambient glow */
     .hero::before {
       content: '';
       position: absolute;
       top: -20%;
       right: -10%;
-      width: 900px;
-      height: 900px;
-      background: radial-gradient(circle at 65% 30%, rgba(37, 99, 235, 0.2) 0%, transparent 55%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .hero::after {
       content: '';
       position: absolute;
-      bottom: -20%;
-      left: -8%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle at 30% 70%, rgba(0, 68, 161, 0.15) 0%, transparent 55%);
-      pointer-events: none;
-    }
-
-    /* Dot-grid texture */
-    .hero__canvas {
-      position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 26px 26px;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
       pointer-events: none;
     }
 
-    .hero > .container {
+    .hero .container {
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
 
-    .hero__eyebrow-tag {
-      display: inline-block;
-      padding: 0.375rem 1.125rem;
-      margin-bottom: 2rem;
-      font-size: 0.6875rem;
-      font-weight: 600;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 100px;
+    @media (min-width: 768px) {
+      .hero { padding: 6rem 2rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .hero { padding: 7.5rem 2rem; }
     }
 
     .hero__title {
-      font-family: var(--serif);
-      font-size: 3.25rem;
-      font-weight: 400;
-      line-height: 1.07;
-      letter-spacing: -0.02em;
+      font-size: 2.25rem;
+      font-weight: 700;
       color: #ffffff;
-      margin: 0 auto 2rem;
-      max-width: 700px;
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+      margin: 0 auto 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero__title { font-size: 3rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .hero__title { font-size: 3.75rem; }
     }
 
     .hero__subtitle {
+      color: rgba(255, 255, 255, 0.75);
       font-size: 1.0625rem;
-      font-weight: 400;
-      color: rgba(255,255,255,0.65);
       line-height: 1.72;
-      max-width: 520px;
-      margin: 0 auto 2.75rem;
+      max-width: 560px;
+      margin: 0 auto 2.25rem;
     }
 
     .hero__buttons {
@@ -329,555 +114,406 @@
       gap: 0.875rem;
     }
 
-    .hero__btn {
-      display: inline-flex;
+    @media (min-width: 480px) {
+      .hero__buttons {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+      }
+    }
+
+    .hero__btn-group {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.9375rem 2.25rem;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      border-radius: 8px;
+      padding: 1rem 2.25rem;
+      border-radius: 10px;
       text-decoration: none;
       transition: all 0.2s ease;
-      white-space: nowrap;
-      letter-spacing: 0.01em;
-    }
-
-    .hero__btn--iva {
-      background: #ffffff;
-      color: var(--primary);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.14);
-    }
-
-    .hero__btn--iva:hover {
-      background: #eef4ff;
-      color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 28px rgba(0,0,0,0.2);
-      text-decoration: none;
-    }
-
-    .hero__btn--bec {
-      background: var(--accent);
-      color: #ffffff;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 6px 20px rgba(255,107,53,0.28);
-    }
-
-    .hero__btn--bec:hover {
-      background: var(--accent-dark);
-      color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 28px rgba(255,107,53,0.38);
-      text-decoration: none;
+      min-width: 240px;
+      position: relative;
+      width: 100%;
+      max-width: 300px;
     }
 
     @media (min-width: 480px) {
-      .hero__buttons { flex-direction: row; justify-content: center; }
+      .hero__btn-group {
+        width: auto;
+        max-width: none;
+      }
     }
 
-    @media (min-width: 768px) {
-      .hero { padding: 8rem 2rem 7rem; }
-      .hero__title { font-size: 4.5rem; }
+    .hero__btn-group--iva {
+      background: #ffffff;
+      color: #0044a1;
     }
 
-    @media (min-width: 1024px) {
-      .hero { padding: 9.5rem 2rem 8.5rem; }
-      .hero__title { font-size: 5.75rem; }
+    .hero__btn-group--iva:hover {
+      background: #f0f4ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      color: #0044a1;
+      text-decoration: none;
+    }
+
+    .hero__btn-group--bec {
+      background: #ff6b35;
+      color: #ffffff;
+    }
+
+    .hero__btn-group--bec:hover {
+      background: #e55a28;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(255,107,53,0.3);
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .hero__btn-label {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .hero__btn-desc {
+      font-size: 0.75rem;
+      font-weight: 400;
+      margin-top: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .hero__btn-group--iva .hero__btn-desc {
+      color: #4a5568;
+    }
+
+    .hero__btn-group--bec .hero__btn-desc {
+      color: rgba(255,255,255,0.8);
     }
 
 
-    /* ====================================================================
-       REGULATORY NOTICE
-       ==================================================================== */
+    /* ================================================================
+       SECTION 2: REGULATORY NOTICE
+       ================================================================ */
 
     .reg-notice {
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
+      background-color: var(--white);
+      border-bottom: 1px solid var(--secondary-grey-blue);
     }
 
     .reg-notice__inner {
       display: flex;
       align-items: flex-start;
-      gap: 0.875rem;
+      gap: 0.75rem;
       max-width: 860px;
       margin: 0 auto;
-      padding: 1.375rem 0;
+      padding: 1.125rem 0;
     }
 
     .reg-notice__icon {
       flex-shrink: 0;
-      color: var(--slate-400);
+      color: #94a3b8;
       margin-top: 2px;
     }
 
     .reg-notice__text {
       margin: 0;
       font-size: 0.875rem;
+      color: var(--medium-grey);
       line-height: 1.7;
-      color: var(--slate-500);
     }
 
 
-    /* ====================================================================
-       SECTION TITLE SYSTEM (shared serif heading style)
-       ==================================================================== */
+    /* ================================================================
+       SECTION 3: OUR ROLE
+       ================================================================ */
 
-    .what-we-do .section__title,
-    .service-cards-section .section__title,
-    .fees-section .section__title,
-    .rights-section .section__title {
-      font-family: var(--serif);
-      font-size: 2.375rem;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.025em;
-      line-height: 1.15;
+    .section__heading-line {
+      width: 48px;
+      height: 3px;
+      background: #0044a1;
+      border-radius: 2px;
+      margin: 1rem auto 0.75rem;
     }
 
-
-    /* ====================================================================
-       WHAT WE DO
-       ==================================================================== */
-
-    .what-we-do {
-      background: #ffffff;
+    .our-role {
+      background-color: var(--white);
+      border-top: 1px solid #e2e8f0;
     }
 
-    .what-we-do__grid {
+    @media (max-width: 767px) {
+      .our-role .section__title { font-size: 2rem; }
+    }
+
+    .our-role__subtitle {
+      text-align: center;
+      color: var(--medium-grey);
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .our-role__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 1.25rem;
       max-width: 1100px;
       margin: 0 auto;
     }
 
     @media (min-width: 768px) {
-      .what-we-do__grid { grid-template-columns: repeat(3, 1fr); }
+      .our-role__grid { grid-template-columns: repeat(3, 1fr); }
     }
 
-    .what-we-do__item {
-      padding: 2rem 1.875rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
+    .role-card {
+      background: #f8fafc;
+      border: 1px solid var(--secondary-grey-blue);
+      border-left: 3px solid #0044a1;
+      border-radius: 10px;
+      padding: 1.75rem;
       transition: box-shadow 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
-    .what-we-do__item:hover {
-      box-shadow: 0 8px 32px rgba(0,68,161,0.07);
-      transform: translateY(-3px);
+    .role-card:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
     }
 
-    .what-we-do__item-icon {
-      width: 36px;
-      height: 36px;
-      margin-bottom: 1.25rem;
-      color: var(--primary);
+    .role-card__icon-wrap {
+      width: 48px;
+      height: 48px;
+      background: rgba(0,68,161,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
     }
 
-    .what-we-do__item p {
-      font-size: 0.9375rem;
-      color: var(--body-text);
-      line-height: 1.78;
+    .role-card__icon {
+      width: 32px;
+      height: 32px;
+      color: var(--primary-blue);
+    }
+
+    .role-card__title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin: 0 0 0.5rem;
+    }
+
+    .role-card__text {
+      font-size: 0.875rem;
+      color: var(--medium-grey);
+      line-height: 1.7;
       margin: 0;
     }
 
 
-    /* ====================================================================
-       SERVICE CARDS
-       ==================================================================== */
+    /* ================================================================
+       SECTION 4: CHOOSE YOUR CLAIM
+       ================================================================ */
 
-    .service-cards-section {
-      background: var(--surface);
+    .choose-claim {
+      background-color: #f8fafc;
     }
 
-    .service-card {
+    @media (max-width: 767px) {
+      .choose-claim .section__title { font-size: 2rem; }
+    }
+
+    .choose-claim__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .choose-claim__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .claim-card {
+      background-color: var(--white);
+      border: 1px solid var(--secondary-grey-blue);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
-      background: #ffffff;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 10px 36px rgba(0,0,0,0.05);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      border: 1px solid var(--border);
-      padding: 0;
     }
 
-    .service-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 24px 56px rgba(0,0,0,0.09);
+
+    .claim-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-3px);
     }
 
-    .service-card__stripe {
+    .claim-card__stripe {
       height: 5px;
-      width: 100%;
     }
 
-    .service-card--iva .service-card__stripe {
-      background: linear-gradient(90deg, var(--primary-dark), var(--primary) 40%, var(--primary-bright));
+    .claim-card--iva .claim-card__stripe {
+      background-color: var(--primary-blue);
     }
 
-    .service-card--bec .service-card__stripe {
-      background: linear-gradient(90deg, #c44a18, var(--accent-dark) 40%, var(--accent));
+    .claim-card--iva {
+      border-left: 3px solid var(--primary-blue);
     }
 
-    .service-card__body-wrap {
-      padding: 2.25rem 2.25rem 2rem;
+    .claim-card--bec .claim-card__stripe {
+      background-color: var(--cta-orange);
+    }
+
+    .claim-card--bec {
+      border-left: 3px solid var(--cta-orange);
+    }
+
+    .claim-card__body {
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
 
-    .service-card__title {
-      font-family: var(--serif);
-      font-size: 1.625rem;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin: 0 0 1rem;
+    .claim-card__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin: 0 0 0.875rem;
     }
 
-    .service-card__body {
+    .claim-card__text {
       font-size: 0.9375rem;
-      color: var(--body-text);
-      line-height: 1.78;
+      color: var(--medium-grey);
+      line-height: 1.75;
       flex-grow: 1;
-      margin: 0 0 1.5rem;
+      margin: 0;
     }
 
-    .service-card__disclosure {
+    .claim-card__disclosure {
       font-size: 0.75rem;
-      color: var(--slate-400);
-      line-height: 1.58;
-      margin: 0 0 1.75rem;
-      padding-top: 1.125rem;
-      border-top: 1px solid var(--border);
+      color: #94a3b8;
+      border-top: 1px solid var(--secondary-grey-blue);
+      padding-top: 1rem;
+      margin-top: auto;
+      margin-bottom: 1.5rem;
     }
 
-    .service-card__cta {
+    .claim-card__cta {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.875rem 1.75rem;
+      padding: 0.8125rem;
       font-size: 0.9375rem;
       font-weight: 600;
-      border-radius: 9px;
+      border-radius: 8px;
       text-decoration: none;
-      transition: all 0.2s ease;
-      letter-spacing: 0.01em;
-      width: 100%;
+      color: #ffffff;
+      transition: background-color 0.2s ease;
     }
 
-    .service-card--iva .service-card__cta {
-      background: var(--primary);
-      color: #ffffff;
+    .claim-card--iva .claim-card__cta {
+      background-color: var(--primary-blue);
     }
 
-    .service-card--iva .service-card__cta:hover {
-      background: var(--primary-dark);
-      color: #ffffff;
+    .claim-card--iva .claim-card__cta:hover {
+      background-color: #003580;
       text-decoration: none;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0,68,161,0.25);
-    }
-
-    .service-card--bec .service-card__cta {
-      background: var(--accent);
       color: #ffffff;
     }
 
-    .service-card--bec .service-card__cta:hover {
-      background: var(--accent-dark);
-      color: #ffffff;
+    .claim-card--bec .claim-card__cta {
+      background-color: var(--cta-orange);
+    }
+
+    .claim-card--bec .claim-card__cta:hover {
+      background-color: #e55a28;
       text-decoration: none;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(255,107,53,0.3);
+      color: #ffffff;
     }
 
 
-    /* ====================================================================
-       FEE TRANSPARENCY
-       ==================================================================== */
+    /* ================================================================
+       SECTION 5: TRANSPARENCY AND TRUST
+       ================================================================ */
 
-    .fees-section {
-      background: var(--surface-mid);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .trust-section {
+      background-color: var(--white);
     }
 
-    .fees-section__layout {
+    @media (max-width: 767px) {
+      .trust-section .section__title { font-size: 2rem; }
+    }
+
+    .trust-section__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
-      max-width: 900px;
+      gap: 1.25rem;
+      max-width: 860px;
       margin: 0 auto;
     }
 
     @media (min-width: 768px) {
-      .fees-section__layout {
-        grid-template-columns: 1fr 256px;
-        gap: 3.5rem;
-        align-items: start;
-      }
+      .trust-section__grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    .fees-section__body p {
+    .trust-item {
+      background: #f8fafc;
+      border: 1px solid var(--secondary-grey-blue);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .trust-item__icon-wrap {
+      width: 40px;
+      height: 40px;
+      background: rgba(0,68,161,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .trust-item__icon {
+      width: 20px;
+      height: 20px;
+      color: var(--primary-blue);
+      flex-shrink: 0;
+    }
+
+    .trust-item__title {
       font-size: 0.9375rem;
-      color: var(--body-text);
-      line-height: 1.82;
-      margin: 0 0 1.25rem;
-    }
-
-    .fees-section__body p:last-child { margin-bottom: 0; }
-
-    .fees-section__callout {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 2.25rem 1.75rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 28px rgba(0,68,161,0.06);
-      text-align: center;
-    }
-
-    .fees-section__callout-label {
-      display: block;
-      font-size: 0.6875rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--slate-500);
-      margin-bottom: 0.875rem;
+      color: var(--charcoal);
+      margin: 0 0 0.5rem;
     }
 
-    .fees-section__callout-figure {
-      font-family: var(--serif);
-      font-size: 3.25rem;
-      font-weight: 400;
-      color: var(--primary);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.625rem;
-    }
-
-    .fees-section__callout-sub {
-      font-size: 0.8125rem;
-      color: var(--body-light);
-      line-height: 1.55;
-      margin: 0;
-    }
-
-    .fees-section__callout-divider {
-      width: 28px;
-      height: 2px;
-      background: var(--border);
-      margin: 1.25rem auto 0;
-      border-radius: 2px;
-    }
-
-
-    /* ====================================================================
-       YOUR RIGHTS
-       ==================================================================== */
-
-    .rights-section {
-      background: #ffffff;
-    }
-
-    .container--prose {
-      max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .rights-section__body p {
-      font-size: 0.9375rem;
-      color: var(--body-text);
-      line-height: 1.82;
-      margin: 0 0 1.25rem;
-    }
-
-    .rights-section__body p:last-child { margin-bottom: 0; }
-
-    .rights-section__reg {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .rights-section__reg p {
-      font-size: 0.8125rem;
-      color: var(--slate-400);
+    .trust-item__text {
+      font-size: 0.875rem;
+      color: var(--medium-grey);
       line-height: 1.7;
       margin: 0;
     }
 
-    /* =================================================================
-       FOOTER
-       ================================================================= */
-
-    .site-footer {
-      background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
-      color: var(--secondary-grey-blue);
-      padding: 5rem var(--space-md) var(--space-xl);
-      position: relative;
-    }
-
-    .site-footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.2) 20%, rgba(148, 163, 184, 0.2) 80%, transparent);
-    }
-
-    .footer__grid {
-      display: grid;
-      gap: var(--space-2xl) var(--space-xl);
-      margin-bottom: var(--space-2xl);
-    }
-
-    @media (min-width: 768px) {
-      .footer__grid {
-        grid-template-columns: 2.5fr 1fr 1fr 1fr;
-        gap: var(--space-3xl);
-      }
-    }
-
-    .footer__brand-text {
-      font-size: var(--text-sm);
-      color: #64748b;
-      line-height: var(--line-height-relaxed);
-      margin: var(--space-lg) 0 0 0;
-      max-width: 320px;
-    }
-
-    .footer__disclaimer {
-      font-size: var(--text-xs);
-      color: #475569;
-      line-height: var(--line-height-relaxed);
-      margin-top: var(--space-2xl);
-      padding-top: var(--space-xl);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .footer__heading {
-      font-size: 0.6875rem;
-      font-weight: var(--font-weight-semibold);
-      color: #64748b;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: var(--space-lg);
-    }
-
-    .footer__list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer__list li {
-      margin-bottom: 10px;
-    }
-
-    .footer__link {
-      font-size: var(--text-sm);
+    .trust-section__reg {
+      font-size: 0.8125rem;
       color: #94a3b8;
-      text-decoration: none;
-      transition: color var(--transition-fast), transform var(--transition-fast);
-      display: inline-block;
-    }
-
-    .footer__link:hover {
-      color: var(--white);
-      text-decoration: none;
-      transform: translateX(2px);
-    }
-
-    .footer__divider {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.12) 20%, rgba(148, 163, 184, 0.12) 80%, transparent);
-      margin: 0 0 var(--space-lg) 0;
-    }
-
-    .footer__bottom {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-      font-size: var(--text-sm);
-      color: #64748b;
-    }
-
-    @media (min-width: 768px) {
-      .footer__bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-
-    .footer__social {
-      display: flex;
-      gap: 10px;
-    }
-
-    .footer__social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-full);
-      background-color: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #64748b;
-      transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .footer__social-link:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
-      color: var(--white);
-      transform: translateY(-2px);
+      text-align: center;
+      max-width: 600px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--secondary-grey-blue);
     }
   </style>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Visible Legal Marketing",
-    "image": "https://visiblelegal.co.uk/assets/vlm-logo.png",
-    "description": "FCA regulated financial claims specialists for IVA mis-selling and business energy claims",
-    "@id": "https://visiblelegal.co.uk",
-    "url": "https://visiblelegal.co.uk",
-    "telephone": "",
-    "email": "support@visiblelegal.co.uk",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "GB"
-    },
-    "sameAs": [
-      "https://www.instagram.com/visiblelegal/",
-      "https://x.com/VisLegal",
-      "https://www.facebook.com/profile.php?id=61578959987733"
-    ],
-    "serviceType": "Financial Claims Management",
-    "areaServed": {
-      "@type": "Country",
-      "name": "United Kingdom"
-    },
-    "identifier": {
-      "@type": "PropertyValue",
-      "propertyID": "FCA Registration",
-      "value": "835293"
-    }
-  }
-  </script>
 </head>
 <body>
 
@@ -933,19 +569,17 @@
 
     <!-- SECTION 1: HERO -->
     <section class="hero">
-      <div class="hero__canvas" aria-hidden="true"></div>
       <div class="container">
-        <span class="hero__eyebrow-tag">Claims Management Specialists</span>
-        <h1 class="hero__title">Expert Claims Management</h1>
-        <p class="hero__subtitle">We help individuals and businesses recover compensation through specialist legal claims.</p>
+        <h1 class="hero__title">Claims Management You Can Trust</h1>
+        <p class="hero__subtitle">We help individuals and businesses recover compensation through specialist legal claims. Transparent process, no upfront costs, and you are always in control.</p>
         <div class="hero__buttons">
-          <a href="/iva" class="hero__btn hero__btn--iva">
-            IVA Mis-Selling Claims
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          <a href="/iva" class="hero__btn-group hero__btn-group--iva">
+            <span class="hero__btn-label">IVA Mis-Selling Claims</span>
+            <span class="hero__btn-desc">FCA-regulated service for individuals</span>
           </a>
-          <a href="/bec" class="hero__btn hero__btn--bec">
-            Business Energy Claims
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          <a href="/bec" class="hero__btn-group hero__btn-group--bec">
+            <span class="hero__btn-label">Business Energy Claims</span>
+            <span class="hero__btn-desc">B2B commercial recovery service</span>
           </a>
         </div>
       </div>
@@ -963,27 +597,38 @@
     </section>
 
 
-    <!-- SECTION 3: WHAT WE DO -->
-    <section class="section what-we-do" id="what-we-do">
+    <!-- SECTION 3: OUR ROLE -->
+    <section class="section our-role" id="what-we-do">
       <div class="container">
         <div class="section__header">
           <h2 class="section__title">What We Do</h2>
+          <div class="section__heading-line" aria-hidden="true"></div>
         </div>
-        <div class="what-we-do__grid">
+        <p class="our-role__subtitle">Visible Legal Marketing is a claims management company. Here is what that means for you.</p>
+        <div class="our-role__grid">
 
-          <div class="what-we-do__item">
-            <svg class="what-we-do__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-            <p>Visible Legal Marketing Ltd is a claims management company. We help people who may have been mis-sold financial products by assessing their case and, where appropriate, connecting them with specialist solicitors who can pursue a legal claim on their behalf.</p>
+          <div class="role-card">
+            <div class="role-card__icon-wrap">
+              <svg class="role-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+            </div>
+            <h3 class="role-card__title">We obtain your documents</h3>
+            <p class="role-card__text">We submit formal requests to your provider for the documents needed to assess your case. You sign a Letter of Authority and we handle the rest.</p>
           </div>
 
-          <div class="what-we-do__item">
-            <svg class="what-we-do__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-            <p>For IVA mis-selling claims, we obtain your IVA file from your provider through a Data Subject Access Request, assess whether the advice you received was suitable, and determine whether you have a viable claim. If we identify potential mis-selling, we refer your case to a panel solicitor who handles the legal claim.</p>
+          <div class="role-card">
+            <div class="role-card__icon-wrap">
+              <svg class="role-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 class="role-card__title">We assess your case</h3>
+            <p class="role-card__text">We review your documents and determine whether you have a viable claim. We look at the advice you received, the alternatives available, and the costs involved.</p>
           </div>
 
-          <div class="what-we-do__item">
-            <svg class="what-we-do__item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            <p>For business energy claims, we review your energy contracts to identify undisclosed broker commissions and, where appropriate, refer your case to specialist solicitors for recovery.</p>
+          <div class="role-card">
+            <div class="role-card__icon-wrap">
+              <svg class="role-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3 class="role-card__title">We connect you with solicitors</h3>
+            <p class="role-card__text">If we identify a viable claim, we refer your case to a specialist solicitor from our panel who pursues the legal claim on your behalf.</p>
           </div>
 
         </div>
@@ -991,34 +636,35 @@
     </section>
 
 
-    <!-- SECTION 4: SERVICE CARDS -->
-    <section class="section service-cards-section" id="services">
+    <!-- SECTION 4: CHOOSE YOUR CLAIM -->
+    <section class="section choose-claim" id="services">
       <div class="container">
         <div class="section__header">
           <h2 class="section__title">Choose Your Claim Type</h2>
+          <div class="section__heading-line" aria-hidden="true"></div>
         </div>
-        <div class="grid grid--2 grid--gap-lg">
+        <div class="choose-claim__grid">
 
-          <article class="service-card service-card--iva">
-            <div class="service-card__stripe" aria-hidden="true"></div>
-            <div class="service-card__body-wrap">
-              <h3 class="service-card__title">IVA Mis-Selling Claims</h3>
-              <p class="service-card__body">If you were placed into an Individual Voluntary Arrangement without being properly advised about alternative debt solutions, you may have been mis-sold. We assess your case at no cost and, if viable, refer you to a specialist solicitor.</p>
-              <p class="service-card__disclosure">VLM is authorised and regulated by the FCA (No. 835293) for claims management activity.</p>
-              <a href="/iva" class="service-card__cta">
+          <article class="claim-card claim-card--iva">
+            <div class="claim-card__stripe" aria-hidden="true"></div>
+            <div class="claim-card__body">
+              <h3 class="claim-card__title">IVA Mis-Selling Claims</h3>
+              <p class="claim-card__text">If you were placed into an Individual Voluntary Arrangement without being properly advised about alternatives, you may have a valid claim. We assess your case at no cost.</p>
+              <p class="claim-card__disclosure">VLM is authorised and regulated by the FCA (No. 835293) for claims management activity.</p>
+              <a href="/iva" class="claim-card__cta">
                 Check your eligibility
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
               </a>
             </div>
           </article>
 
-          <article class="service-card service-card--bec">
-            <div class="service-card__stripe" aria-hidden="true"></div>
-            <div class="service-card__body-wrap">
-              <h3 class="service-card__title">Business Energy Claims</h3>
-              <p class="service-card__body">UK businesses may have paid inflated energy prices due to undisclosed broker commissions. We review your contracts and, where appropriate, connect you with specialist solicitors to recover what you are owed.</p>
-              <p class="service-card__disclosure">Commercial B2B service. Not FCA-regulated.</p>
-              <a href="/bec" class="service-card__cta">
+          <article class="claim-card claim-card--bec">
+            <div class="claim-card__stripe" aria-hidden="true"></div>
+            <div class="claim-card__body">
+              <h3 class="claim-card__title">Business Energy Claims</h3>
+              <p class="claim-card__text">UK businesses may have paid inflated energy prices due to undisclosed broker commissions. We review your contracts and connect you with specialist solicitors.</p>
+              <p class="claim-card__disclosure">This is a B2B commercial service for businesses. It falls outside the scope of FCA-regulated claims management activity.</p>
+              <a href="/bec" class="claim-card__cta">
                 Check your eligibility
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
               </a>
@@ -1030,45 +676,50 @@
     </section>
 
 
-    <!-- SECTION 5: FEE TRANSPARENCY -->
-    <section class="section fees-section" id="fees">
+    <!-- SECTION 5: TRANSPARENCY AND TRUST -->
+    <section class="section trust-section" id="how-we-work">
       <div class="container">
         <div class="section__header">
-          <h2 class="section__title">Fees and Costs</h2>
+          <h2 class="section__title">How We Work With You</h2>
+          <div class="section__heading-line" aria-hidden="true"></div>
         </div>
-        <div class="fees-section__layout">
+        <div class="trust-section__grid">
 
-          <div class="fees-section__body">
-            <p>There are no upfront costs to you at any stage. Visible Legal Marketing Ltd carries out initial work on your behalf at no charge, including obtaining your case file and assessing whether you have a viable claim.</p>
-            <p>If we identify a viable claim, we refer your case to a panel solicitor. The solicitor handles the legal claim and their fees are set out in their own client care letter, regulated by the Solicitors Regulation Authority. Solicitor fees are typically between 18 and 36 percent (including VAT) of any compensation recovered, and are only charged if the claim is successful.</p>
-            <p>Visible Legal Marketing Ltd receives a fixed referral fee from the solicitor for the assessment and referral work we carry out. This fee is paid by the solicitor and does not reduce or affect any compensation you receive.</p>
+          <div class="trust-item">
+            <div class="trust-item__icon-wrap">
+              <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1.5"/><path d="M13 5h4a2 2 0 012 2v4"/><rect x="9" y="9" width="6" height="4"/></svg>
+            </div>
+            <h3 class="trust-item__title">No upfront costs</h3>
+            <p class="trust-item__text">We carry out initial work on your behalf at no charge. If your case is referred to a solicitor, their fees are set out in their own client care letter.</p>
           </div>
 
-          <aside class="fees-section__callout" aria-label="Fee summary">
-            <span class="fees-section__callout-label">Solicitor success fee</span>
-            <div class="fees-section__callout-figure" aria-label="18 to 36 percent">18&ndash;36%</div>
-            <p class="fees-section__callout-sub">including VAT, charged only on success</p>
-            <div class="fees-section__callout-divider" aria-hidden="true"></div>
-          </aside>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- SECTION 6: YOUR RIGHTS -->
-    <section class="section rights-section" id="your-rights">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">Your Rights</h2>
-        </div>
-        <div class="rights-section__body container--prose">
-          <p>You do not need to use a claims management company to make your complaint. You can complain for free directly to your IVA provider, energy broker, or lender. If you are not satisfied with their response, you can escalate your complaint to the Financial Ombudsman Service free of charge.</p>
-          <p>Many clients choose to work with us because we manage the process, obtain documentation, assess the case, and coordinate with solicitors on their behalf.</p>
-          <div class="rights-section__reg">
-            <p>Visible Legal Marketing Ltd is authorised and regulated by the Financial Conduct Authority (No. 835293) for claims management activity. Company No. 10263322. Registered address: 5 Eagle Fold, Hyde, England, SK14 4GU.</p>
+          <div class="trust-item">
+            <div class="trust-item__icon-wrap">
+              <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </div>
+            <h3 class="trust-item__title">You approve everything</h3>
+            <p class="trust-item__text">You see and approve important documents before they are used. Nothing happens without your knowledge and consent.</p>
           </div>
+
+          <div class="trust-item">
+            <div class="trust-item__icon-wrap">
+              <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 class="trust-item__title">We explain our fees clearly</h3>
+            <p class="trust-item__text">Solicitor fees (typically 18 to 36 percent including VAT) are only charged on successful claims. We receive a fixed referral fee from the solicitor, not from you.</p>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-item__icon-wrap">
+              <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 class="trust-item__title">You can complain without us</h3>
+            <p class="trust-item__text">You are free to complain directly to your provider or the Financial Ombudsman Service at any time, free of charge. A claims management company is not required.</p>
+          </div>
+
         </div>
+
+        <p class="trust-section__reg">Visible Legal Marketing Ltd is authorised and regulated by the Financial Conduct Authority (No. 835293) for claims management activity. Company No. 10263322.</p>
       </div>
     </section>
 
@@ -1123,7 +774,7 @@
 
       </div>
 
-      <p class="footer__disclaimer">You do not need to use a claims management company to make a claim. You can complain directly to the firm or, if your complaint is not resolved, to the Financial Ombudsman Service free of charge. You pay nothing unless your claim is successful. A success fee between 18% and 36% including VAT applies on successful claims, dependent on the level of redress secured. A cancellation fee may apply outside the 14 day cooling-off period. Visible Legal Marketing Ltd may receive a fee for introducing you to a panel solicitor &mdash; this does not affect any compensation you may receive. Any solicitor we refer you to is independent and SRA-regulated; you are free to choose your own solicitor. Visible Legal Marketing Ltd is a claims management company authorised and regulated by the Financial Conduct Authority (FCA No. 835293).</p>
+      <p class="footer__disclaimer">You do not need to use a claims management company to make a claim. You can complain directly to the firm or, if your complaint is not resolved, to the Financial Ombudsman Service free of charge. You pay nothing unless your claim is successful. A success fee between 18% and 36% including VAT applies on successful claims, dependent on the level of redress secured. A cancellation fee may apply outside the 14 day cooling-off period. Visible Legal Marketing Ltd may receive a fee for introducing you to a panel solicitor; this does not affect any compensation you may receive. Any solicitor we refer you to is independent and SRA-regulated; you are free to choose your own solicitor. Visible Legal Marketing Ltd is a claims management company authorised and regulated by the Financial Conduct Authority (FCA No. 835293).</p>
 
       <hr class="footer__divider">
 
