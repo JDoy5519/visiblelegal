@@ -1306,7 +1306,28 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
-    /* --- Hero compliance notice --- */
+    /* --- Hero regulatory notice --- */
+    .iva-hero__notice {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-top: 3px solid rgba(255, 255, 255, 0.65);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 2rem;
+      margin: 0 auto var(--space-xl);
+      max-width: 640px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .iva-hero__notice-text {
+      margin: 0;
+      font-size: var(--text-lead);
+      line-height: var(--line-height-relaxed);
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: var(--font-weight-medium);
+    }
+
+    /* --- Hero FCA line --- */
     .iva-hero__compliance {
       margin-top: var(--space-lg);
       padding-top: var(--space-md);
@@ -1712,6 +1733,9 @@
         </div>
         <h1 class="iva-hero__title">Were You Mis-Sold an IVA?</h1>
         <p class="iva-hero__subtitle">You could be entitled to compensation. Find out in minutes with our free assessment.</p>
+        <div class="iva-hero__notice" role="note">
+          <p class="iva-hero__notice-text">You do not need to use a claims management company to make your complaint. You can complain for free directly to your provider or the Financial Ombudsman Service.</p>
+        </div>
         <div class="iva-hero__cta">
           <a href="#claim-form" class="btn btn--primary btn--lg">Check Your Eligibility Now</a>
         </div>
@@ -1730,7 +1754,7 @@
           </span>
         </div>
         <p class="iva-hero__compliance">
-          Visible Legal Marketing Ltd is authorised &amp; regulated by the FCA (No. 835293). You can complain for free directly to your provider or the Financial Ombudsman &mdash; a claims management company is not required.
+          Visible Legal Marketing Ltd is authorised &amp; regulated by the FCA (No. 835293).
         </p>
       </div>
     </section>
