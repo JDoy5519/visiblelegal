@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Business Energy Commission Claims | Visible Legal</title>
-  <meta name="description" content="Energy brokers earned hidden commissions on your business contracts — often without your knowledge. We help UK businesses recover what they're owed.">
+  <meta name="description" content="Energy brokers earned hidden commissions on your business contracts, often without your knowledge. We help UK businesses recover what they are owed.">
 
   <link rel="canonical" href="https://visiblelegal.co.uk/bec.html">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Business Energy Commission Claims | Visible Legal">
-  <meta property="og:description" content="Energy brokers earned hidden commissions on your business contracts — often without your knowledge. We help UK businesses recover what they're owed.">
+  <meta property="og:description" content="Energy brokers earned hidden commissions on your business contracts, often without your knowledge. We help UK businesses recover what they are owed.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://visiblelegal.co.uk/bec.html">
   <meta property="og:image" content="https://visiblelegal.co.uk/assets/og-bec.png">
@@ -23,7 +23,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Business Energy Commission Claims | Visible Legal">
-  <meta name="twitter:description" content="Energy brokers earned hidden commissions on your business contracts — often without your knowledge. We help UK businesses recover what they're owed.">
+  <meta name="twitter:description" content="Energy brokers earned hidden commissions on your business contracts, often without your knowledge. We help UK businesses recover what they are owed.">
   <meta name="twitter:image" content="https://visiblelegal.co.uk/assets/og-bec.png">
 
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
@@ -44,7 +44,6 @@
     :root {
       --bec-accent: #ff6b35;
       --bec-accent-hover: #e55a28;
-      --warning-amber: #dd6b20;
     }
 
     /* --- Header — frosted glass --- */
@@ -136,17 +135,19 @@
     /* --- Mobile menu --- */
     .nav__mobile {
       position: fixed;
-      inset: 80px 0 0 0;
-      background-color: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
       z-index: 99;
-      padding: var(--space-2xl) var(--space-lg);
-      border-top: 1px solid rgba(226, 232, 240, 0.5);
+      padding: 2rem 1.5rem;
+      border-top: 1px solid #e2e8f0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
       transform: translateY(-10px);
       opacity: 0;
       pointer-events: none;
-      transition: transform var(--transition-base), opacity var(--transition-base);
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
     .nav__mobile.is-open {
@@ -171,19 +172,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-sm);
-      padding: var(--space-md) var(--space-lg);
-      font-size: var(--text-lead);
-      font-weight: var(--font-weight-medium);
-      color: var(--charcoal);
+      gap: 0.5rem;
+      padding: 1rem 1.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1a202c;
       text-decoration: none;
-      border-radius: var(--radius-md);
-      transition: background-color var(--transition-fast), color var(--transition-fast);
+      border-radius: 8px;
+      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
     .nav__mobile-link:hover {
-      background-color: var(--bg-subtle);
-      color: var(--bec-accent);
+      background-color: #f8fafc;
+      color: #ff6b35;
       text-decoration: none;
     }
 
@@ -197,7 +198,7 @@
     /* --- Hero --- */
     .bec-hero {
       position: relative;
-      background: linear-gradient(135deg, #d84315 0%, #e65100 20%, #ff6b35 50%, #e65100 80%, #bf360c 100%);
+      background: #ff6b35;
       text-align: center;
       padding: 4.5rem var(--space-md) 4rem;
       overflow: hidden;
@@ -207,22 +208,20 @@
     .bec-hero::before {
       content: '';
       position: absolute;
-      top: -30%;
-      right: -20%;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, transparent 60%);
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .bec-hero::after {
       content: '';
       position: absolute;
-      bottom: -40%;
-      left: -15%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255, 140, 66, 0.2) 0%, transparent 60%);
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
       pointer-events: none;
     }
 
@@ -232,36 +231,78 @@
       max-width: 720px;
       margin: 0 auto var(--space-lg) auto;
       font-size: 2.5rem;
-      font-weight: var(--font-weight-extrabold);
+      font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--white);
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .bec-hero__subtitle {
       max-width: 560px;
       margin: 0 auto var(--space-xl) auto;
       font-size: var(--text-lead);
-      color: rgba(255, 255, 255, 0.95);
+      color: rgba(255, 255, 255, 0.9);
       line-height: var(--line-height-relaxed);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     }
 
-    .bec-hero__cta { margin-bottom: var(--space-xl); }
+    .bec-hero__cta {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-    .bec-hero__trust-row {
+    .bec-hero__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #ff6b35;
+      background: #ffffff;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 8px 24px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .bec-hero__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.14);
+      background: #fff7ed;
+      color: #ff6b35;
+      text-decoration: none;
+    }
+
+    .bec-hero__btn svg { transition: transform 0.2s ease; }
+    .bec-hero__btn:hover svg { transform: translateX(3px); }
+
+    .bec-hero__btn-sub {
+      margin: 0.75rem 0 0;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .bec-hero__notice {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--space-md) var(--space-lg);
-      font-size: var(--text-sm);
-      color: var(--white);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      align-items: flex-start;
+      gap: 0.625rem;
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 0.875rem 1.125rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
     }
 
-    .bec-hero__trust-item { display: flex; align-items: center; gap: var(--space-xs); }
-    .bec-hero__trust-item svg { flex-shrink: 0; color: var(--white); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2)); }
+    .bec-hero__notice svg { flex-shrink: 0; color: rgba(255,255,255,0.5); margin-top: 1px; }
+    .bec-hero__notice p { margin: 0; font-size: 0.75rem; line-height: 1.6; color: rgba(255,255,255,0.65); }
+
+    .bec-hero__reg-line {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin: 1rem 0 0;
+    }
 
     @media (min-width: 768px) {
       .bec-hero { padding: 5.5rem var(--space-lg) 5rem; }
@@ -274,7 +315,7 @@
     }
 
     /* --- Education Section --- */
-    .edu-section { padding: var(--space-3xl) var(--space-md); }
+    .edu-section { padding: var(--space-3xl) var(--space-md); background: #f8fafc; }
 
     .edu-content {
       max-width: var(--max-width-narrow);
@@ -339,124 +380,35 @@
       margin: 0;
     }
 
-    /* --- Eligibility --- */
-    .eligibility { background-color: var(--bg-subtle); padding: var(--space-3xl) var(--space-md); }
-
-    .elig-grid {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: grid;
-      gap: var(--space-md);
+    /* --- Edu CTA Block --- */
+    .edu-cta-block {
+      margin-top: 2rem;
+      padding: 1.5rem 1.75rem;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-left: 3px solid #ff6b35;
+      border-radius: 8px;
     }
 
-    @media (min-width: 768px) {
-      .elig-grid { grid-template-columns: repeat(2, 1fr); }
+    .edu-cta-block p {
+      font-size: 0.9375rem;
+      color: #1a202c;
+      line-height: 1.75;
+      margin: 0 0 0.875rem;
+      font-weight: 500;
     }
 
-    .elig-card {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-      padding: var(--space-lg);
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      transition: box-shadow var(--transition-base), transform var(--transition-base);
-    }
-
-    .elig-card:hover {
-      box-shadow: var(--shadow-card-hover);
-      transform: translateY(-2px);
-    }
-
-    .elig-card__icon {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      background: rgba(255, 107, 53, 0.1);
-      border-radius: var(--radius-full);
-      color: var(--bec-accent);
-    }
-
-    .elig-card p {
-      margin: 0;
-      font-weight: var(--font-weight-medium);
-      color: var(--charcoal);
-      line-height: var(--line-height-relaxed);
-    }
-
-    /* --- Process Steps Section --- */
-    .process-steps {
-      padding: var(--space-3xl) var(--space-md);
-    }
-
-    .process-steps__grid {
-      max-width: var(--max-width-narrow);
-      margin: 0 auto;
-      display: grid;
-      gap: var(--space-lg);
-    }
-
-    @media (min-width: 768px) {
-      .process-steps__grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    .process-step-card {
-      padding: var(--space-xl);
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-card);
-      text-align: center;
-      transition: box-shadow var(--transition-base), transform var(--transition-base);
-    }
-
-    .process-step-card:hover {
-      box-shadow: var(--shadow-card-hover);
-      transform: translateY(-2px);
-    }
-
-    .process-step-card__number {
+    .edu-cta-link {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-full);
-      background: var(--bec-accent);
-      color: var(--white);
-      font-size: var(--text-sm);
-      font-weight: var(--font-weight-bold);
-      margin-bottom: var(--space-md);
+      gap: 0.375rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: #ff6b35;
+      text-decoration: none;
     }
 
-    .process-step-card__icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 56px;
-      height: 56px;
-      margin: 0 auto var(--space-md) auto;
-      border-radius: var(--radius-full);
-      background: rgba(255, 107, 53, 0.1);
-      color: var(--bec-accent);
-    }
-
-    .process-step-card__title {
-      font-size: var(--text-h4);
-      font-weight: var(--font-weight-bold);
-      color: var(--charcoal);
-      margin: 0 0 var(--space-sm) 0;
-    }
-
-    .process-step-card__text {
-      font-size: var(--text-sm);
-      color: var(--medium-grey);
-      line-height: var(--line-height-relaxed);
-      margin: 0;
-    }
+    .edu-cta-link:hover { text-decoration: underline; color: #e55a28; }
 
     /* --- Form Section --- */
     .form-section {
@@ -1103,7 +1055,7 @@
       justify-content: center;
       width: 48px;
       height: 48px;
-      background: linear-gradient(135deg, var(--bec-accent), #ff8c42);
+      background: #ff6b35;
       color: var(--white);
       border-radius: var(--radius-full);
       box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
@@ -1187,71 +1139,11 @@
       margin: 0;
     }
 
-    /* --- Final CTA --- */
-    .final-cta {
-      position: relative;
-      background: linear-gradient(135deg, #bf360c 0%, #d84315 20%, #e65100 50%, #d84315 80%, #bf360c 100%);
-      color: var(--white);
-      text-align: center;
-      padding: var(--space-3xl) var(--space-md);
-      overflow: hidden;
-    }
-
-    .final-cta::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .final-cta > .container { position: relative; z-index: 1; }
-
-    .final-cta__title {
-      font-size: var(--text-h2);
-      font-weight: var(--font-weight-extrabold);
-      margin: 0 0 var(--space-md) 0;
-      line-height: var(--line-height-tight);
-      letter-spacing: -0.02em;
-      color: var(--white);
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .final-cta__subtitle {
-      max-width: 480px;
-      margin: 0 auto var(--space-xl) auto;
-      font-size: var(--text-lead);
-      color: rgba(255, 255, 255, 0.95);
-      line-height: var(--line-height-relaxed);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    }
-
-    .final-cta__btn { margin-bottom: var(--space-xl); }
-
-    .final-cta__trust {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--space-lg) var(--space-xl);
-      font-size: var(--text-sm);
-      color: var(--white);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    }
-
-    .final-cta__trust-item { display: flex; align-items: center; gap: var(--space-xs); }
-    .final-cta__trust-item svg { flex-shrink: 0; color: var(--white); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2)); }
-
-    @media (max-width: 767px) {
-      .final-cta__title { font-size: var(--text-h3); color: var(--white); }
-    }
 
     /* --- Regulatory section --- */
     .regulatory-section {
       padding: var(--space-3xl) var(--space-md);
-      background: linear-gradient(180deg, var(--bg-subtle) 0%, var(--white) 100%);
+      background: #ffffff;
     }
 
     .regulatory-section .section__header {
@@ -1351,24 +1243,33 @@
       margin: 0;
     }
 
-    .reg-refs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm) var(--space-lg);
-      margin-top: var(--space-lg);
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--secondary-grey-blue);
-      font-size: var(--text-xs);
-      color: var(--medium-grey);
+    .reg-contact {
+      text-align: center;
+      max-width: 500px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
     }
 
-    .reg-refs span {
-      display: flex;
+    .reg-contact__line {
+      display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: #4a5568;
+      margin: 0 0 0.5rem;
     }
 
-    .reg-refs svg { color: var(--bec-accent); flex-shrink: 0; }
+    .reg-contact__line a { color: #ff6b35; text-decoration: none; }
+    .reg-contact__line a:hover { text-decoration: underline; }
+    .reg-contact__line svg { color: #94a3b8; flex-shrink: 0; }
+
+    .reg-contact__disclosure {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 1rem 0 0;
+    }
 
     /* --- Step 4 cards --- */
     .step4-card {
@@ -1653,19 +1554,101 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
-    /* --- Hero compliance notice --- */
-    .bec-hero__compliance {
-      margin-top: var(--space-lg);
-      padding-top: var(--space-md);
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: var(--text-xs);
-      color: rgba(255, 255, 255, 0.9);
-      line-height: var(--line-height-relaxed);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-      max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
+    /* --- How We Help --- */
+    .how-we-help { background: #ffffff; }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
+
+    @media (min-width: 768px) {
+      .help-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .help-card {
+      padding: 1.75rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #ff6b35;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .help-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .help-card__icon-wrap {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,107,53,0.08);
+      border-radius: 50%;
+      color: #ff6b35;
+      margin-bottom: 1rem;
+    }
+
+    .help-card__title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a202c;
+      margin: 0 0 0.5rem;
+    }
+
+    .help-card__text {
+      font-size: 0.875rem;
+      color: #4a5568;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* --- Fees Section --- */
+    .fees-section { background: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+    .fees-layout { max-width: 720px; margin: 0 auto; }
+    .fees-card { display: flex; flex-direction: column; }
+    .fees-card__item { display: flex; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid #e2e8f0; }
+    .fees-card__item:last-child { border-bottom: none; }
+    .fees-card__icon { flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,107,53,0.08); border-radius: 10px; color: #ff6b35; }
+    .fees-card__label { font-size: 0.9375rem; font-weight: 600; color: #1a202c; margin: 0 0 0.25rem; }
+    .fees-card__text { font-size: 0.8125rem; color: #4a5568; line-height: 1.7; margin: 0; }
+
+    .fees-summary { display: flex; flex-direction: column; margin-top: 1.5rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; }
+    @media (min-width: 640px) { .fees-summary { flex-direction: row; } }
+    .fees-summary__item { flex: 1; padding: 1.125rem 1.25rem; text-align: center; }
+    .fees-summary__label { display: block; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; margin-bottom: 0.375rem; }
+    .fees-summary__value { display: block; font-size: 1.0625rem; font-weight: 700; color: #ff6b35; }
+    .fees-summary__divider { width: 1px; background: #e2e8f0; align-self: stretch; }
+    @media (max-width: 639px) { .fees-summary__divider { width: 100%; height: 1px; } }
+
+    /* --- Choice Section --- */
+    .choice-section { background: #ffffff; }
+    .choice-layout { display: grid; grid-template-columns: 1fr; gap: 1.25rem; max-width: 900px; margin: 0 auto; }
+    @media (min-width: 768px) { .choice-layout { grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch; } }
+    .choice-card { padding: 2rem; border-radius: 14px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(0,0,0,0.03); transition: box-shadow 0.2s ease, transform 0.2s ease; }
+    .choice-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .choice-card--direct { background: #f8fafc; }
+    .choice-card--cmc { background: #ffffff; border-left: 3px solid #ff6b35; }
+    .choice-card__header { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.125rem; }
+    .choice-card__icon { flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: rgba(0,0,0,0.04); color: #4a5568; }
+    .choice-card__icon--orange { background: rgba(255,107,53,0.08); color: #ff6b35; }
+    .choice-card__title { font-size: 1.0625rem; font-weight: 700; color: #1a202c; margin: 0; }
+    .choice-card__text { font-size: 0.875rem; color: #4a5568; line-height: 1.7; margin: 0 0 0.625rem; }
+    .choice-card__text:last-child { margin-bottom: 0; }
+    .choice-reasons { display: flex; flex-direction: column; gap: 0.875rem; }
+    .choice-reason { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .choice-reason__marker { flex-shrink: 0; width: 6px; height: 6px; background: #ff6b35; border-radius: 50%; margin-top: 0.5rem; }
+    .choice-reason p { font-size: 0.875rem; color: #4a5568; line-height: 1.7; margin: 0; }
+    .choice-footer-card { display: flex; align-items: flex-start; gap: 0.75rem; max-width: 680px; margin: 1.5rem auto 0; padding: 1rem 1.25rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; }
+    .choice-footer-card svg { flex-shrink: 0; color: #ff6b35; margin-top: 2px; }
+    .choice-footer-card p { font-size: 0.8125rem; color: #4a5568; line-height: 1.65; margin: 0; }
   </style>
 
   <script type="application/ld+json">
@@ -1753,27 +1736,28 @@
       </button>
     </div>
 
-    <nav class="nav__mobile" id="nav-mobile" aria-label="Mobile navigation">
-      <ul class="nav__mobile-list">
-        <li><a href="/" class="nav__mobile-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Home
-        </a></li>
-        <li><a href="/iva.html" class="nav__mobile-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
-          IVA Claims
-        </a></li>
-        <li><a href="/bec.html" class="nav__mobile-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-          BEC Claims
-        </a></li>
-        <li><a href="#contact" class="nav__mobile-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Contact
-        </a></li>
-      </ul>
-    </nav>
   </header>
+
+  <nav class="nav__mobile" id="nav-mobile" aria-label="Mobile navigation">
+    <ul class="nav__mobile-list">
+      <li><a href="/" class="nav__mobile-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a></li>
+      <li><a href="/iva.html" class="nav__mobile-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        IVA Claims
+      </a></li>
+      <li><a href="/bec.html" class="nav__mobile-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        BEC Claims
+      </a></li>
+      <li><a href="#contact" class="nav__mobile-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact
+      </a></li>
+    </ul>
+  </nav>
 
 
   <main>
@@ -1782,30 +1766,55 @@
     <section class="bec-hero">
       <div class="container">
         <h1 class="bec-hero__title">Was Your Business Overcharged on Energy?</h1>
-        <p class="bec-hero__subtitle">UK businesses may be owed thousands from undisclosed broker commissions. Find out if your business qualifies.</p>
+        <p class="bec-hero__subtitle">UK businesses may have paid inflated energy prices due to undisclosed broker commissions. Find out if your business qualifies with our free assessment.</p>
         <div class="bec-hero__cta">
-          <a href="#claim-form" class="btn btn--secondary btn--lg">Check Your Eligibility Now</a>
+          <a href="#claim-form" class="bec-hero__btn">
+            Check your eligibility
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </a>
+          <p class="bec-hero__btn-sub">Free assessment, takes 2 minutes</p>
         </div>
-        <div class="bec-hero__trust-row">
-          <span class="bec-hero__trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Success-based fees
-          </span>
-          <span class="bec-hero__trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            No upfront costs
-          </span>
-          <span class="bec-hero__trust-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Free case assessment
-          </span>
+        <div class="bec-hero__notice" role="note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <p>Business energy commission claims are B2B commercial transactions. A claims management company is not required. You may pursue a claim independently.</p>
         </div>
-        <p class="bec-hero__compliance">
-          Visible Legal Marketing Ltd (Company No. 10263322). Business energy commission claims are unregulated B2B transactions &mdash; a claims management company is not required. You may pursue a claim independently.
-        </p>
+        <p class="bec-hero__reg-line">Visible Legal Marketing Ltd, Company No. 10263322.</p>
       </div>
     </section>
 
+    <!-- HOW WE HELP -->
+    <section class="section how-we-help" id="how-we-help">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">How We Help With Energy Claims</h2>
+          <div style="width:48px;height:3px;background:#ff6b35;border-radius:2px;margin:1rem auto 0;" aria-hidden="true"></div>
+          <p class="section__subtitle" style="margin-top:0.75rem;">We review your energy contracts and identify undisclosed broker commissions.</p>
+        </div>
+        <div class="help-grid">
+          <div class="help-card">
+            <div class="help-card__icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 class="help-card__title">We review your contracts</h3>
+            <p class="help-card__text">We analyse your energy contracts and broker agreements to identify whether commissions were properly disclosed. You upload your documents securely and we do the rest.</p>
+          </div>
+          <div class="help-card">
+            <div class="help-card__icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 class="help-card__title">We identify hidden commissions</h3>
+            <p class="help-card__text">We calculate the commissions embedded in your energy rates and assess whether your broker failed to disclose them. This forms the basis of your potential claim.</p>
+          </div>
+          <div class="help-card">
+            <div class="help-card__icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3 class="help-card__title">We connect you with solicitors</h3>
+            <p class="help-card__text">If we identify undisclosed commissions, we prepare your case and refer it to a specialist solicitor from our panel who pursues recovery on your behalf.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- EDUCATION -->
     <section class="edu-section" id="what-is-bec">
@@ -1816,7 +1825,7 @@
         </div>
 
         <div class="edu-content">
-          <p>When businesses arrange energy contracts, they often use a third-party broker. While brokers can offer valuable comparison services, <strong>many failed to disclose the commissions they earned</strong> from energy suppliers &mdash; commissions that were added directly to your energy rates.</p>
+          <p>When businesses arrange energy contracts, they often use a third-party broker. While brokers can offer valuable comparison services, <strong>many failed to disclose the commissions they earned</strong>, commissions that were added directly to your energy rates.</p>
 
           <div class="mis-cards">
             <div class="mis-card">
@@ -1825,7 +1834,7 @@
               </div>
               <div class="mis-card__body">
                 <h4>Undisclosed Commissions</h4>
-                <p>Your broker earned commission from the energy supplier but never told you how much &mdash; or even that commission was being paid at all.</p>
+                <p>Your broker earned commission from the energy supplier but never told you how much, or even that commission was being paid at all.</p>
               </div>
             </div>
 
@@ -1880,96 +1889,247 @@
             </div>
           </div>
 
-          <p>If any of the above sounds familiar, your business may be entitled to recover the undisclosed commissions. <strong>Claims can cover multiple contract periods</strong> &mdash; the further back your contracts go, the greater the potential recovery.</p>
+          <div class="edu-cta-block">
+            <p>If any of the above sounds familiar, your business may be entitled to recover the undisclosed commissions. Claims can cover multiple contract periods.</p>
+            <a href="#claim-form" class="edu-cta-link">
+              Check your eligibility now
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
 
-    <!-- ELIGIBILITY -->
-    <section class="eligibility" id="eligibility">
+
+
+    <!-- REGULATORY & TRANSPARENCY -->
+    <section class="regulatory-section" id="regulatory">
       <div class="container">
         <div class="section__header">
-          <h2 class="section__title">Your Business May Have a Claim If&hellip;</h2>
-          <p class="section__subtitle">If any of the following apply, it's worth checking your eligibility</p>
+          <h2 class="section__title">Transparency &amp; Important Information</h2>
+          <p class="section__subtitle">We're committed to clear, honest communication about our service</p>
         </div>
 
-        <div class="elig-grid">
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div class="reg-grid">
+          <!-- Left column -->
+          <div class="reg-card">
+            <div class="reg-card__header">
+              <div class="reg-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <h3 class="reg-card__title">How We Support You</h3>
+                <p class="reg-card__subtitle">Our service commitments</p>
+              </div>
             </div>
-            <p>Your business used a broker to arrange a gas or electricity contract</p>
+
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Regular Updates</p>
+                <p class="reg-item__desc">We keep you informed at key milestones by email throughout the process.</p>
+              </div>
+            </div>
+
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Evidence Coordination</p>
+                <p class="reg-item__desc">We coordinate requests for energy contracts and broker agreements so you don't have to chase everything yourself.</p>
+              </div>
+            </div>
+
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Clear Approvals</p>
+                <p class="reg-item__desc">You'll see and approve important documents before they are used on your behalf.</p>
+              </div>
+            </div>
+
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20H7c0-4 2-8 2-12a4 4 0 018 0"/><line x1="7" y1="14" x2="15" y2="14"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Clear Fee Structure</p>
+                <p class="reg-item__desc">There are no upfront costs at any stage. If your case is referred to a solicitor, their fees are set out separately in their engagement letter.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <!-- Right column -->
+          <div class="reg-card">
+            <div class="reg-card__header">
+              <div class="reg-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div>
+                <h3 class="reg-card__title">Your Rights</h3>
+                <p class="reg-card__subtitle">Important information for businesses</p>
+              </div>
             </div>
-            <p>You were not told how much commission the broker was earning</p>
-          </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Pursue Independently</p>
+                <p class="reg-item__desc">You can pursue a claim directly against your energy broker without using a claims management company. This is a B2B commercial dispute.</p>
+              </div>
             </div>
-            <p>You suspect your energy rates were higher than they should have been</p>
-          </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Why Businesses Choose Us</p>
+                <p class="reg-item__desc">Many businesses choose us because we manage the process, coordinate documents, and liaise with solicitors on their behalf, making it straightforward.</p>
+              </div>
             </div>
-            <p>Your broker didn't provide a fair comparison of available suppliers</p>
-          </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Data Protection</p>
+                <p class="reg-item__desc">Your data is handled in full compliance with UK GDPR. Read our <a href="/privacy/bec-privacy.html" style="color: var(--bec-accent); text-decoration: underline;">BEC Privacy Policy</a>.</p>
+              </div>
             </div>
-            <p>You were locked into long-term contracts without proper disclosure</p>
-          </div>
 
-          <div class="elig-card">
-            <div class="elig-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="reg-item">
+              <div class="reg-item__icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="reg-item__text">
+                <p class="reg-item__label">Prompt Communication</p>
+                <p class="reg-item__desc">To keep your claim moving smoothly, please respond promptly to any requests for information from us.</p>
+              </div>
             </div>
-            <p>Your energy contract auto-renewed without clear notification or consent</p>
           </div>
+        </div>
+
+        <div class="reg-contact">
+          <p class="reg-contact__line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:support@visiblelegal.co.uk">support@visiblelegal.co.uk</a>
+          </p>
+          <p class="reg-contact__line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            5 Eagle Fold, Hyde, England, SK14 4GU
+          </p>
+          <p class="reg-contact__disclosure">Visible Legal Marketing Ltd, Company No. 10263322. Business energy claims are B2B commercial transactions outside the scope of FCA-regulated claims management.</p>
         </div>
       </div>
     </section>
 
-    <!-- SIMPLE 2-STEP PROCESS -->
-    <section class="process-steps" id="how-it-works">
+    <!-- FEES AND COSTS -->
+    <section class="section fees-section" id="fees">
       <div class="container">
         <div class="section__header">
-          <h2 class="section__title">Simple 2-Step Process</h2>
-          <p class="section__subtitle">Getting started is quick and straightforward</p>
+          <h2 class="section__title">Fees and Costs</h2>
+          <div style="width:48px;height:3px;background:#ff6b35;border-radius:2px;margin:1rem auto 0;" aria-hidden="true"></div>
+          <p class="section__subtitle" style="margin-top:0.75rem;">Complete transparency about how our service works</p>
         </div>
-
-        <div class="process-steps__grid">
-          <div class="process-step-card">
-            <span class="process-step-card__number">1</span>
-            <div class="process-step-card__icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div class="fees-layout">
+          <div class="fees-card">
+            <div class="fees-card__item">
+              <div class="fees-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div>
+                <h3 class="fees-card__label">No upfront costs</h3>
+                <p class="fees-card__text">We carry out the initial review of your energy contracts at no charge. There are no fees unless a viable claim is identified and successfully pursued.</p>
+              </div>
             </div>
-            <h3 class="process-step-card__title">Submit Your Details</h3>
-            <p class="process-step-card__text">Complete our short form below with your company and energy broker information. Takes around 2 minutes.</p>
+            <div class="fees-card__item">
+              <div class="fees-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div>
+                <h3 class="fees-card__label">Solicitor fees on success only</h3>
+                <p class="fees-card__text">If your case is referred to a panel solicitor, their fees are set out in their own engagement letter. Fees are typically 18 to 36 percent (including VAT) and are charged only if compensation is recovered for your business.</p>
+              </div>
+            </div>
+            <div class="fees-card__item">
+              <div class="fees-card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c0 0-1-3-1-7 0-4 2.5-7 6-7"/><line x1="5" y1="13" x2="15" y2="13"/></svg>
+              </div>
+              <div>
+                <h3 class="fees-card__label">Our referral fee</h3>
+                <p class="fees-card__text">Visible Legal Marketing Ltd receives a referral fee from the solicitor for the work we carry out in reviewing your case and making the referral. This does not affect any amount recovered for your business.</p>
+              </div>
+            </div>
           </div>
-
-          <div class="process-step-card">
-            <span class="process-step-card__number">2</span>
-            <div class="process-step-card__icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <div class="fees-summary">
+            <div class="fees-summary__item">
+              <span class="fees-summary__label">Your cost to us</span>
+              <span class="fees-summary__value">Nothing</span>
             </div>
-            <h3 class="process-step-card__title">Upload Your Documents</h3>
-            <p class="process-step-card__text">After submitting, you'll receive an automated email with a secure Dropbox link to upload your energy contracts and broker agreements.</p>
+            <div class="fees-summary__divider" aria-hidden="true"></div>
+            <div class="fees-summary__item">
+              <span class="fees-summary__label">Solicitor fees (on success)</span>
+              <span class="fees-summary__value">18 to 36% inc. VAT</span>
+            </div>
+            <div class="fees-summary__divider" aria-hidden="true"></div>
+            <div class="fees-summary__item">
+              <span class="fees-summary__label">If claim unsuccessful</span>
+              <span class="fees-summary__value">You owe nothing</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- YOUR CHOICE -->
+    <section class="section choice-section" id="your-choice">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">You Have a Choice</h2>
+          <div style="width:48px;height:3px;background:#ff6b35;border-radius:2px;margin:1rem auto 0;" aria-hidden="true"></div>
+          <p class="section__subtitle" style="margin-top:0.75rem;">A claims management company is not required to pursue a business energy claim</p>
+        </div>
+        <div class="choice-layout">
+          <div class="choice-card choice-card--direct">
+            <div class="choice-card__header">
+              <div class="choice-card__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <h3 class="choice-card__title">Pursue a claim directly</h3>
+            </div>
+            <p class="choice-card__text">You can approach your energy broker directly to challenge undisclosed commissions. This is a commercial B2B dispute and you do not need professional assistance to raise it.</p>
+            <p class="choice-card__text">You can also seek independent legal advice from a solicitor of your choosing.</p>
+          </div>
+          <div class="choice-card choice-card--cmc">
+            <div class="choice-card__header">
+              <div class="choice-card__icon choice-card__icon--orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <h3 class="choice-card__title">Why some businesses choose us</h3>
+            </div>
+            <div class="choice-reasons">
+              <div class="choice-reason"><div class="choice-reason__marker"></div><p>We handle the contract analysis and identify exactly how much commission was embedded in your energy rates.</p></div>
+              <div class="choice-reason"><div class="choice-reason__marker"></div><p>We coordinate the evidence gathering so your team does not have to chase documents from multiple suppliers.</p></div>
+              <div class="choice-reason"><div class="choice-reason__marker"></div><p>We connect you with specialist solicitors who have experience recovering undisclosed energy broker commissions.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="choice-footer-card">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <p>The decision is entirely yours. Whether you pursue a claim independently or choose to use our service, the important thing is that you are aware of your options.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- THE FORM -->
     <section class="form-section" id="claim-form">
@@ -2236,15 +2396,15 @@
                   <ul class="step4-card__list">
                     <li>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                      <span>Business energy commission claims are <strong>unregulated B2B transactions</strong></span>
+                      <span>Business energy commission claims are <strong>B2B commercial transactions that fall outside the scope of FCA-regulated claims management</strong></span>
                     </li>
                     <li>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                      <span>You can pursue a claim <strong>independently</strong> &mdash; a claims management company is not required</span>
+                      <span>You can pursue a claim <strong>independently</strong>. A claims management company is not required</span>
                     </li>
                     <li>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                      <span>Success-based fees of <strong>18&ndash;36%</strong> (incl. VAT) only apply if compensation is recovered</span>
+                      <span>Solicitor fees of 18 to 36 percent (incl. VAT) apply only if compensation is recovered. These fees are set out in the solicitor's engagement letter</span>
                     </li>
                   </ul>
                 </div>
@@ -2313,7 +2473,7 @@
           </span>
           <span class="form-trust__item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Success-based fees
+            No upfront costs
           </span>
         </div>
       </div>
@@ -2406,7 +2566,7 @@
             </div>
             <div class="timeline__content">
               <h3>Submit Your Details</h3>
-              <p>Complete our short assessment form with your company and energy broker details &mdash; takes around 2 minutes.</p>
+              <p>Complete our short assessment form with your company and energy broker details. Takes around 2 minutes.</p>
               <span class="timeline__time">2 minutes</span>
             </div>
           </div>
@@ -2417,7 +2577,7 @@
             </div>
             <div class="timeline__content">
               <h3>Upload Your Documents</h3>
-              <p>You'll receive an automated email with a secure Dropbox link to upload your energy contracts and broker agreements at your convenience.</p>
+              <p>You will receive an automated email with a secure Dropbox link to upload your energy contracts and broker agreements.</p>
               <span class="timeline__time">At your pace</span>
             </div>
           </div>
@@ -2427,9 +2587,9 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </div>
             <div class="timeline__content">
-              <h3>Case Analysis</h3>
-              <p>Our team reviews your submission and documents to build a comprehensive picture of the commissions paid and assess the strength of your claim.</p>
-              <span class="timeline__time">2&ndash;4 weeks</span>
+              <h3>We Review Your Case</h3>
+              <p>We analyse your contracts and broker agreements to identify undisclosed commissions and assess the strength of your claim.</p>
+              <span class="timeline__time">2 to 4 weeks</span>
             </div>
           </div>
 
@@ -2438,19 +2598,19 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
             </div>
             <div class="timeline__content">
-              <h3>Claim Assessment</h3>
-              <p>We contact you with our findings and, where appropriate, introduce you to our panel of specialist solicitors to review and progress your claim.</p>
-              <span class="timeline__time">1&ndash;2 weeks</span>
+              <h3>Referral to Solicitor</h3>
+              <p>If we identify a viable claim, we prepare your case and refer it to a specialist solicitor from our panel. The solicitor contacts you directly to confirm the arrangements.</p>
+              <span class="timeline__time">1 to 2 weeks</span>
             </div>
           </div>
 
           <div class="timeline__item">
-            <div class="timeline__dot" style="background: linear-gradient(135deg, var(--success-green), #00c08b);">
+            <div class="timeline__dot" style="background: var(--success-green);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
             <div class="timeline__content">
-              <h3>Pursue Compensation</h3>
-              <p>Our panel of specialist solicitors pursues recovery of the undisclosed commissions on your behalf &mdash; success-based fees mean you only pay when they recover funds for your business.</p>
+              <h3>Solicitor Pursues Recovery</h3>
+              <p>The solicitor handles the legal claim on your behalf, including all correspondence with the energy broker. Their fees are only charged if they recover funds for your business.</p>
               <span class="timeline__time">Varies by case</span>
             </div>
           </div>
@@ -2473,7 +2633,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>When a broker arranges your business energy contract, they typically earn a commission from the energy supplier. This commission is usually embedded in the per-unit rate you pay for gas or electricity. If the broker didn't disclose this commission to you, you may have been paying more than necessary &mdash; and could be entitled to recover those overcharges.</p>
+              <p>When a broker arranges your business energy contract, they typically earn a commission from the energy supplier. This commission is usually embedded in the per-unit rate you pay for gas or electricity. If the broker didn't disclose this commission to you, you may have been paying more than necessary. You could be entitled to recover those overcharges.</p>
             </div>
           </div>
 
@@ -2483,7 +2643,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>The amount depends on your energy consumption, the length of your contract, and the level of undisclosed commission. Some businesses have recovered thousands of pounds. Higher-consumption businesses and those with longer contracts typically see larger recoveries. We offer a free assessment to help you understand what your business could be owed.</p>
+              <p>The amount depends on your energy consumption, the length of your contract, and the level of undisclosed commission. Higher-consumption businesses and those with longer contracts typically see larger recoveries. We offer a free assessment to help you understand what your business could be owed.</p>
             </div>
           </div>
 
@@ -2503,17 +2663,17 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>Ideally, any energy contracts, broker agreements, or correspondence you have. After you submit your details, you'll receive an automated email with a secure upload link where you can share your documents at your convenience. If you don't have these documents to hand, don't worry &mdash; we can guide you through the process and help identify what's needed.</p>
+              <p>Ideally, any energy contracts, broker agreements, or correspondence you have. After you submit your details, you'll receive an automated email with a secure upload link where you can share your documents at your convenience. If you don't have these documents to hand, don't worry. We can guide you through the process and help identify what's needed.</p>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-item__question" aria-expanded="false">
-              What does &ldquo;success-based fees&rdquo; mean?
+              How are fees structured?
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>It means you don't pay anything upfront. Our fees are only charged if we successfully recover compensation for your business. If your claim is unsuccessful, you won't owe us anything. This ensures there's no financial risk to your business.</p>
+              <p>There are no upfront costs to your business. We carry out the initial review of your energy contracts at no charge. If we identify a viable claim, we refer your case to a panel solicitor. The solicitor's fees (typically 18 to 36 percent including VAT) are set out in their own engagement letter and are only charged if compensation is recovered. VLM receives a referral fee from the solicitor for our work. This fee does not come from you and does not affect the amount recovered for your business.</p>
             </div>
           </div>
 
@@ -2523,7 +2683,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>Business energy commission claims are unregulated B2B transactions. Unlike consumer claims, they do not fall under FCA regulation. However, Visible Legal Marketing Limited operates with full transparency and works with a panel of qualified solicitors to handle your claim professionally.</p>
+              <p>Business energy commission claims are B2B commercial transactions that fall outside the scope of FCA-regulated claims management. Visible Legal Marketing Ltd works with a panel of qualified solicitors regulated by the Solicitors Regulation Authority to handle your claim professionally.</p>
             </div>
           </div>
 
@@ -2533,7 +2693,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
             <div class="faq-item__answer">
-              <p>Yes, you can pursue a claim independently without using a claims management company. Many businesses choose to work with us because we manage the process, coordinate evidence gathering, and liaise with specialist solicitors on their behalf &mdash; making it straightforward and hassle-free.</p>
+              <p>Yes, you can pursue a claim independently without using a claims management company. Many businesses choose to work with us because we manage the process, coordinate evidence gathering, and liaise with specialist solicitors on their behalf, making it straightforward.</p>
             </div>
           </div>
         </div>
@@ -2541,163 +2701,8 @@
     </section>
 
 
-    <!-- FINAL CTA -->
-    <section class="final-cta">
-      <div class="container">
-        <h2 class="final-cta__title">Start Your Free Business Energy Claim Assessment</h2>
-        <p class="final-cta__subtitle">Takes 2 minutes. No upfront costs. Success-based fees.</p>
-        <div class="final-cta__btn">
-          <a href="#claim-form" class="btn btn--secondary btn--lg">Check Your Eligibility</a>
-        </div>
-        <div class="final-cta__trust">
-          <span class="final-cta__trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Free Assessment
-          </span>
-          <span class="final-cta__trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Success-Based Fees
-          </span>
-          <span class="final-cta__trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            UK Solicitors
-          </span>
-        </div>
-      </div>
-    </section>
 
   </main>
-
-
-  <!-- REGULATORY & TRANSPARENCY -->
-  <section class="regulatory-section" id="regulatory">
-    <div class="container">
-      <div class="section__header">
-        <h2 class="section__title">Transparency &amp; Important Information</h2>
-        <p class="section__subtitle">We're committed to clear, honest communication about our service</p>
-      </div>
-
-      <div class="reg-grid">
-        <!-- Left column -->
-        <div class="reg-card">
-          <div class="reg-card__header">
-            <div class="reg-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div>
-              <h3 class="reg-card__title">How We Support You</h3>
-              <p class="reg-card__subtitle">Our service commitments</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Regular Updates</p>
-              <p class="reg-item__desc">We keep you informed at key milestones by email and, where you agree, by phone.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Evidence Coordination</p>
-              <p class="reg-item__desc">We coordinate requests for energy contracts and broker agreements so you don't have to chase everything yourself.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Clear Approvals</p>
-              <p class="reg-item__desc">You'll see and approve important documents before they are used on your behalf.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20H7c0-4 2-8 2-12a4 4 0 018 0"/><line x1="7" y1="14" x2="15" y2="14"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">No Upfront Fees</p>
-              <p class="reg-item__desc">Success-based fees of 18&ndash;36% (incl. VAT) only apply if compensation is recovered for your business.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right column -->
-        <div class="reg-card">
-          <div class="reg-card__header">
-            <div class="reg-card__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-            </div>
-            <div>
-              <h3 class="reg-card__title">Your Rights</h3>
-              <p class="reg-card__subtitle">Important information for businesses</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Pursue Independently</p>
-              <p class="reg-item__desc">You can pursue a claim directly against your energy broker without using a claims management company. This is a B2B commercial dispute.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Why Businesses Choose Us</p>
-              <p class="reg-item__desc">Many businesses choose us because we manage the process, coordinate documents, and liaise with solicitors on their behalf &mdash; making it hassle-free.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Data Protection</p>
-              <p class="reg-item__desc">Your data is handled in full compliance with UK GDPR. Read our <a href="/privacy/bec-privacy.html" style="color: var(--bec-accent); text-decoration: underline;">BEC Privacy Policy</a>.</p>
-            </div>
-          </div>
-
-          <div class="reg-item">
-            <div class="reg-item__icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            </div>
-            <div class="reg-item__text">
-              <p class="reg-item__label">Prompt Communication</p>
-              <p class="reg-item__desc">To keep your claim moving smoothly, please respond promptly to any requests for information from us.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Reference numbers -->
-      <div class="reg-refs" style="max-width: var(--max-width); margin: var(--space-xl) auto 0;">
-        <span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Company No. 10263322
-        </span>
-        <span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          5 Eagle Fold, Hyde, England, SK14 4GU
-        </span>
-      </div>
-    </div>
-  </section>
 
 
   <!-- FOOTER -->
@@ -2737,7 +2742,7 @@
         </div>
       </div>
 
-      <p class="footer__disclaimer">You do not need to use a claims management company to make a claim. You can complain directly to the firm or, if your complaint is not resolved, to the Financial Ombudsman Service free of charge. You pay nothing unless your claim is successful. A success fee between 18% and 36% including VAT applies on successful claims, dependent on the level of redress secured. A cancellation fee may apply outside the 14 day cooling-off period. Visible Legal Marketing Ltd may receive a fee for introducing you to a panel solicitor &mdash; this does not affect any compensation you may receive. Any solicitor we refer you to is independent and SRA-regulated; you are free to choose your own solicitor. Visible Legal Marketing Ltd is a claims management company authorised and regulated by the Financial Conduct Authority (FCA No. 835293).</p>
+      <p class="footer__disclaimer">You do not need to use a claims management company to make a claim. You can complain directly to the firm or, if your complaint is not resolved, to the Financial Ombudsman Service free of charge. You pay nothing unless your claim is successful. A success fee between 18% and 36% including VAT applies on successful claims, dependent on the level of redress secured. A cancellation fee may apply outside the 14 day cooling-off period. Visible Legal Marketing Ltd may receive a fee for introducing you to a panel solicitor; this does not affect any compensation you may receive. Any solicitor we refer you to is independent and SRA-regulated; you are free to choose your own solicitor. Visible Legal Marketing Ltd is a claims management company authorised and regulated by the Financial Conduct Authority (FCA No. 835293).</p>
 
       <hr class="footer__divider">
 
@@ -2815,6 +2820,17 @@
           toggle.classList.toggle('is-open');
           toggle.setAttribute('aria-expanded', open);
           toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+
+        // Close menu when a same-page anchor link is clicked (e.g. #contact)
+        var menuLinks = menu.querySelectorAll('.nav__mobile-link[href^="#"]');
+        menuLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.remove('is-open');
+            toggle.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open menu');
+          });
         });
       }
 

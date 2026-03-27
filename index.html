@@ -569,27 +569,28 @@
       </button>
     </div>
 
-    <nav class="nav__mobile" id="nav-mobile" aria-label="Mobile navigation">
-      <ul class="nav__mobile-list">
-        <li><a href="/" class="nav__mobile-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Home
-        </a></li>
-        <li><a href="/iva.html" class="nav__mobile-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
-          IVA Claims
-        </a></li>
-        <li><a href="/bec.html" class="nav__mobile-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-          BEC Claims
-        </a></li>
-        <li><a href="#contact" class="nav__mobile-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Contact
-        </a></li>
-      </ul>
-    </nav>
   </header>
+
+  <nav class="nav__mobile" id="nav-mobile" aria-label="Mobile navigation">
+    <ul class="nav__mobile-list">
+      <li><a href="/" class="nav__mobile-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a></li>
+      <li><a href="/iva.html" class="nav__mobile-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        IVA Claims
+      </a></li>
+      <li><a href="/bec.html" class="nav__mobile-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        BEC Claims
+      </a></li>
+      <li><a href="#contact" class="nav__mobile-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact
+      </a></li>
+    </ul>
+  </nav>
 
 
   <main>
@@ -853,8 +854,8 @@
         toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       });
 
-      // Close menu when any link inside it is clicked
-      var menuLinks = menu.querySelectorAll('.nav__mobile-link');
+      // Close menu when a same-page anchor link is clicked (e.g. #contact)
+      var menuLinks = menu.querySelectorAll('.nav__mobile-link[href^="#"]');
       menuLinks.forEach(function(link) {
         link.addEventListener('click', function() {
           menu.classList.remove('is-open');

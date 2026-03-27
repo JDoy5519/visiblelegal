@@ -123,17 +123,19 @@
 /* Mobile menu */
 .nav__mobile {
   position: fixed;
-  inset: 80px 0 0 0;
-  background-color: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
   z-index: 99;
-  padding: var(--space-2xl) var(--space-lg);
-  border-top: 1px solid rgba(226, 232, 240, 0.5);
+  padding: 2rem 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   transform: translateY(-10px);
   opacity: 0;
   pointer-events: none;
-  transition: transform var(--transition-base), opacity var(--transition-base);
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .nav__mobile.is-open {
@@ -158,19 +160,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
-  padding: var(--space-md) var(--space-lg);
-  font-size: var(--text-lead);
-  font-weight: var(--font-weight-medium);
-  color: var(--charcoal);
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a202c;
   text-decoration: none;
-  border-radius: var(--radius-md);
-  transition: background-color var(--transition-fast), color var(--transition-fast);
+  border-radius: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .nav__mobile-link:hover {
-  background-color: var(--bg-subtle);
-  color: var(--primary-blue);
+  background-color: #f8fafc;
+  color: #ff6b35;
   text-decoration: none;
 }
 
